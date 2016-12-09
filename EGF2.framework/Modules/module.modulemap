@@ -1,0 +1,10 @@
+framework module EGF2 {
+  umbrella header "EGF2.h"
+
+  export *
+  module * { export * }
+}
+
+module EGF2.Swift {
+    header "EGF2-Swift.h"
+}
