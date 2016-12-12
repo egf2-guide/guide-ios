@@ -10,9 +10,5 @@ import UIKit
 
 class FeedController: BaseController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        parent?.title = "Feed"
-    }
 }
 

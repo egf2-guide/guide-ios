@@ -14,9 +14,9 @@
 		E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528658F1DFE7CBD00D50A0D /* BaseController.swift */; };
 		E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865911DFE7CBD00D50A0D /* InitController.swift */; };
 		E528659C1DFE7CBD00D50A0D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865931DFE7CBD00D50A0D /* LoginController.swift */; };
-		E528659D1DFE7CBD00D50A0D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865951DFE7CBD00D50A0D /* MainTabBarController.swift */; };
 		E528659E1DFE7CBD00D50A0D /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865971DFE7CBD00D50A0D /* RegisterController.swift */; };
 		E528659F1DFE7CBD00D50A0D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865991DFE7CBD00D50A0D /* UserController.swift */; };
+		E55EA4EA1DFE90F000C611BD /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4E91DFE90F000C611BD /* NewPostController.swift */; };
 		E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57421DFA943300C8C237 /* AppDelegate.swift */; };
 		E57D57481DFA943300C8C237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D57461DFA943300C8C237 /* Main.storyboard */; };
 		E57D574A1DFA943300C8C237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E57D57491DFA943300C8C237 /* Assets.xcassets */; };
@@ -52,9 +52,9 @@
 		E528658F1DFE7CBD00D50A0D /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		E52865911DFE7CBD00D50A0D /* InitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitController.swift; sourceTree = "<group>"; };
 		E52865931DFE7CBD00D50A0D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		E52865951DFE7CBD00D50A0D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E52865971DFE7CBD00D50A0D /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		E52865991DFE7CBD00D50A0D /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		E55EA4E91DFE90F000C611BD /* NewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
 		E57D573F1DFA943300C8C237 /* GuideSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D57421DFA943300C8C237 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E57D57471DFA943300C8C237 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,14 +131,6 @@
 			path = LoginController;
 			sourceTree = "<group>";
 		};
-		E52865941DFE7CBD00D50A0D /* MainTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				E52865951DFE7CBD00D50A0D /* MainTabBarController.swift */,
-			);
-			path = MainTabBarController;
-			sourceTree = "<group>";
-		};
 		E52865961DFE7CBD00D50A0D /* RegisterController */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +145,14 @@
 				E52865991DFE7CBD00D50A0D /* UserController.swift */,
 			);
 			path = UserController;
+			sourceTree = "<group>";
+		};
+		E55EA4E81DFE90E500C611BD /* NewPostController */ = {
+			isa = PBXGroup;
+			children = (
+				E55EA4E91DFE90F000C611BD /* NewPostController.swift */,
+			);
+			path = NewPostController;
 			sourceTree = "<group>";
 		};
 		E57D57361DFA943300C8C237 = {
@@ -228,13 +228,13 @@
 			children = (
 				E528658E1DFE7CBD00D50A0D /* BaseController */,
 				E52865901DFE7CBD00D50A0D /* InitController */,
-				E52865941DFE7CBD00D50A0D /* MainTabBarController */,
 				E52865921DFE7CBD00D50A0D /* LoginController */,
 				E52865961DFE7CBD00D50A0D /* RegisterController */,
 				E52865981DFE7CBD00D50A0D /* UserController */,
 				E52865511DFE72F500D50A0D /* FeedController */,
 				E52865541DFE733400D50A0D /* FollowsController */,
 				E528654C1DFE6FE800D50A0D /* MoreController */,
+				E55EA4E81DFE90E500C611BD /* NewPostController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -341,13 +341,13 @@
 				E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */,
 				E528659C1DFE7CBD00D50A0D /* LoginController.swift in Sources */,
 				E57D57981DFA96E600C8C237 /* DesignableButton.swift in Sources */,
+				E55EA4EA1DFE90F000C611BD /* NewPostController.swift in Sources */,
 				E528659E1DFE7CBD00D50A0D /* RegisterController.swift in Sources */,
 				E57D579A1DFA96FD00C8C237 /* UIColor+Additions.swift in Sources */,
 				E52865531DFE72FB00D50A0D /* FeedController.swift in Sources */,
 				E57D57861DFA960500C8C237 /* EGF2.swift in Sources */,
 				E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */,
 				E52865561DFE733900D50A0D /* FollowsController.swift in Sources */,
-				E528659D1DFE7CBD00D50A0D /* MainTabBarController.swift in Sources */,
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,

@@ -8,21 +8,15 @@
 
 import UIKit
 
-class InitController: UINavigationController {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if Graph.isAuthorized && viewControllers.isEmpty {
-            guard let mainController = storyboard?.instantiateViewController(withIdentifier: "MainTabBar") else { return }
-            viewControllers = [mainController]
-        }
-    }
+class InitController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !Graph.isAuthorized {
+        if Graph.isAuthorized {
+            performSegue(withIdentifier: "ShowTabBar", sender: nil)
+        }
+        else {
             performSegue(withIdentifier: "ShowLoginScreen", sender: nil)
         }
     }

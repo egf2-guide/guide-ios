@@ -1,17 +1,17 @@
 //
-//  FeedController.m
+//  NewPostController.m
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 12.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "FeedController.h"
+#import "NewPostController.h"
 
-@interface FeedController ()
+@interface NewPostController ()
 
 @end
 
-@implementation FeedController
+@implementation NewPostController
 
 @end

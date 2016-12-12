@@ -14,8 +14,4 @@
 
 @implementation FollowsController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.parentViewController.title = @"Follows";
-}
 @end

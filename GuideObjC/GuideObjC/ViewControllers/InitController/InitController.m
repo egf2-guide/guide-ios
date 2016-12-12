@@ -14,19 +14,13 @@
 
 @implementation InitController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (self.graph.isAuthorized && self.viewControllers.count == 0) {
-        UIViewController * mainController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
-        self.viewControllers = @[mainController];
-    }
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (!self.graph.isAuthorized) {
+    if (self.graph.isAuthorized) {
+        [self performSegueWithIdentifier:@"ShowTabBar" sender:nil];
+    }
+    else {
         [self performSegueWithIdentifier:@"ShowLoginScreen" sender:nil];
     }
 }

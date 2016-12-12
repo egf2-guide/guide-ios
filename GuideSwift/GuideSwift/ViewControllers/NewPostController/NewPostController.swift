@@ -1,5 +1,5 @@
 //
-//  FollowsController.swift
+//  NewPostController.swift
 //  GuideSwift
 //
 //  Created by LuzanovRoman on 12.12.16.
@@ -8,7 +8,6 @@
 
 import UIKit
 
-class FollowsController: BaseController {
+class NewPostController: BaseController {
     
 }
-

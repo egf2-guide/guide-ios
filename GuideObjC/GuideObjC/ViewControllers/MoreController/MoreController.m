@@ -7,7 +7,6 @@
 //
 
 #import "MoreController.h"
-#import "InitController.h"
 
 @interface MoreController ()
 
@@ -20,20 +19,12 @@
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 0.1)];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.parentViewController.title = @"More";
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (![cell.reuseIdentifier isEqual:@"LogoutCell"]) {
-        return;
-    }
-    if ([self.navigationController isMemberOfClass:[InitController class]]) {
+    if ([cell.reuseIdentifier isEqual:@"LogoutCell"]) {
         [self.graph logoutWithCompletion:^(id object, NSError * error) {
-            [self.navigationController performSegueWithIdentifier:@"ShowLoginScreen" sender:nil];
+            [self.tabBarController dismissViewControllerAnimated:true completion:nil];
         }];
     }
 }

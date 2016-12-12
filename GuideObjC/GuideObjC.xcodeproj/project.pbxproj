@@ -18,8 +18,7 @@
 		E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528657E1DFE766F00D50A0D /* BaseTableViewController.m */; };
 		E52865821DFE76C100D50A0D /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865811DFE76C100D50A0D /* MoreController.m */; };
 		E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865841DFE76DF00D50A0D /* MoreCell.m */; };
-		E52865891DFE78F700D50A0D /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865881DFE78F700D50A0D /* BaseTabBarController.m */; };
-		E528658D1DFE794400D50A0D /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528658C1DFE794400D50A0D /* MainTabBarController.m */; };
+		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
 		E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57641DFA945900C8C237 /* AppDelegate.m */; };
 		E57D576B1DFA945900C8C237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D57691DFA945900C8C237 /* Main.storyboard */; };
@@ -71,10 +70,8 @@
 		E52865811DFE76C100D50A0D /* MoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreController.m; sourceTree = "<group>"; };
 		E52865831DFE76DF00D50A0D /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
 		E52865841DFE76DF00D50A0D /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
-		E52865871DFE78F700D50A0D /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
-		E52865881DFE78F700D50A0D /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
-		E528658B1DFE794400D50A0D /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
-		E528658C1DFE794400D50A0D /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		E55EA4EC1DFE93B100C611BD /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
+		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
 		E57D575D1DFA945900C8C237 /* GuideObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D57611DFA945900C8C237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E57D57631DFA945900C8C237 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -201,22 +198,13 @@
 			path = BaseTableViewController;
 			sourceTree = "<group>";
 		};
-		E52865861DFE78DE00D50A0D /* BaseTabBarController */ = {
+		E55EA4EB1DFE939C00C611BD /* NewPostController */ = {
 			isa = PBXGroup;
 			children = (
-				E52865871DFE78F700D50A0D /* BaseTabBarController.h */,
-				E52865881DFE78F700D50A0D /* BaseTabBarController.m */,
+				E55EA4EC1DFE93B100C611BD /* NewPostController.h */,
+				E55EA4ED1DFE93B100C611BD /* NewPostController.m */,
 			);
-			path = BaseTabBarController;
-			sourceTree = "<group>";
-		};
-		E528658A1DFE794400D50A0D /* MainTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				E528658B1DFE794400D50A0D /* MainTabBarController.h */,
-				E528658C1DFE794400D50A0D /* MainTabBarController.m */,
-			);
-			path = MainTabBarController;
+			path = NewPostController;
 			sourceTree = "<group>";
 		};
 		E57D57541DFA945900C8C237 = {
@@ -288,14 +276,13 @@
 			children = (
 				E52865571DFE752F00D50A0D /* BaseNavigationController */,
 				E528657C1DFE765A00D50A0D /* BaseTableViewController */,
-				E52865861DFE78DE00D50A0D /* BaseTabBarController */,
 				E528655A1DFE752F00D50A0D /* BaseViewController */,
 				E528655D1DFE752F00D50A0D /* FeedController */,
-				E528658A1DFE794400D50A0D /* MainTabBarController */,
 				E528655E1DFE752F00D50A0D /* FollowsController */,
 				E528655F1DFE752F00D50A0D /* InitController */,
 				E52865621DFE752F00D50A0D /* LoginController */,
 				E52865681DFE752F00D50A0D /* MoreController */,
+				E55EA4EB1DFE939C00C611BD /* NewPostController */,
 				E52865691DFE752F00D50A0D /* RegisterController */,
 				E528656C1DFE752F00D50A0D /* UserController */,
 			);
@@ -391,13 +378,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52865891DFE78F700D50A0D /* BaseTabBarController.m in Sources */,
 				E57D57C21DFAA09100C8C237 /* DesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
-				E528658D1DFE794400D50A0D /* MainTabBarController.m in Sources */,
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
 				E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */,
@@ -409,6 +394,7 @@
 				E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */,
 				E52865741DFE752F00D50A0D /* RegisterController.m in Sources */,
 				E57D57BC1DFA9B5F00C8C237 /* UIImage+Additions.m in Sources */,
+				E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */,
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
 			);
