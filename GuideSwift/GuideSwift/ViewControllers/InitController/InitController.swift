@@ -14,7 +14,7 @@ class InitController: UINavigationController {
         super.viewWillAppear(animated)
         
         if Graph.isAuthorized && viewControllers.isEmpty {
-            guard let mainController = storyboard?.instantiateViewController(withIdentifier: "Main") else { return }
+            guard let mainController = storyboard?.instantiateViewController(withIdentifier: "MainTabBar") else { return }
             viewControllers = [mainController]
         }
     }

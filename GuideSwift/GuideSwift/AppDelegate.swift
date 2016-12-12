@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         UINavigationBar.appearance().tintColor = UIColor.hexColor(0x5E66B1)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.hexColor(0x494F89)]
+        UITabBar.appearance().tintColor = UIColor.hexColor(0x5E66B1)
         return true
     }
 

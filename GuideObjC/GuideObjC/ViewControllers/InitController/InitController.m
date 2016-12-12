@@ -18,7 +18,7 @@
     [super viewWillAppear:animated];
     
     if (self.graph.isAuthorized && self.viewControllers.count == 0) {
-        UIViewController * mainController = [self.storyboard instantiateViewControllerWithIdentifier:@"Main"];
+        UIViewController * mainController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
         self.viewControllers = @[mainController];
     }
 }

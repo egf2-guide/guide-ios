@@ -21,6 +21,7 @@
     application.windows.firstObject.backgroundColor = [UIColor whiteColor];
     [UINavigationBar appearance].tintColor = [UIColor hexColor:0x5E66B1];
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor hexColor:0x494F89]};
+    [UITabBar appearance].tintColor = [UIColor hexColor:0x5E66B1];
     return YES;
 }
 

@@ -1,13 +1,13 @@
 //
-//  MainController.h
+//  MainTabBarController.h
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 09.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTabBarController.h"
 
-@interface MainController : BaseViewController
+@interface MainTabBarController : BaseTabBarController
 
 @end
