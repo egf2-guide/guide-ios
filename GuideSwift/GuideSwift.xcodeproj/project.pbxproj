@@ -232,8 +232,8 @@
 				E52865961DFE7CBD00D50A0D /* RegisterController */,
 				E52865981DFE7CBD00D50A0D /* UserController */,
 				E52865511DFE72F500D50A0D /* FeedController */,
-				E52865541DFE733400D50A0D /* FollowsController */,
 				E528654C1DFE6FE800D50A0D /* MoreController */,
+				E52865541DFE733400D50A0D /* FollowsController */,
 				E55EA4E81DFE90E500C611BD /* NewPostController */,
 			);
 			path = ViewControllers;

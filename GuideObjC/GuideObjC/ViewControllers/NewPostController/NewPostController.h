@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface NewPostController : BaseViewController
+@interface NewPostController : BaseViewController <UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
