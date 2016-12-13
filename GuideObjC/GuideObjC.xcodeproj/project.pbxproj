@@ -19,6 +19,7 @@
 		E52865821DFE76C100D50A0D /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865811DFE76C100D50A0D /* MoreController.m */; };
 		E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865841DFE76DF00D50A0D /* MoreCell.m */; };
 		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
+		E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5651EB11DFFC49E004D09F7 /* ProgressController.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
 		E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57641DFA945900C8C237 /* AppDelegate.m */; };
 		E57D576B1DFA945900C8C237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D57691DFA945900C8C237 /* Main.storyboard */; };
@@ -72,6 +73,8 @@
 		E52865841DFE76DF00D50A0D /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
 		E55EA4EC1DFE93B100C611BD /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
 		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
+		E5651EB01DFFC49E004D09F7 /* ProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressController.h; sourceTree = "<group>"; };
+		E5651EB11DFFC49E004D09F7 /* ProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressController.m; sourceTree = "<group>"; };
 		E57D575D1DFA945900C8C237 /* GuideObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D57611DFA945900C8C237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E57D57631DFA945900C8C237 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -207,6 +210,15 @@
 			path = NewPostController;
 			sourceTree = "<group>";
 		};
+		E5651EAF1DFFC48F004D09F7 /* ProgressController */ = {
+			isa = PBXGroup;
+			children = (
+				E5651EB01DFFC49E004D09F7 /* ProgressController.h */,
+				E5651EB11DFFC49E004D09F7 /* ProgressController.m */,
+			);
+			path = ProgressController;
+			sourceTree = "<group>";
+		};
 		E57D57541DFA945900C8C237 = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +289,7 @@
 				E52865571DFE752F00D50A0D /* BaseNavigationController */,
 				E528657C1DFE765A00D50A0D /* BaseTableViewController */,
 				E528655A1DFE752F00D50A0D /* BaseViewController */,
+				E5651EAF1DFFC48F004D09F7 /* ProgressController */,
 				E528655D1DFE752F00D50A0D /* FeedController */,
 				E528655E1DFE752F00D50A0D /* FollowsController */,
 				E528655F1DFE752F00D50A0D /* InitController */,
@@ -382,6 +395,7 @@
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,
+				E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */,
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,

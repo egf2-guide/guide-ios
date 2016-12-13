@@ -640,7 +640,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccE-lp-0rF" id="q09-z1-bz5">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWH-Oe-FSF">
@@ -667,7 +667,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ft6-KG-YkH" id="WzD-kB-l0r">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMB-zi-vkd">
@@ -950,6 +950,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W44-qo-J21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2700" y="-510"/>
+        </scene>
+        <!--Progress Controller-->
+        <scene sceneID="drn-J6-Cnu">
+            <objects>
+                <viewController storyboardIdentifier="ProgressController" id="DEn-Hh-gOJ" customClass="ProgressController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UpL-PC-FbM"/>
+                        <viewControllerLayoutGuide type="bottom" id="NZh-5R-Px9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hs3-Cc-Ie5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcU-JO-8jk" customClass="DesignableView">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OQb-Bb-1jx">
+                                        <rect key="frame" x="32" y="32" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="0.69731326220000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="OQb-Bb-1jx" firstAttribute="centerY" secondItem="mcU-JO-8jk" secondAttribute="centerY" id="1p8-l8-fyF"/>
+                                    <constraint firstAttribute="width" constant="100" id="6UM-ke-pfA"/>
+                                    <constraint firstItem="OQb-Bb-1jx" firstAttribute="centerX" secondItem="mcU-JO-8jk" secondAttribute="centerX" id="cZ8-CJ-H9Y"/>
+                                    <constraint firstAttribute="height" constant="100" id="sKb-NB-UJN"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2023368834" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mcU-JO-8jk" firstAttribute="centerY" secondItem="hs3-Cc-Ie5" secondAttribute="centerY" id="jxU-wV-K3A"/>
+                            <constraint firstItem="mcU-JO-8jk" firstAttribute="centerX" secondItem="hs3-Cc-Ie5" secondAttribute="centerX" id="pNA-RD-oGX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCI-J4-Imr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="153" y="-510"/>
         </scene>
     </scenes>
 </document>

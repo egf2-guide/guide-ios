@@ -34,19 +34,23 @@ class NewPostController: BaseController, UITextViewDelegate, UIActionSheetDelega
         guard let userId = currentUserId, let image = postImage, let imageData = UIImageJPEGRepresentation(image, 0.75),
             let desc = textView.text, !desc.isEmpty else { return }
         
+        ProgressController.show()
         Graph.uploadImage(withData: imageData, title: "Photo", mimeType: "image/jpeg", kind: "photo") { (object, error) in
             if let file = object as? EGFFile, let fileId = file.id {
-                Graph.createObject(withParameters: ["image":fileId, "desc": desc], forSource: userId, onEdge: "posts") { (object, error) in
+                let parameters = ["image":fileId, "desc": desc, "object_type": "post"]
+                Graph.createObject(withParameters: parameters, forSource: userId, onEdge: "posts") { (object, error) in
                     if let _ = object as? EGFPost {
                         _ = self.navigationController?.popViewController(animated: true)
                     }
                     else {
                         self.show(error: error)
                     }
+                    ProgressController.hide()
                 }
             }
             else {
                 self.show(error: error)
+                ProgressController.hide()
             }
         }
     }
@@ -67,7 +71,6 @@ class NewPostController: BaseController, UITextViewDelegate, UIActionSheetDelega
         let controller = UIImagePickerController()
         controller.sourceType = sourceType
         controller.delegate = self
-        controller.allowsEditing = true
         present(controller, animated: true, completion: nil)
     }
     
@@ -107,30 +110,27 @@ class NewPostController: BaseController, UITextViewDelegate, UIActionSheetDelega
     // MARK:- UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) { () -> Void in
-            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage,
-            let rect = info[UIImagePickerControllerCropRect] as? NSValue,
-            let imageRef = image.cgImage?.cropping(to: rect.cgRectValue) else { return }
+            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
             
-            let cropImage = UIImage(cgImage: imageRef)
             let maxWidth = self.view.frame.size.width - 40
-            let imageRatio = cropImage.size.width / cropImage.size.height
-            self.imageWidth.constant = min(maxWidth, cropImage.size.width)
+            let imageRatio = image.size.width / image.size.height
+            self.imageWidth.constant = min(maxWidth, image.size.width)
             self.imageHeight.constant = self.imageWidth.constant / imageRatio
-            self.imageButton.setImage(cropImage, for: .normal)
+            self.imageButton.setImage(image, for: .normal)
             self.imageButton.setTitle(nil, for: .normal)
             
             let imageMaxSize: CGFloat = 800
             
-            if cropImage.size.width > imageMaxSize || cropImage.size.height > imageMaxSize {
-                let w = min(imageMaxSize, cropImage.size.width)
+            if image.size.width > imageMaxSize || image.size.height > imageMaxSize {
+                let w = min(imageMaxSize, image.size.width)
                 let h = w / imageRatio
                 
-                if let cropImageRef = cropImage.cgImage?.cropping(to: CGRect(x: 0, y: 0, width: w, height: h)) {
+                if let cropImageRef = image.cgImage?.cropping(to: CGRect(x: 0, y: 0, width: w, height: h)) {
                     self.postImage = UIImage(cgImage: cropImageRef)
                 }
             }
             else {
-                self.postImage = cropImage
+                self.postImage = image
             }
             self.updateSendButton()
         }

@@ -950,5 +950,56 @@
             </objects>
             <point key="canvasLocation" x="1240.8" y="945.87706146926541"/>
         </scene>
+        <!--Progress Controller-->
+        <scene sceneID="Wvn-92-vXd">
+            <objects>
+                <viewController storyboardIdentifier="ProgressController" id="vO8-Ng-fZI" customClass="ProgressController" customModule="GuideSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0lE-vE-pv8"/>
+                        <viewControllerLayoutGuide type="bottom" id="SeE-L1-SFN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CNw-6g-vgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Kg-eO-mVi" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="137" y="283" width="100" height="100"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="H19-27-15J">
+                                        <rect key="frame" x="32" y="32" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="0.69731326219512191" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="H19-27-15J" firstAttribute="centerY" secondItem="1Kg-eO-mVi" secondAttribute="centerY" id="BgJ-qU-qjX"/>
+                                    <constraint firstAttribute="height" constant="100" id="fMA-dE-EK1"/>
+                                    <constraint firstAttribute="width" constant="100" id="odg-WW-Rf0"/>
+                                    <constraint firstItem="H19-27-15J" firstAttribute="centerX" secondItem="1Kg-eO-mVi" secondAttribute="centerX" id="vOY-cs-wpK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20233688339349584" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1Kg-eO-mVi" firstAttribute="centerY" secondItem="CNw-6g-vgJ" secondAttribute="centerY" id="Wn0-rL-Sbx"/>
+                            <constraint firstItem="1Kg-eO-mVi" firstAttribute="centerX" secondItem="CNw-6g-vgJ" secondAttribute="centerX" id="jxo-Xf-7dT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUv-Ou-4pn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="-537"/>
+        </scene>
     </scenes>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "NewPostController.h"
+#import "ProgressController.h"
 
 @interface NewPostController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
@@ -50,9 +51,10 @@
         NSData * imageData = UIImageJPEGRepresentation(postImage, 0.75);
         NSString * desc = _textView.text;
         
+        [ProgressController show];
         [self.graph uploadImageWithData:imageData title:@"Photo" mimeType:@"image/jpeg" kind:@"photo" completion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFFile class]]) {
-                NSDictionary * parameters = @{@"image":((EGFFile *)object).id, @"desc":desc};
+                NSDictionary * parameters = @{@"image":((EGFFile *)object).id, @"desc":desc, @"object_type":@"post"};
                 [self.graph createObjectWithParameters:parameters forSource:currentUserId onEdge:@"posts" completion:^(NSObject * object, NSError * error) {
                     if ([object isKindOfClass:[EGFPost class]]) {
                         [self.navigationController popViewControllerAnimated:true];
@@ -60,10 +62,12 @@
                     else {
                         [self showError:error];
                     }
+                    [ProgressController hide];
                 }];
             }
             else {
                 [self showError:error];
+                [ProgressController hide];
             }
         }];
     }
@@ -85,7 +89,6 @@
     UIImagePickerController * controller = [[UIImagePickerController alloc] init];
     controller.sourceType = sourceType;
     controller.delegate = self;
-    controller.allowsEditing = true;
     [self presentViewController:controller animated:true completion:nil];
 }
 
@@ -118,33 +121,28 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [picker dismissViewControllerAnimated:true completion:^{
         UIImage * image = info[UIImagePickerControllerOriginalImage];
-        NSValue * rect = info[UIImagePickerControllerCropRect];
         
-        if (image && rect) {
-            CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect.CGRectValue);
-            UIImage * cropImage = [UIImage imageWithCGImage:imageRef];
-            CGImageRelease(imageRef);
-            
+        if (image) {
             CGFloat maxWidth = self.view.frame.size.width - 40;
-            CGFloat imageRatio = cropImage.size.width / cropImage.size.height;
+            CGFloat imageRatio = image.size.width / image.size.height;
             
-            _imageWidth.constant = MIN(maxWidth, cropImage.size.width);
+            _imageWidth.constant = MIN(maxWidth, image.size.width);
             _imageHeight.constant = _imageWidth.constant / imageRatio;
-            [_imageButton setImage:cropImage forState:UIControlStateNormal];
+            [_imageButton setImage:image forState:UIControlStateNormal];
             [_imageButton setTitle:nil forState:UIControlStateNormal];
 
             CGFloat imageMaxSize = 800;
             
-            if (cropImage.size.width > imageMaxSize || cropImage.size.height > imageMaxSize) {
-                CGFloat w = MIN(imageMaxSize, cropImage.size.width);
+            if (image.size.width > imageMaxSize || image.size.height > imageMaxSize) {
+                CGFloat w = MIN(imageMaxSize, image.size.width);
                 CGFloat h = w / imageRatio;
                 
-                CGImageRef cropImageRef = CGImageCreateWithImageInRect(cropImage.CGImage, CGRectMake(0, 0, w, h));
+                CGImageRef cropImageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0, 0, w, h));
                 self.postImage = [UIImage imageWithCGImage:cropImageRef];
                 CGImageRelease(cropImageRef);
             }
             else {
-                self.postImage = cropImage;
+                self.postImage = image;
             }
             [self updateSendButton];
         }
