@@ -52,7 +52,7 @@
         NSString * desc = _textView.text;
         
         [ProgressController show];
-        [self.graph uploadImageWithData:imageData title:@"Photo" mimeType:@"image/jpeg" kind:@"photo" completion:^(NSObject * object, NSError * error) {
+        [self.graph uploadImageWithData:imageData title:@"Photo" mimeType:@"image/jpeg" kind:@"image" completion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFFile class]]) {
                 NSDictionary * parameters = @{@"image":((EGFFile *)object).id, @"desc":desc, @"object_type":@"post"};
                 [self.graph createObjectWithParameters:parameters forSource:currentUserId onEdge:@"posts" completion:^(NSObject * object, NSError * error) {

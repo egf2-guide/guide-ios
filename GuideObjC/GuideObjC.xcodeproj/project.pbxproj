@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577321E0121BF0068D28D /* SimpleFileManager.m */; };
+		E52577361E0127290068D28D /* FeedPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577351E0127290068D28D /* FeedPostCell.m */; };
+		E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577381E012A6B0068D28D /* FeedProgressCell.m */; };
+		E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E525773B1E012F990068D28D /* EGFHumanName+Additions.m */; };
 		E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865591DFE752F00D50A0D /* BaseNavigationController.m */; };
 		E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528655C1DFE752F00D50A0D /* BaseViewController.m */; };
 		E52865711DFE752F00D50A0D /* InitController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865611DFE752F00D50A0D /* InitController.m */; };
@@ -49,6 +53,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E52577311E0121BF0068D28D /* SimpleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFileManager.h; sourceTree = "<group>"; };
+		E52577321E0121BF0068D28D /* SimpleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFileManager.m; sourceTree = "<group>"; };
+		E52577341E0127290068D28D /* FeedPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPostCell.h; sourceTree = "<group>"; };
+		E52577351E0127290068D28D /* FeedPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPostCell.m; sourceTree = "<group>"; };
+		E52577371E012A6B0068D28D /* FeedProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedProgressCell.h; sourceTree = "<group>"; };
+		E52577381E012A6B0068D28D /* FeedProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedProgressCell.m; sourceTree = "<group>"; };
+		E525773A1E012F990068D28D /* EGFHumanName+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGFHumanName+Additions.h"; sourceTree = "<group>"; };
+		E525773B1E012F990068D28D /* EGFHumanName+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EGFHumanName+Additions.m"; sourceTree = "<group>"; };
 		E52865581DFE752F00D50A0D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		E52865591DFE752F00D50A0D /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		E528655B1DFE752F00D50A0D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -109,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E52577301E0121AC0068D28D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E52577311E0121BF0068D28D /* SimpleFileManager.h */,
+				E52577321E0121BF0068D28D /* SimpleFileManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E52865571DFE752F00D50A0D /* BaseNavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +153,10 @@
 			children = (
 				E52865761DFE75D800D50A0D /* FeedController.h */,
 				E52865771DFE75D800D50A0D /* FeedController.m */,
+				E52577341E0127290068D28D /* FeedPostCell.h */,
+				E52577351E0127290068D28D /* FeedPostCell.m */,
+				E52577371E012A6B0068D28D /* FeedProgressCell.h */,
+				E52577381E012A6B0068D28D /* FeedProgressCell.m */,
 			);
 			path = FeedController;
 			sourceTree = "<group>";
@@ -246,6 +271,7 @@
 				E57D57D61DFAB18500C8C237 /* EGF2.m */,
 				E57D57691DFA945900C8C237 /* Main.storyboard */,
 				E57D576C1DFA945900C8C237 /* Assets.xcassets */,
+				E52577301E0121AC0068D28D /* Managers */,
 				E57D57B51DFA99BF00C8C237 /* Views */,
 				E57D57B31DFA99BF00C8C237 /* Extensions */,
 				E57D57601DFA945900C8C237 /* Supporting Files */,
@@ -279,6 +305,8 @@
 				E57D57B81DFA9A4600C8C237 /* UIColor+Additions.m */,
 				E57D57BA1DFA9B5F00C8C237 /* UIImage+Additions.h */,
 				E57D57BB1DFA9B5F00C8C237 /* UIImage+Additions.m */,
+				E525773A1E012F990068D28D /* EGFHumanName+Additions.h */,
+				E525773B1E012F990068D28D /* EGFHumanName+Additions.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,17 +428,21 @@
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
 				E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */,
+				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
 				E528657B1DFE761400D50A0D /* FollowsController.m in Sources */,
 				E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */,
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,
+				E52577361E0127290068D28D /* FeedPostCell.m in Sources */,
 				E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */,
 				E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */,
 				E52865741DFE752F00D50A0D /* RegisterController.m in Sources */,
 				E57D57BC1DFA9B5F00C8C237 /* UIImage+Additions.m in Sources */,
 				E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */,
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
+				E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
+				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

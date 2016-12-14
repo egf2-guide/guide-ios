@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E525772F1E010E720068D28D /* FeedProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E525772E1E010E720068D28D /* FeedProgressCell.swift */; };
+		E52827C01E00687300A39792 /* BaseTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52827BF1E00687300A39792 /* BaseTableController.swift */; };
 		E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528654D1DFE6FE800D50A0D /* MoreController.swift */; };
 		E52865501DFE6FF600D50A0D /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528654F1DFE6FF500D50A0D /* MoreCell.swift */; };
 		E52865531DFE72FB00D50A0D /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865521DFE72FB00D50A0D /* FeedController.swift */; };
@@ -29,6 +31,9 @@
 		E57D57981DFA96E600C8C237 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57971DFA96E600C8C237 /* DesignableButton.swift */; };
 		E57D579A1DFA96FD00C8C237 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */; };
 		E57D579C1DFA970C00C8C237 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */; };
+		E59688141DFFD01E007F1DEA /* FeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688131DFFD01E007F1DEA /* FeedPostCell.swift */; };
+		E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */; };
+		E596881F1DFFF1FA007F1DEA /* SimpleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E525772E1E010E720068D28D /* FeedProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedProgressCell.swift; sourceTree = "<group>"; };
+		E52827BF1E00687300A39792 /* BaseTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableController.swift; sourceTree = "<group>"; };
 		E528654D1DFE6FE800D50A0D /* MoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
 		E528654F1DFE6FF500D50A0D /* MoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
 		E52865521DFE72FB00D50A0D /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -70,6 +77,9 @@
 		E57D57971DFA96E600C8C237 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 		E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		E59688131DFFD01E007F1DEA /* FeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPostCell.swift; sourceTree = "<group>"; };
+		E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EGFHumanName+Additions.swift"; sourceTree = "<group>"; };
+		E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E52827BE1E00686C00A39792 /* BaseTableController */ = {
+			isa = PBXGroup;
+			children = (
+				E52827BF1E00687300A39792 /* BaseTableController.swift */,
+			);
+			path = BaseTableController;
+			sourceTree = "<group>";
+		};
 		E528654C1DFE6FE800D50A0D /* MoreController */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				E52865521DFE72FB00D50A0D /* FeedController.swift */,
+				E59688131DFFD01E007F1DEA /* FeedPostCell.swift */,
+				E525772E1E010E720068D28D /* FeedProgressCell.swift */,
 			);
 			path = FeedController;
 			sourceTree = "<group>";
@@ -190,6 +210,7 @@
 				E57D57851DFA960500C8C237 /* EGF2.swift */,
 				E57D57461DFA943300C8C237 /* Main.storyboard */,
 				E57D57491DFA943300C8C237 /* Assets.xcassets */,
+				E596881D1DFFF1E8007F1DEA /* Managers */,
 				E57D57941DFA96C600C8C237 /* Views */,
 				E57D57931DFA96C600C8C237 /* Extensions */,
 				E57D57841DFA957200C8C237 /* Supporting Files */,
@@ -220,6 +241,7 @@
 			children = (
 				E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */,
 				E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */,
+				E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				E528658E1DFE7CBD00D50A0D /* BaseController */,
+				E52827BE1E00686C00A39792 /* BaseTableController */,
 				E5651EAA1DFFBE30004D09F7 /* ProgressController */,
 				E52865901DFE7CBD00D50A0D /* InitController */,
 				E52865921DFE7CBD00D50A0D /* LoginController */,
@@ -248,6 +271,14 @@
 				E55EA4E81DFE90E500C611BD /* NewPostController */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E596881D1DFFF1E8007F1DEA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,20 +379,25 @@
 			files = (
 				E52865501DFE6FF600D50A0D /* MoreCell.swift in Sources */,
 				E57D579C1DFA970C00C8C237 /* UIImage+Additions.swift in Sources */,
+				E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */,
 				E528659F1DFE7CBD00D50A0D /* UserController.swift in Sources */,
 				E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */,
 				E528659C1DFE7CBD00D50A0D /* LoginController.swift in Sources */,
+				E59688141DFFD01E007F1DEA /* FeedPostCell.swift in Sources */,
 				E57D57981DFA96E600C8C237 /* DesignableButton.swift in Sources */,
 				E55EA4EA1DFE90F000C611BD /* NewPostController.swift in Sources */,
+				E596881F1DFFF1FA007F1DEA /* SimpleFileManager.swift in Sources */,
 				E528659E1DFE7CBD00D50A0D /* RegisterController.swift in Sources */,
 				E5651EAC1DFFBE39004D09F7 /* ProgressController.swift in Sources */,
 				E57D579A1DFA96FD00C8C237 /* UIColor+Additions.swift in Sources */,
 				E52865531DFE72FB00D50A0D /* FeedController.swift in Sources */,
+				E525772F1E010E720068D28D /* FeedProgressCell.swift in Sources */,
 				E57D57861DFA960500C8C237 /* EGF2.swift in Sources */,
 				E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */,
 				E52865561DFE733900D50A0D /* FollowsController.swift in Sources */,
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
+				E52827C01E00687300A39792 /* BaseTableController.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

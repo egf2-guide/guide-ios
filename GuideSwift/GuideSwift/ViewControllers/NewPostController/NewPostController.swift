@@ -35,7 +35,7 @@ class NewPostController: BaseController, UITextViewDelegate, UIActionSheetDelega
             let desc = textView.text, !desc.isEmpty else { return }
         
         ProgressController.show()
-        Graph.uploadImage(withData: imageData, title: "Photo", mimeType: "image/jpeg", kind: "photo") { (object, error) in
+        Graph.uploadImage(withData: imageData, title: "Photo", mimeType: "image/jpeg", kind: "image") { (object, error) in
             if let file = object as? EGFFile, let fileId = file.id {
                 let parameters = ["image":fileId, "desc": desc, "object_type": "post"]
                 Graph.createObject(withParameters: parameters, forSource: userId, onEdge: "posts") { (object, error) in

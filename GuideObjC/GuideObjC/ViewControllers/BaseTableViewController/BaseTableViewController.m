@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewController.h"
+#import "UIColor+Additions.h"
 
 @interface BaseTableViewController ()
 
@@ -17,5 +18,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _graph = [Graph shared];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 40;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = [UIColor hexColor:0x5E66B1];
 }
 @end

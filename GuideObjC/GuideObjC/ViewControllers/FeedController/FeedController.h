@@ -6,8 +6,8 @@
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTableViewController.h"
 
-@interface FeedController : BaseViewController
+@interface FeedController : BaseTableViewController
 
 @end
