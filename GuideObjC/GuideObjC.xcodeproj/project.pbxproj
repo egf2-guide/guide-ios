@@ -352,6 +352,7 @@
 				E57D575A1DFA945900C8C237 /* Frameworks */,
 				E57D575B1DFA945900C8C237 /* Resources */,
 				E57D57AF1DFA991E00C8C237 /* Embed Frameworks */,
+				E5C9754E1E015E060023B229 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -413,6 +414,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5C9754E1E015E060023B229 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/EGF2.framework/strip.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E57D57591DFA945900C8C237 /* Sources */ = {
