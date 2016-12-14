@@ -7,21 +7,45 @@
 //
 
 import UIKit
+import EGF2
 
 class FeedController: BaseTableController {
 
     fileprivate var posts = [EGFPost]()
     fileprivate var currentUserId: String?
-    fileprivate var postCount: Int?
+    fileprivate var postCount = -1
     fileprivate var isDownloading = false
     fileprivate let expand = ["creator","image"]
+    fileprivate let edge = "posts"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         Graph.userObject { (object, error) in
             self.currentUserId = (object as? EGFUser)?.id
+            self.addObservers()
             self.getNextPage()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    fileprivate func addObservers() {
+        guard let source = currentUserId else { return }
+        let object = Graph.notificationObject(forSource: source, andEdge: edge)
+        NotificationCenter.default.addObserver(self, selector: #selector(edgeDidCreate(notification:)), name: .EGF2EdgeCreated, object: object)
+    }
+    
+    func edgeDidCreate(notification: NSNotification) {
+        guard let postId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
+        
+        Graph.object(withId: postId, expand: expand) { (object, error) in
+            guard let post = object as? EGFPost else { return }
+            self.postCount += 1
+            self.posts.insert(post, at: 0)
+            self.tableView.reloadData()
         }
     }
     
@@ -30,7 +54,7 @@ class FeedController: BaseTableController {
         if isDownloading { return }
         
         isDownloading = true
-        Graph.refreshObjects(forSource: source, edge: "posts", after: nil, expand: expand) { (objects, count, error) in
+        Graph.refreshObjects(forSource: source, edge: edge, after: nil, expand: expand) { (objects, count, error) in
             self.isDownloading = false
             
             self.refreshControl?.endRefreshing()
@@ -45,7 +69,7 @@ class FeedController: BaseTableController {
         if isDownloading { return }
         
         isDownloading = true
-        Graph.objects(forSource: source, edge: "posts", after: posts.last?.id, expand: expand) { (objects, count, error) in
+        Graph.objects(forSource: source, edge: edge, after: posts.last?.id, expand: expand) { (objects, count, error) in
             self.isDownloading = false
             
             guard let nextPosts = objects as? [EGFPost] else { return }

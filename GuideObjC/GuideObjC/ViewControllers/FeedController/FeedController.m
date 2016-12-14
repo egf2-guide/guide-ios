@@ -19,6 +19,7 @@
 @property (assign, nonatomic) NSInteger postCount;
 @property (assign, nonatomic) BOOL isDownloading;
 @property (retain, nonatomic) NSArray * expand;
+@property (retain, nonatomic) NSString * edge;
 @end
 
 @implementation FeedController
@@ -27,14 +28,41 @@
     [super viewDidLoad];
     _posts = [NSMutableArray array];
     _expand = @[@"creator",@"image"];
+    _edge = @"posts";
     _postCount = -1;
     
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             _currentUserId = ((EGFUser *)object).id;
+            [self addObservers];
             [self getNextPage];
         }
     }];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)addObservers {
+    if (_currentUserId) {
+        NSObject * object = [self.graph notificationObjectForSource:_currentUserId andEdge:_edge];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeDidCreate:) name:EGF2NotificationEdgeCreated object:object];
+    }
+}
+
+- (void)edgeDidCreate:(NSNotification *)notification {
+    NSString * postId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
+    
+    if (postId) {
+        [self.graph objectWithId:postId expand:_expand completion:^(NSObject * object, NSError * error) {
+            if ([object isKindOfClass:[EGFPost class]]) {
+                _postCount += 1;
+                [_posts insertObject:(EGFPost *)object atIndex:0];
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (void)refreshPosts {
@@ -42,7 +70,7 @@
         return;
     }
     _isDownloading = true;
-    [self.graph refreshObjectsForSource:_currentUserId edge:@"posts" after:nil expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
+    [self.graph refreshObjectsForSource:_currentUserId edge:_edge after:nil expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
         _isDownloading = false;
         
         if (objects) {
@@ -59,7 +87,7 @@
         return;
     }
     _isDownloading = true;
-    [self.graph objectsForSource:_currentUserId edge:@"posts" after:_posts.lastObject.id expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
+    [self.graph objectsForSource:_currentUserId edge:_edge after:_posts.lastObject.id expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
         _isDownloading = false;
         
         if (objects) {
