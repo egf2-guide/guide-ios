@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class DesignableButton: UIButton {
     
     @IBInspectable var backgroundNormalColor: UIColor? {
