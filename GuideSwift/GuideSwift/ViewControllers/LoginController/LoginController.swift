@@ -21,9 +21,12 @@ class LoginController: UIViewController, UITextFieldDelegate {
             errorLabel.text = "Enter email and password"
             return
         }
+        ProgressController.show()
         Graph.login(withEmail: email, password: password) { (object, error) in
+            
             if let err = error {
                 self.errorLabel.text = err.localizedFailureReason
+                ProgressController.hide()
             }
             else {
                 self.getUserObject()
@@ -33,6 +36,8 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     func getUserObject() {
         Graph.userObject { (object, error) in
+            ProgressController.hide()
+            
             if let err = error {
                 self.errorLabel.text = "Can't get user. \(err.localizedDescription)"
             }

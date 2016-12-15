@@ -17,8 +17,10 @@ class MoreController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let identifier = tableView.cellForRow(at: indexPath)?.reuseIdentifier, identifier == "LogoutCell" else { return }
-            
+        
+        ProgressController.show()
         Graph.logout { (_, error) in
+            ProgressController.hide()
             self.tabBarController?.dismiss(animated: true, completion: nil)
         }
     }

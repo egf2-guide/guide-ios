@@ -7,6 +7,7 @@
 //
 
 #import "LoginController.h"
+#import "ProgressController.h"
 
 @interface LoginController ()
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
@@ -29,9 +30,12 @@
     }
     [self.view endEditing:true];
     
+    [ProgressController show];
     [self.graph loginWithEmail:email password:password completion:^(id object, NSError * error) {
+        
         if (error) {
             self.errorLabel.text = error.localizedFailureReason;
+            [ProgressController hide];
         }
         else {
             [self getUserObject];
@@ -41,6 +45,8 @@
 
 - (void)getUserObject {
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
+        [ProgressController hide];
+        
         if (error) {
             self.errorLabel.text = [NSString stringWithFormat:@"Can't get user. %@", error.localizedDescription];
         }

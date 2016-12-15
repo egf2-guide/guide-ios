@@ -7,6 +7,7 @@
 //
 
 #import "MoreController.h"
+#import "ProgressController.h"
 
 @interface MoreController ()
 
@@ -23,7 +24,9 @@
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if ([cell.reuseIdentifier isEqual:@"LogoutCell"]) {
+        [ProgressController show];
         [self.graph logoutWithCompletion:^(id object, NSError * error) {
+            [ProgressController hide];
             [self.tabBarController dismissViewControllerAnimated:true completion:nil];
         }];
     }
