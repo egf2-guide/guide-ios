@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FileImageView.h"
 #import "EGF2.h"
 
 @interface FeedPostCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-@property (weak, nonatomic) EGFPost *post;
+@property (weak, nonatomic) IBOutlet FileImageView *postImageView;
 
 + (CGFloat)heightForPost:(EGFPost *)post;
-
-- (void)setPostImage:(UIImage *)image animated:(BOOL)animated;
 @end

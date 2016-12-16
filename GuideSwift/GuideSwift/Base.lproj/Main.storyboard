@@ -623,7 +623,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dcx-iA-n49" id="XdT-te-wRr">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hP6-pH-Ivb">
@@ -648,7 +648,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="baw-eJ-ULu" id="3oO-ld-VxI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeR-ue-EtI">
@@ -741,7 +741,7 @@
                                                     <color key="textColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bDf-lI-dtd">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bDf-lI-dtd" customClass="FileImageView" customModule="GuideSwift" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="64" width="343" height="45"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -749,10 +749,6 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="YlR-F5-3h1">
-                                                    <rect key="frame" x="169" y="76" width="20" height="20"/>
-                                                    <color key="color" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -766,10 +762,8 @@
                                                 <constraint firstItem="Wke-pU-qac" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="Y63-8f-SuQ"/>
                                                 <constraint firstItem="hAb-Gk-Hbk" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="Z9a-ME-noC"/>
                                                 <constraint firstItem="Wke-pU-qac" firstAttribute="top" secondItem="vld-f8-fx7" secondAttribute="bottom" constant="8" id="bJk-Ht-t5s"/>
-                                                <constraint firstItem="YlR-F5-3h1" firstAttribute="centerY" secondItem="bDf-lI-dtd" secondAttribute="centerY" id="dAK-kT-6AX"/>
                                                 <constraint firstItem="vld-f8-fx7" firstAttribute="top" secondItem="iJP-K3-rxD" secondAttribute="top" id="gWY-9S-wy0"/>
                                                 <constraint firstAttribute="trailing" secondItem="hAb-Gk-Hbk" secondAttribute="trailing" constant="8" id="nai-vw-AYz"/>
-                                                <constraint firstItem="YlR-F5-3h1" firstAttribute="centerX" secondItem="bDf-lI-dtd" secondAttribute="centerX" id="rLY-E3-gZ3"/>
                                                 <constraint firstItem="bDf-lI-dtd" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="yrU-BV-AFI"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -793,10 +787,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="activityIndicatorView" destination="YlR-F5-3h1" id="UPP-ps-yhY"/>
                                     <outlet property="creatorNameLabel" destination="hAb-Gk-Hbk" id="bto-fV-vWc"/>
                                     <outlet property="descriptionLabel" destination="Wke-pU-qac" id="dgW-dk-ay4"/>
-                                    <outlet property="postImageView" destination="bDf-lI-dtd" id="Tso-Mk-g8a"/>
+                                    <outlet property="postImageView" destination="bDf-lI-dtd" id="eGR-Mq-eZF"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProgressCell" rowHeight="62" id="hyf-m0-hVM" customClass="FeedProgressCell" customModule="GuideSwift" customModuleProvider="target">

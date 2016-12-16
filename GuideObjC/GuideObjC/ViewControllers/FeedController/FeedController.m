@@ -138,18 +138,7 @@
     FeedPostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.creatorNameLabel.text = [post.creatorObject.name fullName];
     cell.descriptionLabel.text = post.desc;
-    [cell setPostImage:nil animated:false];
-    cell.post = post;
-    
-    if (post.imageObject) {
-        [[SimpleFileManager sharedInstance] imageWithFile:post.imageObject completion:^(UIImage *image, BOOL fromCache) {
-            // We must be ensure we show appropriate image for cell
-            if (post != cell.post) {
-                return;
-            }
-            [cell setPostImage:image animated:fromCache == false];
-        }];
-    }
+    cell.postImageView.file = post.imageObject;
     return cell;
 }
 @end

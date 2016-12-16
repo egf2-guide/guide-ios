@@ -120,16 +120,7 @@ class FeedController: BaseTableController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! FeedPostCell
         cell.creatorNameLabel.text = post.creatorObject?.name?.fullName()
         cell.descriptionLabel.text = post.desc
-        cell.set(postImage: nil, animated: false)
-        cell.post = post
-        
-        if let file = post.imageObject {
-            SimpleFileManager.shared.image(withFile: file) { (postImage, fromCache) in
-                // We must be ensure we show appropriate image for cell
-                if post !== cell.post { return }
-                cell.set(postImage: postImage, animated: fromCache == false)
-            }
-        }
+        cell.postImageView.file = post.imageObject
         return cell
     }
 }

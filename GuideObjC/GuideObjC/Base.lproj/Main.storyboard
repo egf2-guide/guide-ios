@@ -1018,7 +1018,7 @@
                                                     <color key="textColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nQv-ki-T4m">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nQv-ki-T4m" customClass="FileImageView">
                                                     <rect key="frame" x="8" y="64" width="343" height="45"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1026,10 +1026,6 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WdR-NA-LFV">
-                                                    <rect key="frame" x="169" y="76" width="20" height="20"/>
-                                                    <color key="color" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1044,10 +1040,8 @@
                                                 <constraint firstItem="nQv-ki-T4m" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="IjV-mx-IUc"/>
                                                 <constraint firstAttribute="trailing" secondItem="nVb-qD-Ne3" secondAttribute="trailing" id="bPF-Jf-yUs"/>
                                                 <constraint firstItem="xUY-04-PYP" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="mDG-Ya-Q0Q"/>
-                                                <constraint firstItem="WdR-NA-LFV" firstAttribute="centerX" secondItem="nQv-ki-T4m" secondAttribute="centerX" id="mcc-xh-pbD"/>
                                                 <constraint firstAttribute="trailing" secondItem="dXQ-uo-2vi" secondAttribute="trailing" constant="8" id="pxC-po-Got"/>
                                                 <constraint firstItem="nVb-qD-Ne3" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" id="uu3-Fj-Ene"/>
-                                                <constraint firstItem="WdR-NA-LFV" firstAttribute="centerY" secondItem="nQv-ki-T4m" secondAttribute="centerY" id="zWg-WZ-KGi"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -1070,7 +1064,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="activityIndicatorView" destination="WdR-NA-LFV" id="iUV-8S-Keb"/>
                                     <outlet property="creatorNameLabel" destination="dXQ-uo-2vi" id="6Zh-Xh-qqS"/>
                                     <outlet property="descriptionLabel" destination="xUY-04-PYP" id="had-JR-ae6"/>
                                     <outlet property="postImageView" destination="nQv-ki-T4m" id="wyV-zR-pfc"/>

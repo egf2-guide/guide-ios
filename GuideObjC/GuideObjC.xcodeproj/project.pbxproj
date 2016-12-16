@@ -23,6 +23,7 @@
 		E52865821DFE76C100D50A0D /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865811DFE76C100D50A0D /* MoreController.m */; };
 		E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865841DFE76DF00D50A0D /* MoreCell.m */; };
 		E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */; };
+		E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55415EA1E03F6870024B3A2 /* FileImageView.m */; };
 		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
 		E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5651EB11DFFC49E004D09F7 /* ProgressController.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
@@ -86,6 +87,8 @@
 		E52865841DFE76DF00D50A0D /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
 		E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHandler.h; sourceTree = "<group>"; };
 		E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHandler.m; sourceTree = "<group>"; };
+		E55415E91E03F6870024B3A2 /* FileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileImageView.h; sourceTree = "<group>"; };
+		E55415EA1E03F6870024B3A2 /* FileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImageView.m; sourceTree = "<group>"; };
 		E55EA4EC1DFE93B100C611BD /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
 		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
 		E5651EB01DFFC49E004D09F7 /* ProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressController.h; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 				E57D57BE1DFA9C9C00C8C237 /* DesignableView.m */,
 				E57D57C01DFAA09100C8C237 /* DesignableButton.h */,
 				E57D57C11DFAA09100C8C237 /* DesignableButton.m */,
+				E55415E91E03F6870024B3A2 /* FileImageView.h */,
+				E55415EA1E03F6870024B3A2 /* FileImageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */,
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
 				E528657B1DFE761400D50A0D /* FollowsController.m in Sources */,
+				E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */,
 				E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */,
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,

@@ -11,32 +11,7 @@ import UIKit
 class FeedPostCell: UITableViewCell {
     @IBOutlet weak var creatorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
-    var post: EGFPost?
-    
-    func set(postImage: UIImage?, animated: Bool) {
-        postImageView.image = postImage
-        
-        guard let _ = postImage else {
-            postImageView.alpha = 0
-            activityIndicatorView.startAnimating()
-            return
-        }
-        activityIndicatorView.stopAnimating()
-        
-        if animated {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.postImageView.alpha = 1
-            }) { (finished) in
-                self.postImageView.alpha = 1
-            }
-        }
-        else {
-            postImageView.alpha = 1
-        }
-    }
+    @IBOutlet weak var postImageView: FileImageView!
     
     static func height(forPost post: EGFPost) -> CGFloat {
         var height: CGFloat = 46 // height of cell without image and description

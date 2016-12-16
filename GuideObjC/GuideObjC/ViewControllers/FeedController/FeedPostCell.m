@@ -11,28 +11,6 @@
 
 @implementation FeedPostCell
 
-- (void)setPostImage:(UIImage *)image animated:(BOOL)animated {
-    _postImageView.image = image;
-    
-    if (!image) {
-        _postImageView.alpha = 0;
-        [_activityIndicatorView startAnimating];
-        return;
-    }
-    [_activityIndicatorView stopAnimating];
-    
-    if (animated) {
-        [UIView animateWithDuration:0.3 animations:^{
-            _postImageView.alpha = 1;
-        } completion:^(BOOL finished) {
-            _postImageView.alpha = 1;
-        }];
-    }
-    else {
-        _postImageView.alpha = 1;
-    }
-}
-
 + (CGFloat)heightForPost:(EGFPost *)post {
     CGFloat height = 46; // height of cell without image and description
     
