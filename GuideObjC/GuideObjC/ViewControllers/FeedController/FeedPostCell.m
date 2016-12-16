@@ -7,26 +7,52 @@
 //
 
 #import "FeedPostCell.h"
-
-@interface FeedPostCell ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *postImageHeight;
-@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
-@end
+#import "EGF2.h"
 
 @implementation FeedPostCell
 
-- (void)setPostImage:(UIImage *)postImage {
-    _postImage = postImage;
+- (void)setPostImage:(UIImage *)image animated:(BOOL)animated {
+    _postImageView.image = image;
     
-    if (postImage) {
-        CGFloat width = [UIScreen mainScreen].bounds.size.width - 32;
-        CGFloat imageRatio = postImage.size.width / postImage.size.height;
-        CGFloat imageWidth = MIN(width, postImage.size.width / [UIScreen mainScreen].scale);
-        _postImageHeight.constant = imageWidth / imageRatio;
+    if (!image) {
+        _postImageView.alpha = 0;
+        [_activityIndicatorView startAnimating];
+        return;
+    }
+    [_activityIndicatorView stopAnimating];
+    
+    if (animated) {
+        [UIView animateWithDuration:0.3 animations:^{
+            _postImageView.alpha = 1;
+        } completion:^(BOOL finished) {
+            _postImageView.alpha = 1;
+        }];
     }
     else {
-        _postImageHeight.constant = 0;
+        _postImageView.alpha = 1;
     }
-    _postImageView.image = postImage;
+}
+
++ (CGFloat)heightForPost:(EGFPost *)post {
+    CGFloat height = 46; // height of cell without image and description
+    
+    UIFont *font = [UIFont systemFontOfSize:15];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 32;
+    
+    if (post.desc) {
+        CGSize size = CGSizeMake(width, FLT_MAX);
+        CGRect frame = [post.desc boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil];
+        height += frame.size.height + 8;
+    }
+    if (post.imageObject.dimensions) {
+        EGFDimension * dimension = post.imageObject.dimensions;
+        CGFloat w = dimension.width;
+        CGFloat h = dimension.height;
+        CGFloat imageRatio = w / h;
+        CGFloat imageWidth = MIN(width, w / [UIScreen mainScreen].scale);
+        CGFloat imageHeight = imageWidth / imageRatio;
+        height += imageHeight + 8;
+    }
+    return height;
 }
 @end

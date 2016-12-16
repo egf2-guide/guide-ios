@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9bA-CQ-TTk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9bA-CQ-TTk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1012,7 +1012,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUY-04-PYP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUY-04-PYP">
                                                     <rect key="frame" x="8" y="38" width="343" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1020,19 +1020,20 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nQv-ki-T4m">
                                                     <rect key="frame" x="8" y="64" width="343" height="45"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="45" id="Tcv-Dq-09R"/>
-                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="WdR-NA-LFV">
+                                                    <rect key="frame" x="169" y="76" width="20" height="20"/>
+                                                    <color key="color" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="nQv-ki-T4m" firstAttribute="top" secondItem="xUY-04-PYP" secondAttribute="bottom" constant="8" id="0BZ-Ya-m8h"/>
+                                                <constraint firstItem="nQv-ki-T4m" firstAttribute="top" secondItem="xUY-04-PYP" secondAttribute="bottom" priority="750" constant="8" id="0BZ-Ya-m8h"/>
                                                 <constraint firstAttribute="trailing" secondItem="xUY-04-PYP" secondAttribute="trailing" constant="8" id="6am-XE-OD5"/>
                                                 <constraint firstItem="dXQ-uo-2vi" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="8sI-UO-K2r"/>
                                                 <constraint firstAttribute="bottom" secondItem="nQv-ki-T4m" secondAttribute="bottom" constant="8" id="D7q-2F-GUp"/>
@@ -1043,8 +1044,10 @@
                                                 <constraint firstItem="nQv-ki-T4m" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="IjV-mx-IUc"/>
                                                 <constraint firstAttribute="trailing" secondItem="nVb-qD-Ne3" secondAttribute="trailing" id="bPF-Jf-yUs"/>
                                                 <constraint firstItem="xUY-04-PYP" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="mDG-Ya-Q0Q"/>
+                                                <constraint firstItem="WdR-NA-LFV" firstAttribute="centerX" secondItem="nQv-ki-T4m" secondAttribute="centerX" id="mcc-xh-pbD"/>
                                                 <constraint firstAttribute="trailing" secondItem="dXQ-uo-2vi" secondAttribute="trailing" constant="8" id="pxC-po-Got"/>
                                                 <constraint firstItem="nVb-qD-Ne3" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" id="uu3-Fj-Ene"/>
+                                                <constraint firstItem="WdR-NA-LFV" firstAttribute="centerY" secondItem="nQv-ki-T4m" secondAttribute="centerY" id="zWg-WZ-KGi"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -1067,9 +1070,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicatorView" destination="WdR-NA-LFV" id="iUV-8S-Keb"/>
                                     <outlet property="creatorNameLabel" destination="dXQ-uo-2vi" id="6Zh-Xh-qqS"/>
                                     <outlet property="descriptionLabel" destination="xUY-04-PYP" id="had-JR-ae6"/>
-                                    <outlet property="postImageHeight" destination="Tcv-Dq-09R" id="RzC-mI-X4F"/>
                                     <outlet property="postImageView" destination="nQv-ki-T4m" id="wyV-zR-pfc"/>
                                 </connections>
                             </tableViewCell>

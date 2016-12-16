@@ -10,5 +10,8 @@
 #import "EGF2.h"
 
 @interface SimpleFileManager : NSObject
-+ (void)imageWithFile:(EGFFile *)file completion:(void (^) (UIImage *image, BOOL fromCache))completion;
++ (SimpleFileManager *)sharedInstance;
+
+- (void)imageWithFile:(EGFFile *)file completion:(void (^) (UIImage *image, BOOL fromCache))completion;
+- (void)deleteAllFiles;
 @end

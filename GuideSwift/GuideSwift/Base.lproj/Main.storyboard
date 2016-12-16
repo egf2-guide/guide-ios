@@ -735,7 +735,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-pU-qac">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-pU-qac">
                                                     <rect key="frame" x="8" y="38" width="343" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -743,15 +743,16 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bDf-lI-dtd">
                                                     <rect key="frame" x="8" y="64" width="343" height="45"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="45" id="hCh-Yl-8CW"/>
-                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="YlR-F5-3h1">
+                                                    <rect key="frame" x="169" y="76" width="20" height="20"/>
+                                                    <color key="color" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -761,12 +762,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="bDf-lI-dtd" secondAttribute="trailing" constant="8" id="QIc-1E-V3O"/>
                                                 <constraint firstAttribute="bottom" secondItem="bDf-lI-dtd" secondAttribute="bottom" constant="8" id="QK7-Ge-WnG"/>
                                                 <constraint firstAttribute="trailing" secondItem="vld-f8-fx7" secondAttribute="trailing" id="QTC-eh-qMc"/>
-                                                <constraint firstItem="bDf-lI-dtd" firstAttribute="top" secondItem="Wke-pU-qac" secondAttribute="bottom" constant="8" id="TQH-aj-ZzR"/>
+                                                <constraint firstItem="bDf-lI-dtd" firstAttribute="top" secondItem="Wke-pU-qac" secondAttribute="bottom" priority="750" constant="8" id="TQH-aj-ZzR"/>
                                                 <constraint firstItem="Wke-pU-qac" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="Y63-8f-SuQ"/>
                                                 <constraint firstItem="hAb-Gk-Hbk" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="Z9a-ME-noC"/>
                                                 <constraint firstItem="Wke-pU-qac" firstAttribute="top" secondItem="vld-f8-fx7" secondAttribute="bottom" constant="8" id="bJk-Ht-t5s"/>
+                                                <constraint firstItem="YlR-F5-3h1" firstAttribute="centerY" secondItem="bDf-lI-dtd" secondAttribute="centerY" id="dAK-kT-6AX"/>
                                                 <constraint firstItem="vld-f8-fx7" firstAttribute="top" secondItem="iJP-K3-rxD" secondAttribute="top" id="gWY-9S-wy0"/>
                                                 <constraint firstAttribute="trailing" secondItem="hAb-Gk-Hbk" secondAttribute="trailing" constant="8" id="nai-vw-AYz"/>
+                                                <constraint firstItem="YlR-F5-3h1" firstAttribute="centerX" secondItem="bDf-lI-dtd" secondAttribute="centerX" id="rLY-E3-gZ3"/>
                                                 <constraint firstItem="bDf-lI-dtd" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="yrU-BV-AFI"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -790,9 +793,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activityIndicatorView" destination="YlR-F5-3h1" id="UPP-ps-yhY"/>
                                     <outlet property="creatorNameLabel" destination="hAb-Gk-Hbk" id="bto-fV-vWc"/>
                                     <outlet property="descriptionLabel" destination="Wke-pU-qac" id="dgW-dk-ay4"/>
-                                    <outlet property="postImageHeight" destination="hCh-Yl-8CW" id="46U-Vg-ZEI"/>
                                     <outlet property="postImageView" destination="bDf-lI-dtd" id="Tso-Mk-g8a"/>
                                 </connections>
                             </tableViewCell>

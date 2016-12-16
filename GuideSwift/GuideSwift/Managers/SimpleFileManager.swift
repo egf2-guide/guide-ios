@@ -11,8 +11,12 @@ import UIKit
 class SimpleFileManager {
     static let shared = SimpleFileManager()
     lazy var cachesURL : URL = {
-        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).last!
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).last!.appendingPathComponent("EGF2Images")
     }()
+    
+    init() {
+        try? FileManager.default.createDirectory(at: cachesURL, withIntermediateDirectories: false, attributes: nil)
+    }
     
     fileprivate func doesFileExist(withUrl url: URL) -> Bool {
         do {
@@ -38,27 +42,41 @@ class SimpleFileManager {
             return
         }
         let localURL = cachesURL.appendingPathComponent(fileId)
-
-        if doesFileExist(withUrl: localURL) {
-            if let imageData = fileData(withUrl: localURL), let image = UIImage(data: imageData) {
-                completion(image, true)
+        
+        func handle(data: Data?, isCached: Bool) {
+            if let imageData = data, let image = UIImage(data: imageData) {
+                DispatchQueue.main.async { completion(image, isCached) }
+                
+                if !isCached {
+                    try? imageData.write(to: localURL)
+                }
             }
             else {
-                completion(nil, true)
+                DispatchQueue.main.async { completion(nil, isCached) }
+            }
+        }
+        
+        if doesFileExist(withUrl: localURL) {
+            DispatchQueue.global().async {
+                handle(data: self.fileData(withUrl: localURL), isCached: true)
             }
         }
         else {
-            URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
-                if let imageData = data, let image = UIImage(data: imageData) {
-                    DispatchQueue.main.async { completion(image, false) }
-                    DispatchQueue.global().async {
-                        try? imageData.write(to: localURL)
-                    }
-                }
-                else {
-                    DispatchQueue.main.async { completion(nil, false) }
+            let configuration = URLSessionConfiguration.default
+            configuration.urlCache = nil
+            configuration.httpCookieStorage = nil
+            let session = URLSession(configuration: configuration)
+            // TODO use URLSession.shared
+            session.dataTask(with: url, completionHandler: {(data, response, error) in
+                DispatchQueue.global().async {
+                    handle(data: data, isCached: false)
                 }
             }).resume()
         }
+    }
+    
+    func deleteAllFiles() {
+        try? FileManager.default.removeItem(at: cachesURL)
+        try? FileManager.default.createDirectory(at: cachesURL, withIntermediateDirectories: false, attributes: nil)
     }
 }

@@ -10,26 +10,27 @@
 #import "FeedProgressCell.h"
 #import "EGFHumanName+Additions.h"
 #import "SimpleFileManager.h"
+#import "TableViewHandler.h"
 #import "FeedPostCell.h"
 #import "EGF2.h"
 
 @interface FeedController ()
-@property (retain, nonatomic) NSMutableArray <EGFPost *> *posts;
+@property (retain, nonatomic) TableViewHandler *posts;
 @property (retain, nonatomic) NSString *currentUserId;
-@property (assign, nonatomic) NSInteger postCount;
 @property (assign, nonatomic) BOOL isDownloading;
 @property (retain, nonatomic) NSArray * expand;
 @property (retain, nonatomic) NSString * edge;
+@property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @end
 
 @implementation FeedController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _posts = [NSMutableArray array];
+    _posts = [[TableViewHandler alloc] initWithTableView:self.tableView];
+    _cellHeights = [NSMutableDictionary dictionary];
     _expand = @[@"creator",@"image"];
     _edge = @"posts";
-    _postCount = -1;
     
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
@@ -55,12 +56,9 @@
     NSString * postId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
     
     if (postId) {
-        [self.graph objectWithId:postId expand:_expand completion:^(NSObject * object, NSError * error) {
-            if ([object isKindOfClass:[EGFPost class]]) {
-                _postCount += 1;
-                [_posts insertObject:(EGFPost *)object atIndex:0];
-                [self.tableView reloadData];
-            }
+        // It's better to refresh object because 'post.imageObject.dimensions' can be nil right after creation of image
+        [self.graph refreshObjectWithId:postId expand:_expand completion:^(NSObject * object, NSError * error) {
+            [_posts insertObject:object atIndex:0];
         }];
     }
 }
@@ -73,10 +71,7 @@
     [self.graph refreshObjectsForSource:_currentUserId edge:_edge after:nil expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
         _isDownloading = false;
         
-        if (objects) {
-            [_posts removeAllObjects];
-            [self addNextPosts:objects count:count];
-        }
+        [_posts setObjects:objects totalCount:count];
         [self.refreshControl endRefreshing];
     }];
     
@@ -87,22 +82,13 @@
         return;
     }
     _isDownloading = true;
-    [self.graph objectsForSource:_currentUserId edge:_edge after:_posts.lastObject.id expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
+    [self.graph objectsForSource:_currentUserId edge:_edge after:[_posts.last valueForKey:@"id"] expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
         _isDownloading = false;
         
-        if (objects) {
-            [self addNextPosts:objects count:count];
-        }
+        [_posts addObjects:objects totalCount:count];
     }];
     
 }
-
-- (void)addNextPosts:(NSArray *)nextPosts count:(NSInteger)count {
-    _postCount = count;
-    [_posts addObjectsFromArray:nextPosts];
-    [self.tableView reloadData];
-}
-
 
 // MARK:- UITableViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -111,12 +97,27 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        EGFPost * post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
+        // Check if we already have the value
+        NSNumber * height = _cellHeights[post.id];
+        
+        if (height) {
+            return [height floatValue];
+        }
+        CGFloat newHeight = [FeedPostCell heightForPost:post];
+        _cellHeights[post.id] = [NSNumber numberWithFloat:newHeight];
+        return newHeight;
+    }
+    return 44;
+}
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && _posts.count != _postCount && _isDownloading == false) {
+    if (indexPath.section == 1 && ![_posts isDownloaded] && _isDownloading == false) {
         [self getNextPage];
     }
 }
-
 
 // MARK:- UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -130,30 +131,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         FeedProgressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProgressCell"];
-        cell.indicatorIsHidden = _posts.count == _postCount;
+        cell.indicatorIsHidden = [_posts isDownloaded];
         return cell;
     }
-    EGFPost * post = _posts[indexPath.row];
+    EGFPost * post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
     FeedPostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.creatorNameLabel.text = [post.creatorObject.name fullName];
     cell.descriptionLabel.text = post.desc;
-    cell.postImage = nil;
+    [cell setPostImage:nil animated:false];
     cell.post = post;
     
     if (post.imageObject) {
-        [SimpleFileManager imageWithFile:post.imageObject completion:^(UIImage *image, BOOL fromCache) {
+        [[SimpleFileManager sharedInstance] imageWithFile:post.imageObject completion:^(UIImage *image, BOOL fromCache) {
             // We must be ensure we show appropriate image for cell
             if (post != cell.post) {
                 return;
             }
-            if (image) {
-                cell.postImage = image;
-                
-                if (!fromCache) {
-                    [tableView beginUpdates];
-                    [tableView endUpdates];
-                }
-            }
+            [cell setPostImage:image animated:fromCache == false];
         }];
     }
     return cell;

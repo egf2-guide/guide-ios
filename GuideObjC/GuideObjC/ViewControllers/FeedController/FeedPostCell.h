@@ -12,6 +12,11 @@
 @interface FeedPostCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (weak, nonatomic) EGFPost *post;
-@property (weak, nonatomic) UIImage *postImage;
+
++ (CGFloat)heightForPost:(EGFPost *)post;
+
+- (void)setPostImage:(UIImage *)image animated:(BOOL)animated;
 @end

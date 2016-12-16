@@ -11,15 +11,17 @@ import EGF2
 
 class FeedController: BaseTableController {
 
-    fileprivate var posts = [EGFPost]()
+    fileprivate var posts: TableViewHandler<EGFPost>!
     fileprivate var currentUserId: String?
-    fileprivate var postCount = -1
     fileprivate var isDownloading = false
     fileprivate let expand = ["creator","image"]
     fileprivate let edge = "posts"
+    fileprivate var cellHeights = [String: CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        posts = TableViewHandler(withTableView: tableView)
 
         Graph.userObject { (object, error) in
             self.currentUserId = (object as? EGFUser)?.id
@@ -41,11 +43,9 @@ class FeedController: BaseTableController {
     func edgeDidCreate(notification: NSNotification) {
         guard let postId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
         
-        Graph.object(withId: postId, expand: expand) { (object, error) in
-            guard let post = object as? EGFPost else { return }
-            self.postCount += 1
-            self.posts.insert(post, at: 0)
-            self.tableView.reloadData()
+        // It's better to refresh object because 'post.imageObject.dimensions' can be nil right after creation of image
+        Graph.refreshObject(withId: postId, expand: expand) { (object, error) in
+            self.posts.insert(object: object as? EGFPost, at: 0)
         }
     }
     
@@ -56,11 +56,8 @@ class FeedController: BaseTableController {
         isDownloading = true
         Graph.refreshObjects(forSource: source, edge: edge, after: nil, expand: expand) { (objects, count, error) in
             self.isDownloading = false
-            
             self.refreshControl?.endRefreshing()
-            guard let nextPosts = objects as? [EGFPost] else { return }
-            self.posts.removeAll()
-            self.add(nextPosts: nextPosts, count: count)
+            self.posts.set(objects: objects as? [EGFPost], totalCount: count)
         }
     }
     
@@ -71,16 +68,8 @@ class FeedController: BaseTableController {
         isDownloading = true
         Graph.objects(forSource: source, edge: edge, after: posts.last?.id, expand: expand) { (objects, count, error) in
             self.isDownloading = false
-            
-            guard let nextPosts = objects as? [EGFPost] else { return }
-            self.add(nextPosts: nextPosts, count: count)
+            self.posts.add(objects: objects as? [EGFPost], totalCount: count)
         }
-    }
-    
-    fileprivate func add(nextPosts: [EGFPost], count: Int) {
-        postCount = count
-        posts.append(contentsOf: nextPosts)
-        tableView.reloadData()
     }
     
     // MARK:- UITableViewDelegate
@@ -90,8 +79,24 @@ class FeedController: BaseTableController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            let post = posts[indexPath.row]
+            
+            if let postId = post.id {
+                // Check if we already have the value
+                if let value = cellHeights[postId] { return value }
+                
+                let height = FeedPostCell.height(forPost: post)
+                cellHeights[postId] = height
+                return height
+            }
+        }
+        return 44
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && posts.count != postCount && isDownloading == false {
+        if indexPath.section == 1 && !posts.isDownloaded && isDownloading == false {
             getNextPage()
         }
     }
@@ -108,28 +113,21 @@ class FeedController: BaseTableController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProgressCell") as! FeedProgressCell
-            cell.indicatorIsHidden = posts.count == postCount
+            cell.indicatorIsHidden = posts.isDownloaded
             return cell
         }
         let post = posts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! FeedPostCell
         cell.creatorNameLabel.text = post.creatorObject?.name?.fullName()
         cell.descriptionLabel.text = post.desc
-        cell.postImage = nil
+        cell.set(postImage: nil, animated: false)
         cell.post = post
         
         if let file = post.imageObject {
             SimpleFileManager.shared.image(withFile: file) { (postImage, fromCache) in
                 // We must be ensure we show appropriate image for cell
                 if post !== cell.post { return }
-                
-                guard let image = postImage else { return }
-                cell.postImage = image
-                
-                if !fromCache {
-                    tableView.beginUpdates()
-                    tableView.endUpdates()
-                }
+                cell.set(postImage: postImage, animated: fromCache == false)
             }
         }
         return cell

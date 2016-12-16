@@ -16,6 +16,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     @IBAction func login(_ sender: AnyObject) {
         errorLabel.text = nil
+        view.endEditing(true)
         
         guard let email = emailTextField.text, let password = passwordTextField.text, email.isEmpty == false, password.isEmpty == false else {
             errorLabel.text = "Enter email and password"

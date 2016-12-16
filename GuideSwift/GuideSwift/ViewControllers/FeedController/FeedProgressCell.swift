@@ -18,4 +18,14 @@ class FeedProgressCell: UITableViewCell {
             cellHeight.constant = indicatorIsHidden ? 1 : 40
         }
     }
+    
+    override public var isSelected: Bool {
+        get {
+            return super.isSelected
+        }
+        set {
+            super.isSelected = newValue
+            activityIndicatorView.startAnimating()
+        }
+    }
 }

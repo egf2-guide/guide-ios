@@ -8,6 +8,7 @@
 
 #import "MoreController.h"
 #import "ProgressController.h"
+#import "SimpleFileManager.h"
 
 @interface MoreController ()
 
@@ -27,6 +28,7 @@
         [ProgressController show];
         [self.graph logoutWithCompletion:^(id object, NSError * error) {
             [ProgressController hide];
+            [[SimpleFileManager sharedInstance] deleteAllFiles];
             [self.tabBarController dismissViewControllerAnimated:true completion:nil];
         }];
     }

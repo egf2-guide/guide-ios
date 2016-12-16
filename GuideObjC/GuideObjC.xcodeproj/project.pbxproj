@@ -22,6 +22,7 @@
 		E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528657E1DFE766F00D50A0D /* BaseTableViewController.m */; };
 		E52865821DFE76C100D50A0D /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865811DFE76C100D50A0D /* MoreController.m */; };
 		E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865841DFE76DF00D50A0D /* MoreCell.m */; };
+		E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */; };
 		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
 		E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5651EB11DFFC49E004D09F7 /* ProgressController.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
@@ -83,6 +84,8 @@
 		E52865811DFE76C100D50A0D /* MoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreController.m; sourceTree = "<group>"; };
 		E52865831DFE76DF00D50A0D /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
 		E52865841DFE76DF00D50A0D /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
+		E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHandler.h; sourceTree = "<group>"; };
+		E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHandler.m; sourceTree = "<group>"; };
 		E55EA4EC1DFE93B100C611BD /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
 		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
 		E5651EB01DFFC49E004D09F7 /* ProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressController.h; sourceTree = "<group>"; };
@@ -226,6 +229,15 @@
 			path = BaseTableViewController;
 			sourceTree = "<group>";
 		};
+		E52D8FC11E02B46800C7AF6E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */,
+				E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		E55EA4EB1DFE939C00C611BD /* NewPostController */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +283,7 @@
 				E57D57D61DFAB18500C8C237 /* EGF2.m */,
 				E57D57691DFA945900C8C237 /* Main.storyboard */,
 				E57D576C1DFA945900C8C237 /* Assets.xcassets */,
+				E52D8FC11E02B46800C7AF6E /* Objects */,
 				E52577301E0121AC0068D28D /* Managers */,
 				E57D57B51DFA99BF00C8C237 /* Views */,
 				E57D57B31DFA99BF00C8C237 /* Extensions */,
@@ -442,6 +455,7 @@
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,
 				E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */,
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
+				E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */,
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
 				E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */,

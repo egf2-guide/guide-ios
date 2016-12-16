@@ -20,4 +20,9 @@
     _activityIndicatorView.hidden = indicatorIsHidden;
     _cellHeight.constant = indicatorIsHidden ? 1 : 40;
 }
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    [_activityIndicatorView startAnimating];
+}
 @end

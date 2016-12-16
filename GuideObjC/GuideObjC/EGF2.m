@@ -19,6 +19,7 @@
         sharedGraph.maxPageSize = 50;
         sharedGraph.defaultPageSize = 25;
         sharedGraph.isObjectPaginationMode = false;
+        sharedGraph.showCacheLogs = true;
         sharedGraph.idsWithModelTypes = @{
 			@"03": EGFUser.self,
 			@"06": EGFFile.self,
