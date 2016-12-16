@@ -10,4 +10,5 @@
 
 @interface UIImage (Additions)
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 @end

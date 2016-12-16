@@ -8,6 +8,7 @@
 
 #import "NewPostController.h"
 #import "ProgressController.h"
+#import "UIImage+Additions.h"
 
 @interface NewPostController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
@@ -134,12 +135,10 @@
             CGFloat imageMaxSize = 800;
             
             if (image.size.width > imageMaxSize || image.size.height > imageMaxSize) {
-                CGFloat w = MIN(imageMaxSize, image.size.width);
-                CGFloat h = w / imageRatio;
-                
-                CGImageRef cropImageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0, 0, w, h));
-                self.postImage = [UIImage imageWithCGImage:cropImageRef];
-                CGImageRelease(cropImageRef);
+                CGFloat maxValue = MAX(image.size.width, image.size.height);
+                CGFloat scale = maxValue / imageMaxSize;
+                CGSize size = CGSizeMake(image.size.width / scale, image.size.height / scale);
+                self.postImage = [UIImage imageWithImage:image scaledToSize:size];
             }
             else {
                 self.postImage = image;

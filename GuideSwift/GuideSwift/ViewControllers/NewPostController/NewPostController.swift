@@ -122,12 +122,10 @@ class NewPostController: BaseController, UITextViewDelegate, UIActionSheetDelega
             let imageMaxSize: CGFloat = 800
             
             if image.size.width > imageMaxSize || image.size.height > imageMaxSize {
-                let w = min(imageMaxSize, image.size.width)
-                let h = w / imageRatio
-                
-                if let cropImageRef = image.cgImage?.cropping(to: CGRect(x: 0, y: 0, width: w, height: h)) {
-                    self.postImage = UIImage(cgImage: cropImageRef)
-                }
+                let maxValue = max(image.size.width, image.size.height)
+                let scale = maxValue / imageMaxSize
+                let size = CGSize(width: image.size.width / scale, height: image.size.height / scale)
+                self.postImage = UIImage.image(withImage: image, scaledToSize: size)
             }
             else {
                 self.postImage = image
