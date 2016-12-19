@@ -10,7 +10,6 @@ import UIKit
 
 class RegisterController: BaseController, UITextFieldDelegate {
     
-    @IBOutlet weak var scrollViewButtom: NSLayoutConstraint!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,22 +26,8 @@ class RegisterController: BaseController, UITextFieldDelegate {
         birthDatePicker.addTarget(self, action: #selector(birthDatePickerDidChange(_:)), for: .valueChanged)
         dobTextField.inputView = birthDatePicker
         dobTextField.inputAccessoryView = toolbar(withButtonTitle: "Done", selector: #selector(didPressDoneButton))
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-        
-//        firstNameTextField.text = "First Name"
-//        lastNameTextField.text = "Last Name"
-//        passwordTextField.text = "1"
-//        emailTextField.text = "test@test.com"
-//        birthDate = Date(timeIntervalSince1970: 0)
-//        updateTitleBirthDateField(withDate: birthDate!)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
-    
     @IBAction func register(_ sender: AnyObject) {
         errorLabel.text = nil
         
@@ -58,9 +43,11 @@ class RegisterController: BaseController, UITextFieldDelegate {
             errorLabel.text = "All fields are required"
             return
         }
+        ProgressController.show()
         Graph.register(withFirstName: firstName, lastName: lastName, email: email, dateOfBirth: date, password: password) { (object, error) in
             if let err = error {
                 self.errorLabel.text = err.localizedFailureReason
+                ProgressController.hide()
             }
             else {
                 self.getUserObject()
@@ -76,33 +63,12 @@ class RegisterController: BaseController, UITextFieldDelegate {
             else {
                 self.dismiss(animated: true, completion: nil)
             }
+            ProgressController.hide()
         }
     }
     
     func didPressDoneButton() {
         view.endEditing(true)
-    }
-    
-    func keyboardWillShow(_ notification: Notification) {
-        if let info = (notification as NSNotification).userInfo,
-            let keyboardHeight = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height,
-            let duration = (info[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
-            scrollViewButtom.constant = keyboardHeight
-
-            UIView.animate(withDuration: duration) { () -> Void in
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
-    func keyboardWillHide(_ notification: Notification) {
-        if let info = (notification as NSNotification).userInfo,
-            let duration: TimeInterval = (info[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue {
-            scrollViewButtom.constant = 0
-            UIView.animate(withDuration: duration) { () -> Void in
-                self.view.layoutIfNeeded()
-            }
-        }
     }
     
     @IBAction func birthDatePickerDidChange(_ sender: UIDatePicker) {

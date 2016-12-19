@@ -94,6 +94,8 @@ class NewPostController: BaseController, UITextViewDelegate, UIActionSheetDelega
         
         if (newHeight != textViewHeight.constant) {
             textViewHeight.constant = newHeight
+            view.layoutIfNeeded()
+            textView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         }
         placeholder.isHidden = !textView.text.isEmpty
         updateSendButton()

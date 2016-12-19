@@ -10,7 +10,7 @@
 #import "UIColor+Additions.h"
 
 @interface BaseViewController ()
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttomOffset;
 @end
 
 @implementation BaseViewController
@@ -18,6 +18,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _graph = [Graph shared];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -34,5 +44,33 @@
     button.tintColor = [UIColor hexColor:0x5E66B1];
     toolbar.items = @[space, button];
     return toolbar;
+}
+
+- (CGFloat)keyboardHeightFromNotification:(NSNotification *)notification {
+    NSValue * value = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
+    return [value CGRectValue].size.height;
+}
+
+- (CGFloat)animationDurationFromNotification:(NSNotification *)notification {
+    NSNumber * value = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    return [value doubleValue];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    if (_buttomOffset) {
+        _buttomOffset.constant = [self keyboardHeightFromNotification:notification];
+        [UIView animateWithDuration:[self animationDurationFromNotification:notification] animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    if (_buttomOffset) {
+        _buttomOffset.constant = 0;
+        [UIView animateWithDuration:[self animationDurationFromNotification:notification] animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
 }
 @end

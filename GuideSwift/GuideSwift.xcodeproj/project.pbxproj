@@ -21,6 +21,10 @@
 		E52D8FC01E02A80500C7AF6E /* TableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */; };
 		E55415E81E03D9A10024B3A2 /* FileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55415E71E03D9A10024B3A2 /* FileImageView.swift */; };
 		E55EA4EA1DFE90F000C611BD /* NewPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4E91DFE90F000C611BD /* NewPostController.swift */; };
+		E56180F61E03FD8C005A8224 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56180F51E03FD8C005A8224 /* PostController.swift */; };
+		E564DF6C1E07B41E0073677E /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564DF6B1E07B41E0073677E /* CommentCell.swift */; };
+		E564DF6E1E07B53D0073677E /* ReversedTableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564DF6D1E07B53D0073677E /* ReversedTableViewHandler.swift */; };
+		E564DF701E07CDC80073677E /* NextCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564DF6F1E07CDC80073677E /* NextCommentsCell.swift */; };
 		E5651EAC1DFFBE39004D09F7 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5651EAB1DFFBE39004D09F7 /* ProgressController.swift */; };
 		E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57421DFA943300C8C237 /* AppDelegate.swift */; };
 		E57D57481DFA943300C8C237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D57461DFA943300C8C237 /* Main.storyboard */; };
@@ -36,6 +40,7 @@
 		E59688141DFFD01E007F1DEA /* FeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688131DFFD01E007F1DEA /* FeedPostCell.swift */; };
 		E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */; };
 		E596881F1DFFF1FA007F1DEA /* SimpleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */; };
+		E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48D981E04496100E07571 /* SeparatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +72,10 @@
 		E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHandler.swift; sourceTree = "<group>"; };
 		E55415E71E03D9A10024B3A2 /* FileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileImageView.swift; sourceTree = "<group>"; };
 		E55EA4E91DFE90F000C611BD /* NewPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostController.swift; sourceTree = "<group>"; };
+		E56180F51E03FD8C005A8224 /* PostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		E564DF6B1E07B41E0073677E /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		E564DF6D1E07B53D0073677E /* ReversedTableViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversedTableViewHandler.swift; sourceTree = "<group>"; };
+		E564DF6F1E07CDC80073677E /* NextCommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextCommentsCell.swift; sourceTree = "<group>"; };
 		E5651EAB1DFFBE39004D09F7 /* ProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		E57D573F1DFA943300C8C237 /* GuideSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D57421DFA943300C8C237 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +93,7 @@
 		E59688131DFFD01E007F1DEA /* FeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPostCell.swift; sourceTree = "<group>"; };
 		E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EGFHumanName+Additions.swift"; sourceTree = "<group>"; };
 		E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleFileManager.swift; sourceTree = "<group>"; };
+		E5D48D981E04496100E07571 /* SeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */,
+				E564DF6D1E07B53D0073677E /* ReversedTableViewHandler.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -187,6 +198,16 @@
 				E55EA4E91DFE90F000C611BD /* NewPostController.swift */,
 			);
 			path = NewPostController;
+			sourceTree = "<group>";
+		};
+		E56180F41E03FD8C005A8224 /* PostController */ = {
+			isa = PBXGroup;
+			children = (
+				E56180F51E03FD8C005A8224 /* PostController.swift */,
+				E564DF6B1E07B41E0073677E /* CommentCell.swift */,
+				E564DF6F1E07CDC80073677E /* NextCommentsCell.swift */,
+			);
+			path = PostController;
 			sourceTree = "<group>";
 		};
 		E5651EAA1DFFBE30004D09F7 /* ProgressController */ = {
@@ -265,6 +286,7 @@
 				E57D57951DFA96D400C8C237 /* DesignableView.swift */,
 				E57D57971DFA96E600C8C237 /* DesignableButton.swift */,
 				E55415E71E03D9A10024B3A2 /* FileImageView.swift */,
+				E5D48D981E04496100E07571 /* SeparatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,6 +305,7 @@
 				E528654C1DFE6FE800D50A0D /* MoreController */,
 				E52865541DFE733400D50A0D /* FollowsController */,
 				E55EA4E81DFE90E500C611BD /* NewPostController */,
+				E56180F41E03FD8C005A8224 /* PostController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -391,6 +414,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E564DF6C1E07B41E0073677E /* CommentCell.swift in Sources */,
+				E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */,
+				E56180F61E03FD8C005A8224 /* PostController.swift in Sources */,
 				E52865501DFE6FF600D50A0D /* MoreCell.swift in Sources */,
 				E57D579C1DFA970C00C8C237 /* UIImage+Additions.swift in Sources */,
 				E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */,
@@ -402,6 +428,7 @@
 				E57D57981DFA96E600C8C237 /* DesignableButton.swift in Sources */,
 				E55EA4EA1DFE90F000C611BD /* NewPostController.swift in Sources */,
 				E596881F1DFFF1FA007F1DEA /* SimpleFileManager.swift in Sources */,
+				E564DF6E1E07B53D0073677E /* ReversedTableViewHandler.swift in Sources */,
 				E528659E1DFE7CBD00D50A0D /* RegisterController.swift in Sources */,
 				E5651EAC1DFFBE39004D09F7 /* ProgressController.swift in Sources */,
 				E57D579A1DFA96FD00C8C237 /* UIColor+Additions.swift in Sources */,
@@ -412,6 +439,7 @@
 				E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */,
 				E52865561DFE733900D50A0D /* FollowsController.swift in Sources */,
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
+				E564DF701E07CDC80073677E /* NextCommentsCell.swift in Sources */,
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
 				E52827C01E00687300A39792 /* BaseTableController.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,

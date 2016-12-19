@@ -105,6 +105,8 @@
     
     if (newHeight != _textViewHeight.constant) {
         _textViewHeight.constant = newHeight;
+        [self.view layoutIfNeeded];
+        [textView setContentOffset:CGPointMake(0, 0) animated:false];
     }
     _placeholder.hidden = textView.text.length > 0;
     [self updateSendButton];

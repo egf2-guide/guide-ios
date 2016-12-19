@@ -9,12 +9,6 @@
 #import "TableViewHandler.h"
 #import <UIKit/UIKit.h>
 
-@interface TableViewHandler ()
-@property (nonatomic, retain) NSMutableArray * graphObjects;
-@property (nonatomic, assign) NSInteger totalCount;
-@property (nonatomic, weak) UITableView *tableView;
-@end
-
 @implementation TableViewHandler
 
 - (id)init {
@@ -47,6 +41,10 @@
 
 - (BOOL)isDownloaded {
     return _graphObjects.count == _totalCount;
+}
+
+- (BOOL)noAnyData {
+    return _totalCount == -1;
 }
 
 - (void)setObjects:(NSArray *)objects totalCount:(NSInteger)count {

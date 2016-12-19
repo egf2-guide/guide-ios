@@ -11,6 +11,7 @@
 #import "EGFHumanName+Additions.h"
 #import "SimpleFileManager.h"
 #import "TableViewHandler.h"
+#import "PostController.h"
 #import "FeedPostCell.h"
 #import "EGF2.h"
 
@@ -87,7 +88,14 @@
         
         [_posts addObjects:objects totalCount:count];
     }];
-    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isMemberOfClass:[PostController class]] && [sender isKindOfClass:[UITableViewCell class]]) {
+        PostController * postController = segue.destinationViewController;
+        NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
+        postController.post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
+    }
 }
 
 // MARK:- UITableViewDelegate

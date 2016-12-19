@@ -10,6 +10,18 @@ import UIKit
 
 class BaseController: UIViewController {
     
+    @IBOutlet weak var buttomOffset: NSLayoutConstraint?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let barButton = UIBarButtonItem()
@@ -24,5 +36,23 @@ class BaseController: UIViewController {
         button.tintColor = UIColor.hexColor(0x5E66B1)
         toolbar.items = [space, button]
         return toolbar
+    }
+    
+    fileprivate func valuesOf(notification: Notification) -> (keyboardHeight: CGFloat, duration: Double)? {
+        guard let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height else { return nil }
+        guard let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else { return nil }
+        return (keyboardHeight, duration)
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        guard let constraint = buttomOffset, let values = valuesOf(notification: notification) else { return }
+        constraint.constant = values.keyboardHeight
+        UIView.animate(withDuration: values.duration) { self.view.layoutIfNeeded() }
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        guard let constraint = buttomOffset, let values = valuesOf(notification: notification) else { return }
+        constraint.constant = 0
+        UIView.animate(withDuration: values.duration) { self.view.layoutIfNeeded() }
     }
 }

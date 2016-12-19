@@ -7,9 +7,9 @@
 //
 
 #import "RegisterController.h"
+#import "ProgressController.h"
 
 @interface RegisterController ()
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewButtom;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -30,12 +30,6 @@
     [birthDatePicker addTarget:self action:@selector(birthDatePickerDidChange:) forControlEvents:UIControlEventValueChanged];
     _dobTextField.inputView = birthDatePicker;
     _dobTextField.inputAccessoryView = [self toolbarWithButton:@"Done" selector:@selector(didPressDoneButton)];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)registerUser:(id)sender {
@@ -49,9 +43,11 @@
     if (firstName.length == 0 || lastName.length == 0 || password.length == 0 || email.length == 0 || !birthDate) {
         _errorLabel.text = @"All fields are required";
     }
+    [ProgressController show];
     [self.graph registerWithFirstName:firstName lastName:lastName email:email dateOfBirth:birthDate password:password completion:^(id object, NSError * error) {
         if (error) {
             _errorLabel.text = error.localizedFailureReason;
+            [ProgressController hide];
         }
         else {
             [self getUserObject];
@@ -67,30 +63,12 @@
         else {
             [self dismissViewControllerAnimated:true completion:nil];
         }
+        [ProgressController hide];
     }];
 }
 
 - (void)didPressDoneButton {
     [self.view endEditing:true];
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    CGFloat keyboardHeight = [(NSValue *)notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    CGFloat duration = [(NSNumber *)notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    _scrollViewButtom.constant = keyboardHeight;
-    
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    CGFloat duration = [(NSNumber *)notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    _scrollViewButtom.constant = 0;
-    
-    [UIView animateWithDuration:duration animations:^{
-        [self.view layoutIfNeeded];
-    }];
 }
 
 - (void)birthDatePickerDidChange:(UIDatePicker *)sender {

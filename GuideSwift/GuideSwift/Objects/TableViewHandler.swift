@@ -12,8 +12,7 @@ class TableViewHandler <T> {
     
     var graphObjects = [T]()
     var totalCount = -1
-    
-    fileprivate weak var tableView: UITableView?
+    weak var tableView: UITableView?
     
     init(withTableView tableView: UITableView) {
         self.tableView = tableView
@@ -40,6 +39,12 @@ class TableViewHandler <T> {
     var isDownloaded: Bool {
         get {
             return graphObjects.count == totalCount
+        }
+    }
+    
+    var noAnyData: Bool {
+        get {
+            return totalCount == -1
         }
     }
     

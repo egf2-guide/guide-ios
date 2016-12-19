@@ -25,6 +25,11 @@
 		E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */; };
 		E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55415EA1E03F6870024B3A2 /* FileImageView.m */; };
 		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
+		E564DF731E07EE0D0073677E /* SeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF721E07EE0D0073677E /* SeparatorView.m */; };
+		E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF751E07F6290073677E /* ReversedTableViewHandler.m */; };
+		E564DF7A1E07F8920073677E /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF791E07F8920073677E /* PostController.m */; };
+		E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7C1E07F8B60073677E /* CommentCell.m */; };
+		E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7F1E07F8C90073677E /* NextCommentsCell.m */; };
 		E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5651EB11DFFC49E004D09F7 /* ProgressController.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
 		E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57641DFA945900C8C237 /* AppDelegate.m */; };
@@ -91,6 +96,16 @@
 		E55415EA1E03F6870024B3A2 /* FileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImageView.m; sourceTree = "<group>"; };
 		E55EA4EC1DFE93B100C611BD /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
 		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
+		E564DF711E07EE0D0073677E /* SeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorView.h; sourceTree = "<group>"; };
+		E564DF721E07EE0D0073677E /* SeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorView.m; sourceTree = "<group>"; };
+		E564DF741E07F6290073677E /* ReversedTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReversedTableViewHandler.h; sourceTree = "<group>"; };
+		E564DF751E07F6290073677E /* ReversedTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReversedTableViewHandler.m; sourceTree = "<group>"; };
+		E564DF781E07F8920073677E /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
+		E564DF791E07F8920073677E /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
+		E564DF7B1E07F8B60073677E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		E564DF7C1E07F8B60073677E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		E564DF7E1E07F8C90073677E /* NextCommentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextCommentsCell.h; sourceTree = "<group>"; };
+		E564DF7F1E07F8C90073677E /* NextCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextCommentsCell.m; sourceTree = "<group>"; };
 		E5651EB01DFFC49E004D09F7 /* ProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressController.h; sourceTree = "<group>"; };
 		E5651EB11DFFC49E004D09F7 /* ProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressController.m; sourceTree = "<group>"; };
 		E57D575D1DFA945900C8C237 /* GuideObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +252,8 @@
 			children = (
 				E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */,
 				E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */,
+				E564DF741E07F6290073677E /* ReversedTableViewHandler.h */,
+				E564DF751E07F6290073677E /* ReversedTableViewHandler.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -248,6 +265,19 @@
 				E55EA4ED1DFE93B100C611BD /* NewPostController.m */,
 			);
 			path = NewPostController;
+			sourceTree = "<group>";
+		};
+		E564DF771E07F8800073677E /* PostController */ = {
+			isa = PBXGroup;
+			children = (
+				E564DF781E07F8920073677E /* PostController.h */,
+				E564DF791E07F8920073677E /* PostController.m */,
+				E564DF7B1E07F8B60073677E /* CommentCell.h */,
+				E564DF7C1E07F8B60073677E /* CommentCell.m */,
+				E564DF7E1E07F8C90073677E /* NextCommentsCell.h */,
+				E564DF7F1E07F8C90073677E /* NextCommentsCell.m */,
+			);
+			path = PostController;
 			sourceTree = "<group>";
 		};
 		E5651EAF1DFFC48F004D09F7 /* ProgressController */ = {
@@ -340,6 +370,7 @@
 				E52865621DFE752F00D50A0D /* LoginController */,
 				E52865681DFE752F00D50A0D /* MoreController */,
 				E55EA4EB1DFE939C00C611BD /* NewPostController */,
+				E564DF771E07F8800073677E /* PostController */,
 				E52865691DFE752F00D50A0D /* RegisterController */,
 				E528656C1DFE752F00D50A0D /* UserController */,
 			);
@@ -355,6 +386,8 @@
 				E57D57C11DFAA09100C8C237 /* DesignableButton.m */,
 				E55415E91E03F6870024B3A2 /* FileImageView.h */,
 				E55415EA1E03F6870024B3A2 /* FileImageView.m */,
+				E564DF711E07EE0D0073677E /* SeparatorView.h */,
+				E564DF721E07EE0D0073677E /* SeparatorView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,15 +489,19 @@
 			files = (
 				E57D57C21DFAA09100C8C237 /* DesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
+				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,
 				E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */,
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
 				E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */,
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
+				E564DF731E07EE0D0073677E /* SeparatorView.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
 				E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */,
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
+				E564DF7A1E07F8920073677E /* PostController.m in Sources */,
+				E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */,
 				E528657B1DFE761400D50A0D /* FollowsController.m in Sources */,
 				E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */,
 				E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */,
@@ -479,6 +516,7 @@
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
 				E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
+				E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */,
 				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

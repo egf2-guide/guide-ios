@@ -72,6 +72,12 @@ class FeedController: BaseTableController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let postController = segue.destination as? PostController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            postController.currentPost = posts[indexPath.row]
+        }
+    }
+    
     // MARK:- UITableViewDelegate
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let control = refreshControl, control.isRefreshing == true {
