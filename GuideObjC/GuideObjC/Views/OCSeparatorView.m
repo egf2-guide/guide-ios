@@ -1,14 +1,14 @@
 //
-//  SeparatorView.m
+//  OCSeparatorView.m
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 19.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "SeparatorView.h"
+#import "OCSeparatorView.h"
 
-@implementation SeparatorView
+@implementation OCSeparatorView
 
 - (void)awakeFromNib {
     [super awakeFromNib];

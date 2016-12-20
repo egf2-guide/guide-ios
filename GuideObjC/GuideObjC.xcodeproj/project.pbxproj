@@ -26,7 +26,7 @@
 		E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */; };
 		E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55415EA1E03F6870024B3A2 /* FileImageView.m */; };
 		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
-		E564DF731E07EE0D0073677E /* SeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF721E07EE0D0073677E /* SeparatorView.m */; };
+		E564DF731E07EE0D0073677E /* OCSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF721E07EE0D0073677E /* OCSeparatorView.m */; };
 		E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF751E07F6290073677E /* ReversedTableViewHandler.m */; };
 		E564DF7A1E07F8920073677E /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF791E07F8920073677E /* PostController.m */; };
 		E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7C1E07F8B60073677E /* CommentCell.m */; };
@@ -41,8 +41,8 @@
 		E57D57AE1DFA991E00C8C237 /* EGF2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E57D57AC1DFA991E00C8C237 /* EGF2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57B81DFA9A4600C8C237 /* UIColor+Additions.m */; };
 		E57D57BC1DFA9B5F00C8C237 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57BB1DFA9B5F00C8C237 /* UIImage+Additions.m */; };
-		E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57BE1DFA9C9C00C8C237 /* DesignableView.m */; };
-		E57D57C21DFAA09100C8C237 /* DesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57C11DFAA09100C8C237 /* DesignableButton.m */; };
+		E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57BE1DFA9C9C00C8C237 /* OCDesignableView.m */; };
+		E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */; };
 		E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57D61DFAB18500C8C237 /* EGF2.m */; };
 /* End PBXBuildFile section */
 
@@ -99,8 +99,8 @@
 		E55415EA1E03F6870024B3A2 /* FileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImageView.m; sourceTree = "<group>"; };
 		E55EA4EC1DFE93B100C611BD /* NewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostController.h; sourceTree = "<group>"; };
 		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
-		E564DF711E07EE0D0073677E /* SeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorView.h; sourceTree = "<group>"; };
-		E564DF721E07EE0D0073677E /* SeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorView.m; sourceTree = "<group>"; };
+		E564DF711E07EE0D0073677E /* OCSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSeparatorView.h; sourceTree = "<group>"; };
+		E564DF721E07EE0D0073677E /* OCSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSeparatorView.m; sourceTree = "<group>"; };
 		E564DF741E07F6290073677E /* ReversedTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReversedTableViewHandler.h; sourceTree = "<group>"; };
 		E564DF751E07F6290073677E /* ReversedTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReversedTableViewHandler.m; sourceTree = "<group>"; };
 		E564DF781E07F8920073677E /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
@@ -125,10 +125,10 @@
 		E57D57B81DFA9A4600C8C237 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
 		E57D57BA1DFA9B5F00C8C237 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		E57D57BB1DFA9B5F00C8C237 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
-		E57D57BD1DFA9C9C00C8C237 /* DesignableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignableView.h; sourceTree = "<group>"; };
-		E57D57BE1DFA9C9C00C8C237 /* DesignableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignableView.m; sourceTree = "<group>"; };
-		E57D57C01DFAA09100C8C237 /* DesignableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignableButton.h; sourceTree = "<group>"; };
-		E57D57C11DFAA09100C8C237 /* DesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignableButton.m; sourceTree = "<group>"; };
+		E57D57BD1DFA9C9C00C8C237 /* OCDesignableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDesignableView.h; sourceTree = "<group>"; };
+		E57D57BE1DFA9C9C00C8C237 /* OCDesignableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDesignableView.m; sourceTree = "<group>"; };
+		E57D57C01DFAA09100C8C237 /* OCDesignableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDesignableButton.h; sourceTree = "<group>"; };
+		E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDesignableButton.m; sourceTree = "<group>"; };
 		E57D57D51DFAB18500C8C237 /* EGF2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGF2.h; sourceTree = "<group>"; };
 		E57D57D61DFAB18500C8C237 /* EGF2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGF2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -393,14 +393,14 @@
 		E57D57B51DFA99BF00C8C237 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E57D57BD1DFA9C9C00C8C237 /* DesignableView.h */,
-				E57D57BE1DFA9C9C00C8C237 /* DesignableView.m */,
-				E57D57C01DFAA09100C8C237 /* DesignableButton.h */,
-				E57D57C11DFAA09100C8C237 /* DesignableButton.m */,
+				E57D57BD1DFA9C9C00C8C237 /* OCDesignableView.h */,
+				E57D57BE1DFA9C9C00C8C237 /* OCDesignableView.m */,
+				E57D57C01DFAA09100C8C237 /* OCDesignableButton.h */,
+				E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */,
 				E55415E91E03F6870024B3A2 /* FileImageView.h */,
 				E55415EA1E03F6870024B3A2 /* FileImageView.m */,
-				E564DF711E07EE0D0073677E /* SeparatorView.h */,
-				E564DF721E07EE0D0073677E /* SeparatorView.m */,
+				E564DF711E07EE0D0073677E /* OCSeparatorView.h */,
+				E564DF721E07EE0D0073677E /* OCSeparatorView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E57D57C21DFAA09100C8C237 /* DesignableButton.m in Sources */,
+				E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
@@ -509,9 +509,9 @@
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
 				E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */,
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
-				E564DF731E07EE0D0073677E /* SeparatorView.m in Sources */,
+				E564DF731E07EE0D0073677E /* OCSeparatorView.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
-				E57D57BF1DFA9C9C00C8C237 /* DesignableView.m in Sources */,
+				E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */,
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
 				E564DF7A1E07F8920073677E /* PostController.m in Sources */,
 				E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */,

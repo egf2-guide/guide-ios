@@ -1,5 +1,5 @@
 //
-//  SeparatorView.h
+//  OCSeparatorView.h
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 19.12.16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SeparatorView : UIView
+@interface OCSeparatorView : UIView
 
 @end

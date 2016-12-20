@@ -625,10 +625,10 @@
                                 <color key="textColor" red="0.95157302190000004" green="0.082788506319999997" blue="0.1100480128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43c-6N-M9e" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43c-6N-M9e" customClass="DesignableView" customModule="GuideSwift">
                                 <rect key="frame" x="20" y="60" width="335" height="40"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-8z-k1p">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-8z-k1p">
                                         <rect key="frame" x="8" y="0.0" width="319" height="40"/>
                                         <color key="tintColor" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

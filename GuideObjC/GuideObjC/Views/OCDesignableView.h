@@ -1,5 +1,5 @@
 //
-//  DesignableButton.h
+//  OCDesignableView.h
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 09.12.16.
@@ -10,9 +10,7 @@
 
 IB_DESIGNABLE
 
-@interface DesignableButton : UIButton
-@property (nonatomic) IBInspectable UIColor *backgroundNormalColor;
-@property (nonatomic) IBInspectable UIColor *backgroundHighlightColor;
+@interface OCDesignableView : UIView
 @property (nonatomic) IBInspectable UIColor *borderColor;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
 @property (nonatomic) IBInspectable CGFloat borderWidth;

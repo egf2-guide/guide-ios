@@ -25,7 +25,7 @@
     if (_oldPassword.text.length == 0 || _theNewPassword.text.length == 0 || _confirmPassword.text.length == 0) {
         return;
     }
-    if (_theNewPassword.text != _confirmPassword.text) {
+    if (![_theNewPassword.text isEqual:_confirmPassword.text]) {
         _errorLabel.text = @"New password and confirm password does not match";
         return;
     }

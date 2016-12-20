@@ -1,15 +1,15 @@
 //
-//  DesignableButton.m
+//  OCDesignableButton.m
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 09.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "DesignableButton.h"
+#import "OCDesignableButton.h"
 #import "UIImage+Additions.h"
 
-@implementation DesignableButton
+@implementation OCDesignableButton
 
 - (void)setBackgroundNormalColor:(UIColor *)backgroundNormalColor {
     _backgroundNormalColor = backgroundNormalColor;
