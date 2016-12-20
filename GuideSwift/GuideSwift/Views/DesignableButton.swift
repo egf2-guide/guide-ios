@@ -19,6 +19,14 @@ class DesignableButton: UIButton {
         }
     }
     
+    @IBInspectable var backgroundDisableColor: UIColor? {
+        didSet {
+            if let color = backgroundDisableColor {
+                setBackgroundImage(UIImage.image(withColor: color), for: .disabled)
+            }
+        }
+    }
+    
     @IBInspectable var backgroundHighlightColor: UIColor? {
         didSet {
             if let color = backgroundHighlightColor {

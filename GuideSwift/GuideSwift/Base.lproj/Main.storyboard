@@ -163,14 +163,38 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDZ-o2-eJW" customClass="DesignableButton" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="400" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Taw-76-d3c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Forgot your password?">
+                                    <color key="titleColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundHighlightColor">
+                                        <color key="value" red="0.85541673110000005" green="0.87740884509999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="gjd-D5-sXe" kind="show" id="g5g-z2-WeL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2kQ-7f-XKk" firstAttribute="leading" secondItem="bFW-yb-QoB" secondAttribute="leading" constant="20" id="56D-AX-0ok"/>
                             <constraint firstAttribute="trailing" secondItem="2kQ-7f-XKk" secondAttribute="trailing" constant="20" id="Jal-1h-M0N"/>
                             <constraint firstItem="z67-hv-Hpp" firstAttribute="leading" secondItem="bFW-yb-QoB" secondAttribute="leading" constant="20" id="QO5-YN-h7d"/>
+                            <constraint firstItem="kDZ-o2-eJW" firstAttribute="leading" secondItem="bFW-yb-QoB" secondAttribute="leading" constant="20" id="cez-7q-1oH"/>
                             <constraint firstItem="42m-9F-Yp7" firstAttribute="top" secondItem="z67-hv-Hpp" secondAttribute="bottom" constant="20" id="hTy-QR-38i"/>
+                            <constraint firstAttribute="trailing" secondItem="kDZ-o2-eJW" secondAttribute="trailing" constant="20" id="nmS-Wa-TS0"/>
                             <constraint firstItem="87P-1m-UFz" firstAttribute="trailing" secondItem="2kQ-7f-XKk" secondAttribute="trailing" id="qPf-fb-rwo"/>
+                            <constraint firstItem="kDZ-o2-eJW" firstAttribute="top" secondItem="2kQ-7f-XKk" secondAttribute="bottom" constant="8" id="qzM-BG-11l"/>
                             <constraint firstItem="2kQ-7f-XKk" firstAttribute="centerY" secondItem="bFW-yb-QoB" secondAttribute="centerY" constant="-10" id="rcT-Zq-kJ3"/>
                             <constraint firstItem="2kQ-7f-XKk" firstAttribute="top" secondItem="87P-1m-UFz" secondAttribute="bottom" constant="8" id="rof-mx-r7J"/>
                             <constraint firstAttribute="trailing" secondItem="z67-hv-Hpp" secondAttribute="trailing" constant="20" id="rwZ-5l-CJa"/>
@@ -186,7 +210,290 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAB-ta-MQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="-1513"/>
+            <point key="canvasLocation" x="968.79999999999995" y="-1513.4932533733136"/>
+        </scene>
+        <!--Restore Password-->
+        <scene sceneID="eQ8-n4-DAe">
+            <objects>
+                <viewController id="gjd-D5-sXe" customClass="RestorePasswordController" customModule="GuideSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cNg-EU-33y"/>
+                        <viewControllerLayoutGuide type="bottom" id="N1d-n8-cxo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iVP-Wx-tcf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFU-wc-SdU">
+                                <rect key="frame" x="20" y="72" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.95157302190000004" green="0.082788506319999997" blue="0.1100480128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApO-Zi-41e" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="80" width="335" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="24D-pr-htL">
+                                        <rect key="frame" x="8" y="0.0" width="327" height="40"/>
+                                        <color key="tintColor" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="textDidChange:" destination="gjd-D5-sXe" eventType="editingChanged" id="O88-Rd-5gg"/>
+                                            <outlet property="delegate" destination="gjd-D5-sXe" id="hb4-E8-0e0"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="24D-pr-htL" firstAttribute="leading" secondItem="ApO-Zi-41e" secondAttribute="leading" constant="8" id="FHV-Tf-4UD"/>
+                                    <constraint firstItem="24D-pr-htL" firstAttribute="top" secondItem="ApO-Zi-41e" secondAttribute="top" id="OxM-xt-F7t"/>
+                                    <constraint firstAttribute="height" constant="40" id="Oyz-ky-5kR"/>
+                                    <constraint firstAttribute="trailing" secondItem="24D-pr-htL" secondAttribute="trailing" id="Z1n-6w-zVs"/>
+                                    <constraint firstAttribute="bottom" secondItem="24D-pr-htL" secondAttribute="bottom" id="cGv-jc-6oS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmT-TZ-Der" customClass="DesignableButton" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="128" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tHj-D5-IeB"/>
+                                </constraints>
+                                <state key="normal" title="Restore Password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundNormalColor">
+                                        <color key="value" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundHighlightColor">
+                                        <color key="value" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundDisableColor">
+                                        <color key="value" red="0.72561813353500959" green="0.75162090936969927" blue="0.88382523148148151" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="restorePassword:" destination="gjd-D5-sXe" eventType="touchUpInside" id="jah-vE-Sr3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tmT-TZ-Der" secondAttribute="trailing" constant="20" id="3lo-Fa-5Ig"/>
+                            <constraint firstItem="ApO-Zi-41e" firstAttribute="top" secondItem="YFU-wc-SdU" secondAttribute="bottom" constant="8" id="AIA-GT-eII"/>
+                            <constraint firstAttribute="trailing" secondItem="YFU-wc-SdU" secondAttribute="trailing" constant="20" id="CqY-Kv-Ldc"/>
+                            <constraint firstAttribute="trailing" secondItem="ApO-Zi-41e" secondAttribute="trailing" constant="20" id="TY5-k7-yvv"/>
+                            <constraint firstItem="ApO-Zi-41e" firstAttribute="leading" secondItem="iVP-Wx-tcf" secondAttribute="leading" constant="20" id="W32-FD-xU0"/>
+                            <constraint firstItem="tmT-TZ-Der" firstAttribute="leading" secondItem="iVP-Wx-tcf" secondAttribute="leading" constant="20" id="bKs-bD-D22"/>
+                            <constraint firstItem="tmT-TZ-Der" firstAttribute="top" secondItem="ApO-Zi-41e" secondAttribute="bottom" constant="8" id="g0E-6h-Yxn"/>
+                            <constraint firstItem="YFU-wc-SdU" firstAttribute="leading" secondItem="iVP-Wx-tcf" secondAttribute="leading" constant="20" id="mdE-A6-h5c"/>
+                            <constraint firstItem="YFU-wc-SdU" firstAttribute="top" secondItem="cNg-EU-33y" secondAttribute="bottom" constant="8" id="ppk-tb-T8j"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Restore Password" id="WEQ-Gb-Rab"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="24D-pr-htL" id="VmN-ls-ul6"/>
+                        <outlet property="errorLabel" destination="YFU-wc-SdU" id="Cmp-EF-8Wj"/>
+                        <outlet property="restoreButton" destination="tmT-TZ-Der" id="tpq-td-2xS"/>
+                        <segue destination="BW3-lv-K63" kind="show" identifier="ResetPassword" id="HTi-ST-tlX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u7Y-qX-u40" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="-2229"/>
+        </scene>
+        <!--Change Password-->
+        <scene sceneID="nDw-L1-gcx">
+            <objects>
+                <viewController id="BW3-lv-K63" customClass="ResetPasswordController" customModule="GuideSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cYi-pC-W31"/>
+                        <viewControllerLayoutGuide type="bottom" id="7hT-lO-fNZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GzT-jQ-eig">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aW5-Rh-Ezb">
+                                <rect key="frame" x="20" y="72" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.95157302190000004" green="0.082788506319999997" blue="0.1100480128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWQ-bi-UYJ" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="80" width="335" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Reset Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A9f-XQ-ZeR">
+                                        <rect key="frame" x="8" y="0.0" width="327" height="40"/>
+                                        <color key="tintColor" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="textDidChange:" destination="BW3-lv-K63" eventType="editingChanged" id="qJg-9N-9Tk"/>
+                                            <outlet property="delegate" destination="BW3-lv-K63" id="aY8-hB-5U7"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="A9f-XQ-ZeR" secondAttribute="bottom" id="5xw-PP-aw2"/>
+                                    <constraint firstItem="A9f-XQ-ZeR" firstAttribute="leading" secondItem="bWQ-bi-UYJ" secondAttribute="leading" constant="8" id="SxR-CG-rUt"/>
+                                    <constraint firstAttribute="trailing" secondItem="A9f-XQ-ZeR" secondAttribute="trailing" id="aFZ-Yt-ZXC"/>
+                                    <constraint firstAttribute="height" constant="40" id="i2k-JN-8kI"/>
+                                    <constraint firstItem="A9f-XQ-ZeR" firstAttribute="top" secondItem="bWQ-bi-UYJ" secondAttribute="top" id="tlB-QW-eYn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTI-bv-j39" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="128" width="335" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-h9-AdC">
+                                        <rect key="frame" x="8" y="0.0" width="327" height="40"/>
+                                        <color key="tintColor" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="textDidChange:" destination="BW3-lv-K63" eventType="editingChanged" id="F3u-0k-UMK"/>
+                                            <outlet property="delegate" destination="BW3-lv-K63" id="ZG7-1a-Elh"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DpV-h9-AdC" secondAttribute="trailing" id="1iW-jJ-6YC"/>
+                                    <constraint firstItem="DpV-h9-AdC" firstAttribute="leading" secondItem="iTI-bv-j39" secondAttribute="leading" constant="8" id="Kwd-CA-mL0"/>
+                                    <constraint firstItem="DpV-h9-AdC" firstAttribute="top" secondItem="iTI-bv-j39" secondAttribute="top" id="OqX-Ov-j2m"/>
+                                    <constraint firstAttribute="height" constant="40" id="gWj-zK-CId"/>
+                                    <constraint firstAttribute="bottom" secondItem="DpV-h9-AdC" secondAttribute="bottom" id="v50-ox-Oxn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iG-9l-Z0u" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="176" width="335" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yhT-Jt-Dn4">
+                                        <rect key="frame" x="8" y="0.0" width="327" height="40"/>
+                                        <color key="tintColor" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="textDidChange:" destination="BW3-lv-K63" eventType="editingChanged" id="LFS-zr-SwW"/>
+                                            <outlet property="delegate" destination="BW3-lv-K63" id="JAy-b9-STr"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yhT-Jt-Dn4" firstAttribute="leading" secondItem="5iG-9l-Z0u" secondAttribute="leading" constant="8" id="NCP-Qc-g4y"/>
+                                    <constraint firstAttribute="trailing" secondItem="yhT-Jt-Dn4" secondAttribute="trailing" id="O38-F4-Du8"/>
+                                    <constraint firstAttribute="height" constant="40" id="g6B-sh-c8t"/>
+                                    <constraint firstItem="yhT-Jt-Dn4" firstAttribute="top" secondItem="5iG-9l-Z0u" secondAttribute="top" id="qxI-yx-KI1"/>
+                                    <constraint firstAttribute="bottom" secondItem="yhT-Jt-Dn4" secondAttribute="bottom" id="vxk-Rl-RBb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.37029089269999999" green="0.40170631210000002" blue="0.69318181820000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVX-ml-22W" customClass="DesignableButton" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="224" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="14x-ef-W3H"/>
+                                </constraints>
+                                <state key="normal" title="Change Password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundNormalColor">
+                                        <color key="value" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundHighlightColor">
+                                        <color key="value" red="0.28690713639999998" green="0.30932420490000001" blue="0.53696978090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundDisableColor">
+                                        <color key="value" red="0.72561813350000004" green="0.75162090940000004" blue="0.88382523150000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changePassword:" destination="BW3-lv-K63" eventType="touchUpInside" id="ckw-7d-vbJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iTI-bv-j39" secondAttribute="trailing" constant="20" id="3IB-tR-4sV"/>
+                            <constraint firstAttribute="trailing" secondItem="aW5-Rh-Ezb" secondAttribute="trailing" constant="20" id="8YT-w9-wt5"/>
+                            <constraint firstItem="bWQ-bi-UYJ" firstAttribute="leading" secondItem="GzT-jQ-eig" secondAttribute="leading" constant="20" id="9u8-T8-QeD"/>
+                            <constraint firstItem="tVX-ml-22W" firstAttribute="top" secondItem="5iG-9l-Z0u" secondAttribute="bottom" constant="8" id="BGu-2o-ckg"/>
+                            <constraint firstItem="aW5-Rh-Ezb" firstAttribute="leading" secondItem="GzT-jQ-eig" secondAttribute="leading" constant="20" id="DIF-tT-0Tq"/>
+                            <constraint firstAttribute="trailing" secondItem="tVX-ml-22W" secondAttribute="trailing" constant="20" id="JZf-T1-AG8"/>
+                            <constraint firstItem="5iG-9l-Z0u" firstAttribute="top" secondItem="iTI-bv-j39" secondAttribute="bottom" constant="8" id="Kbg-6e-UpP"/>
+                            <constraint firstAttribute="trailing" secondItem="5iG-9l-Z0u" secondAttribute="trailing" constant="20" id="LmU-F6-kGD"/>
+                            <constraint firstItem="iTI-bv-j39" firstAttribute="top" secondItem="bWQ-bi-UYJ" secondAttribute="bottom" constant="8" id="NDj-Dg-iwO"/>
+                            <constraint firstItem="bWQ-bi-UYJ" firstAttribute="top" secondItem="aW5-Rh-Ezb" secondAttribute="bottom" constant="8" id="Oyr-Hm-4nJ"/>
+                            <constraint firstItem="5iG-9l-Z0u" firstAttribute="leading" secondItem="GzT-jQ-eig" secondAttribute="leading" constant="20" id="bxC-fe-KmL"/>
+                            <constraint firstAttribute="trailing" secondItem="bWQ-bi-UYJ" secondAttribute="trailing" constant="20" id="eQi-nN-Jqe"/>
+                            <constraint firstItem="aW5-Rh-Ezb" firstAttribute="top" secondItem="cYi-pC-W31" secondAttribute="bottom" constant="8" id="fsy-Ec-FwO"/>
+                            <constraint firstItem="tVX-ml-22W" firstAttribute="leading" secondItem="GzT-jQ-eig" secondAttribute="leading" constant="20" id="nMa-UO-Ts6"/>
+                            <constraint firstItem="iTI-bv-j39" firstAttribute="leading" secondItem="GzT-jQ-eig" secondAttribute="leading" constant="20" id="yJI-uW-rNP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change Password" id="Oz4-Rd-VkG"/>
+                    <connections>
+                        <outlet property="confirmTextField" destination="yhT-Jt-Dn4" id="EGW-5I-twV"/>
+                        <outlet property="errorLabel" destination="aW5-Rh-Ezb" id="93e-aL-aeZ"/>
+                        <outlet property="passwordTextField" destination="DpV-h9-AdC" id="JKh-IR-gpq"/>
+                        <outlet property="resetButton" destination="tVX-ml-22W" id="1Lu-FS-XEn"/>
+                        <outlet property="tokenTextField" destination="A9f-XQ-ZeR" id="Oie-v9-FWV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHG-hQ-Khh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2657" y="-2230"/>
         </scene>
         <!--Registration-->
         <scene sceneID="SHe-bT-ykm">

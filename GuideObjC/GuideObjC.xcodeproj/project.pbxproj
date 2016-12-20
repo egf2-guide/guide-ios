@@ -44,6 +44,8 @@
 		E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57BE1DFA9C9C00C8C237 /* OCDesignableView.m */; };
 		E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */; };
 		E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57D61DFAB18500C8C237 /* EGF2.m */; };
+		E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59123681E09264900AD98A3 /* RestorePasswordController.m */; };
+		E591236C1E09277000AD98A3 /* ResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591236B1E09277000AD98A3 /* ResetPasswordController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -131,6 +133,10 @@
 		E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDesignableButton.m; sourceTree = "<group>"; };
 		E57D57D51DFAB18500C8C237 /* EGF2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGF2.h; sourceTree = "<group>"; };
 		E57D57D61DFAB18500C8C237 /* EGF2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGF2.m; sourceTree = "<group>"; };
+		E59123671E09264900AD98A3 /* RestorePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestorePasswordController.h; sourceTree = "<group>"; };
+		E59123681E09264900AD98A3 /* RestorePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestorePasswordController.m; sourceTree = "<group>"; };
+		E591236A1E09277000AD98A3 /* ResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordController.h; sourceTree = "<group>"; };
+		E591236B1E09277000AD98A3 /* ResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +392,8 @@
 				E52865691DFE752F00D50A0D /* RegisterController */,
 				E528656C1DFE752F00D50A0D /* UserController */,
 				E526673B1E08FECE00A42337 /* ChangePasswordController */,
+				E59123661E09262D00AD98A3 /* RestorePasswordController */,
+				E59123651E09262D00AD98A3 /* ResetPasswordController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -403,6 +411,24 @@
 				E564DF721E07EE0D0073677E /* OCSeparatorView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E59123651E09262D00AD98A3 /* ResetPasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				E591236A1E09277000AD98A3 /* ResetPasswordController.h */,
+				E591236B1E09277000AD98A3 /* ResetPasswordController.m */,
+			);
+			path = ResetPasswordController;
+			sourceTree = "<group>";
+		};
+		E59123661E09262D00AD98A3 /* RestorePasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				E59123671E09264900AD98A3 /* RestorePasswordController.h */,
+				E59123681E09264900AD98A3 /* RestorePasswordController.m */,
+			);
+			path = RestorePasswordController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,6 +538,7 @@
 				E564DF731E07EE0D0073677E /* OCSeparatorView.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
 				E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */,
+				E591236C1E09277000AD98A3 /* ResetPasswordController.m in Sources */,
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
 				E564DF7A1E07F8920073677E /* PostController.m in Sources */,
 				E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */,
@@ -522,6 +549,7 @@
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,
 				E52577361E0127290068D28D /* FeedPostCell.m in Sources */,
+				E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */,
 				E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */,
 				E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */,
 				E52865741DFE752F00D50A0D /* RegisterController.m in Sources */,

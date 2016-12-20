@@ -19,6 +19,14 @@
     }
 }
 
+- (void)setBackgroundDisableColor:(UIColor *)backgroundDisableColor {
+    _backgroundDisableColor = backgroundDisableColor;
+    
+    if (backgroundDisableColor) {
+        [self setBackgroundImage:[UIImage imageWithColor:backgroundDisableColor] forState:UIControlStateDisabled];
+    }
+}
+
 - (void)setBackgroundHighlightColor:(UIColor *)backgroundHighlightColor {
     _backgroundHighlightColor = backgroundHighlightColor;
     

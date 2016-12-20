@@ -1,5 +1,5 @@
 //
-//  ChangePasswordController.swift
+//  ResetPasswordController.swift
 //  GuideSwift
 //
 //  Created by LuzanovRoman on 20.12.16.
@@ -8,36 +8,38 @@
 
 import UIKit
 
-class ChangePasswordController: BaseController, UITextFieldDelegate {
+class ResetPasswordController: BaseController, UITextFieldDelegate {
     
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var oldPassword: UITextField!
-    @IBOutlet weak var newPassword: UITextField!
-    @IBOutlet weak var confirmPassword: UITextField!
-    @IBOutlet weak var changeButton: UIBarButtonItem!
+    @IBOutlet weak var tokenTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmTextField: UITextField!
+    @IBOutlet weak var resetButton: UIButton!
     
     @IBAction func changePassword(_ sender: AnyObject) {
         errorLabel.text = nil
         
-        guard let old = oldPassword.text, let new = newPassword.text, let confirm = confirmPassword.text else { return }
+        guard let token = tokenTextField.text, let password = passwordTextField.text, let confirm = confirmTextField.text else { return }
         
-        if new != confirm {
+        if password != confirm {
             errorLabel.text = "New password and confirm password does not match"
             return
         }
         view.endEditing(true)
         
         ProgressController.show()
-        Graph.change(oldPassword: old, withNewPassword: new) { (object, error) in
+        Graph.resetPassword(withToken: token, newPassword: password) { (object, error) in
             ProgressController.hide()
             
             if let err = error {
                 self.errorLabel.text = err.localizedFailureReason
             }
             else {
-                let controller = UIAlertController(title: "Success", message: "Password has been changed", preferredStyle: .alert)
+                let title = "Password has been succesfully changed"
+                let message = "Please use your new password to login"
+                let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 let ok = UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
-                    _ = self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popToRootViewController(animated: true)
                 })
                 controller.addAction(ok)
                 self.present(controller, animated: true, completion: nil)
@@ -46,9 +48,9 @@ class ChangePasswordController: BaseController, UITextFieldDelegate {
     }
     
     @IBAction func textDidChange(_ sender: UITextField) {
-        changeButton.isEnabled = !(oldPassword.text ?? "").isEmpty &&
-            !(newPassword.text ?? "").isEmpty &&
-            !(confirmPassword.text ?? "").isEmpty
+        resetButton.isEnabled = !(tokenTextField.text ?? "").isEmpty &&
+            !(passwordTextField.text ?? "").isEmpty &&
+            !(confirmTextField.text ?? "").isEmpty
     }
     
     // MARK:- UITextFieldDelegate
