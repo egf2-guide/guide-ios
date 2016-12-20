@@ -11,6 +11,7 @@
 		E52577361E0127290068D28D /* FeedPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577351E0127290068D28D /* FeedPostCell.m */; };
 		E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577381E012A6B0068D28D /* FeedProgressCell.m */; };
 		E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E525773B1E012F990068D28D /* EGFHumanName+Additions.m */; };
+		E526673E1E08FEDD00A42337 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E526673D1E08FEDD00A42337 /* ChangePasswordController.m */; };
 		E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865591DFE752F00D50A0D /* BaseNavigationController.m */; };
 		E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528655C1DFE752F00D50A0D /* BaseViewController.m */; };
 		E52865711DFE752F00D50A0D /* InitController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865611DFE752F00D50A0D /* InitController.m */; };
@@ -68,6 +69,8 @@
 		E52577381E012A6B0068D28D /* FeedProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedProgressCell.m; sourceTree = "<group>"; };
 		E525773A1E012F990068D28D /* EGFHumanName+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGFHumanName+Additions.h"; sourceTree = "<group>"; };
 		E525773B1E012F990068D28D /* EGFHumanName+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EGFHumanName+Additions.m"; sourceTree = "<group>"; };
+		E526673C1E08FEDD00A42337 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
+		E526673D1E08FEDD00A42337 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
 		E52865581DFE752F00D50A0D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		E52865591DFE752F00D50A0D /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		E528655B1DFE752F00D50A0D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,15 @@
 				E52577321E0121BF0068D28D /* SimpleFileManager.m */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		E526673B1E08FECE00A42337 /* ChangePasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				E526673C1E08FEDD00A42337 /* ChangePasswordController.h */,
+				E526673D1E08FEDD00A42337 /* ChangePasswordController.m */,
+			);
+			path = ChangePasswordController;
 			sourceTree = "<group>";
 		};
 		E52865571DFE752F00D50A0D /* BaseNavigationController */ = {
@@ -373,6 +385,7 @@
 				E564DF771E07F8800073677E /* PostController */,
 				E52865691DFE752F00D50A0D /* RegisterController */,
 				E528656C1DFE752F00D50A0D /* UserController */,
+				E526673B1E08FECE00A42337 /* ChangePasswordController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -505,6 +518,7 @@
 				E528657B1DFE761400D50A0D /* FollowsController.m in Sources */,
 				E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */,
 				E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */,
+				E526673E1E08FEDD00A42337 /* ChangePasswordController.m in Sources */,
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,
 				E52577361E0127290068D28D /* FeedPostCell.m in Sources */,
