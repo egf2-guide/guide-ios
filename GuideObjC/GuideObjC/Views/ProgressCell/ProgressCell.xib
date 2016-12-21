@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProgressCell" id="tNp-aI-fTB" customClass="ProgressCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tNp-aI-fTB" id="hfr-If-Akj">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="sQq-8Q-D4H">
+                        <rect key="frame" x="177" y="11" width="20" height="20"/>
+                        <color key="color" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sQq-8Q-D4H" firstAttribute="centerX" secondItem="hfr-If-Akj" secondAttribute="centerX" id="Hox-1D-Uo4"/>
+                    <constraint firstItem="sQq-8Q-D4H" firstAttribute="centerY" secondItem="hfr-If-Akj" secondAttribute="centerY" id="trE-bN-hgX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="activityIndicatorView" destination="sQq-8Q-D4H" id="SM3-YB-ymu"/>
+            </connections>
+            <point key="canvasLocation" x="-66.5" y="0.0"/>
+        </tableViewCell>
+    </objects>
+</document>

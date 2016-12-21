@@ -46,6 +46,12 @@
 		E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57D61DFAB18500C8C237 /* EGF2.m */; };
 		E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59123681E09264900AD98A3 /* RestorePasswordController.m */; };
 		E591236C1E09277000AD98A3 /* ResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591236B1E09277000AD98A3 /* ResetPasswordController.m */; };
+		E5C592C61E0AE141004C530D /* ProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592C41E0AE141004C530D /* ProgressCell.m */; };
+		E5C592C71E0AE141004C530D /* ProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C592C51E0AE141004C530D /* ProgressCell.xib */; };
+		E5C592CB1E0AE172004C530D /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592C91E0AE172004C530D /* UserCell.m */; };
+		E5C592CC1E0AE172004C530D /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C592CA1E0AE172004C530D /* UserCell.xib */; };
+		E5C592CF1E0AE3AF004C530D /* SearchingHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592CE1E0AE3AF004C530D /* SearchingHandler.m */; };
+		E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592D21E0AEAC1004C530D /* UsersController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -137,6 +143,16 @@
 		E59123681E09264900AD98A3 /* RestorePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestorePasswordController.m; sourceTree = "<group>"; };
 		E591236A1E09277000AD98A3 /* ResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordController.h; sourceTree = "<group>"; };
 		E591236B1E09277000AD98A3 /* ResetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordController.m; sourceTree = "<group>"; };
+		E5C592C31E0AE141004C530D /* ProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressCell.h; sourceTree = "<group>"; };
+		E5C592C41E0AE141004C530D /* ProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressCell.m; sourceTree = "<group>"; };
+		E5C592C51E0AE141004C530D /* ProgressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressCell.xib; sourceTree = "<group>"; };
+		E5C592C81E0AE172004C530D /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		E5C592C91E0AE172004C530D /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		E5C592CA1E0AE172004C530D /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		E5C592CD1E0AE3AF004C530D /* SearchingHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchingHandler.h; sourceTree = "<group>"; };
+		E5C592CE1E0AE3AF004C530D /* SearchingHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchingHandler.m; sourceTree = "<group>"; };
+		E5C592D11E0AEAC1004C530D /* UsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersController.h; sourceTree = "<group>"; };
+		E5C592D21E0AEAC1004C530D /* UsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +286,8 @@
 			children = (
 				E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */,
 				E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */,
+				E5C592CD1E0AE3AF004C530D /* SearchingHandler.h */,
+				E5C592CE1E0AE3AF004C530D /* SearchingHandler.m */,
 				E564DF741E07F6290073677E /* ReversedTableViewHandler.h */,
 				E564DF751E07F6290073677E /* ReversedTableViewHandler.m */,
 			);
@@ -394,6 +412,7 @@
 				E526673B1E08FECE00A42337 /* ChangePasswordController */,
 				E59123661E09262D00AD98A3 /* RestorePasswordController */,
 				E59123651E09262D00AD98A3 /* ResetPasswordController */,
+				E5C592D01E0AEAA2004C530D /* UsersController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -409,6 +428,8 @@
 				E55415EA1E03F6870024B3A2 /* FileImageView.m */,
 				E564DF711E07EE0D0073677E /* OCSeparatorView.h */,
 				E564DF721E07EE0D0073677E /* OCSeparatorView.m */,
+				E5C592C11E0AE127004C530D /* ProgressCell */,
+				E5C592C21E0AE127004C530D /* UserCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,6 +450,35 @@
 				E59123681E09264900AD98A3 /* RestorePasswordController.m */,
 			);
 			path = RestorePasswordController;
+			sourceTree = "<group>";
+		};
+		E5C592C11E0AE127004C530D /* ProgressCell */ = {
+			isa = PBXGroup;
+			children = (
+				E5C592C31E0AE141004C530D /* ProgressCell.h */,
+				E5C592C41E0AE141004C530D /* ProgressCell.m */,
+				E5C592C51E0AE141004C530D /* ProgressCell.xib */,
+			);
+			path = ProgressCell;
+			sourceTree = "<group>";
+		};
+		E5C592C21E0AE127004C530D /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				E5C592C81E0AE172004C530D /* UserCell.h */,
+				E5C592C91E0AE172004C530D /* UserCell.m */,
+				E5C592CA1E0AE172004C530D /* UserCell.xib */,
+			);
+			path = UserCell;
+			sourceTree = "<group>";
+		};
+		E5C592D01E0AEAA2004C530D /* UsersController */ = {
+			isa = PBXGroup;
+			children = (
+				E5C592D11E0AEAC1004C530D /* UsersController.h */,
+				E5C592D21E0AEAC1004C530D /* UsersController.m */,
+			);
+			path = UsersController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,7 +549,9 @@
 			files = (
 				E57D57701DFA945900C8C237 /* LaunchScreen.storyboard in Resources */,
 				E57D576D1DFA945900C8C237 /* Assets.xcassets in Resources */,
+				E5C592C71E0AE141004C530D /* ProgressCell.xib in Resources */,
 				E57D576B1DFA945900C8C237 /* Main.storyboard in Resources */,
+				E5C592CC1E0AE172004C530D /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,10 +580,13 @@
 			files = (
 				E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
+				E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */,
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
+				E5C592CB1E0AE172004C530D /* UserCell.m in Sources */,
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,
 				E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */,
+				E5C592C61E0AE141004C530D /* ProgressCell.m in Sources */,
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
 				E52D8FC41E02B47500C7AF6E /* TableViewHandler.m in Sources */,
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
@@ -560,6 +615,7 @@
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
 				E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */,
 				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,
+				E5C592CF1E0AE3AF004C530D /* SearchingHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
