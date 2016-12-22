@@ -1,21 +1,21 @@
 //
-//  ReversedTableViewHandler.m
+//  ReversedEdgeDownloader.m
 //  GuideObjC
 //
-//  Created by LuzanovRoman on 19.12.16.
+//  Created by LuzanovRoman on 22.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "ReversedTableViewHandler.h"
+#import "ReversedEdgeDownloader.h"
 
-@implementation ReversedTableViewHandler
+@implementation ReversedEdgeDownloader
 
 - (NSObject *)last {
     return self.graphObjects.firstObject;
 }
 
 - (void)addObjects:(NSArray *)objects totalCount:(NSInteger)count {
-    if (objects) {
+    if (objects && self.tableView) {
         NSMutableArray *indexPaths = [NSMutableArray array];
         
         for (NSInteger i = 0; i < objects.count; i++) {
@@ -34,7 +34,7 @@
 }
 
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index {
-    if (object) {
+    if (object && self.tableView) {
         NSInteger insertIndex = self.graphObjects.count - index;
         self.totalCount += 1;
         [self.graphObjects insertObject:object atIndex:insertIndex];

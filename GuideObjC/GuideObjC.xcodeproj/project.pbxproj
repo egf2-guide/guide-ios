@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50A89C31E0BCF4C00230613 /* ReversedEdgeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */; };
 		E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577321E0121BF0068D28D /* SimpleFileManager.m */; };
 		E52577361E0127290068D28D /* FeedPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577351E0127290068D28D /* FeedPostCell.m */; };
 		E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577381E012A6B0068D28D /* FeedProgressCell.m */; };
@@ -19,7 +20,6 @@
 		E52865741DFE752F00D50A0D /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528656B1DFE752F00D50A0D /* RegisterController.m */; };
 		E52865751DFE752F00D50A0D /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528656E1DFE752F00D50A0D /* UserController.m */; };
 		E52865781DFE75D800D50A0D /* FeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865771DFE75D800D50A0D /* FeedController.m */; };
-		E528657B1DFE761400D50A0D /* FollowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528657A1DFE761400D50A0D /* FollowsController.m */; };
 		E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E528657E1DFE766F00D50A0D /* BaseTableViewController.m */; };
 		E52865821DFE76C100D50A0D /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865811DFE76C100D50A0D /* MoreController.m */; };
 		E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865841DFE76DF00D50A0D /* MoreCell.m */; };
@@ -27,7 +27,6 @@
 		E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55415EA1E03F6870024B3A2 /* FileImageView.m */; };
 		E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EA4ED1DFE93B100C611BD /* NewPostController.m */; };
 		E564DF731E07EE0D0073677E /* OCSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF721E07EE0D0073677E /* OCSeparatorView.m */; };
-		E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF751E07F6290073677E /* ReversedTableViewHandler.m */; };
 		E564DF7A1E07F8920073677E /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF791E07F8920073677E /* PostController.m */; };
 		E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7C1E07F8B60073677E /* CommentCell.m */; };
 		E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7F1E07F8C90073677E /* NextCommentsCell.m */; };
@@ -71,6 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E50A89C11E0BCF4C00230613 /* ReversedEdgeDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReversedEdgeDownloader.h; sourceTree = "<group>"; };
+		E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReversedEdgeDownloader.m; sourceTree = "<group>"; };
 		E52577311E0121BF0068D28D /* SimpleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFileManager.h; sourceTree = "<group>"; };
 		E52577321E0121BF0068D28D /* SimpleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFileManager.m; sourceTree = "<group>"; };
 		E52577341E0127290068D28D /* FeedPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPostCell.h; sourceTree = "<group>"; };
@@ -95,8 +96,6 @@
 		E528656E1DFE752F00D50A0D /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
 		E52865761DFE75D800D50A0D /* FeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedController.h; sourceTree = "<group>"; };
 		E52865771DFE75D800D50A0D /* FeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedController.m; sourceTree = "<group>"; };
-		E52865791DFE761400D50A0D /* FollowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowsController.h; sourceTree = "<group>"; };
-		E528657A1DFE761400D50A0D /* FollowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowsController.m; sourceTree = "<group>"; };
 		E528657D1DFE766F00D50A0D /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		E528657E1DFE766F00D50A0D /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		E52865801DFE76C100D50A0D /* MoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreController.h; sourceTree = "<group>"; };
@@ -111,8 +110,6 @@
 		E55EA4ED1DFE93B100C611BD /* NewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostController.m; sourceTree = "<group>"; };
 		E564DF711E07EE0D0073677E /* OCSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSeparatorView.h; sourceTree = "<group>"; };
 		E564DF721E07EE0D0073677E /* OCSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSeparatorView.m; sourceTree = "<group>"; };
-		E564DF741E07F6290073677E /* ReversedTableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReversedTableViewHandler.h; sourceTree = "<group>"; };
-		E564DF751E07F6290073677E /* ReversedTableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReversedTableViewHandler.m; sourceTree = "<group>"; };
 		E564DF781E07F8920073677E /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
 		E564DF791E07F8920073677E /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
 		E564DF7B1E07F8B60073677E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -222,15 +219,6 @@
 			path = FeedController;
 			sourceTree = "<group>";
 		};
-		E528655E1DFE752F00D50A0D /* FollowsController */ = {
-			isa = PBXGroup;
-			children = (
-				E52865791DFE761400D50A0D /* FollowsController.h */,
-				E528657A1DFE761400D50A0D /* FollowsController.m */,
-			);
-			path = FollowsController;
-			sourceTree = "<group>";
-		};
 		E528655F1DFE752F00D50A0D /* InitController */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,12 +282,12 @@
 				E5681F561E0BAA340081B362 /* BaseDownloader.m */,
 				E5681F581E0BAB070081B362 /* EdgeDownloader.h */,
 				E5681F591E0BAB070081B362 /* EdgeDownloader.m */,
+				E50A89C11E0BCF4C00230613 /* ReversedEdgeDownloader.h */,
+				E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */,
 				E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */,
 				E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */,
 				E5C592CD1E0AE3AF004C530D /* SearchingHandler.h */,
 				E5C592CE1E0AE3AF004C530D /* SearchingHandler.m */,
-				E564DF741E07F6290073677E /* ReversedTableViewHandler.h */,
-				E564DF751E07F6290073677E /* ReversedTableViewHandler.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -411,7 +399,6 @@
 				E528655A1DFE752F00D50A0D /* BaseViewController */,
 				E5651EAF1DFFC48F004D09F7 /* ProgressController */,
 				E528655D1DFE752F00D50A0D /* FeedController */,
-				E528655E1DFE752F00D50A0D /* FollowsController */,
 				E528655F1DFE752F00D50A0D /* InitController */,
 				E52865621DFE752F00D50A0D /* LoginController */,
 				E52865681DFE752F00D50A0D /* MoreController */,
@@ -607,11 +594,11 @@
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
 				E564DF7A1E07F8920073677E /* PostController.m in Sources */,
 				E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */,
-				E528657B1DFE761400D50A0D /* FollowsController.m in Sources */,
 				E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */,
 				E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */,
 				E526673E1E08FEDD00A42337 /* ChangePasswordController.m in Sources */,
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
+				E50A89C31E0BCF4C00230613 /* ReversedEdgeDownloader.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,
 				E52577361E0127290068D28D /* FeedPostCell.m in Sources */,
 				E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */,
@@ -623,7 +610,6 @@
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
 				E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
-				E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */,
 				E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */,
 				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,
 				E5C592CF1E0AE3AF004C530D /* SearchingHandler.m in Sources */,

@@ -8,7 +8,14 @@
 
 #import "BaseDownloader.h"
 
+@protocol EdgeDownloaderDelegate <NSObject>
+- (void)didInsertGraphObject:(NSObject *)graphObject;
+@end
+
 @interface EdgeDownloader : BaseDownloader
+@property (nonatomic, weak) id<EdgeDownloaderDelegate> delegate;
+@property (nonatomic, assign) NSInteger pageCount;
+
 - (id)initWithSource:(NSString *)source edge:(NSString *)edge expand:(NSArray *)expand;
 - (BOOL)noAnyData;
 @end

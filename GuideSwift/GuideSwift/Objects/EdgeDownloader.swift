@@ -9,12 +9,26 @@
 import UIKit
 import EGF2
 
+@objc protocol EdgeDownloaderDelegate {
+    func didInsert(graphObject: NSObject)
+}
+
 class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     
-    fileprivate var isDownloading = false
+    weak var delegate: EdgeDownloaderDelegate?
+    
+    fileprivate var downloading = false
     fileprivate var expand: [String]
     fileprivate var source: String
     fileprivate var edge: String
+    
+    var pageCount = 25
+    
+    var isDownloading: Bool {
+        get {
+            return downloading
+        }
+    }
     
     var noAnyData: Bool {
         get {
@@ -44,7 +58,9 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         guard let objectId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
 
         Graph.refreshObject(withId: objectId, expand: expand) { (object, error) in
-            self.insert(object: object as? T, at: 0)
+            guard let graphObject = object else { return }
+            self.insert(object: graphObject as? T, at: 0)
+            self.delegate?.didInsert(graphObject: graphObject)
         }
     }
     
@@ -87,22 +103,22 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     
     // MARK:- Override
     override func refreshList() {
-        if isDownloading { return }
+        if downloading { return }
         
-        isDownloading = true
-        Graph.refreshObjects(forSource: source, edge: edge, after: nil, expand: expand) { (objects, count, error) in
-            self.isDownloading = false
+        downloading = true
+        Graph.refreshObjects(forSource: source, edge: edge, after: nil, expand: expand, count: pageCount) { (objects, count, error) in
+            self.downloading = false
             self.tableView?.refreshControl?.endRefreshing()
             self.set(objects: objects as? [T], totalCount: count)
         }
     }
     
     override func getNextPage() {
-        if isDownloading { return }
+        if downloading { return }
         
-        isDownloading = true
-        Graph.objects(forSource: source, edge: edge, after: graphObjects.last?.value(forKey: "id") as? String, expand: expand) { (objects, count, error) in
-            self.isDownloading = false
+        downloading = true
+        Graph.objects(forSource: source, edge: edge, after: self.last?.value(forKey: "id") as? String, expand: expand, count: pageCount) { (objects, count, error) in
+            self.downloading = false
             self.add(objects: objects as? [T], totalCount: count)
         }
     }

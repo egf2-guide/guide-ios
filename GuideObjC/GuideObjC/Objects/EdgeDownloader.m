@@ -13,7 +13,7 @@
 @property (nonatomic, retain) NSString *edge;
 @property (nonatomic, retain) NSString *source;
 @property (nonatomic, retain) NSArray *expand;
-@property (nonatomic, assign) BOOL isDownloading;
+@property (nonatomic, assign) BOOL downloading;
 @end
 
 @implementation EdgeDownloader
@@ -22,11 +22,16 @@
     return self.totalCount == -1;
 }
 
+- (BOOL)isDownloading {
+    return _downloading;
+}
+
 - (id)initWithSource:(NSString *)source edge:(NSString *)edge expand:(NSArray *)expand {
     self = [self init];
     self.expand = expand;
     self.source = source;
     self.edge = edge;
+    self.pageCount = 25;
     [self addObservers];
     return self;
 }
@@ -46,7 +51,10 @@
     
     if (objectId) {
         [[Graph shared] refreshObjectWithId:objectId expand:_expand completion:^(NSObject * object, NSError * error) {
-            [self insertObject:object atIndex:0];
+            if (object) {
+                [self insertObject:object atIndex:0];
+                [self.delegate didInsertGraphObject:object];
+            }
         }];
     }
 }
@@ -91,12 +99,12 @@
 
 // MARK:- Override
 - (void)refreshList {
-    if (_isDownloading) {
+    if (_downloading) {
         return;
     }
-    _isDownloading = true;
-    [[Graph shared] refreshObjectsForSource:_source edge:_edge after:nil expand:_expand count:1 completion:^(NSArray * objects, NSInteger count, NSError * error) {
-        _isDownloading = false;
+    _downloading = true;
+    [[Graph shared] refreshObjectsForSource:_source edge:_edge after:nil expand:_expand count:_pageCount completion:^(NSArray * objects, NSInteger count, NSError * error) {
+        _downloading = false;
         
         [self setObjects:objects totalCount:count];
         [self.tableView.refreshControl endRefreshing];
@@ -104,12 +112,12 @@
 }
 
 - (void)getNextPage {
-    if (_isDownloading) {
+    if (_downloading) {
         return;
     }
-    _isDownloading = true;
-    [[Graph shared] objectsForSource:_source edge:_edge after:[self.last valueForKey:@"id"] expand:_expand count:1 completion:^(NSArray * objects, NSInteger count, NSError * error) {
-        _isDownloading = false;
+    _downloading = true;
+    [[Graph shared] objectsForSource:_source edge:_edge after:[self.last valueForKey:@"id"] expand:_expand count:_pageCount completion:^(NSArray * objects, NSInteger count, NSError * error) {
+        _downloading = false;
         
         [self addObjects:objects totalCount:count];
     }];
