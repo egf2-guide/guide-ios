@@ -29,6 +29,8 @@
 		E564DF6E1E07B53D0073677E /* ReversedTableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564DF6D1E07B53D0073677E /* ReversedTableViewHandler.swift */; };
 		E564DF701E07CDC80073677E /* NextCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E564DF6F1E07CDC80073677E /* NextCommentsCell.swift */; };
 		E5651EAC1DFFBE39004D09F7 /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5651EAB1DFFBE39004D09F7 /* ProgressController.swift */; };
+		E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F511E0B97110081B362 /* EdgeDownloader.swift */; };
+		E5681F541E0B982C0081B362 /* BaseDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F531E0B982C0081B362 /* BaseDownloader.swift */; };
 		E574388B1E0A59CD00CA6C45 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574388A1E0A59CD00CA6C45 /* ProgressCell.swift */; };
 		E574388D1E0A5A8E00CA6C45 /* ProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E574388C1E0A5A8E00CA6C45 /* ProgressCell.xib */; };
 		E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57421DFA943300C8C237 /* AppDelegate.swift */; };
@@ -89,6 +91,8 @@
 		E564DF6D1E07B53D0073677E /* ReversedTableViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversedTableViewHandler.swift; sourceTree = "<group>"; };
 		E564DF6F1E07CDC80073677E /* NextCommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextCommentsCell.swift; sourceTree = "<group>"; };
 		E5651EAB1DFFBE39004D09F7 /* ProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
+		E5681F511E0B97110081B362 /* EdgeDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeDownloader.swift; sourceTree = "<group>"; };
+		E5681F531E0B982C0081B362 /* BaseDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDownloader.swift; sourceTree = "<group>"; };
 		E574388A1E0A59CD00CA6C45 /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		E574388C1E0A5A8E00CA6C45 /* ProgressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressCell.xib; sourceTree = "<group>"; };
 		E57D573F1DFA943300C8C237 /* GuideSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,8 @@
 		E52D8FBE1E02A7FE00C7AF6E /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				E5681F531E0B982C0081B362 /* BaseDownloader.swift */,
+				E5681F511E0B97110081B362 /* EdgeDownloader.swift */,
 				E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */,
 				E5EB0B911E0A7C38000AB70A /* SearchingHandler.swift */,
 				E564DF6D1E07B53D0073677E /* ReversedTableViewHandler.swift */,
@@ -524,7 +530,9 @@
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
 				E564DF701E07CDC80073677E /* NextCommentsCell.swift in Sources */,
 				E5EB0B8E1E0A6586000AB70A /* UserCell.swift in Sources */,
+				E5681F541E0B982C0081B362 /* BaseDownloader.swift in Sources */,
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
+				E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */,
 				E52827C01E00687300A39792 /* BaseTableController.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,
 			);

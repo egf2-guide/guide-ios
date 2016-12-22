@@ -10,17 +10,13 @@
 #import "FeedProgressCell.h"
 #import "EGFHumanName+Additions.h"
 #import "SimpleFileManager.h"
-#import "TableViewHandler.h"
+#import "EdgeDownloader.h"
 #import "PostController.h"
 #import "FeedPostCell.h"
 #import "EGF2.h"
 
 @interface FeedController ()
-@property (retain, nonatomic) TableViewHandler *posts;
-@property (retain, nonatomic) NSString *currentUserId;
-@property (assign, nonatomic) BOOL isDownloading;
-@property (retain, nonatomic) NSArray * expand;
-@property (retain, nonatomic) NSString * edge;
+@property (retain, nonatomic) EdgeDownloader *posts;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @end
 
@@ -28,65 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _posts = [[TableViewHandler alloc] initWithTableView:self.tableView];
     _cellHeights = [NSMutableDictionary dictionary];
-    _expand = @[@"creator",@"image"];
-    _edge = @"posts";
     
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
-            _currentUserId = ((EGFUser *)object).id;
-            [self addObservers];
-            [self getNextPage];
+            _posts = [[EdgeDownloader alloc] initWithSource:[object valueForKey:@"id"] edge:@"posts" expand:@[@"creator",@"image"]];
+            _posts.tableView = self.tableView;
+            [_posts getNextPage];
         }
-    }];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)addObservers {
-    if (_currentUserId) {
-        NSObject * object = [self.graph notificationObjectForSource:_currentUserId andEdge:_edge];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeDidCreate:) name:EGF2NotificationEdgeCreated object:object];
-    }
-}
-
-- (void)edgeDidCreate:(NSNotification *)notification {
-    NSString * postId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
-    
-    if (postId) {
-        // It's better to refresh object because 'post.imageObject.dimensions' can be nil right after creation of image
-        [self.graph refreshObjectWithId:postId expand:_expand completion:^(NSObject * object, NSError * error) {
-            [_posts insertObject:object atIndex:0];
-        }];
-    }
-}
-
-- (void)refreshPosts {
-    if (!_currentUserId || _isDownloading) {
-        return;
-    }
-    _isDownloading = true;
-    [self.graph refreshObjectsForSource:_currentUserId edge:_edge after:nil expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
-        _isDownloading = false;
-        
-        [_posts setObjects:objects totalCount:count];
-        [self.refreshControl endRefreshing];
-    }];
-    
-}
-
-- (void)getNextPage {
-    if (!_currentUserId || _isDownloading) {
-        return;
-    }
-    _isDownloading = true;
-    [self.graph objectsForSource:_currentUserId edge:_edge after:[_posts.last valueForKey:@"id"] expand:_expand completion:^(NSArray * objects, NSInteger count, NSError * error) {
-        _isDownloading = false;
-        
-        [_posts addObjects:objects totalCount:count];
     }];
 }
 
@@ -101,7 +46,7 @@
 // MARK:- UITableViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.refreshControl.isRefreshing) {
-        [self refreshPosts];
+        [_posts refreshList];
     }
 }
 
@@ -122,8 +67,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && ![_posts isDownloaded] && _isDownloading == false) {
-        [self getNextPage];
+    if (indexPath.section == 1 && ![_posts isDownloaded]) {
+        [_posts getNextPage];
     }
 }
 

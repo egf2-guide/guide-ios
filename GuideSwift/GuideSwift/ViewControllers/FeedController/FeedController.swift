@@ -11,85 +11,36 @@ import EGF2
 
 class FeedController: BaseTableController {
 
-    fileprivate var posts: TableViewHandler<EGFPost>!
-    fileprivate var currentUserId: String?
-    fileprivate var isDownloading = false
-    fileprivate let expand = ["creator","image"]
-    fileprivate let edge = "posts"
+    fileprivate var posts: EdgeDownloader<EGFPost>?
     fileprivate var cellHeights = [String: CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        posts = TableViewHandler(withTableView: tableView)
-
         Graph.userObject { (object, error) in
-            self.currentUserId = (object as? EGFUser)?.id
-            self.addObservers()
-            self.getNextPage()
-        }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    fileprivate func addObservers() {
-        guard let source = currentUserId else { return }
-        let object = Graph.notificationObject(forSource: source, andEdge: edge)
-        NotificationCenter.default.addObserver(self, selector: #selector(edgeDidCreate(notification:)), name: .EGF2EdgeCreated, object: object)
-    }
-    
-    func edgeDidCreate(notification: NSNotification) {
-        guard let postId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
-        
-        // It's better to refresh object because 'post.imageObject.dimensions' can be nil right after creation of image
-        Graph.refreshObject(withId: postId, expand: expand) { (object, error) in
-            self.posts.insert(object: object as? EGFPost, at: 0)
-        }
-    }
-    
-    fileprivate func refreshPosts() {
-        guard let source = currentUserId else { return }
-        if isDownloading { return }
-        
-        isDownloading = true
-        Graph.refreshObjects(forSource: source, edge: edge, after: nil, expand: expand) { (objects, count, error) in
-            self.isDownloading = false
-            self.refreshControl?.endRefreshing()
-            self.posts.set(objects: objects as? [EGFPost], totalCount: count)
-        }
-    }
-    
-    fileprivate func getNextPage() {
-        guard let source = currentUserId else { return }
-        if isDownloading { return }
-        
-        isDownloading = true
-        Graph.objects(forSource: source, edge: edge, after: posts.last?.id, expand: expand) { (objects, count, error) in
-            self.isDownloading = false
-            self.posts.add(objects: objects as? [EGFPost], totalCount: count)
+            guard let user = object as? EGFUser, let userId = user.id else { return }
+            self.posts = EdgeDownloader(withSource: userId, edge: "posts", expand: ["creator","image"])
+            self.posts?.tableView = self.tableView
+            self.posts?.getNextPage()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let postController = segue.destination as? PostController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            postController.currentPost = posts[indexPath.row]
+            postController.currentPost = posts?[indexPath.row]
         }
     }
     
     // MARK:- UITableViewDelegate
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let control = refreshControl, control.isRefreshing == true {
-            refreshPosts()
+            posts?.refreshList()
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            let post = posts[indexPath.row]
-            
-            if let postId = post.id {
+            if let post = posts?[indexPath.row], let postId = post.id {
                 // Check if we already have the value
                 if let value = cellHeights[postId] { return value }
                 
@@ -102,8 +53,9 @@ class FeedController: BaseTableController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && !posts.isDownloaded && isDownloading == false {
-            getNextPage()
+        guard let thePosts = posts else { return }
+        if indexPath.section == 1 && !thePosts.isDownloaded {
+            thePosts.getNextPage()
         }
     }
     
@@ -113,16 +65,16 @@ class FeedController: BaseTableController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? posts.count : 1
+        return section == 0 ? (posts?.count ?? 0) : 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProgressCell") as! FeedProgressCell
-            cell.indicatorIsHidden = posts.isDownloaded
+            cell.indicatorIsHidden = posts?.isDownloaded ?? false
             return cell
         }
-        let post = posts[indexPath.row]
+        let post = posts![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! FeedPostCell
         cell.creatorNameLabel.text = post.creatorObject?.name?.fullName()
         cell.descriptionLabel.text = post.desc

@@ -28,7 +28,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // TODO remove
-    self.tabBarController.selectedIndex = 1;
+//    self.tabBarController.selectedIndex = 1;
 }
 
 - (void)viewDidLoad {

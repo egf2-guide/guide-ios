@@ -32,6 +32,8 @@
 		E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7C1E07F8B60073677E /* CommentCell.m */; };
 		E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7F1E07F8C90073677E /* NextCommentsCell.m */; };
 		E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5651EB11DFFC49E004D09F7 /* ProgressController.m */; };
+		E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5681F561E0BAA340081B362 /* BaseDownloader.m */; };
+		E5681F5A1E0BAB070081B362 /* EdgeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5681F591E0BAB070081B362 /* EdgeDownloader.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
 		E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57641DFA945900C8C237 /* AppDelegate.m */; };
 		E57D576B1DFA945900C8C237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D57691DFA945900C8C237 /* Main.storyboard */; };
@@ -119,6 +121,10 @@
 		E564DF7F1E07F8C90073677E /* NextCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextCommentsCell.m; sourceTree = "<group>"; };
 		E5651EB01DFFC49E004D09F7 /* ProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressController.h; sourceTree = "<group>"; };
 		E5651EB11DFFC49E004D09F7 /* ProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressController.m; sourceTree = "<group>"; };
+		E5681F551E0BAA340081B362 /* BaseDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDownloader.h; sourceTree = "<group>"; };
+		E5681F561E0BAA340081B362 /* BaseDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDownloader.m; sourceTree = "<group>"; };
+		E5681F581E0BAB070081B362 /* EdgeDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeDownloader.h; sourceTree = "<group>"; };
+		E5681F591E0BAB070081B362 /* EdgeDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EdgeDownloader.m; sourceTree = "<group>"; };
 		E57D575D1DFA945900C8C237 /* GuideObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D57611DFA945900C8C237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E57D57631DFA945900C8C237 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -284,6 +290,10 @@
 		E52D8FC11E02B46800C7AF6E /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				E5681F551E0BAA340081B362 /* BaseDownloader.h */,
+				E5681F561E0BAA340081B362 /* BaseDownloader.m */,
+				E5681F581E0BAB070081B362 /* EdgeDownloader.h */,
+				E5681F591E0BAB070081B362 /* EdgeDownloader.m */,
 				E52D8FC21E02B47500C7AF6E /* TableViewHandler.h */,
 				E52D8FC31E02B47500C7AF6E /* TableViewHandler.m */,
 				E5C592CD1E0AE3AF004C530D /* SearchingHandler.h */,
@@ -614,8 +624,10 @@
 				E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
 				E564DF761E07F6290073677E /* ReversedTableViewHandler.m in Sources */,
+				E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */,
 				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,
 				E5C592CF1E0AE3AF004C530D /* SearchingHandler.m in Sources */,
+				E5681F5A1E0BAB070081B362 /* EdgeDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
