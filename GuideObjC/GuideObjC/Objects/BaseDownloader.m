@@ -20,6 +20,15 @@
     return self;
 }
 
+- (void)setTableView:(UITableView *)tableView {
+    _tableView = tableView;
+    
+    if (tableView) {
+        [tableView reloadData];
+        [tableView.refreshControl endRefreshing];
+    }
+}
+
 - (NSObject *)objectAtIndex:(NSInteger)index {
     return _graphObjects[index];
 }

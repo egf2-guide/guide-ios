@@ -7,9 +7,8 @@
 //
 
 #import "BaseTableViewController.h"
-#import "SearchingHandler.h"
 #import "UserCell.h"
 
-@interface UsersController : BaseTableViewController <SearchingHandlerDelegate, UserCellDelegate>
+@interface UsersController : BaseTableViewController <UserCellDelegate, UISearchBarDelegate>
 
 @end

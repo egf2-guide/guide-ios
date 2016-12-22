@@ -1185,7 +1185,16 @@
                             <outlet property="delegate" destination="U46-MP-rNy" id="kI0-A0-Ah9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="IFg-mx-XSx"/>
+                    <navigationItem key="navigationItem" title="Users" id="IFg-mx-XSx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="jri-D5-TYR">
+                            <connections>
+                                <action selector="beginSearch:" destination="U46-MP-rNy" id="85g-A4-yhg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchButton" destination="jri-D5-TYR" id="Zsa-zx-vwT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDs-rE-XOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

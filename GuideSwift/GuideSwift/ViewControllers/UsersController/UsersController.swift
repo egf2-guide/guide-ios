@@ -9,20 +9,14 @@
 import UIKit
 import EGF2
 
-class UsersController: BaseTableController, SearchingHandlerDelegate, UserCellDelegate {
+class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegate {
     
-    fileprivate var isSearching = false
-    fileprivate var searchingHandler: SearchingHandler<EGFUser>!
-    fileprivate var follows: TableViewHandler<EGFUser>!
-    fileprivate var currentUserId: String?
-    fileprivate var isDownloading = false
-    fileprivate let edge = "follows"
+    @IBOutlet var searchButton: UIBarButtonItem!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // TODO remove
-        tabBarController?.selectedIndex = 1
-    }
+    fileprivate var activeDownloader: BaseDownloader<EGFUser>?
+    fileprivate var searching: SearchDownloader<EGFUser>?
+    fileprivate var follows: EdgeDownloader<EGFUser>?
+    fileprivate let searchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,48 +26,37 @@ class UsersController: BaseTableController, SearchingHandlerDelegate, UserCellDe
         
         let parameters = EGF2SearchParameters(withObject: "user")
         parameters.fields = ["first_name","last_name"]
-        
-        searchingHandler = SearchingHandler(withTableViewController: self, parameters: parameters)
-        follows = TableViewHandler(withTableView: tableView)
+        searching = SearchDownloader(withParameters: parameters)
+
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = UIColor.hexColor(0x5E66B1)
         
         Graph.userObject { (object, error) in
-            self.currentUserId = (object as? EGFUser)?.id
-            self.getNextPage()
+            guard let user = object as? EGFUser, let userId = user.id else { return }
+            self.follows = EdgeDownloader(withSource: userId, edge: "follows", expand: [])
+            self.follows?.tableView = self.tableView
+            self.follows?.getNextPage()
+            self.activeDownloader = self.follows
         }
     }
     
-    fileprivate func refreshList() {
-        if isSearching {
-            searchingHandler.refreshList()
-        }
-        else {
-            guard let source = currentUserId else { return }
-            if isDownloading { return }
-            
-            isDownloading = true
-            Graph.refreshObjects(forSource: source, edge: edge) { (objects, count, error) in
-                self.isDownloading = false
-                
-                if !self.isSearching {
-                    self.refreshControl?.endRefreshing()
-                    self.follows.set(objects: objects as? [EGFUser], totalCount: count)
-                }
-            }
-        }
+    @IBAction func beginSearch(_ sender: AnyObject) {
+        activeDownloader = searching
+        activeDownloader?.tableView = tableView
+        follows?.tableView = nil
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView = searchBar
+        searchBar.becomeFirstResponder()
     }
     
-    fileprivate func getNextPage() {
-        guard let source = currentUserId else { return }
-        if isDownloading { return }
-        
-        isDownloading = true
-        Graph.objects(forSource: source, edge: edge, after: follows.last?.id) { (objects, count, error) in
-            self.isDownloading = false
-            
-            if !self.isSearching {
-                self.follows.add(objects: objects as? [EGFUser], totalCount: count)
-            }
-        }
+    func endSearch() {
+        activeDownloader = follows
+        activeDownloader?.tableView = tableView
+        searching?.tableView = nil
+        searchBar.text = nil
+        navigationItem.rightBarButtonItem = searchButton
+        navigationItem.titleView = nil
     }
     
     // MARK:- UserCellDelegate
@@ -81,34 +64,31 @@ class UsersController: BaseTableController, SearchingHandlerDelegate, UserCellDe
         // TODO
     }
     
-    // MARK:- SearchingHandlerDelegate
-    func searchWillBegin() {
-        isSearching = true
+    // MARK:- UISearchBarDelegate
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        endSearch()
     }
     
-    func searchDidEnd() {
-        isSearching = false
-        tableView.reloadData()
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, text.isEmpty {
+            endSearch()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searching?.showObjects(withQuery: searchText)
     }
     
     // MARK:- UITableViewDelegate
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if let control = refreshControl, control.isRefreshing == true {
-            refreshList()
-        }
+        guard let control = refreshControl, control.isRefreshing == true else { return }
+        activeDownloader?.refreshList()
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            if isSearching {
-                if !searchingHandler.isDownloaded {
-                    searchingHandler.getNextPage()
-                }
-            }
-            else {
-                if !follows.isDownloaded && !isDownloading {
-                    getNextPage()
-                }
+            if let downloader = activeDownloader, !downloader.isDownloaded {
+                downloader.getNextPage()
             }
         }
     }
@@ -120,7 +100,7 @@ class UsersController: BaseTableController, SearchingHandlerDelegate, UserCellDe
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return isSearching ? searchingHandler.count : follows.count
+            return activeDownloader?.count ?? 0
         }
         return 1
     }
@@ -128,11 +108,11 @@ class UsersController: BaseTableController, SearchingHandlerDelegate, UserCellDe
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProgressCell") as! ProgressCell
-            cell.indicatorIsHidden = tableView.refreshControl!.isRefreshing || (isSearching ? searchingHandler.isDownloaded : follows.isDownloaded)
+            cell.indicatorIsHidden = tableView.refreshControl!.isRefreshing || (activeDownloader?.isDownloaded ?? true)
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
-        cell.user = isSearching ? searchingHandler[indexPath.row] : follows[indexPath.row]
+        cell.user = activeDownloader![indexPath.row]
         cell.delegate = self
         return cell
     }

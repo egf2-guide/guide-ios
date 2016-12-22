@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */; };
 		E525772F1E010E720068D28D /* FeedProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E525772E1E010E720068D28D /* FeedProgressCell.swift */; };
 		E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52667391E08F73400A42337 /* ChangePasswordController.swift */; };
 		E52827C01E00687300A39792 /* BaseTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52827BF1E00687300A39792 /* BaseTableController.swift */; };
@@ -18,7 +19,6 @@
 		E528659C1DFE7CBD00D50A0D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865931DFE7CBD00D50A0D /* LoginController.swift */; };
 		E528659E1DFE7CBD00D50A0D /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865971DFE7CBD00D50A0D /* RegisterController.swift */; };
 		E528659F1DFE7CBD00D50A0D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52865991DFE7CBD00D50A0D /* UserController.swift */; };
-		E52D8FC01E02A80500C7AF6E /* TableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */; };
 		E547C1061E090F38008CB362 /* RestorePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547C1051E090F38008CB362 /* RestorePasswordController.swift */; };
 		E547C1081E090F44008CB362 /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547C1071E090F44008CB362 /* ResetPasswordController.swift */; };
 		E55415E81E03D9A10024B3A2 /* FileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55415E71E03D9A10024B3A2 /* FileImageView.swift */; };
@@ -50,7 +50,6 @@
 		E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48D981E04496100E07571 /* SeparatorView.swift */; };
 		E5EB0B8E1E0A6586000AB70A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB0B8D1E0A6586000AB70A /* UserCell.swift */; };
 		E5EB0B901E0A65B6000AB70A /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */; };
-		E5EB0B921E0A7C38000AB70A /* SearchingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB0B911E0A7C38000AB70A /* SearchingHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDownloader.swift; sourceTree = "<group>"; };
 		E525772E1E010E720068D28D /* FeedProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedProgressCell.swift; sourceTree = "<group>"; };
 		E52667391E08F73400A42337 /* ChangePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		E52827BF1E00687300A39792 /* BaseTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableController.swift; sourceTree = "<group>"; };
@@ -79,7 +79,6 @@
 		E52865931DFE7CBD00D50A0D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E52865971DFE7CBD00D50A0D /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		E52865991DFE7CBD00D50A0D /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHandler.swift; sourceTree = "<group>"; };
 		E547C1051E090F38008CB362 /* RestorePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestorePasswordController.swift; sourceTree = "<group>"; };
 		E547C1071E090F44008CB362 /* ResetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		E55415E71E03D9A10024B3A2 /* FileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileImageView.swift; sourceTree = "<group>"; };
@@ -113,7 +112,6 @@
 		E5D48D981E04496100E07571 /* SeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		E5EB0B8D1E0A6586000AB70A /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
-		E5EB0B911E0A7C38000AB70A /* SearchingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchingHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,9 +206,8 @@
 			children = (
 				E5681F531E0B982C0081B362 /* BaseDownloader.swift */,
 				E5681F511E0B97110081B362 /* EdgeDownloader.swift */,
+				E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */,
 				E5681F5B1E0BB5740081B362 /* ReversedEdgeDownloader.swift */,
-				E52D8FBF1E02A80500C7AF6E /* TableViewHandler.swift */,
-				E5EB0B911E0A7C38000AB70A /* SearchingHandler.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -512,12 +509,11 @@
 				E547C1061E090F38008CB362 /* RestorePasswordController.swift in Sources */,
 				E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */,
 				E57D57861DFA960500C8C237 /* EGF2.swift in Sources */,
-				E52D8FC01E02A80500C7AF6E /* TableViewHandler.swift in Sources */,
-				E5EB0B921E0A7C38000AB70A /* SearchingHandler.swift in Sources */,
 				E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */,
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
 				E564DF701E07CDC80073677E /* NextCommentsCell.swift in Sources */,
 				E5EB0B8E1E0A6586000AB70A /* UserCell.swift in Sources */,
+				E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */,
 				E5681F541E0B982C0081B362 /* BaseDownloader.swift in Sources */,
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
 				E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */,

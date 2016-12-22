@@ -13,7 +13,14 @@ class BaseDownloader <T: NSObject>: NSObject {
     var graphObjects = [T]()
     var totalCount = -1
     
-    weak var tableView: UITableView?
+    weak var tableView: UITableView? {
+        didSet {
+            if let theTableView = tableView {
+                theTableView.reloadData()
+                theTableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
     
     subscript(index: Int) -> T {
         get {

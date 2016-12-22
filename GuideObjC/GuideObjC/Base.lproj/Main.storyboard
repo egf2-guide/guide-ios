@@ -1973,7 +1973,16 @@
                             <outlet property="delegate" destination="yQ5-jN-gBo" id="oA0-pA-jKJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Users" id="Bd5-UN-qp6"/>
+                    <navigationItem key="navigationItem" title="Users" id="Bd5-UN-qp6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="HXA-dL-Qnr">
+                            <connections>
+                                <action selector="beginSearch:" destination="yQ5-jN-gBo" id="KUX-iN-op4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchButton" destination="HXA-dL-Qnr" id="eql-ot-uuv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnO-Wl-Moc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
