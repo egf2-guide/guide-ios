@@ -17,6 +17,7 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
     fileprivate var searching: SearchDownloader<EGFUser>?
     fileprivate var follows: EdgeDownloader<EGFUser>?
     fileprivate let searchBar = UISearchBar()
+    fileprivate let edge = "follows"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
         
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
-            self.follows = EdgeDownloader(withSource: userId, edge: "follows", expand: [])
+            self.follows = EdgeDownloader(withSource: userId, edge: self.edge, expand: [])
             self.follows?.tableView = self.tableView
             self.follows?.getNextPage()
             self.activeDownloader = self.follows
@@ -60,8 +61,14 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
     }
     
     // MARK:- UserCellDelegate
-    func didTapFollowButton(withUser user: EGFUser) {
-        // TODO
+    func didTapFollowButton(withUser user: EGFUser, andCell cell: UserCell) {
+        if Follows.shared.followState(forUser: user) == .isFollow {
+            Follows.shared.unfollow(user: user) { cell.user = user }
+        }
+        else {
+            Follows.shared.follow(user: user) { cell.user = user }
+        }
+        cell.user = user
     }
     
     // MARK:- UISearchBarDelegate

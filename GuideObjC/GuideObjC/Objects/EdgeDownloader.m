@@ -43,10 +43,11 @@
 // MARK:- Private methods
 - (void)addObservers {
     NSObject * object = [[Graph shared] notificationObjectForSource:_source andEdge:_edge];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeDidCreate:) name:EGF2NotificationEdgeCreated object:object];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated object:object];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved object:object];
 }
 
-- (void)edgeDidCreate:(NSNotification *)notification {
+- (void)edgeCreated:(NSNotification *)notification {
     NSString * objectId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
     
     if (objectId) {
@@ -59,8 +60,21 @@
     }
 }
 
+- (void)edgeRemoved:(NSNotification *)notification {
+    NSString * objectId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
+    
+    if (objectId) {
+        for (NSObject *object in self.graphObjects) {
+            if ([[object valueForKey:@"id"] isEqual:objectId]) {
+                [self deleteObject:object];
+                break;
+            }
+        }
+    }
+}
+
 - (void)setObjects:(NSArray *)objects totalCount:(NSInteger)count {
-    if (objects && self.tableView) {
+    if (objects) {
         [self.graphObjects removeAllObjects];
         [self.tableView reloadData];
         [self addObjects:objects totalCount:count];
@@ -68,7 +82,7 @@
 }
 
 - (void)addObjects:(NSArray *)objects totalCount:(NSInteger)count {
-    if (objects && self.tableView) {
+    if (objects) {
         NSInteger start = self.graphObjects.count;
         NSInteger end = start + objects.count;
         NSMutableArray *indexPaths = [NSMutableArray array];
@@ -87,7 +101,7 @@
 }
 
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index {
-    if (object && self.tableView) {
+    if (object) {
         self.totalCount += 1;
         [self.graphObjects insertObject:object atIndex:index];
         
@@ -95,6 +109,20 @@
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView endUpdates];
     }
+}
+
+- (void)deleteObject:(NSObject *)object {
+    NSInteger index = [self.graphObjects indexOfObject:object];
+    
+    if (index == NSNotFound) {
+        return;
+    }
+    self.totalCount -= 1;
+    [self.graphObjects removeObjectAtIndex:index];
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 // MARK:- Override

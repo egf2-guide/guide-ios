@@ -7,6 +7,7 @@
 //
 
 #import "InitController.h"
+#import "Follows.h"
 
 @interface InitController ()
 
@@ -18,6 +19,7 @@
     [super viewDidAppear:animated];
     
     if (self.graph.isAuthorized) {
+        [[Follows shared] startObserving];
         [self performSegueWithIdentifier:@"ShowTabBar" sender:nil];
     }
     else {

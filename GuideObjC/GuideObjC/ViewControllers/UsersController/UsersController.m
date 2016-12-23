@@ -12,6 +12,7 @@
 #import "EdgeDownloader.h"
 #import "ProgressCell.h"
 #import "UserCell.h"
+#import "Follows.h"
 #import "EGF2.h"
 
 @interface UsersController ()
@@ -20,6 +21,7 @@
 @property (retain, nonatomic) SearchDownloader *searching;
 @property (retain, nonatomic) EdgeDownloader *follows;
 @property (retain, nonatomic) UISearchBar * searchBar;
+@property (retain, nonatomic) NSString * edge;
 @end
 
 @implementation UsersController
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _edge = @"follows";
     _searchBar = [[UISearchBar alloc] init];
     _searchBar.delegate = self;
     _searchBar.showsCancelButton = true;
@@ -42,7 +45,7 @@
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             EGFUser * user = (EGFUser *)object;
-            _follows = [[EdgeDownloader alloc] initWithSource:user.id edge:@"follows" expand:@[]];
+            _follows = [[EdgeDownloader alloc] initWithSource:user.id edge:_edge expand:@[]];
             _follows.tableView = self.tableView;
             [_follows getNextPage];
             _activeDownloader = _follows;
@@ -69,10 +72,20 @@
 }
                 
 // MARK:- UserCellDelegate
-- (void)didTapFollowButtonWithUser:(EGFUser *)user {
-    // TODO
+- (void)didTapFollowButtonWithUser:(EGFUser *)user andCell:(UserCell *)cell {
+    if ([[Follows shared] followStateForUser:user] == isFollow) {
+        [[Follows shared] unfollowUser:user completion:^{
+            cell.user = user;
+        }];
+    }
+    else {
+        [[Follows shared] followUser:user completion:^{
+            cell.user = user;
+        }];
+    }
+    cell.user = user;
 }
-            
+
 // MARK:- UISearchBarDelegate
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self endSearch];

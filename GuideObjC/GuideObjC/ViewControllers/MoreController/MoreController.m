@@ -9,6 +9,7 @@
 #import "MoreController.h"
 #import "ProgressController.h"
 #import "SimpleFileManager.h"
+#import "Follows.h"
 
 @interface MoreController ()
 
@@ -28,6 +29,7 @@
         [ProgressController show];
         [self.graph logoutWithCompletion:^(id object, NSError * error) {
             [ProgressController hide];
+            [[Follows shared] stopObserving];
             [[SimpleFileManager sharedInstance] deleteAllFiles];
             [self.tabBarController dismissViewControllerAnimated:true completion:nil];
         }];

@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EGF2.h"
 
+@class UserCell;
+
 @protocol UserCellDelegate <NSObject>
-- (void)didTapFollowButtonWithUser:(EGFUser *)user;
+- (void)didTapFollowButtonWithUser:(EGFUser *)user andCell:(UserCell *)cell;
 @end
 
 @interface UserCell : UITableViewCell

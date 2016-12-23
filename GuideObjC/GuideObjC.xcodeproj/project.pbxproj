@@ -45,6 +45,7 @@
 		E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57BE1DFA9C9C00C8C237 /* OCDesignableView.m */; };
 		E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */; };
 		E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57D61DFAB18500C8C237 /* EGF2.m */; };
+		E58FFE391E0D325C00E8EDB1 /* Follows.m in Sources */ = {isa = PBXBuildFile; fileRef = E58FFE381E0D325C00E8EDB1 /* Follows.m */; };
 		E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59123681E09264900AD98A3 /* RestorePasswordController.m */; };
 		E591236C1E09277000AD98A3 /* ResetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E591236B1E09277000AD98A3 /* ResetPasswordController.m */; };
 		E5C592C61E0AE141004C530D /* ProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592C41E0AE141004C530D /* ProgressCell.m */; };
@@ -141,6 +142,8 @@
 		E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDesignableButton.m; sourceTree = "<group>"; };
 		E57D57D51DFAB18500C8C237 /* EGF2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGF2.h; sourceTree = "<group>"; };
 		E57D57D61DFAB18500C8C237 /* EGF2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGF2.m; sourceTree = "<group>"; };
+		E58FFE371E0D325C00E8EDB1 /* Follows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Follows.h; sourceTree = "<group>"; };
+		E58FFE381E0D325C00E8EDB1 /* Follows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Follows.m; sourceTree = "<group>"; };
 		E59123671E09264900AD98A3 /* RestorePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestorePasswordController.h; sourceTree = "<group>"; };
 		E59123681E09264900AD98A3 /* RestorePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestorePasswordController.m; sourceTree = "<group>"; };
 		E591236A1E09277000AD98A3 /* ResetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordController.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 			children = (
 				E52577311E0121BF0068D28D /* SimpleFileManager.h */,
 				E52577321E0121BF0068D28D /* SimpleFileManager.m */,
+				E58FFE371E0D325C00E8EDB1 /* Follows.h */,
+				E58FFE381E0D325C00E8EDB1 /* Follows.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -574,6 +579,7 @@
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */,
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
+				E58FFE391E0D325C00E8EDB1 /* Follows.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
 				E5C592CB1E0AE172004C530D /* UserCell.m in Sources */,
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,

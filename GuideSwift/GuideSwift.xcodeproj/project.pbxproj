@@ -43,6 +43,7 @@
 		E57D57981DFA96E600C8C237 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57971DFA96E600C8C237 /* DesignableButton.swift */; };
 		E57D579A1DFA96FD00C8C237 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */; };
 		E57D579C1DFA970C00C8C237 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */; };
+		E58FFE361E0CE83900E8EDB1 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58FFE351E0CE83900E8EDB1 /* Follows.swift */; };
 		E591236F1E09358900AD98A3 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E591236E1E09358900AD98A3 /* UsersController.swift */; };
 		E59688141DFFD01E007F1DEA /* FeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688131DFFD01E007F1DEA /* FeedPostCell.swift */; };
 		E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */; };
@@ -105,6 +106,7 @@
 		E57D57971DFA96E600C8C237 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 		E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
+		E58FFE351E0CE83900E8EDB1 /* Follows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
 		E591236E1E09358900AD98A3 /* UsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
 		E59688131DFFD01E007F1DEA /* FeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPostCell.swift; sourceTree = "<group>"; };
 		E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EGFHumanName+Additions.swift"; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */,
+				E58FFE351E0CE83900E8EDB1 /* Follows.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */,
 				E52827C01E00687300A39792 /* BaseTableController.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,
+				E58FFE361E0CE83900E8EDB1 /* Follows.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

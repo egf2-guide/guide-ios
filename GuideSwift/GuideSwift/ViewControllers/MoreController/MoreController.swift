@@ -22,6 +22,7 @@ class MoreController: UITableViewController {
         Graph.logout { (_, error) in
             ProgressController.hide()
             
+            Follows.shared.stopObserving()
             SimpleFileManager.shared.deleteAllFiles()
             self.tabBarController?.dismiss(animated: true, completion: nil)
         }

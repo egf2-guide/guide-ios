@@ -14,6 +14,7 @@ class InitController: UIViewController {
         super.viewDidAppear(animated)
         
         if Graph.isAuthorized {
+            Follows.shared.startObserving()
             performSegue(withIdentifier: "ShowTabBar", sender: nil)
         }
         else {

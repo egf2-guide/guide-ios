@@ -51,10 +51,11 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     // MARK:- Private methods
     fileprivate func addObservers() {
         let object = Graph.notificationObject(forSource: source, andEdge: edge)
-        NotificationCenter.default.addObserver(self, selector: #selector(edgeDidCreate(notification:)), name: .EGF2EdgeCreated, object: object)
+        NotificationCenter.default.addObserver(self, selector: #selector(edgeCreated(notification:)), name: .EGF2EdgeCreated, object: object)
+        NotificationCenter.default.addObserver(self, selector: #selector(edgeRemoved(notification:)), name: .EGF2EdgeRemoved, object: object)
     }
     
-    func edgeDidCreate(notification: NSNotification) {
+    func edgeCreated(notification: NSNotification) {
         guard let objectId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
 
         Graph.refreshObject(withId: objectId, expand: expand) { (object, error) in
@@ -64,15 +65,29 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         }
     }
     
+    func edgeRemoved(notification: NSNotification) {
+        guard let objectId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
+        
+        for object in graphObjects {
+            if let id = object.value(forKey: "id") as? String, id == objectId {
+                delete(object: object)
+                break
+            }
+        }
+    }
+    
     fileprivate func set(objects: [T]?, totalCount count: Int) {
-        guard let theObjects = objects, let tv = tableView else { return }
+        guard let theObjects = objects else { return }
         graphObjects.removeAll()
-        tv.reloadData()
+        
+        if let tv = tableView {
+            tv.reloadData()
+        }
         add(objects: theObjects, totalCount: count)
     }
     
     func add(objects: [T]?, totalCount count: Int) {
-        guard let theObjects = objects, let tv = tableView else { return }
+        guard let theObjects = objects else { return }
         
         let start = graphObjects.count
         let end = start + theObjects.count
@@ -84,6 +99,7 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         totalCount = count
         graphObjects.append(contentsOf: theObjects)
         
+        guard let tv = tableView else { return }
         tv.beginUpdates()
         tv.insertRows(at: indexPaths, with: .none)
         tv.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
@@ -91,13 +107,24 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     }
     
     func insert(object: T?, at index:Int) {
-        guard let theObject = object, let tv = tableView else { return }
-        
+        guard let theObject = object else { return }
         totalCount += 1
         graphObjects.insert(theObject, at: index)
         
+        guard let tv = tableView else { return }
         tv.beginUpdates()
         tv.insertRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        tv.endUpdates()
+    }
+    
+    func delete(object: T?) {
+        guard let theObject = object, let index = graphObjects.index(of: theObject) else { return }
+        totalCount -= 1
+        graphObjects.remove(at: index)
+        
+        guard let tv = tableView else { return }
+        tv.beginUpdates()
+        tv.deleteRows(at: [IndexPath(row: index, section: 0)], with: .none)
         tv.endUpdates()
     }
     

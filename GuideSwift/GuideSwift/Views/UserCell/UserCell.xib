@@ -55,6 +55,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="followButton" destination="7l4-zP-03r" id="jmc-Fn-tS1"/>
                 <outlet property="userNameLabel" destination="Gva-zu-qmZ" id="nd4-Ol-7nm"/>
             </connections>
             <point key="canvasLocation" x="26.5" y="52"/>
