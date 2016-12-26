@@ -8,10 +8,31 @@
 
 import UIKit
 
+protocol FeedPostCellDelegate: NSObjectProtocol {
+    var authorizedUserId: String? { get }
+    func delete(post: EGFPost)
+}
+
 class FeedPostCell: UITableViewCell {
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var creatorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var postImageView: FileImageView!
+    weak var delegate: FeedPostCellDelegate?
+    
+    weak var post: EGFPost? {
+        didSet {
+            if let userId = delegate?.authorizedUserId, let creatorId = post?.creator, userId == creatorId {
+                deleteButton.isHidden = false
+            }
+            else {
+                deleteButton.isHidden = true
+            }
+            creatorNameLabel.text = post?.creatorObject?.name?.fullName()
+            descriptionLabel.text = post?.desc
+            postImageView.file = post?.imageObject
+        }
+    }
     
     static func height(forPost post: EGFPost) -> CGFloat {
         var height: CGFloat = 46 // height of cell without image and description
@@ -31,5 +52,10 @@ class FeedPostCell: UITableViewCell {
             height += imageHeight + 8
         }
         return height
+    }
+    
+    @IBAction func deletePost(_ sender: AnyObject) {
+        guard let theDelegate = delegate, let thePost = post else { return }
+        theDelegate.delete(post: thePost)
     }
 }

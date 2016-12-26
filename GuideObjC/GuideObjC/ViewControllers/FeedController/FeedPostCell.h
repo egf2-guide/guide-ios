@@ -10,10 +10,14 @@
 #import "FileImageView.h"
 #import "EGF2.h"
 
+@protocol FeedPostCellDelegate <NSObject>
+- (NSString *)authorizedUserId;
+- (void)deletePost:(EGFPost *)post;
+@end
+
 @interface FeedPostCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet FileImageView *postImageView;
+@property (weak, nonatomic) id <FeedPostCellDelegate> delegate;
+@property (weak, nonatomic) EGFPost *post;
 
 + (CGFloat)heightForPost:(EGFPost *)post;
 @end

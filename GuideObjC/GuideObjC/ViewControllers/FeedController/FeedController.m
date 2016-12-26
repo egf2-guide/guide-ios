@@ -7,17 +7,20 @@
 //
 
 #import "FeedController.h"
-#import "FeedProgressCell.h"
+#import "UIViewController+Additions.h"
 #import "EGFHumanName+Additions.h"
+#import "ProgressController.h"
 #import "SimpleFileManager.h"
+#import "FeedProgressCell.h"
 #import "EdgeDownloader.h"
 #import "PostController.h"
-#import "FeedPostCell.h"
 #import "EGF2.h"
 
 @interface FeedController ()
 @property (retain, nonatomic) EdgeDownloader *posts;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
+@property (retain, nonatomic) NSString *currentUserId;
+@property (retain, nonatomic) NSString *edge;
 @end
 
 @implementation FeedController
@@ -25,10 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _cellHeights = [NSMutableDictionary dictionary];
+    _edge = @"posts";
     
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
-            _posts = [[EdgeDownloader alloc] initWithSource:[object valueForKey:@"id"] edge:@"posts" expand:@[@"creator",@"image"]];
+            _currentUserId = [object valueForKey:@"id"];
+            _posts = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:_edge expand:@[@"creator",@"image"]];
             _posts.tableView = self.tableView;
             [_posts getNextPage];
         }
@@ -40,6 +45,22 @@
         PostController * postController = segue.destinationViewController;
         NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
         postController.post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
+    }
+}
+
+// MARK:- FeedPostCellDelegate
+- (NSString *)authorizedUserId {
+    return _currentUserId;
+}
+
+- (void)deletePost:(EGFPost *)post {
+    if (_currentUserId && post.id) {
+        [self showConfirmWithTitle:@"Warning" message:@"Really delete?" action:^{
+            [ProgressController show];
+            [self.graph deleteObjectWithId:post.id forSource:_currentUserId fromEdge:@"posts" completion:^(id object, NSError * error) {
+                [ProgressController hide];
+            }];
+        }];
     }
 }
 
@@ -87,11 +108,9 @@
         cell.indicatorIsHidden = [_posts isDownloaded];
         return cell;
     }
-    EGFPost * post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
     FeedPostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    cell.creatorNameLabel.text = [post.creatorObject.name fullName];
-    cell.descriptionLabel.text = post.desc;
-    cell.postImageView.file = post.imageObject;
+    cell.delegate = self;
+    cell.post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
     return cell;
 }
 @end

@@ -1089,7 +1089,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dcx-iA-n49" id="XdT-te-wRr">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hP6-pH-Ivb">
@@ -1114,7 +1114,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="no2-no-mtp" id="IuB-Nm-5j4">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISj-JJ-Q3J">
@@ -1139,7 +1139,7 @@
                                         <rect key="frame" x="0.0" y="123" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="baw-eJ-ULu" id="3oO-ld-VxI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeR-ue-EtI">
@@ -1249,6 +1249,17 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KyZ-zz-Vz1">
+                                                    <rect key="frame" x="329" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0S1-jY-kgU"/>
+                                                        <constraint firstAttribute="width" constant="30" id="f7d-5j-JUC"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deletePost:" destination="qIa-yo-PhB" eventType="touchUpInside" id="BcH-gl-K5C"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1262,8 +1273,10 @@
                                                 <constraint firstItem="Wke-pU-qac" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="Y63-8f-SuQ"/>
                                                 <constraint firstItem="hAb-Gk-Hbk" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="Z9a-ME-noC"/>
                                                 <constraint firstItem="Wke-pU-qac" firstAttribute="top" secondItem="vld-f8-fx7" secondAttribute="bottom" constant="8" id="bJk-Ht-t5s"/>
+                                                <constraint firstAttribute="trailing" secondItem="KyZ-zz-Vz1" secondAttribute="trailing" id="bRd-4B-zhh"/>
                                                 <constraint firstItem="vld-f8-fx7" firstAttribute="top" secondItem="iJP-K3-rxD" secondAttribute="top" id="gWY-9S-wy0"/>
                                                 <constraint firstAttribute="trailing" secondItem="hAb-Gk-Hbk" secondAttribute="trailing" constant="8" id="nai-vw-AYz"/>
+                                                <constraint firstItem="KyZ-zz-Vz1" firstAttribute="top" secondItem="iJP-K3-rxD" secondAttribute="top" id="nyl-r9-faS"/>
                                                 <constraint firstItem="bDf-lI-dtd" firstAttribute="leading" secondItem="iJP-K3-rxD" secondAttribute="leading" constant="8" id="yrU-BV-AFI"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -1288,6 +1301,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="creatorNameLabel" destination="hAb-Gk-Hbk" id="bto-fV-vWc"/>
+                                    <outlet property="deleteButton" destination="KyZ-zz-Vz1" id="hUe-Tf-4Xn"/>
                                     <outlet property="descriptionLabel" destination="Wke-pU-qac" id="dgW-dk-ay4"/>
                                     <outlet property="postImageView" destination="bDf-lI-dtd" id="eGR-Mq-eZF"/>
                                     <segue destination="Lko-cO-1sR" kind="show" id="ebC-gv-zoD"/>
@@ -1399,6 +1413,17 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INA-zC-fnb">
+                                                    <rect key="frame" x="329" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="pI9-2I-D3P"/>
+                                                        <constraint firstAttribute="width" constant="30" id="vpf-8A-8o8"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deletePost:" destination="Lko-cO-1sR" eventType="touchUpInside" id="eg6-DW-qDz"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1409,10 +1434,12 @@
                                                 <constraint firstAttribute="bottom" secondItem="C5f-hY-f5B" secondAttribute="bottom" constant="8" id="MoF-D2-uhs"/>
                                                 <constraint firstItem="mRE-73-f6b" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" constant="8" id="PRY-r3-kat"/>
                                                 <constraint firstAttribute="trailing" secondItem="M1T-4a-a3J" secondAttribute="trailing" id="bsj-39-GDV"/>
+                                                <constraint firstAttribute="trailing" secondItem="INA-zC-fnb" secondAttribute="trailing" id="dzz-Uz-0n1"/>
                                                 <constraint firstItem="C5f-hY-f5B" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" constant="8" id="fgj-6m-lBW"/>
                                                 <constraint firstAttribute="trailing" secondItem="JQz-uL-fb1" secondAttribute="trailing" constant="8" id="gFI-cG-mqE"/>
                                                 <constraint firstItem="mRE-73-f6b" firstAttribute="top" secondItem="M1T-4a-a3J" secondAttribute="bottom" constant="8" id="ndD-PB-8RD"/>
                                                 <constraint firstItem="M1T-4a-a3J" firstAttribute="top" secondItem="YDn-iF-ojD" secondAttribute="top" id="pmf-B8-Xou"/>
+                                                <constraint firstItem="INA-zC-fnb" firstAttribute="top" secondItem="YDn-iF-ojD" secondAttribute="top" id="qaG-GO-d8U"/>
                                                 <constraint firstItem="M1T-4a-a3J" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" id="wa9-hP-v9F"/>
                                                 <constraint firstItem="JQz-uL-fb1" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" constant="8" id="xSH-ZV-dDQ"/>
                                             </constraints>
@@ -1693,6 +1720,7 @@
                         <outlet property="commentPlaceholder" destination="eir-o4-Dkc" id="WDq-JZ-wKg"/>
                         <outlet property="commentTextView" destination="eXy-Yc-DtN" id="otn-U7-3cb"/>
                         <outlet property="creatorNameLabel" destination="JQz-uL-fb1" id="q7V-di-VXr"/>
+                        <outlet property="deleteButton" destination="INA-zC-fnb" id="56N-L1-4JI"/>
                         <outlet property="descriptionLabel" destination="mRE-73-f6b" id="ier-Q6-d3Z"/>
                         <outlet property="postImageView" destination="C5f-hY-f5B" id="b1W-TU-YlE"/>
                         <outlet property="sendButton" destination="MD1-1O-PKm" id="SCI-H2-auF"/>
@@ -1986,4 +2014,7 @@
             <point key="canvasLocation" x="289" y="-537"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="delete" width="15" height="15"/>
+    </resources>
 </document>

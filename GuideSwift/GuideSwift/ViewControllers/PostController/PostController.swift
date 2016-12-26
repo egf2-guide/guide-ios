@@ -16,6 +16,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var postImageView: FileImageView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var commentPlaceholder: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     
@@ -23,6 +24,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     fileprivate var refreshControl: UIRefreshControl!
     fileprivate var comments: ReversedEdgeDownloader<EGFComment>?
     fileprivate var insertedCommentId: String?
+    fileprivate var currentUserId: String?
     
     var currentPost: EGFPost?
     
@@ -46,11 +48,32 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         comments?.tableView = self.tableView
         comments?.delegate = self
         comments?.getNextPage()
+        
+        Graph.userObject { (object, error) in
+            guard let user = object as? EGFUser, let userId = user.id else { return }
+            self.currentUserId = userId
+            self.deleteButton.isHidden = (post.creator ?? "") != userId
+        }
     }
     
     fileprivate func updateSendButton() {
         commentPlaceholder.isHidden = !commentTextView.text.isEmpty
         sendButton.isEnabled = !commentTextView.text.isEmpty
+    }
+    
+    @IBAction func deletePost(_ sender: AnyObject) {
+        guard let postId = currentPost?.id, let userId = currentUserId else { return }
+        
+        showConfirm(withTitle: "Warning", message: "Really delete?") {
+            ProgressController.show()
+            Graph.deleteObject(withId: postId, forSource: userId, fromEdge: "posts") { (_, error) in
+                ProgressController.hide()
+                
+                if error == nil {
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
     }
     
     @IBAction func sendComment(_ sender: AnyObject) {

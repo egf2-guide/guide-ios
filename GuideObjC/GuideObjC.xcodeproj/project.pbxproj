@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E50A89C31E0BCF4C00230613 /* ReversedEdgeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */; };
 		E50A89C81E0BF9E400230613 /* SearchDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C71E0BF9E400230613 /* SearchDownloader.m */; };
+		E51AEEF91E111F7900312952 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF81E111F7900312952 /* UIViewController+Additions.m */; };
 		E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577321E0121BF0068D28D /* SimpleFileManager.m */; };
 		E52577361E0127290068D28D /* FeedPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577351E0127290068D28D /* FeedPostCell.m */; };
 		E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577381E012A6B0068D28D /* FeedProgressCell.m */; };
@@ -74,6 +75,8 @@
 		E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReversedEdgeDownloader.m; sourceTree = "<group>"; };
 		E50A89C61E0BF9E400230613 /* SearchDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDownloader.h; sourceTree = "<group>"; };
 		E50A89C71E0BF9E400230613 /* SearchDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDownloader.m; sourceTree = "<group>"; };
+		E51AEEF71E111F7900312952 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
+		E51AEEF81E111F7900312952 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		E52577311E0121BF0068D28D /* SimpleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFileManager.h; sourceTree = "<group>"; };
 		E52577321E0121BF0068D28D /* SimpleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFileManager.m; sourceTree = "<group>"; };
 		E52577341E0127290068D28D /* FeedPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPostCell.h; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 				E57D57BB1DFA9B5F00C8C237 /* UIImage+Additions.m */,
 				E525773A1E012F990068D28D /* EGFHumanName+Additions.h */,
 				E525773B1E012F990068D28D /* EGFHumanName+Additions.m */,
+				E51AEEF71E111F7900312952 /* UIViewController+Additions.h */,
+				E51AEEF81E111F7900312952 /* UIViewController+Additions.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				E57D57B91DFA9A4600C8C237 /* UIColor+Additions.m in Sources */,
 				E564DF731E07EE0D0073677E /* OCSeparatorView.m in Sources */,
 				E52865781DFE75D800D50A0D /* FeedController.m in Sources */,
+				E51AEEF91E111F7900312952 /* UIViewController+Additions.m in Sources */,
 				E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */,
 				E591236C1E09277000AD98A3 /* ResetPasswordController.m in Sources */,
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,

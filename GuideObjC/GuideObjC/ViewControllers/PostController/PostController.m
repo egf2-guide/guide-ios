@@ -7,6 +7,7 @@
 //
 
 #import "PostController.h"
+#import "UIViewController+Additions.h"
 #import "EGFHumanName+Additions.h"
 #import "ReversedEdgeDownloader.h"
 #import "ProgressController.h"
@@ -22,12 +23,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet FileImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentPlaceholder;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (retain, nonatomic) ReversedEdgeDownloader *comments;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
 @property (retain, nonatomic) NSString *insertedCommentId;
+@property (retain, nonatomic) NSString *currentUserId;
 @end
 
 @implementation PostController
@@ -53,12 +56,34 @@
         _comments.tableView = self.tableView;
         _comments.delegate = self;
         [_comments getNextPage];
+        
+        [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
+            if ([object isKindOfClass:[EGFUser class]]) {
+                _currentUserId = ((EGFUser *)object).id;
+                _deleteButton.hidden = ![_post.creator isEqual:_currentUserId];
+            }
+        }];
     }
 }
 
 - (void)updateSendButton {
     _commentPlaceholder.hidden = _commentTextView.text.length > 0;
     _sendButton.enabled = _commentTextView.text.length > 0;
+}
+
+- (IBAction)deletePost:(id)sender {
+    if (_currentUserId && _post.id) {
+        [self showConfirmWithTitle:@"Warning" message:@"Really delete?" action:^{
+            [ProgressController show];
+            [self.graph deleteObjectWithId:_post.id forSource:_currentUserId fromEdge:@"posts" completion:^(id object, NSError * error) {
+                [ProgressController hide];
+                
+                if (!error) {
+                    [self.navigationController popViewControllerAnimated:true];
+                }
+            }];
+        }];
+    }
 }
 
 - (IBAction)sendComment:(id)sender {

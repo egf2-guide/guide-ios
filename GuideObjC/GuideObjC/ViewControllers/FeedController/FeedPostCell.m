@@ -7,7 +7,15 @@
 //
 
 #import "FeedPostCell.h"
+#import "EGFHumanName+Additions.h"
 #import "EGF2.h"
+
+@interface FeedPostCell ()
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet FileImageView *postImageView;
+@end
 
 @implementation FeedPostCell
 
@@ -32,5 +40,17 @@
         height += imageHeight + 8;
     }
     return height;
+}
+
+- (void)setPost:(EGFPost *)post {
+    _post = post;
+    _deleteButton.hidden = ![[_delegate authorizedUserId] isEqual:post.creator];
+    _creatorNameLabel.text = [post.creatorObject.name fullName];
+    _descriptionLabel.text = post.desc;
+    _postImageView.file = post.imageObject;
+}
+
+- (IBAction)deletePost:(id)sender {
+    [_delegate deletePost:_post];
 }
 @end

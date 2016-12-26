@@ -9,17 +9,20 @@
 import UIKit
 import EGF2
 
-class FeedController: BaseTableController {
+class FeedController: BaseTableController, FeedPostCellDelegate {
 
     fileprivate var posts: EdgeDownloader<EGFPost>?
     fileprivate var cellHeights = [String: CGFloat]()
+    fileprivate var currentUserId: String?
+    fileprivate let edge = "posts"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
-            self.posts = EdgeDownloader(withSource: userId, edge: "posts", expand: ["creator","image"])
+            self.currentUserId = userId
+            self.posts = EdgeDownloader(withSource: userId, edge: self.edge, expand: ["creator","image"])
             self.posts?.tableView = self.tableView
             self.posts?.getNextPage()
         }
@@ -28,6 +31,24 @@ class FeedController: BaseTableController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let postController = segue.destination as? PostController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             postController.currentPost = posts?[indexPath.row]
+        }
+    }
+    
+    // MARK:- FeedPostCellDelegate
+    var authorizedUserId: String? {
+        get {
+            return currentUserId
+        }
+    }
+    
+    func delete(post: EGFPost) {
+        guard let postId = post.id, let userId = self.currentUserId else { return }
+        
+        showConfirm(withTitle: "Warning", message: "Really delete?") { 
+            ProgressController.show()
+            Graph.deleteObject(withId: postId, forSource: userId, fromEdge: self.edge) { (_, error) in
+                ProgressController.hide()
+            }
         }
     }
     
@@ -74,11 +95,9 @@ class FeedController: BaseTableController {
             cell.indicatorIsHidden = posts?.isDownloaded ?? false
             return cell
         }
-        let post = posts![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! FeedPostCell
-        cell.creatorNameLabel.text = post.creatorObject?.name?.fullName()
-        cell.descriptionLabel.text = post.desc
-        cell.postImageView.file = post.imageObject
+        cell.delegate = self
+        cell.post = posts![indexPath.row]
         return cell
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */; };
+		E51AEEF61E111CBB00312952 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */; };
 		E525772F1E010E720068D28D /* FeedProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E525772E1E010E720068D28D /* FeedProgressCell.swift */; };
 		E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52667391E08F73400A42337 /* ChangePasswordController.swift */; };
 		E52827C01E00687300A39792 /* BaseTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52827BF1E00687300A39792 /* BaseTableController.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDownloader.swift; sourceTree = "<group>"; };
+		E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		E525772E1E010E720068D28D /* FeedProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedProgressCell.swift; sourceTree = "<group>"; };
 		E52667391E08F73400A42337 /* ChangePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		E52827BF1E00687300A39792 /* BaseTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */,
 				E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */,
 				E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */,
+				E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				E57D57861DFA960500C8C237 /* EGF2.swift in Sources */,
 				E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */,
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
+				E51AEEF61E111CBB00312952 /* UIViewController+Additions.swift in Sources */,
 				E564DF701E07CDC80073677E /* NextCommentsCell.swift in Sources */,
 				E5EB0B8E1E0A6586000AB70A /* UserCell.swift in Sources */,
 				E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */,

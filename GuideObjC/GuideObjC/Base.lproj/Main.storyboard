@@ -664,7 +664,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccE-lp-0rF" id="q09-z1-bz5">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWH-Oe-FSF">
@@ -691,7 +691,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AK5-tP-Q8I" id="VrY-Pc-gyV">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gps-xQ-Zct">
@@ -716,7 +716,7 @@
                                         <rect key="frame" x="0.0" y="123" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ft6-KG-YkH" id="WzD-kB-l0r">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMB-zi-vkd">
@@ -1056,18 +1056,31 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqU-87-Iyj">
+                                                    <rect key="frame" x="329" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="lQ3-hZ-6Sb"/>
+                                                        <constraint firstAttribute="width" constant="30" id="mAJ-Jk-6yw"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deletePost:" destination="ejL-6Q-BoT" eventType="touchUpInside" id="5bT-gs-SjV"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="nQv-ki-T4m" firstAttribute="top" secondItem="xUY-04-PYP" secondAttribute="bottom" priority="750" constant="8" id="0BZ-Ya-m8h"/>
                                                 <constraint firstAttribute="trailing" secondItem="xUY-04-PYP" secondAttribute="trailing" constant="8" id="6am-XE-OD5"/>
                                                 <constraint firstItem="dXQ-uo-2vi" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="8sI-UO-K2r"/>
+                                                <constraint firstAttribute="trailing" secondItem="CqU-87-Iyj" secondAttribute="trailing" id="BnL-wP-ISH"/>
                                                 <constraint firstAttribute="bottom" secondItem="nQv-ki-T4m" secondAttribute="bottom" constant="8" id="D7q-2F-GUp"/>
                                                 <constraint firstItem="dXQ-uo-2vi" firstAttribute="top" secondItem="xLR-Og-hBD" secondAttribute="top" constant="6" id="EC7-w6-Fzh"/>
                                                 <constraint firstItem="xUY-04-PYP" firstAttribute="top" secondItem="nVb-qD-Ne3" secondAttribute="bottom" constant="8" id="EVY-ux-HiI"/>
                                                 <constraint firstItem="nVb-qD-Ne3" firstAttribute="top" secondItem="xLR-Og-hBD" secondAttribute="top" id="FzL-U1-COR"/>
                                                 <constraint firstAttribute="trailing" secondItem="nQv-ki-T4m" secondAttribute="trailing" constant="8" id="HQ4-ub-K27"/>
                                                 <constraint firstItem="nQv-ki-T4m" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="IjV-mx-IUc"/>
+                                                <constraint firstItem="CqU-87-Iyj" firstAttribute="top" secondItem="xLR-Og-hBD" secondAttribute="top" id="UdR-LV-unz"/>
                                                 <constraint firstAttribute="trailing" secondItem="nVb-qD-Ne3" secondAttribute="trailing" id="bPF-Jf-yUs"/>
                                                 <constraint firstItem="xUY-04-PYP" firstAttribute="leading" secondItem="xLR-Og-hBD" secondAttribute="leading" constant="8" id="mDG-Ya-Q0Q"/>
                                                 <constraint firstAttribute="trailing" secondItem="dXQ-uo-2vi" secondAttribute="trailing" constant="8" id="pxC-po-Got"/>
@@ -1095,6 +1108,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="creatorNameLabel" destination="dXQ-uo-2vi" id="6Zh-Xh-qqS"/>
+                                    <outlet property="deleteButton" destination="CqU-87-Iyj" id="J5b-wK-BhZ"/>
                                     <outlet property="descriptionLabel" destination="xUY-04-PYP" id="had-JR-ae6"/>
                                     <outlet property="postImageView" destination="nQv-ki-T4m" id="wyV-zR-pfc"/>
                                     <segue destination="rIU-h5-qld" kind="show" id="0Jc-MY-Tvl"/>
@@ -1206,6 +1220,17 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWp-n3-k4L">
+                                                    <rect key="frame" x="329" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0kv-zx-4pM"/>
+                                                        <constraint firstAttribute="width" constant="30" id="2fQ-Jx-1gO"/>
+                                                    </constraints>
+                                                    <state key="normal" image="delete"/>
+                                                    <connections>
+                                                        <action selector="deletePost:" destination="rIU-h5-qld" eventType="touchUpInside" id="16i-oM-ZdU"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1216,7 +1241,9 @@
                                                 <constraint firstItem="uef-l3-Wd3" firstAttribute="leading" secondItem="3Tg-nd-GCA" secondAttribute="leading" constant="8" id="9yP-x4-whr"/>
                                                 <constraint firstItem="n1Q-lF-xnB" firstAttribute="leading" secondItem="3Tg-nd-GCA" secondAttribute="leading" constant="8" id="AX4-gT-Uqu"/>
                                                 <constraint firstItem="lAO-WU-0gi" firstAttribute="leading" secondItem="3Tg-nd-GCA" secondAttribute="leading" id="GVF-rR-wQP"/>
+                                                <constraint firstItem="eWp-n3-k4L" firstAttribute="top" secondItem="3Tg-nd-GCA" secondAttribute="top" id="Hls-2I-is3"/>
                                                 <constraint firstItem="lAO-WU-0gi" firstAttribute="top" secondItem="3Tg-nd-GCA" secondAttribute="top" id="QXK-Ym-frj"/>
+                                                <constraint firstAttribute="trailing" secondItem="eWp-n3-k4L" secondAttribute="trailing" id="QcD-f4-Ojf"/>
                                                 <constraint firstAttribute="trailing" secondItem="97S-3I-EXx" secondAttribute="trailing" constant="8" id="fjB-aZ-phA"/>
                                                 <constraint firstAttribute="bottom" secondItem="uef-l3-Wd3" secondAttribute="bottom" constant="8" id="rlA-au-urQ"/>
                                                 <constraint firstItem="97S-3I-EXx" firstAttribute="leading" secondItem="3Tg-nd-GCA" secondAttribute="leading" constant="8" id="sIS-R0-eWV"/>
@@ -1500,6 +1527,7 @@
                         <outlet property="commentPlaceholder" destination="A52-JV-wzQ" id="TE3-zB-FMq"/>
                         <outlet property="commentTextView" destination="tty-fx-fsl" id="hEQ-2c-jIK"/>
                         <outlet property="creatorNameLabel" destination="n1Q-lF-xnB" id="dc7-CK-lM8"/>
+                        <outlet property="deleteButton" destination="eWp-n3-k4L" id="UrW-Ph-mYA"/>
                         <outlet property="descriptionLabel" destination="97S-3I-EXx" id="Cwq-UV-Xrd"/>
                         <outlet property="postImageView" destination="uef-l3-Wd3" id="eno-K4-3Ep"/>
                         <outlet property="sendButton" destination="Td1-PF-dOr" id="GwZ-Zw-ivf"/>
@@ -1989,4 +2017,7 @@
             <point key="canvasLocation" x="1865" y="260"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="delete" width="15" height="15"/>
+    </resources>
 </document>
