@@ -17,7 +17,7 @@ class ReversedEdgeDownloader<T: NSObject>: EdgeDownloader<T> {
     }
     
     override func add(objects: [T]?, totalCount count: Int) {
-        guard let theObjects = objects, let tv = tableView else { return }
+        guard let theObjects = objects else { return }
         
         var indexPaths = [IndexPath]()
         
@@ -29,6 +29,8 @@ class ReversedEdgeDownloader<T: NSObject>: EdgeDownloader<T> {
         for object in theObjects {
             graphObjects.insert(object, at: 0)
         }
+        
+        guard let tv = tableView else { return }
         tv.beginUpdates()
         tv.insertRows(at: indexPaths, with: .none)
         tv.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
@@ -36,12 +38,17 @@ class ReversedEdgeDownloader<T: NSObject>: EdgeDownloader<T> {
     }
     
     override func insert(object: T?, at index: Int) {
-        guard let theObject = object, let tv = tableView else { return }
+        guard let theObject = object, let objectId = theObject.value(forKey: "id") as? String else { return }
         
+        // Check if object is already in the list
+        if objectExists(withId: objectId) {
+            return
+        }
         let insertIndex = graphObjects.count - index
         totalCount += 1
         graphObjects.insert(theObject, at: insertIndex)
         
+        guard let tv = tableView else { return }
         tv.beginUpdates()
         tv.insertRows(at: [IndexPath(row: insertIndex, section: 1)], with: .none)
         tv.endUpdates()

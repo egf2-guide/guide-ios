@@ -54,7 +54,6 @@
         [[Graph shared] refreshObjectWithId:objectId expand:_expand completion:^(NSObject * object, NSError * error) {
             if (object) {
                 [self insertObject:object atIndex:0];
-                [self.delegate didInsertGraphObject:object];
             }
         }];
     }
@@ -71,6 +70,15 @@
             }
         }
     }
+}
+
+- (BOOL)objectExistsWithId:(NSString *)objectId {
+    for (NSObject * object in self.graphObjects) {
+        if ([[object valueForKey:@"id"] isEqual:objectId]) {
+            return true;
+        }
+    }
+    return false;
 }
 
 - (void)setObjects:(NSArray *)objects totalCount:(NSInteger)count {
@@ -102,6 +110,10 @@
 
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index {
     if (object) {
+        // Check if object is already in the list
+        if ([self objectExistsWithId:[object valueForKey:@"id"]]) {
+            return;
+        }
         self.totalCount += 1;
         [self.graphObjects insertObject:object atIndex:index];
         

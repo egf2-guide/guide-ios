@@ -8,9 +8,8 @@
 
 #import "BaseViewController.h"
 #import "NextCommentsCell.h"
-#import "EdgeDownloader.h"
 #import "EGF2.h"
 
-@interface PostController : BaseViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate, EdgeDownloaderDelegate>
+@interface PostController : BaseViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate>
 @property (retain, nonatomic) EGFPost *post;
 @end

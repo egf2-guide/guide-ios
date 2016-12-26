@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostController: BaseController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate, EdgeDownloaderDelegate {
+class PostController: BaseController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate {
     
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -23,8 +23,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     fileprivate var cellHeights = [String: CGFloat]()
     fileprivate var refreshControl: UIRefreshControl!
     fileprivate var comments: ReversedEdgeDownloader<EGFComment>?
-    fileprivate var insertedCommentId: String?
-    fileprivate var currentUserId: String?
+    fileprivate var currentUser: EGFUser?
     
     var currentPost: EGFPost?
     
@@ -46,12 +45,11 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         comments = ReversedEdgeDownloader(withSource: postId, edge: "comments", expand: ["creator"])
         comments?.pageCount = 5
         comments?.tableView = self.tableView
-        comments?.delegate = self
         comments?.getNextPage()
         
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
-            self.currentUserId = userId
+            self.currentUser = user
             self.deleteButton.isHidden = (post.creator ?? "") != userId
         }
     }
@@ -62,7 +60,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     }
     
     @IBAction func deletePost(_ sender: AnyObject) {
-        guard let postId = currentPost?.id, let userId = currentUserId else { return }
+        guard let postId = currentPost?.id, let userId = currentUser?.id else { return }
         
         showConfirm(withTitle: "Warning", message: "Really delete?") {
             ProgressController.show()
@@ -83,23 +81,18 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         Graph.createObject(withParameters: ["text": text, "object_type": "comment"], forSource: postId, onEdge: "comments") { (object, error) in
             ProgressController.hide()
             
-            guard let comment = object as? EGFComment else { return }
-            self.insertedCommentId = comment.id
+            guard let comment = object as? EGFComment, let theComments = self.comments else { return }
+            comment.creatorObject = self.currentUser
+            self.comments?.insert(object: comment, at: 0)
             self.commentTextView.text = ""
             self.updateSendButton()
             self.textViewDidChange(self.commentTextView)
+            self.tableView.scrollToRow(at: IndexPath(row: theComments.count - 1, section: 1), at: .bottom, animated: true)
         }
     }
     
     @IBAction func tapOnTableView(_ sender: AnyObject) {
         commentTextView.resignFirstResponder()
-    }
-    
-    // MARK:- EdgeDownloaderDelegate
-    func didInsert(graphObject: NSObject) {
-        guard let theComments = comments, let comment = graphObject as? EGFComment, comment.id == insertedCommentId else { return }
-        tableView.scrollToRow(at: IndexPath(row: theComments.count - 1, section: 1), at: .bottom, animated: true)
-        insertedCommentId = nil
     }
     
     // MARK:- UITextViewDelegate

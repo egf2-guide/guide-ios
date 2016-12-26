@@ -15,7 +15,7 @@
 }
 
 - (void)addObjects:(NSArray *)objects totalCount:(NSInteger)count {
-    if (objects && self.tableView) {
+    if (objects) {
         NSMutableArray *indexPaths = [NSMutableArray array];
         
         for (NSInteger i = 0; i < objects.count; i++) {
@@ -34,7 +34,11 @@
 }
 
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index {
-    if (object && self.tableView) {
+    if (object) {
+        // Check if object is already in the list
+        if ([self objectExistsWithId:[object valueForKey:@"id"]]) {
+            return;
+        }
         NSInteger insertIndex = self.graphObjects.count - index;
         self.totalCount += 1;
         [self.graphObjects insertObject:object atIndex:insertIndex];

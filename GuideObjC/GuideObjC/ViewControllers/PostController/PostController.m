@@ -12,6 +12,7 @@
 #import "ReversedEdgeDownloader.h"
 #import "ProgressController.h"
 #import "UIColor+Additions.h"
+#import "EdgeDownloader.h"
 #import "FileImageView.h"
 #import "FeedPostCell.h"
 #import "CommentCell.h"
@@ -30,7 +31,7 @@
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
 @property (retain, nonatomic) NSString *insertedCommentId;
-@property (retain, nonatomic) NSString *currentUserId;
+@property (retain, nonatomic) EGFUser *currentUser;
 @end
 
 @implementation PostController
@@ -54,13 +55,12 @@
         _comments = [[ReversedEdgeDownloader alloc] initWithSource:_post.id edge:@"comments" expand:@[@"creator"]];
         _comments.pageCount = 5;
         _comments.tableView = self.tableView;
-        _comments.delegate = self;
         [_comments getNextPage];
         
         [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFUser class]]) {
-                _currentUserId = ((EGFUser *)object).id;
-                _deleteButton.hidden = ![_post.creator isEqual:_currentUserId];
+                _currentUser = (EGFUser *)object;
+                _deleteButton.hidden = ![_post.creator isEqual:_currentUser.id];
             }
         }];
     }
@@ -72,10 +72,10 @@
 }
 
 - (IBAction)deletePost:(id)sender {
-    if (_currentUserId && _post.id) {
+    if (_currentUser.id && _post.id) {
         [self showConfirmWithTitle:@"Warning" message:@"Really delete?" action:^{
             [ProgressController show];
-            [self.graph deleteObjectWithId:_post.id forSource:_currentUserId fromEdge:@"posts" completion:^(id object, NSError * error) {
+            [self.graph deleteObjectWithId:_post.id forSource:_currentUser.id fromEdge:@"posts" completion:^(id object, NSError * error) {
                 [ProgressController hide];
                 
                 if (!error) {
@@ -98,29 +98,19 @@
         
         if ([object isKindOfClass:[EGFComment class]]) {
             EGFComment * comment = (EGFComment *)object;
-            _insertedCommentId = comment.id;
+            comment.creatorObject = _currentUser;
+            [_comments insertObject:comment atIndex:0];
             _commentTextView.text = @"";
             [self updateSendButton];
             [self textViewDidChange:_commentTextView];
+            NSIndexPath * ip = [NSIndexPath indexPathForRow:_comments.count - 1 inSection:1];
+            [_tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionBottom animated:true];
         }
     }];
 }
 
 - (IBAction)tapOnTableView:(id)sender {
     [_commentTextView resignFirstResponder];
-}
-
-// MARK:- EdgeDownloaderDelegate
-- (void)didInsertGraphObject:(NSObject *)graphObject {
-    if ([graphObject isKindOfClass:[EGFComment class]]) {
-        EGFComment * comment = (EGFComment *)graphObject;
-        
-        if ([comment.id isEqual:_insertedCommentId]) {
-            _insertedCommentId = nil;
-            NSIndexPath * ip = [NSIndexPath indexPathForRow:_comments.count - 1 inSection:1];
-            [_tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionBottom animated:true];
-        }
-    }
 }
 
 // MARK:- UITextViewDelegate

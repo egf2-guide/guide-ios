@@ -9,13 +9,7 @@
 import UIKit
 import EGF2
 
-@objc protocol EdgeDownloaderDelegate {
-    func didInsert(graphObject: NSObject)
-}
-
 class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
-    
-    weak var delegate: EdgeDownloaderDelegate?
     
     fileprivate var downloading = false
     fileprivate var expand: [String]
@@ -61,7 +55,6 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         Graph.refreshObject(withId: objectId, expand: expand) { (object, error) in
             guard let graphObject = object else { return }
             self.insert(object: graphObject as? T, at: 0)
-            self.delegate?.didInsert(graphObject: graphObject)
         }
     }
     
@@ -74,6 +67,15 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
                 break
             }
         }
+    }
+    
+    func objectExists(withId objectId: String) -> Bool {
+        for object in graphObjects {
+            if let id = object.value(forKey: "id") as? String, id == objectId {
+                return true
+            }
+        }
+        return false
     }
     
     fileprivate func set(objects: [T]?, totalCount count: Int) {
@@ -107,7 +109,12 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     }
     
     func insert(object: T?, at index:Int) {
-        guard let theObject = object else { return }
+        guard let theObject = object, let objectId = theObject.value(forKey: "id") as? String else { return }
+        
+        // Check if object is already in the list
+        if objectExists(withId: objectId) {
+            return
+        }
         totalCount += 1
         graphObjects.insert(theObject, at: index)
         
