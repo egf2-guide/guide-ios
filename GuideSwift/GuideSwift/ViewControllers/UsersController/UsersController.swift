@@ -17,7 +17,6 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
     fileprivate var searching: SearchDownloader<EGFUser>?
     fileprivate var follows: EdgeDownloader<EGFUser>?
     fileprivate let searchBar = UISearchBar()
-    fileprivate let edge = "follows"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
         
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
-            self.follows = EdgeDownloader(withSource: userId, edge: self.edge, expand: [])
+            self.follows = EdgeDownloader(withSource: userId, edge: "follows", expand: [])
             self.follows?.tableView = self.tableView
             self.follows?.getNextPage()
             self.activeDownloader = self.follows

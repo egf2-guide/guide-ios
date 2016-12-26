@@ -21,7 +21,6 @@
 @property (retain, nonatomic) SearchDownloader *searching;
 @property (retain, nonatomic) EdgeDownloader *follows;
 @property (retain, nonatomic) UISearchBar * searchBar;
-@property (retain, nonatomic) NSString * edge;
 @end
 
 @implementation UsersController
@@ -29,7 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _edge = @"follows";
     _searchBar = [[UISearchBar alloc] init];
     _searchBar.delegate = self;
     _searchBar.showsCancelButton = true;
@@ -45,7 +43,7 @@
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             EGFUser * user = (EGFUser *)object;
-            _follows = [[EdgeDownloader alloc] initWithSource:user.id edge:_edge expand:@[]];
+            _follows = [[EdgeDownloader alloc] initWithSource:user.id edge:@"follows" expand:@[]];
             _follows.tableView = self.tableView;
             [_follows getNextPage];
             _activeDownloader = _follows;

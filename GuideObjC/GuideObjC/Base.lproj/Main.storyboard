@@ -1007,7 +1007,7 @@
             </objects>
             <point key="canvasLocation" x="153" y="-510"/>
         </scene>
-        <!--Feed-->
+        <!--Feed Controller-->
         <scene sceneID="geP-J1-EbP">
             <objects>
                 <tableViewController id="x01-sf-nDf" customClass="FeedController" sceneMemberID="viewController">
@@ -1155,7 +1155,20 @@
                             <outlet property="delegate" destination="x01-sf-nDf" id="feg-eY-4bU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feed" id="MNT-kx-J31">
+                    <navigationItem key="navigationItem" id="MNT-kx-J31">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2Fa-JE-Ece">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Feed"/>
+                                <segment title="Timeline"/>
+                            </segments>
+                            <color key="tintColor" red="0.56121098999999997" green="0.58004248140000003" blue="0.78399777410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="changeList:" destination="x01-sf-nDf" eventType="valueChanged" id="0w8-Nn-Yap"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="sXY-xS-daR">
                             <connections>
                                 <segue destination="h3o-Ey-vG9" kind="show" id="hKU-G7-tlV"/>

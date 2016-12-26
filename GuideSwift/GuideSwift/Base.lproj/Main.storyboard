@@ -1200,7 +1200,7 @@
             </objects>
             <point key="canvasLocation" x="2180" y="186.65667166416793"/>
         </scene>
-        <!--Feed-->
+        <!--Feed Controller-->
         <scene sceneID="rxb-Ej-eaf">
             <objects>
                 <tableViewController id="Fe1-gh-2np" customClass="FeedController" customModule="GuideSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -1348,7 +1348,20 @@
                             <outlet property="delegate" destination="Fe1-gh-2np" id="0ou-yS-gmH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feed" id="vuI-CH-lOr">
+                    <navigationItem key="navigationItem" id="vuI-CH-lOr">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="xSQ-0V-brH">
+                            <rect key="frame" x="108" y="7" width="160" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Feed"/>
+                                <segment title="Timeline"/>
+                            </segments>
+                            <color key="tintColor" red="0.5612109899520874" green="0.58004248142242432" blue="0.78399777412414551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="changeList:" destination="Fe1-gh-2np" eventType="valueChanged" id="K6t-Iq-uP6"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="g25-f1-Blp">
                             <connections>
                                 <segue destination="Ywr-S8-XKV" kind="show" id="vwP-FP-u7A"/>

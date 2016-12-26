@@ -17,7 +17,9 @@
 #import "EGF2.h"
 
 @interface FeedController ()
-@property (retain, nonatomic) EdgeDownloader *posts;
+@property (retain, nonatomic) EdgeDownloader *activeDownloader;
+@property (retain, nonatomic) EdgeDownloader *timeline;
+@property (retain, nonatomic) EdgeDownloader *feed;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @property (retain, nonatomic) NSString *currentUserId;
 @property (retain, nonatomic) NSString *edge;
@@ -33,9 +35,11 @@
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             _currentUserId = [object valueForKey:@"id"];
-            _posts = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:_edge expand:@[@"creator",@"image"]];
-            _posts.tableView = self.tableView;
-            [_posts getNextPage];
+            _timeline = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:@"timeline" expand:@[@"creator",@"image"]];
+            _feed = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:_edge expand:@[@"creator",@"image"]];
+            _feed.tableView = self.tableView;
+            [_feed getNextPage];
+            _activeDownloader = _feed;
         }
     }];
 }
@@ -44,8 +48,20 @@
     if ([segue.destinationViewController isMemberOfClass:[PostController class]] && [sender isKindOfClass:[UITableViewCell class]]) {
         PostController * postController = segue.destinationViewController;
         NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
-        postController.post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
+        postController.post = (EGFPost *)[_activeDownloader objectAtIndex:indexPath.row];
     }
+}
+
+- (IBAction)changeList:(UISegmentedControl *)sender {
+    _activeDownloader.tableView = nil;
+    
+    if (sender.selectedSegmentIndex == 0) {
+        _activeDownloader = _feed;
+    }
+    else if (sender.selectedSegmentIndex == 1) {
+        _activeDownloader = _timeline;
+    }
+    _activeDownloader.tableView = self.tableView;
 }
 
 // MARK:- FeedPostCellDelegate
@@ -67,13 +83,13 @@
 // MARK:- UITableViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.refreshControl.isRefreshing) {
-        [_posts refreshList];
+        [_activeDownloader refreshList];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        EGFPost * post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
+        EGFPost * post = (EGFPost *)[_activeDownloader objectAtIndex:indexPath.row];
         // Check if we already have the value
         NSNumber * height = _cellHeights[post.id];
         
@@ -88,8 +104,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 && ![_posts isDownloaded]) {
-        [_posts getNextPage];
+    if (indexPath.section == 1 && ![_activeDownloader isDownloaded]) {
+        [_activeDownloader getNextPage];
     }
 }
 
@@ -99,18 +115,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? _posts.count : 1;
+    return section == 0 ? _activeDownloader.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         FeedProgressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProgressCell"];
-        cell.indicatorIsHidden = [_posts isDownloaded];
+        cell.indicatorIsHidden = [_activeDownloader isDownloaded];
         return cell;
     }
     FeedPostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.delegate = self;
-    cell.post = (EGFPost *)[_posts objectAtIndex:indexPath.row];
+    cell.post = (EGFPost *)[_activeDownloader objectAtIndex:indexPath.row];
     return cell;
 }
 @end
