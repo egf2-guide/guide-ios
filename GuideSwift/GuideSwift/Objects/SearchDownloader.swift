@@ -19,9 +19,8 @@ class SearchDownloader<T: NSObject>: BaseDownloader<T> {
     override var tableView: UITableView? {
         didSet {
             if tableView == nil {
-                graphObjects.removeAll()
+                resetSearch(withTotalCount: 0)
                 lastQuery = nil
-                totalCount = 0
             }
         }
     }
@@ -55,7 +54,7 @@ class SearchDownloader<T: NSObject>: BaseDownloader<T> {
     }
     
     @objc fileprivate func showResults(withQuery query: String) {
-        guard let params = parameters else { return }
+        guard let params = parameters, let _ = tableView else { return }
         params.query = query
         
         let localSearchToken = searchToken

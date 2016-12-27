@@ -13,7 +13,6 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
     
     @IBOutlet var searchButton: UIBarButtonItem!
     
-    fileprivate var activeDownloader: BaseDownloader<EGFUser>?
     fileprivate var searching: SearchDownloader<EGFUser>?
     fileprivate var follows: EdgeDownloader<EGFUser>?
     fileprivate let searchBar = UISearchBar()
@@ -41,10 +40,19 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
         }
     }
     
+    fileprivate var activeDownloader: BaseDownloader<EGFUser>? {
+        willSet {
+            if let oldDownloader = activeDownloader {
+                oldDownloader.tableView = nil
+            }
+        }
+        didSet {
+            activeDownloader?.tableView = tableView
+        }
+    }
+    
     @IBAction func beginSearch(_ sender: AnyObject) {
         activeDownloader = searching
-        activeDownloader?.tableView = tableView
-        follows?.tableView = nil
         navigationItem.rightBarButtonItem = nil
         navigationItem.titleView = searchBar
         searchBar.becomeFirstResponder()
@@ -52,8 +60,6 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
     
     func endSearch() {
         activeDownloader = follows
-        activeDownloader?.tableView = tableView
-        searching?.tableView = nil
         searchBar.text = nil
         navigationItem.rightBarButtonItem = searchButton
         navigationItem.titleView = nil

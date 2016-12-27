@@ -20,8 +20,7 @@
     [super setTableView:tableView];
     
     if (tableView == nil) {
-        [self.graphObjects removeAllObjects];
-        self.totalCount = 0;
+        [self resetSearchWithTotalCount:0];
         _lastQuery = nil;
     }
 }
@@ -54,6 +53,9 @@
 }
 
 - (void)showResultsWithQuery:(NSString*)query {
+    if (self.tableView == nil) {
+        return;
+    }
     _parameters.query = query;
     
     NSInteger localSearchToken = _searchToken;

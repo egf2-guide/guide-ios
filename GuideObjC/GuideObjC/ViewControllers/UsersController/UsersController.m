@@ -51,19 +51,26 @@
     }];
 }
 
+- (void)setActiveDownloader:(EdgeDownloader *)activeDownloader {
+    if (_activeDownloader) {
+        _activeDownloader.tableView = nil;
+    }
+    _activeDownloader = activeDownloader;
+    
+    if (_activeDownloader) {
+        _activeDownloader.tableView = self.tableView;
+    }
+}
+
 - (IBAction)beginSearch:(id)sender {
-    _activeDownloader = _searching;
-    _activeDownloader.tableView = self.tableView;
-    _follows.tableView = nil;
+    self.activeDownloader = _searching;
     self.navigationItem.rightBarButtonItem = nil;
     self.navigationItem.titleView = _searchBar;
     [_searchBar becomeFirstResponder];
 }
 
 - (void)endSearch {
-    _activeDownloader = _follows;
-    _activeDownloader.tableView = self.tableView;
-    _searching.tableView = nil;
+    self.activeDownloader = _follows;
     _searchBar.text = nil;
     self.navigationItem.rightBarButtonItem = _searchButton;
     self.navigationItem.titleView = nil;
