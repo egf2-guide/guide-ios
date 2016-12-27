@@ -14,8 +14,8 @@
 #import "UIColor+Additions.h"
 #import "EdgeDownloader.h"
 #import "FileImageView.h"
-#import "FeedPostCell.h"
 #import "CommentCell.h"
+#import "PostCell.h"
 
 @interface PostController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeight;
@@ -49,7 +49,7 @@
         _creatorNameLabel.text = [_post.creatorObject.name fullName];
         _descriptionLabel.text = _post.desc;
         _postImageView.file = _post.imageObject;
-        CGFloat headerHeight = [FeedPostCell heightForPost:_post];
+        CGFloat headerHeight = [PostCell heightForPost:_post];
         _tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, headerHeight);
         
         _comments = [[ReversedEdgeDownloader alloc] initWithSource:_post.id edge:@"comments" expand:@[@"creator"]];

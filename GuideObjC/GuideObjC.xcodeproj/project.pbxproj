@@ -11,8 +11,6 @@
 		E50A89C81E0BF9E400230613 /* SearchDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C71E0BF9E400230613 /* SearchDownloader.m */; };
 		E51AEEF91E111F7900312952 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF81E111F7900312952 /* UIViewController+Additions.m */; };
 		E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577321E0121BF0068D28D /* SimpleFileManager.m */; };
-		E52577361E0127290068D28D /* FeedPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577351E0127290068D28D /* FeedPostCell.m */; };
-		E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577381E012A6B0068D28D /* FeedProgressCell.m */; };
 		E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E525773B1E012F990068D28D /* EGFHumanName+Additions.m */; };
 		E526673E1E08FEDD00A42337 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = E526673D1E08FEDD00A42337 /* ChangePasswordController.m */; };
 		E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E52865591DFE752F00D50A0D /* BaseNavigationController.m */; };
@@ -54,6 +52,8 @@
 		E5C592CB1E0AE172004C530D /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592C91E0AE172004C530D /* UserCell.m */; };
 		E5C592CC1E0AE172004C530D /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C592CA1E0AE172004C530D /* UserCell.xib */; };
 		E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592D21E0AEAC1004C530D /* UsersController.m */; };
+		E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA28F1E1248AA00ED3B16 /* PostCell.m */; };
+		E5FDA2921E12492100ED3B16 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FDA2911E12492100ED3B16 /* PostCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,10 +79,6 @@
 		E51AEEF81E111F7900312952 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		E52577311E0121BF0068D28D /* SimpleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFileManager.h; sourceTree = "<group>"; };
 		E52577321E0121BF0068D28D /* SimpleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleFileManager.m; sourceTree = "<group>"; };
-		E52577341E0127290068D28D /* FeedPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPostCell.h; sourceTree = "<group>"; };
-		E52577351E0127290068D28D /* FeedPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPostCell.m; sourceTree = "<group>"; };
-		E52577371E012A6B0068D28D /* FeedProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedProgressCell.h; sourceTree = "<group>"; };
-		E52577381E012A6B0068D28D /* FeedProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedProgressCell.m; sourceTree = "<group>"; };
 		E525773A1E012F990068D28D /* EGFHumanName+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EGFHumanName+Additions.h"; sourceTree = "<group>"; };
 		E525773B1E012F990068D28D /* EGFHumanName+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EGFHumanName+Additions.m"; sourceTree = "<group>"; };
 		E526673C1E08FEDD00A42337 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
@@ -159,6 +155,9 @@
 		E5C592CA1E0AE172004C530D /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		E5C592D11E0AEAC1004C530D /* UsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersController.h; sourceTree = "<group>"; };
 		E5C592D21E0AEAC1004C530D /* UsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersController.m; sourceTree = "<group>"; };
+		E5FDA28E1E1248AA00ED3B16 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		E5FDA28F1E1248AA00ED3B16 /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		E5FDA2911E12492100ED3B16 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,10 +215,6 @@
 			children = (
 				E52865761DFE75D800D50A0D /* FeedController.h */,
 				E52865771DFE75D800D50A0D /* FeedController.m */,
-				E52577341E0127290068D28D /* FeedPostCell.h */,
-				E52577351E0127290068D28D /* FeedPostCell.m */,
-				E52577371E012A6B0068D28D /* FeedProgressCell.h */,
-				E52577381E012A6B0068D28D /* FeedProgressCell.m */,
 			);
 			path = FeedController;
 			sourceTree = "<group>";
@@ -432,6 +427,7 @@
 				E564DF721E07EE0D0073677E /* OCSeparatorView.m */,
 				E5C592C11E0AE127004C530D /* ProgressCell */,
 				E5C592C21E0AE127004C530D /* UserCell */,
+				E5FDA28D1E12489A00ED3B16 /* PostCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +477,16 @@
 				E5C592D21E0AEAC1004C530D /* UsersController.m */,
 			);
 			path = UsersController;
+			sourceTree = "<group>";
+		};
+		E5FDA28D1E12489A00ED3B16 /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				E5FDA28E1E1248AA00ED3B16 /* PostCell.h */,
+				E5FDA28F1E1248AA00ED3B16 /* PostCell.m */,
+				E5FDA2911E12492100ED3B16 /* PostCell.xib */,
+			);
+			path = PostCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E57D57701DFA945900C8C237 /* LaunchScreen.storyboard in Resources */,
+				E5FDA2921E12492100ED3B16 /* PostCell.xib in Resources */,
 				E57D576D1DFA945900C8C237 /* Assets.xcassets in Resources */,
 				E5C592C71E0AE141004C530D /* ProgressCell.xib in Resources */,
 				E57D576B1DFA945900C8C237 /* Main.storyboard in Resources */,
@@ -583,6 +590,7 @@
 				E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */,
+				E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */,
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
 				E58FFE391E0D325C00E8EDB1 /* Follows.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
@@ -606,7 +614,6 @@
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
 				E50A89C31E0BCF4C00230613 /* ReversedEdgeDownloader.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,
-				E52577361E0127290068D28D /* FeedPostCell.m in Sources */,
 				E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */,
 				E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */,
 				E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */,
@@ -614,7 +621,6 @@
 				E57D57BC1DFA9B5F00C8C237 /* UIImage+Additions.m in Sources */,
 				E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */,
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
-				E52577391E012A6B0068D28D /* FeedProgressCell.m in Sources */,
 				E50A89C81E0BF9E400230613 /* SearchDownloader.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
 				E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */,

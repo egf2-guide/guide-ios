@@ -39,7 +39,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         creatorNameLabel.text = post.creatorObject?.name?.fullName()
         descriptionLabel.text = post.desc
         postImageView.file = post.imageObject
-        let headerHeight = FeedPostCell.height(forPost: post)
+        let headerHeight = PostCell.height(forPost: post)
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight)
         
         comments = ReversedEdgeDownloader(withSource: postId, edge: "comments", expand: ["creator"])

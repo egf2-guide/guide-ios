@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */; };
 		E51AEEF61E111CBB00312952 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */; };
-		E525772F1E010E720068D28D /* FeedProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E525772E1E010E720068D28D /* FeedProgressCell.swift */; };
 		E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52667391E08F73400A42337 /* ChangePasswordController.swift */; };
 		E52827C01E00687300A39792 /* BaseTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52827BF1E00687300A39792 /* BaseTableController.swift */; };
 		E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528654D1DFE6FE800D50A0D /* MoreController.swift */; };
@@ -31,6 +30,8 @@
 		E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F511E0B97110081B362 /* EdgeDownloader.swift */; };
 		E5681F541E0B982C0081B362 /* BaseDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F531E0B982C0081B362 /* BaseDownloader.swift */; };
 		E5681F5C1E0BB5740081B362 /* ReversedEdgeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F5B1E0BB5740081B362 /* ReversedEdgeDownloader.swift */; };
+		E5734D811E1244CF007EF828 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5734D801E1244CF007EF828 /* PostCell.swift */; };
+		E5734D831E12450B007EF828 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5734D821E12450B007EF828 /* PostCell.xib */; };
 		E574388B1E0A59CD00CA6C45 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574388A1E0A59CD00CA6C45 /* ProgressCell.swift */; };
 		E574388D1E0A5A8E00CA6C45 /* ProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E574388C1E0A5A8E00CA6C45 /* ProgressCell.xib */; };
 		E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D57421DFA943300C8C237 /* AppDelegate.swift */; };
@@ -46,7 +47,6 @@
 		E57D579C1DFA970C00C8C237 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */; };
 		E58FFE361E0CE83900E8EDB1 /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58FFE351E0CE83900E8EDB1 /* Follows.swift */; };
 		E591236F1E09358900AD98A3 /* UsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E591236E1E09358900AD98A3 /* UsersController.swift */; };
-		E59688141DFFD01E007F1DEA /* FeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688131DFFD01E007F1DEA /* FeedPostCell.swift */; };
 		E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */; };
 		E596881F1DFFF1FA007F1DEA /* SimpleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */; };
 		E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48D981E04496100E07571 /* SeparatorView.swift */; };
@@ -71,7 +71,6 @@
 /* Begin PBXFileReference section */
 		E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDownloader.swift; sourceTree = "<group>"; };
 		E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
-		E525772E1E010E720068D28D /* FeedProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedProgressCell.swift; sourceTree = "<group>"; };
 		E52667391E08F73400A42337 /* ChangePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		E52827BF1E00687300A39792 /* BaseTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableController.swift; sourceTree = "<group>"; };
 		E528654D1DFE6FE800D50A0D /* MoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
@@ -93,6 +92,8 @@
 		E5681F511E0B97110081B362 /* EdgeDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeDownloader.swift; sourceTree = "<group>"; };
 		E5681F531E0B982C0081B362 /* BaseDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDownloader.swift; sourceTree = "<group>"; };
 		E5681F5B1E0BB5740081B362 /* ReversedEdgeDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversedEdgeDownloader.swift; sourceTree = "<group>"; };
+		E5734D801E1244CF007EF828 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		E5734D821E12450B007EF828 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		E574388A1E0A59CD00CA6C45 /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		E574388C1E0A5A8E00CA6C45 /* ProgressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressCell.xib; sourceTree = "<group>"; };
 		E57D573F1DFA943300C8C237 /* GuideSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +111,6 @@
 		E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		E58FFE351E0CE83900E8EDB1 /* Follows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Follows.swift; sourceTree = "<group>"; };
 		E591236E1E09358900AD98A3 /* UsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersController.swift; sourceTree = "<group>"; };
-		E59688131DFFD01E007F1DEA /* FeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPostCell.swift; sourceTree = "<group>"; };
 		E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EGFHumanName+Additions.swift"; sourceTree = "<group>"; };
 		E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleFileManager.swift; sourceTree = "<group>"; };
 		E5D48D981E04496100E07571 /* SeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
@@ -159,8 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				E52865521DFE72FB00D50A0D /* FeedController.swift */,
-				E59688131DFFD01E007F1DEA /* FeedPostCell.swift */,
-				E525772E1E010E720068D28D /* FeedProgressCell.swift */,
 			);
 			path = FeedController;
 			sourceTree = "<group>";
@@ -258,6 +256,15 @@
 			path = ProgressController;
 			sourceTree = "<group>";
 		};
+		E5734D7F1E1244C7007EF828 /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				E5734D801E1244CF007EF828 /* PostCell.swift */,
+				E5734D821E12450B007EF828 /* PostCell.xib */,
+			);
+			path = PostCell;
+			sourceTree = "<group>";
+		};
 		E57438891E0A59C300CA6C45 /* ProgressCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +346,7 @@
 				E5D48D981E04496100E07571 /* SeparatorView.swift */,
 				E57438891E0A59C300CA6C45 /* ProgressCell */,
 				E5EB0B8C1E0A6578000AB70A /* UserCell */,
+				E5734D7F1E1244C7007EF828 /* PostCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -459,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E57D574D1DFA943300C8C237 /* LaunchScreen.storyboard in Resources */,
+				E5734D831E12450B007EF828 /* PostCell.xib in Resources */,
 				E57D574A1DFA943300C8C237 /* Assets.xcassets in Resources */,
 				E574388D1E0A5A8E00CA6C45 /* ProgressCell.xib in Resources */,
 				E57D57481DFA943300C8C237 /* Main.storyboard in Resources */,
@@ -491,6 +500,7 @@
 			files = (
 				E564DF6C1E07B41E0073677E /* CommentCell.swift in Sources */,
 				E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */,
+				E5734D811E1244CF007EF828 /* PostCell.swift in Sources */,
 				E56180F61E03FD8C005A8224 /* PostController.swift in Sources */,
 				E52865501DFE6FF600D50A0D /* MoreCell.swift in Sources */,
 				E574388B1E0A59CD00CA6C45 /* ProgressCell.swift in Sources */,
@@ -502,7 +512,6 @@
 				E591236F1E09358900AD98A3 /* UsersController.swift in Sources */,
 				E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */,
 				E528659C1DFE7CBD00D50A0D /* LoginController.swift in Sources */,
-				E59688141DFFD01E007F1DEA /* FeedPostCell.swift in Sources */,
 				E57D57981DFA96E600C8C237 /* DesignableButton.swift in Sources */,
 				E55EA4EA1DFE90F000C611BD /* NewPostController.swift in Sources */,
 				E596881F1DFFF1FA007F1DEA /* SimpleFileManager.swift in Sources */,
@@ -511,7 +520,6 @@
 				E57D579A1DFA96FD00C8C237 /* UIColor+Additions.swift in Sources */,
 				E547C1081E090F44008CB362 /* ResetPasswordController.swift in Sources */,
 				E52865531DFE72FB00D50A0D /* FeedController.swift in Sources */,
-				E525772F1E010E720068D28D /* FeedProgressCell.swift in Sources */,
 				E547C1061E090F38008CB362 /* RestorePasswordController.swift in Sources */,
 				E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */,
 				E57D57861DFA960500C8C237 /* EGF2.swift in Sources */,

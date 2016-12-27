@@ -1,23 +1,22 @@
 //
-//  FeedPostCell.m
+//  PostCell.m
 //  GuideObjC
 //
-//  Created by LuzanovRoman on 14.12.16.
+//  Created by LuzanovRoman on 27.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
-#import "FeedPostCell.h"
+#import "PostCell.h"
 #import "EGFHumanName+Additions.h"
-#import "EGF2.h"
 
-@interface FeedPostCell ()
+@interface PostCell ()
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet FileImageView *postImageView;
 @end
 
-@implementation FeedPostCell
+@implementation PostCell
 
 + (CGFloat)heightForPost:(EGFPost *)post {
     CGFloat height = 46; // height of cell without image and description

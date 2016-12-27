@@ -1,8 +1,8 @@
 //
-//  FeedPostCell.h
+//  PostCell.h
 //  GuideObjC
 //
-//  Created by LuzanovRoman on 14.12.16.
+//  Created by LuzanovRoman on 27.12.16.
 //  Copyright © 2016 eigengraph. All rights reserved.
 //
 
@@ -10,13 +10,13 @@
 #import "FileImageView.h"
 #import "EGF2.h"
 
-@protocol FeedPostCellDelegate <NSObject>
+@protocol PostCellDelegate <NSObject>
 - (NSString *)authorizedUserId;
 - (void)deletePost:(EGFPost *)post;
 @end
 
-@interface FeedPostCell : UITableViewCell
-@property (weak, nonatomic) id <FeedPostCellDelegate> delegate;
+@interface PostCell : UITableViewCell
+@property (weak, nonatomic) id <PostCellDelegate> delegate;
 @property (weak, nonatomic) EGFPost *post;
 
 + (CGFloat)heightForPost:(EGFPost *)post;

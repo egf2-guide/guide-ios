@@ -9,7 +9,7 @@
 import UIKit
 import EGF2
 
-class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDelegate {
+class FeedController: BaseTableController, PostCellDelegate, UISearchBarDelegate {
 
     @IBOutlet var searchButton: UIBarButtonItem!
     @IBOutlet var newPostButton: UIBarButtonItem!
@@ -26,6 +26,9 @@ class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "ProgressCell", bundle: nil), forCellReuseIdentifier: "ProgressCell")
+        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
         
         let parameters = EGF2SearchParameters(withObject: "post")
         parameters.fields = ["desc"]
@@ -56,7 +59,7 @@ class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let postController = segue.destination as? PostController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+        if let postController = segue.destination as? PostController, let indexPath = sender as? IndexPath {
             postController.currentPost = activeDownloader?[indexPath.row]
             searchBar.resignFirstResponder()
         }
@@ -114,7 +117,7 @@ class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDele
         searching?.showObjects(withQuery: searchText)
     }
     
-    // MARK:- FeedPostCellDelegate
+    // MARK:- PostCellDelegate
     var authorizedUserId: String? {
         get {
             return currentUserId
@@ -145,7 +148,7 @@ class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDele
                 // Check if we already have the value
                 if let value = cellHeights[postId] { return value }
                 
-                let height = FeedPostCell.height(forPost: post)
+                let height = PostCell.height(forPost: post)
                 cellHeights[postId] = height
                 return height
             }
@@ -160,6 +163,10 @@ class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDele
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowPost", sender: indexPath)
+    }
+    
     // MARK:- UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -171,11 +178,11 @@ class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProgressCell") as! FeedProgressCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProgressCell") as! ProgressCell
             cell.indicatorIsHidden = tableView.refreshControl!.isRefreshing || (activeDownloader?.isDownloaded ?? true)
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! FeedPostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         cell.delegate = self
         cell.post = activeDownloader![indexPath.row]
         return cell

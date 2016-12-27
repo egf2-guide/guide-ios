@@ -12,10 +12,10 @@
 #import "ProgressController.h"
 #import "SimpleFileManager.h"
 #import "UIColor+Additions.h"
-#import "FeedProgressCell.h"
 #import "SearchDownloader.h"
 #import "EdgeDownloader.h"
 #import "PostController.h"
+#import "ProgressCell.h"
 #import "EGF2.h"
 
 @interface FeedController ()
@@ -40,6 +40,9 @@
     _cellHeights = [NSMutableDictionary dictionary];
     _expand = @[@"creator",@"image"];
     _edge = @"posts";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"ProgressCell" bundle:nil] forCellReuseIdentifier:@"ProgressCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PostCell" bundle:nil] forCellReuseIdentifier:@"PostCell"];
     
     _searchBar = [[UISearchBar alloc] init];
     _searchBar.delegate = self;
@@ -72,9 +75,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isMemberOfClass:[PostController class]] && [sender isKindOfClass:[UITableViewCell class]]) {
+    if ([segue.destinationViewController isMemberOfClass:[PostController class]] && [sender isKindOfClass:[NSIndexPath class]]) {
         PostController * postController = segue.destinationViewController;
-        NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
+        NSIndexPath * indexPath = (NSIndexPath *)sender;
         postController.post = (EGFPost *)[_activeDownloader objectAtIndex:indexPath.row];
         [_searchBar resignFirstResponder];
     }
@@ -132,7 +135,7 @@
     [_searching showObjectsWithQuery:searchText];
 }
 
-// MARK:- FeedPostCellDelegate
+// MARK:- PostCellDelegate
 - (NSString *)authorizedUserId {
     return _currentUserId;
 }
@@ -164,7 +167,7 @@
         if (height) {
             return [height floatValue];
         }
-        CGFloat newHeight = [FeedPostCell heightForPost:post];
+        CGFloat newHeight = [PostCell heightForPost:post];
         _cellHeights[post.id] = [NSNumber numberWithFloat:newHeight];
         return newHeight;
     }
@@ -175,6 +178,10 @@
     if (indexPath.section == 1 && ![_activeDownloader isDownloaded]) {
         [_activeDownloader getNextPage];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"ShowPost" sender:indexPath];
 }
 
 // MARK:- UITableViewDataSource
@@ -188,11 +195,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
-        FeedProgressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProgressCell"];
+        ProgressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProgressCell"];
         cell.indicatorIsHidden = tableView.refreshControl.isRefreshing || [_activeDownloader isDownloaded];
         return cell;
     }
-    FeedPostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    PostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.delegate = self;
     cell.post = (EGFPost *)[_activeDownloader objectAtIndex:indexPath.row];
     return cell;
