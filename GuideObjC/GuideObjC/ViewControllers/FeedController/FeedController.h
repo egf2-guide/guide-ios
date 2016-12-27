@@ -9,6 +9,6 @@
 #import "BaseTableViewController.h"
 #import "FeedPostCell.h"
 
-@interface FeedController : BaseTableViewController <FeedPostCellDelegate>
+@interface FeedController : BaseTableViewController <FeedPostCellDelegate, UISearchBarDelegate>
 
 @end

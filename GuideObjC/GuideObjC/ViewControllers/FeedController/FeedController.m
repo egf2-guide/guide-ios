@@ -11,17 +11,25 @@
 #import "EGFHumanName+Additions.h"
 #import "ProgressController.h"
 #import "SimpleFileManager.h"
+#import "UIColor+Additions.h"
 #import "FeedProgressCell.h"
+#import "SearchDownloader.h"
 #import "EdgeDownloader.h"
 #import "PostController.h"
 #import "EGF2.h"
 
 @interface FeedController ()
-@property (retain, nonatomic) EdgeDownloader *activeDownloader;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *searchButton;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *createPostButton;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *listSegment;
+@property (retain, nonatomic) BaseDownloader *activeDownloader;
+@property (retain, nonatomic) SearchDownloader *searching;
 @property (retain, nonatomic) EdgeDownloader *timeline;
 @property (retain, nonatomic) EdgeDownloader *feed;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
+@property (retain, nonatomic) UISearchBar * searchBar;
 @property (retain, nonatomic) NSString *currentUserId;
+@property (retain, nonatomic) NSArray *expand;
 @property (retain, nonatomic) NSString *edge;
 @end
 
@@ -30,13 +38,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _cellHeights = [NSMutableDictionary dictionary];
+    _expand = @[@"creator",@"image"];
     _edge = @"posts";
+    
+    _searchBar = [[UISearchBar alloc] init];
+    _searchBar.delegate = self;
+    _searchBar.showsCancelButton = true;
+    _searchBar.tintColor = [UIColor hexColor:0x5E66B1];
+    
+    EGF2SearchParameters * parameters = [EGF2SearchParameters parametersWithObject:@"post"];
+    parameters.fields = @[@"desc"];
+    parameters.expand = _expand;
+    _searching = [[SearchDownloader alloc] initWithParameters:parameters];
     
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             _currentUserId = [object valueForKey:@"id"];
-            _timeline = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:@"timeline" expand:@[@"creator",@"image"]];
-            _feed = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:_edge expand:@[@"creator",@"image"]];
+            _timeline = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:@"timeline" expand:_expand];
+            _feed = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:_edge expand:_expand];
             _feed.tableView = self.tableView;
             [_feed getNextPage];
             _activeDownloader = _feed;
@@ -44,24 +63,73 @@
     }];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (_searchBar.text.length > 0) {
+        [_searchBar becomeFirstResponder];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isMemberOfClass:[PostController class]] && [sender isKindOfClass:[UITableViewCell class]]) {
         PostController * postController = segue.destinationViewController;
         NSIndexPath * indexPath = [self.tableView indexPathForCell:sender];
         postController.post = (EGFPost *)[_activeDownloader objectAtIndex:indexPath.row];
+        [_searchBar resignFirstResponder];
+    }
+}
+
+- (void)setActiveDownloader:(EdgeDownloader *)activeDownloader {
+    if (_activeDownloader) {
+        _activeDownloader.tableView = nil;
+    }
+    _activeDownloader = activeDownloader;
+    
+    if (_activeDownloader) {
+        _activeDownloader.tableView = self.tableView;
     }
 }
 
 - (IBAction)changeList:(UISegmentedControl *)sender {
-    _activeDownloader.tableView = nil;
-    
     if (sender.selectedSegmentIndex == 0) {
-        _activeDownloader = _feed;
+        self.activeDownloader = _feed;
     }
     else if (sender.selectedSegmentIndex == 1) {
-        _activeDownloader = _timeline;
+        self.activeDownloader = _timeline;
     }
-    _activeDownloader.tableView = self.tableView;
+}
+
+// MARK:- Searching
+- (IBAction)beginSearch:(UISegmentedControl *)sender {
+    self.activeDownloader = _searching;
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.titleView = _searchBar;
+    [_searchBar becomeFirstResponder];
+}
+
+- (void)endSearch {
+    [self changeList:_listSegment];
+    _searchBar.text = nil;
+    self.navigationItem.rightBarButtonItem = _createPostButton;
+    self.navigationItem.leftBarButtonItem = _searchButton;
+    self.navigationItem.titleView = _listSegment;
+}
+
+// MARK:- UISearchBarDelegate
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self endSearch];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    if (searchBar.text.length == 0) {
+        [self endSearch];
+    }
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [_searching showObjectsWithQuery:searchText];
 }
 
 // MARK:- FeedPostCellDelegate
@@ -121,7 +189,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         FeedProgressCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProgressCell"];
-        cell.indicatorIsHidden = [_activeDownloader isDownloaded];
+        cell.indicatorIsHidden = tableView.refreshControl.isRefreshing || [_activeDownloader isDownloaded];
         return cell;
     }
     FeedPostCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];

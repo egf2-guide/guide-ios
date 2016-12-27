@@ -9,45 +9,109 @@
 import UIKit
 import EGF2
 
-class FeedController: BaseTableController, FeedPostCellDelegate {
+class FeedController: BaseTableController, FeedPostCellDelegate, UISearchBarDelegate {
 
-    fileprivate var activeDownloader: BaseDownloader<EGFPost>?
+    @IBOutlet var searchButton: UIBarButtonItem!
+    @IBOutlet var newPostButton: UIBarButtonItem!
+    @IBOutlet var listSegment: UISegmentedControl!
+    
+    fileprivate var searching: SearchDownloader<EGFPost>?
     fileprivate var timeline: EdgeDownloader<EGFPost>?
     fileprivate var feed: EdgeDownloader<EGFPost>?
+    fileprivate let searchBar = UISearchBar()
     fileprivate var cellHeights = [String: CGFloat]()
     fileprivate var currentUserId: String?
+    fileprivate let expand = ["creator","image"]
     fileprivate let edge = "posts"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let parameters = EGF2SearchParameters(withObject: "post")
+        parameters.fields = ["desc"]
+        parameters.expand = expand
+        searching = SearchDownloader(withParameters: parameters)
+        
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = UIColor.hexColor(0x5E66B1)
+        
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
             self.currentUserId = userId
-            self.timeline = EdgeDownloader(withSource: userId, edge: "timeline", expand: ["creator","image"])
-            self.feed = EdgeDownloader(withSource: userId, edge: self.edge, expand: ["creator","image"])
+            self.timeline = EdgeDownloader(withSource: userId, edge: "timeline", expand: self.expand)
+            self.feed = EdgeDownloader(withSource: userId, edge: self.edge, expand: self.expand)
             self.feed?.tableView = self.tableView
             self.feed?.getNextPage()
             self.activeDownloader = self.feed
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !(searchBar.text ?? "").isEmpty {
+            searchBar.becomeFirstResponder()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let postController = segue.destination as? PostController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             postController.currentPost = activeDownloader?[indexPath.row]
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    fileprivate var activeDownloader: BaseDownloader<EGFPost>? {
+        willSet {
+            if let oldDownloader = activeDownloader {
+                oldDownloader.tableView = nil
+            }
+        }
+        didSet {
+            activeDownloader?.tableView = tableView
         }
     }
     
     @IBAction func changeList(_ sender: UISegmentedControl) {
-        activeDownloader?.tableView = nil
-        
         if sender.selectedSegmentIndex == 0 {
             activeDownloader = feed
         }
         else if sender.selectedSegmentIndex == 1 {
             activeDownloader = timeline
         }
-        activeDownloader?.tableView = tableView
+    }
+    
+    // MARK:- Searching
+    @IBAction func beginSearch(_ sender: AnyObject) {
+        activeDownloader = searching
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.titleView = searchBar
+        searchBar.becomeFirstResponder()
+    }
+    
+    func endSearch() {
+        changeList(listSegment)
+        searchBar.text = nil
+        navigationItem.rightBarButtonItem = newPostButton
+        navigationItem.leftBarButtonItem = searchButton
+        navigationItem.titleView = listSegment
+    }
+    
+    // MARK:- UISearchBarDelegate
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        endSearch()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let text = searchBar.text, text.isEmpty {
+            endSearch()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searching?.showObjects(withQuery: searchText)
     }
     
     // MARK:- FeedPostCellDelegate
@@ -108,7 +172,7 @@ class FeedController: BaseTableController, FeedPostCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProgressCell") as! FeedProgressCell
-            cell.indicatorIsHidden = activeDownloader?.isDownloaded ?? false
+            cell.indicatorIsHidden = tableView.refreshControl!.isRefreshing || (activeDownloader?.isDownloaded ?? true)
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! FeedPostCell

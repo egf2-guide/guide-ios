@@ -1011,7 +1011,7 @@
         <scene sceneID="geP-J1-EbP">
             <objects>
                 <tableViewController id="x01-sf-nDf" customClass="FeedController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="f7S-kN-jci">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="f7S-kN-jci">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1157,8 +1157,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="MNT-kx-J31">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="wLB-Au-zn1">
+                            <connections>
+                                <action selector="beginSearch:" destination="x01-sf-nDf" id="XLI-EH-s03"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2Fa-JE-Ece">
-                            <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
+                            <rect key="frame" x="108" y="7" width="160" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Feed"/>
@@ -1175,6 +1180,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="createPostButton" destination="sXY-xS-daR" id="NN0-ke-JQV"/>
+                        <outlet property="listSegment" destination="2Fa-JE-Ece" id="fZf-qM-paE"/>
+                        <outlet property="searchButton" destination="wLB-Au-zn1" id="V5O-Tf-9Yc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0o-f0-NFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
