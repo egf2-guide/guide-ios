@@ -54,6 +54,8 @@
 		E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592D21E0AEAC1004C530D /* UsersController.m */; };
 		E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA28F1E1248AA00ED3B16 /* PostCell.m */; };
 		E5FDA2921E12492100ED3B16 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FDA2911E12492100ED3B16 /* PostCell.xib */; };
+		E5FDA29A1E1269C100ED3B16 /* FollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2991E1269C100ED3B16 /* FollowButton.m */; };
+		E5FDA29E1E126E1700ED3B16 /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA29D1E126E1700ED3B16 /* UserProfileController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -158,6 +160,10 @@
 		E5FDA28E1E1248AA00ED3B16 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		E5FDA28F1E1248AA00ED3B16 /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		E5FDA2911E12492100ED3B16 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		E5FDA2981E1269C100ED3B16 /* FollowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowButton.h; sourceTree = "<group>"; };
+		E5FDA2991E1269C100ED3B16 /* FollowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowButton.m; sourceTree = "<group>"; };
+		E5FDA29C1E126E1700ED3B16 /* UserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileController.h; sourceTree = "<group>"; };
+		E5FDA29D1E126E1700ED3B16 /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +416,7 @@
 				E59123661E09262D00AD98A3 /* RestorePasswordController */,
 				E59123651E09262D00AD98A3 /* ResetPasswordController */,
 				E5C592D01E0AEAA2004C530D /* UsersController */,
+				E5FDA29B1E126E0500ED3B16 /* UserProfileController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +428,8 @@
 				E57D57BE1DFA9C9C00C8C237 /* OCDesignableView.m */,
 				E57D57C01DFAA09100C8C237 /* OCDesignableButton.h */,
 				E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */,
+				E5FDA2981E1269C100ED3B16 /* FollowButton.h */,
+				E5FDA2991E1269C100ED3B16 /* FollowButton.m */,
 				E55415E91E03F6870024B3A2 /* FileImageView.h */,
 				E55415EA1E03F6870024B3A2 /* FileImageView.m */,
 				E564DF711E07EE0D0073677E /* OCSeparatorView.h */,
@@ -487,6 +496,15 @@
 				E5FDA2911E12492100ED3B16 /* PostCell.xib */,
 			);
 			path = PostCell;
+			sourceTree = "<group>";
+		};
+		E5FDA29B1E126E0500ED3B16 /* UserProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				E5FDA29C1E126E1700ED3B16 /* UserProfileController.h */,
+				E5FDA29D1E126E1700ED3B16 /* UserProfileController.m */,
+			);
+			path = UserProfileController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +637,8 @@
 				E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */,
 				E52865741DFE752F00D50A0D /* RegisterController.m in Sources */,
 				E57D57BC1DFA9B5F00C8C237 /* UIImage+Additions.m in Sources */,
+				E5FDA29E1E126E1700ED3B16 /* UserProfileController.m in Sources */,
+				E5FDA29A1E1269C100ED3B16 /* FollowButton.m in Sources */,
 				E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */,
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
 				E50A89C81E0BF9E400230613 /* SearchDownloader.m in Sources */,

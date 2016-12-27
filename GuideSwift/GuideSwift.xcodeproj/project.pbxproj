@@ -52,6 +52,8 @@
 		E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48D981E04496100E07571 /* SeparatorView.swift */; };
 		E5EB0B8E1E0A6586000AB70A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB0B8D1E0A6586000AB70A /* UserCell.swift */; };
 		E5EB0B901E0A65B6000AB70A /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */; };
+		E5FDA2951E124D3200ED3B16 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2941E124D3200ED3B16 /* UserProfileController.swift */; };
+		E5FDA2971E125DCC00ED3B16 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2961E125DCC00ED3B16 /* FollowButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,6 +118,8 @@
 		E5D48D981E04496100E07571 /* SeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		E5EB0B8D1E0A6586000AB70A /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		E5FDA2941E124D3200ED3B16 /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		E5FDA2961E125DCC00ED3B16 /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +346,7 @@
 			children = (
 				E57D57951DFA96D400C8C237 /* DesignableView.swift */,
 				E57D57971DFA96E600C8C237 /* DesignableButton.swift */,
+				E5FDA2961E125DCC00ED3B16 /* FollowButton.swift */,
 				E55415E71E03D9A10024B3A2 /* FileImageView.swift */,
 				E5D48D981E04496100E07571 /* SeparatorView.swift */,
 				E57438891E0A59C300CA6C45 /* ProgressCell */,
@@ -369,6 +374,7 @@
 				E55EA4E81DFE90E500C611BD /* NewPostController */,
 				E56180F41E03FD8C005A8224 /* PostController */,
 				E591236D1E09358200AD98A3 /* UsersController */,
+				E5FDA2931E124D3200ED3B16 /* UserProfileController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -397,6 +403,14 @@
 				E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */,
 			);
 			path = UserCell;
+			sourceTree = "<group>";
+		};
+		E5FDA2931E124D3200ED3B16 /* UserProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				E5FDA2941E124D3200ED3B16 /* UserProfileController.swift */,
+			);
+			path = UserProfileController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,6 +522,8 @@
 				E59688161DFFD85F007F1DEA /* EGFHumanName+Additions.swift in Sources */,
 				E5681F5C1E0BB5740081B362 /* ReversedEdgeDownloader.swift in Sources */,
 				E528659F1DFE7CBD00D50A0D /* UserController.swift in Sources */,
+				E5FDA2951E124D3200ED3B16 /* UserProfileController.swift in Sources */,
+				E5FDA2971E125DCC00ED3B16 /* FollowButton.swift in Sources */,
 				E55415E81E03D9A10024B3A2 /* FileImageView.swift in Sources */,
 				E591236F1E09358900AD98A3 /* UsersController.swift in Sources */,
 				E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */,

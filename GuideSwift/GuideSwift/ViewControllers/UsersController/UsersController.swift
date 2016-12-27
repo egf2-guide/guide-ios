@@ -16,6 +16,7 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
     fileprivate var searching: SearchDownloader<EGFUser>?
     fileprivate var follows: EdgeDownloader<EGFUser>?
     fileprivate let searchBar = UISearchBar()
+    fileprivate var selectedUser: EGFUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,15 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
             self.follows?.tableView = self.tableView
             self.follows?.getNextPage()
             self.activeDownloader = self.follows
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let user = selectedUser, let index = activeDownloader?.graphObjects.index(of: user) {
+            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+            selectedUser = nil
         }
     }
     
@@ -63,6 +73,14 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
         searchBar.text = nil
         navigationItem.rightBarButtonItem = searchButton
         navigationItem.titleView = nil
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let useerProfileController = segue.destination as? UserProfileController, let indexPath = sender as? IndexPath {
+            selectedUser = activeDownloader?[indexPath.row]
+            useerProfileController.profileUser = selectedUser
+            searchBar.resignFirstResponder()
+        }
     }
     
     // MARK:- UserCellDelegate
@@ -103,6 +121,10 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
                 downloader.getNextPage()
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowUserProfile", sender: indexPath)
     }
     
     // MARK:- UITableViewDataSource

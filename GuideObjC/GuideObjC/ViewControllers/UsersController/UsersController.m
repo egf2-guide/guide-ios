@@ -7,6 +7,7 @@
 //
 
 #import "UsersController.h"
+#import "UserProfileController.h"
 #import "UIColor+Additions.h"
 #import "SearchDownloader.h"
 #import "EdgeDownloader.h"
@@ -21,6 +22,7 @@
 @property (retain, nonatomic) SearchDownloader *searching;
 @property (retain, nonatomic) EdgeDownloader *follows;
 @property (retain, nonatomic) UISearchBar * searchBar;
+@property (retain, nonatomic) EGFUser * selectedUser;
 @end
 
 @implementation UsersController
@@ -51,6 +53,18 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (_selectedUser) {
+        NSInteger index = [_activeDownloader.graphObjects indexOfObject:_selectedUser];
+        
+        if (index != NSNotFound) {
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        }
+        _selectedUser = nil;
+    }
+}
+
 - (void)setActiveDownloader:(EdgeDownloader *)activeDownloader {
     if (_activeDownloader) {
         _activeDownloader.tableView = nil;
@@ -75,7 +89,17 @@
     self.navigationItem.rightBarButtonItem = _searchButton;
     self.navigationItem.titleView = nil;
 }
-                
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isMemberOfClass:[UserProfileController class]] && [sender isMemberOfClass:[NSIndexPath class]]) {
+        UserProfileController * controller = (UserProfileController *)segue.destinationViewController;
+        NSIndexPath * indexPath = (NSIndexPath *)sender;
+        _selectedUser = (EGFUser *)[_activeDownloader objectAtIndex:indexPath.row];
+        controller.profileUser = _selectedUser;
+        [_searchBar resignFirstResponder];
+    }
+}
+
 // MARK:- UserCellDelegate
 - (void)didTapFollowButtonWithUser:(EGFUser *)user andCell:(UserCell *)cell {
     if ([[Follows shared] followStateForUser:user] == isFollow) {
@@ -120,6 +144,10 @@
             [_activeDownloader getNextPage];
         }
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"ShowUserProfile" sender:indexPath];
 }
 
 // MARK:- UITableViewDataSource

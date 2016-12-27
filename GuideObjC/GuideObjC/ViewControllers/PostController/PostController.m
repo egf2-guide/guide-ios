@@ -30,7 +30,6 @@
 @property (retain, nonatomic) ReversedEdgeDownloader *comments;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
-@property (retain, nonatomic) NSString *insertedCommentId;
 @property (retain, nonatomic) EGFUser *currentUser;
 @end
 

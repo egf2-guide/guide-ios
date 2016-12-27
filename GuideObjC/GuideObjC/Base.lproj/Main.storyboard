@@ -1059,7 +1059,7 @@
         <!--Post-->
         <scene sceneID="ljN-Ly-Kt8">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="rIU-h5-qld" customClass="PostController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostController" hidesBottomBarWhenPushed="YES" id="rIU-h5-qld" customClass="PostController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g3X-ka-5Ub"/>
                         <viewControllerLayoutGuide type="bottom" id="2sq-LA-9eX"/>
@@ -1899,11 +1899,82 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchButton" destination="HXA-dL-Qnr" id="eql-ot-uuv"/>
+                        <segue destination="gYH-Kr-6U7" kind="show" identifier="ShowUserProfile" id="kHc-0P-fUR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnO-Wl-Moc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1865" y="260"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="rAt-Zb-fDt">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="gYH-Kr-6U7" customClass="UserProfileController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5DO-ns-yCQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="qQC-tX-Xq5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lYn-mQ-GKa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BDP-eM-9wb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="9kc-IB-k6c">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZm-8m-Gbn">
+                                            <rect key="frame" x="8" y="30" width="359" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bY-8M-H4X" customClass="FollowButton">
+                                            <rect key="frame" x="172" y="62" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="AED-SK-7e6"/>
+                                                <constraint firstAttribute="width" constant="30" id="RDd-sC-t6T"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="followUser:" destination="gYH-Kr-6U7" eventType="touchUpInside" id="7zI-Fk-WYu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="WZm-8m-Gbn" firstAttribute="top" secondItem="9kc-IB-k6c" secondAttribute="top" constant="30" id="Eqy-U1-etR"/>
+                                        <constraint firstItem="7bY-8M-H4X" firstAttribute="centerX" secondItem="9kc-IB-k6c" secondAttribute="centerX" id="Fe3-Gk-lmq"/>
+                                        <constraint firstItem="WZm-8m-Gbn" firstAttribute="leading" secondItem="9kc-IB-k6c" secondAttribute="leading" constant="8" id="T9m-se-CUr"/>
+                                        <constraint firstAttribute="trailing" secondItem="WZm-8m-Gbn" secondAttribute="trailing" constant="8" id="cKH-sO-My2"/>
+                                        <constraint firstItem="7bY-8M-H4X" firstAttribute="top" secondItem="WZm-8m-Gbn" secondAttribute="bottom" constant="8" id="z4J-cJ-Fnt"/>
+                                    </constraints>
+                                </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="gYH-Kr-6U7" id="vqu-82-mTb"/>
+                                    <outlet property="delegate" destination="gYH-Kr-6U7" id="IF6-A0-qq3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BDP-eM-9wb" secondAttribute="trailing" id="8HA-rQ-uV3"/>
+                            <constraint firstAttribute="bottom" secondItem="BDP-eM-9wb" secondAttribute="bottom" id="CMK-Pd-ygb"/>
+                            <constraint firstItem="BDP-eM-9wb" firstAttribute="top" secondItem="lYn-mQ-GKa" secondAttribute="top" id="Fpd-Z6-blt"/>
+                            <constraint firstItem="BDP-eM-9wb" firstAttribute="leading" secondItem="lYn-mQ-GKa" secondAttribute="leading" id="MAT-Sl-R9k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="Bgd-JP-ydu"/>
+                    <connections>
+                        <outlet property="followButton" destination="7bY-8M-H4X" id="TN5-73-RZZ"/>
+                        <outlet property="tableView" destination="BDP-eM-9wb" id="lkS-Kf-wO7"/>
+                        <outlet property="userNameLabel" destination="WZm-8m-Gbn" id="NnK-su-XN2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnm-1D-dvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="260"/>
         </scene>
     </scenes>
     <resources>
