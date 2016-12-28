@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostController: BaseController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate {
+class PostController: BaseController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate, CommentCellDelegate {
     
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -24,6 +24,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     fileprivate var refreshControl: UIRefreshControl!
     fileprivate var comments: ReversedEdgeDownloader<EGFComment>?
     fileprivate var currentUser: EGFUser?
+    fileprivate var edge = "comments"
     
     var currentPost: EGFPost?
     
@@ -42,7 +43,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         let headerHeight = PostCell.height(forPost: post)
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight)
         
-        comments = ReversedEdgeDownloader(withSource: postId, edge: "comments", expand: ["creator"])
+        comments = ReversedEdgeDownloader(withSource: postId, edge: edge, expand: ["creator"])
         comments?.pageCount = 5
         comments?.tableView = self.tableView
         comments?.getNextPage()
@@ -93,6 +94,24 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func tapOnTableView(_ sender: AnyObject) {
         commentTextView.resignFirstResponder()
+    }
+    
+    // MARK:- CommentCellDelegate
+    var authorizedUserId: String? {
+        get {
+            return currentUser?.id
+        }
+    }
+    
+    func delete(comment: EGFComment) {
+        guard let commentId = comment.id, let postId = currentPost?.id else { return }
+        
+        showConfirm(withTitle: "Warning", message: "Really delete?") {
+            ProgressController.show()
+            Graph.deleteObject(withId: commentId, forSource: postId, fromEdge: self.edge) { (_, error) in
+                ProgressController.hide()
+            }
+        }
     }
     
     // MARK:- UITextViewDelegate
@@ -146,10 +165,9 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
             cell.delegate = self
             return cell
         }
-        let comment = comments![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell") as! CommentCell
-        cell.creatorNameLabel.text = comment.creatorObject?.name?.fullName()
-        cell.descriptionLabel.text = comment.text
+        cell.delegate = self
+        cell.comment = comments![indexPath.row]
         return cell
     }
     

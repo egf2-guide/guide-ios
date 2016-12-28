@@ -31,12 +31,14 @@
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
 @property (retain, nonatomic) EGFUser *currentUser;
+@property (retain, nonatomic) NSString *edge;
 @end
 
 @implementation PostController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _edge = @"comments";
     _cellHeights = [NSMutableDictionary dictionary];
 
     _refreshControl = [[UIRefreshControl alloc] init];
@@ -51,7 +53,7 @@
         CGFloat headerHeight = [PostCell heightForPost:_post];
         _tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, headerHeight);
         
-        _comments = [[ReversedEdgeDownloader alloc] initWithSource:_post.id edge:@"comments" expand:@[@"creator"]];
+        _comments = [[ReversedEdgeDownloader alloc] initWithSource:_post.id edge:_edge expand:@[@"creator"]];
         _comments.pageCount = 5;
         _comments.tableView = self.tableView;
         [_comments getNextPage];
@@ -112,6 +114,22 @@
     [_commentTextView resignFirstResponder];
 }
 
+// MARK:- CommentCellDelegate
+- (NSString *)authorizedUserId {
+    return _currentUser.id;
+}
+
+- (void)deleteComment:(EGFComment *)comment {
+    if (comment.id && _post.id) {
+        [self showConfirmWithTitle:@"Warning" message:@"Really delete?" action:^{
+            [ProgressController show];
+            [self.graph deleteObjectWithId:comment.id forSource:_post.id fromEdge:_edge completion:^(id object, NSError * error) {
+                [ProgressController hide];
+            }];
+        }];
+    }
+}
+
 // MARK:- UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     CGSize size = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, 1000)];
@@ -164,10 +182,9 @@
         cell.delegate = self;
         return cell;
     }
-    EGFComment * comment = (EGFComment *)[_comments objectAtIndex:indexPath.row];
     CommentCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    cell.creatorNameLabel.text = [comment.creatorObject.name fullName];
-    cell.descriptionLabel.text = comment.text;
+    cell.delegate = self;
+    cell.comment = (EGFComment *)[_comments objectAtIndex:indexPath.row];
     return cell;
 }
 

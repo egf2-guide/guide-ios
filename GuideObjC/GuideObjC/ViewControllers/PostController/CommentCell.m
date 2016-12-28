@@ -7,6 +7,13 @@
 //
 
 #import "CommentCell.h"
+#import "EGFHumanName+Additions.h"
+
+@interface CommentCell ()
+@property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@end
 
 @implementation CommentCell
 
@@ -22,5 +29,16 @@
         height += frame.size.height + 8;
     }
     return height;
+}
+
+- (void)setComment:(EGFComment *)comment {
+    _comment = comment;
+    _deleteButton.hidden = ![[_delegate authorizedUserId] isEqual:comment.creator];
+    _creatorNameLabel.text = [comment.creatorObject.name fullName];
+    _descriptionLabel.text = comment.text;
+}
+
+- (IBAction)deleteComment:(id)sender {
+    [_delegate deleteComment:_comment];
 }
 @end

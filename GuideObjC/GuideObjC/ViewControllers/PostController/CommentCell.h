@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "EGF2.h"
 
+@protocol CommentCellDelegate <NSObject>
+- (NSString *)authorizedUserId;
+- (void)deleteComment:(EGFComment *)comment;
+@end
+
 @interface CommentCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 + (CGFloat)heightForComment:(EGFComment *)comment;
 
+@property (weak, nonatomic) id <CommentCellDelegate> delegate;
+@property (weak, nonatomic) EGFComment *comment;
 @end

@@ -1527,10 +1527,22 @@
                                                             <color key="textColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Oe-lI-2m9">
+                                                            <rect key="frame" x="333" y="0.0" width="26" height="26"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="26" id="9C9-Or-Cbf"/>
+                                                                <constraint firstAttribute="height" constant="26" id="PgL-LD-r47"/>
+                                                            </constraints>
+                                                            <state key="normal" image="delete"/>
+                                                            <connections>
+                                                                <action selector="deleteComment:" destination="xRi-sW-wZE" eventType="touchUpInside" id="PbF-Yx-fF3"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="pgZ-mw-7LH" secondAttribute="trailing" constant="8" id="0Nf-TU-dBz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3Oe-lI-2m9" secondAttribute="trailing" id="2aU-CH-1co"/>
                                                         <constraint firstItem="aIQ-Bo-Ut2" firstAttribute="top" secondItem="ad0-Rb-iRO" secondAttribute="top" id="3Yt-cW-R20"/>
                                                         <constraint firstItem="r5x-2v-Y5J" firstAttribute="top" secondItem="aIQ-Bo-Ut2" secondAttribute="bottom" id="50p-eq-jy4"/>
                                                         <constraint firstItem="cSM-gY-1PB" firstAttribute="leading" secondItem="ad0-Rb-iRO" secondAttribute="leading" constant="8" id="Blz-kB-VII"/>
@@ -1544,6 +1556,7 @@
                                                         <constraint firstItem="cSM-gY-1PB" firstAttribute="top" secondItem="r5x-2v-Y5J" secondAttribute="bottom" constant="6" id="pTn-1Z-zVd"/>
                                                         <constraint firstAttribute="bottom" secondItem="cSM-gY-1PB" secondAttribute="bottom" constant="6" id="u7e-MF-jxR"/>
                                                         <constraint firstItem="r5x-2v-Y5J" firstAttribute="leading" secondItem="ad0-Rb-iRO" secondAttribute="leading" id="ucP-EY-CbB"/>
+                                                        <constraint firstItem="3Oe-lI-2m9" firstAttribute="top" secondItem="ad0-Rb-iRO" secondAttribute="top" id="xOe-9Q-OOC"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -1567,6 +1580,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="creatorNameLabel" destination="pgZ-mw-7LH" id="hAI-hv-QqB"/>
+                                            <outlet property="deleteButton" destination="3Oe-lI-2m9" id="wKB-Uz-w53"/>
                                             <outlet property="descriptionLabel" destination="cSM-gY-1PB" id="Vz6-Gu-6nj"/>
                                         </connections>
                                     </tableViewCell>
