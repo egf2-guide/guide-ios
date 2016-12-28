@@ -22,7 +22,7 @@ class CommentCell: UITableViewCell {
     weak var delegate: CommentCellDelegate?
     
     static func height(forComment comment: EGFComment) -> CGFloat {
-        var height: CGFloat = 47 // height of cell without text
+        var height: CGFloat = 51 // height of cell without text
         
         let font = UIFont.systemFont(ofSize: 15)
         let width = UIScreen.main.bounds.size.width - 32

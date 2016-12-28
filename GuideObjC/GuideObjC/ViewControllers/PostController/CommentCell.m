@@ -19,7 +19,7 @@
 @implementation CommentCell
 
 + (CGFloat)heightForComment:(EGFComment *)comment {
-    CGFloat height = 47; // height of cell without text
+    CGFloat height = 51; // height of cell without text
     
     UIFont *font = [UIFont systemFontOfSize:15];
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 32;

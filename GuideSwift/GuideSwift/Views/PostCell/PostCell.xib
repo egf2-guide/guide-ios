@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K0R-9w-bcZ" id="TLA-79-pQG">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFD-Mt-Mi2" customClass="DesignableView" customModule="GuideSwift" customModuleProvider="target">
@@ -57,6 +57,7 @@
                                     <constraint firstAttribute="height" constant="30" id="A1a-AE-80Y"/>
                                     <constraint firstAttribute="width" constant="30" id="cMP-d9-WNM"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="delete"/>
                                 <connections>
                                     <action selector="deletePost:" destination="K0R-9w-bcZ" eventType="touchUpInside" id="jUx-zH-S2i"/>
