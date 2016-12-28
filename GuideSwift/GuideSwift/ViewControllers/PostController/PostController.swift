@@ -23,6 +23,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     fileprivate var cellHeights = [String: CGFloat]()
     fileprivate var refreshControl: UIRefreshControl!
     fileprivate var comments: ReversedEdgeDownloader<EGFComment>?
+    fileprivate var editedComment: EGFComment?
     fileprivate var currentUser: EGFUser?
     fileprivate var edge = "comments"
     
@@ -57,7 +58,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     
     fileprivate func updateSendButton() {
         commentPlaceholder.isHidden = !commentTextView.text.isEmpty
-        sendButton.isEnabled = !commentTextView.text.isEmpty
+        sendButton.isEnabled = commentTextView.text.characters.count > 1
     }
     
     @IBAction func deletePost(_ sender: AnyObject) {
@@ -76,6 +77,28 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     }
     
     @IBAction func sendComment(_ sender: AnyObject) {
+        if let comment = editedComment {
+            guard let commentId = comment.id, let text = commentTextView.text else { return }
+            
+            ProgressController.show()
+            Graph.updateObject(withId: commentId, parameters: ["text":text]) { (object, error) in
+                ProgressController.hide()
+                
+                if error == nil {
+                    comment.text = self.commentTextView.text
+                    self.endEditing()
+                    self.updateSendButton()
+                    self.textViewDidChange(self.commentTextView)
+                    self.cellHeights.removeValue(forKey: commentId)
+                    
+                    if let index = self.comments?.graphObjects.index(of: comment) {
+                        self.tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .none)
+                        self.tableView.scrollToRow(at: IndexPath(row: index, section: 1), at: .bottom, animated: true)
+                    }
+                }
+            }
+            return
+        }
         guard let text = commentTextView.text, let postId = currentPost?.id else { return }
 
         ProgressController.show()
@@ -96,6 +119,29 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         commentTextView.resignFirstResponder()
     }
     
+    fileprivate func startEditing(witComment comment: EGFComment) {
+        editedComment = comment
+        sendButton.setTitle("Update", for: .normal)
+        commentTextView.text = comment.text
+        commentTextView.becomeFirstResponder()
+        textViewDidChange(commentTextView)
+        updateSendButton()
+        
+        if let index = self.comments?.graphObjects.index(of: comment) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(300)) {
+                self.tableView.scrollToRow(at: IndexPath(row: index, section: 1), at: .bottom, animated: true)
+            }
+        }
+    }
+    
+    fileprivate func endEditing() {
+        editedComment = nil
+        sendButton.setTitle("Send", for: .normal)
+        commentTextView.text = ""
+        textViewDidChange(commentTextView)
+        updateSendButton()
+    }
+    
     // MARK:- CommentCellDelegate
     var authorizedUserId: String? {
         get {
@@ -114,6 +160,10 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         }
     }
     
+    func edit(comment: EGFComment) {
+        startEditing(witComment: comment)
+    }
+    
     // MARK:- UITextViewDelegate
     func textViewDidChange(_ textView: UITextView) {
         let size = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: 1000))
@@ -125,6 +175,12 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
             textView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         }
         updateSendButton()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let _ = editedComment {
+            endEditing()
+        }
     }
     
     // MARK:- UITableViewDelegate

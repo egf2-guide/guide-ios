@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *creatorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @end
 
 @implementation CommentCell
@@ -34,11 +35,16 @@
 - (void)setComment:(EGFComment *)comment {
     _comment = comment;
     _deleteButton.hidden = ![[_delegate authorizedUserId] isEqual:comment.creator];
+    _editButton.hidden = ![[_delegate authorizedUserId] isEqual:comment.creator];
     _creatorNameLabel.text = [comment.creatorObject.name fullName];
     _descriptionLabel.text = comment.text;
 }
 
 - (IBAction)deleteComment:(id)sender {
     [_delegate deleteComment:_comment];
+}
+
+- (IBAction)editComment:(id)sender {
+    [_delegate editComment:_comment];
 }
 @end

@@ -53,4 +53,15 @@ class ReversedEdgeDownloader<T: NSObject>: EdgeDownloader<T> {
         tv.insertRows(at: [IndexPath(row: insertIndex, section: 1)], with: .none)
         tv.endUpdates()
     }
+    
+    override func delete(object: T?) {
+        guard let theObject = object, let index = graphObjects.index(of: theObject) else { return }
+        totalCount -= 1
+        graphObjects.remove(at: index)
+        
+        guard let tv = tableView else { return }
+        tv.beginUpdates()
+        tv.deleteRows(at: [IndexPath(row: index, section: 1)], with: .none)
+        tv.endUpdates()
+    }
 }

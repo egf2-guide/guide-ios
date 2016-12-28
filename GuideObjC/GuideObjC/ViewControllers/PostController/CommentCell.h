@@ -12,6 +12,7 @@
 @protocol CommentCellDelegate <NSObject>
 - (NSString *)authorizedUserId;
 - (void)deleteComment:(EGFComment *)comment;
+- (void)editComment:(EGFComment *)comment;
 @end
 
 @interface CommentCell : UITableViewCell

@@ -30,6 +30,7 @@
 @property (retain, nonatomic) ReversedEdgeDownloader *comments;
 @property (retain, nonatomic) NSMutableDictionary * cellHeights;
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
+@property (retain, nonatomic) EGFComment *editedComment;
 @property (retain, nonatomic) EGFUser *currentUser;
 @property (retain, nonatomic) NSString *edge;
 @end
@@ -69,7 +70,7 @@
 
 - (void)updateSendButton {
     _commentPlaceholder.hidden = _commentTextView.text.length > 0;
-    _sendButton.enabled = _commentTextView.text.length > 0;
+    _sendButton.enabled = _commentTextView.text.length > 1;
 }
 
 - (IBAction)deletePost:(id)sender {
@@ -88,6 +89,29 @@
 }
 
 - (IBAction)sendComment:(id)sender {
+    if (_editedComment) {
+        [ProgressController show];
+        [self.graph updateObjectWithId:_editedComment.id parameters:@{@"text":_commentTextView.text} completion:^(NSObject * object, NSError * error) {
+            [ProgressController hide];
+            
+            if (!error) {
+                _editedComment.text = _commentTextView.text;
+                [_cellHeights removeObjectForKey:_editedComment.id];
+                
+                NSInteger index = [_comments.graphObjects indexOfObject:_editedComment];
+                
+                if (index != NSNotFound) {
+                    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+                    [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:true];
+                }
+                [self endEditing];
+                [self updateSendButton];
+                [self textViewDidChange:_commentTextView];
+            }
+        }];
+        return;
+    }
     if (_commentTextView.text.length == 0 || !_post.id) {
         return;
     }
@@ -114,6 +138,33 @@
     [_commentTextView resignFirstResponder];
 }
 
+- (void)startEditingWithComment:(EGFComment *)comment {
+    _editedComment = comment;
+    [_sendButton setTitle:@"Update" forState:UIControlStateNormal];
+    _commentTextView.text = comment.text;
+    [_commentTextView becomeFirstResponder];
+    [self textViewDidChange:_commentTextView];
+    [self updateSendButton];
+    
+    NSInteger index = [_comments.graphObjects indexOfObject:_editedComment];
+    
+    if (index != NSNotFound) {
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:true];
+        });
+    }
+}
+
+- (void)endEditing {
+    _editedComment = nil;
+    [_sendButton setTitle:@"Send" forState:UIControlStateNormal];
+    _commentTextView.text = @"";
+    [self textViewDidChange:_commentTextView];
+    [self updateSendButton];
+}
+
 // MARK:- CommentCellDelegate
 - (NSString *)authorizedUserId {
     return _currentUser.id;
@@ -130,6 +181,10 @@
     }
 }
 
+- (void)editComment:(EGFComment *)comment {
+    [self startEditingWithComment:comment];
+}
+
 // MARK:- UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     CGSize size = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, 1000)];
@@ -141,6 +196,12 @@
         [textView setContentOffset:CGPointMake(0, 0) animated:false];
     }
     [self updateSendButton];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if (_editedComment) {
+        [self endEditing];
+    }
 }
 
 // MARK:- UITableViewDelegate

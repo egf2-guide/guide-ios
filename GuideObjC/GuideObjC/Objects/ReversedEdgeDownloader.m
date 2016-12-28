@@ -47,4 +47,18 @@
         [self.tableView endUpdates];
     }
 }
+
+- (void)deleteObject:(NSObject *)object {
+    NSInteger index = [self.graphObjects indexOfObject:object];
+    
+    if (index == NSNotFound) {
+        return;
+    }
+    self.totalCount -= 1;
+    [self.graphObjects removeObjectAtIndex:index];
+    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+}
 @end

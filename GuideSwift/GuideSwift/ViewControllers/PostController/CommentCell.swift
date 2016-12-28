@@ -11,12 +11,14 @@ import UIKit
 protocol CommentCellDelegate: NSObjectProtocol {
     var authorizedUserId: String? { get }
     func delete(comment: EGFComment)
+    func edit(comment: EGFComment)
 }
 
 class CommentCell: UITableViewCell {
     @IBOutlet weak var creatorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     weak var delegate: CommentCellDelegate?
     
     static func height(forComment comment: EGFComment) -> CGFloat {
@@ -37,9 +39,11 @@ class CommentCell: UITableViewCell {
         didSet {
             if let userId = delegate?.authorizedUserId, let creatorId = comment?.creator, userId == creatorId {
                 deleteButton.isHidden = false
+                editButton.isHidden = false
             }
             else {
                 deleteButton.isHidden = true
+                editButton.isHidden = true
             }
             creatorNameLabel.text = comment?.creatorObject?.name?.fullName()
             descriptionLabel.text = comment?.text
@@ -49,5 +53,10 @@ class CommentCell: UITableViewCell {
     @IBAction func deleteComment(_ sender: AnyObject) {
         guard let theDelegate = delegate, let theComment = comment else { return }
         theDelegate.delete(comment: theComment)
+    }
+    
+    @IBAction func editComment(_ sender: AnyObject) {
+        guard let theDelegate = delegate, let theComment = comment else { return }
+        theDelegate.edit(comment: theComment)
     }
 }

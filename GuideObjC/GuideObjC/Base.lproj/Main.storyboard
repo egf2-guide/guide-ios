@@ -1274,9 +1274,21 @@
                                                                 <action selector="deleteComment:" destination="Ayp-az-E6C" eventType="touchUpInside" id="TMy-ER-loy"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-2t-zOB">
+                                                            <rect key="frame" x="299" y="0.0" width="26" height="26"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="26" id="Dfr-y8-UnS"/>
+                                                                <constraint firstAttribute="height" constant="26" id="j58-RG-UD7"/>
+                                                            </constraints>
+                                                            <state key="normal" image="edit"/>
+                                                            <connections>
+                                                                <action selector="editComment:" destination="Ayp-az-E6C" eventType="touchUpInside" id="nX2-GO-Zdu"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="dvk-2t-zOB" firstAttribute="top" secondItem="K2r-bD-zQ9" secondAttribute="top" id="1WY-Su-F62"/>
                                                         <constraint firstItem="aG2-mn-jae" firstAttribute="top" secondItem="HSc-DG-Gme" secondAttribute="bottom" id="6Tp-wz-TGH"/>
                                                         <constraint firstAttribute="trailing" secondItem="HSc-DG-Gme" secondAttribute="trailing" id="ADI-mI-NhN"/>
                                                         <constraint firstItem="HSc-DG-Gme" firstAttribute="leading" secondItem="K2r-bD-zQ9" secondAttribute="leading" id="ClK-qd-ToK"/>
@@ -1292,6 +1304,7 @@
                                                         <constraint firstItem="vBP-cL-DNY" firstAttribute="leading" secondItem="K2r-bD-zQ9" secondAttribute="leading" constant="8" id="j5G-1K-Ipx"/>
                                                         <constraint firstItem="aG2-mn-jae" firstAttribute="leading" secondItem="K2r-bD-zQ9" secondAttribute="leading" id="uNh-Zj-jIi"/>
                                                         <constraint firstItem="pRO-iD-tsa" firstAttribute="top" secondItem="K2r-bD-zQ9" secondAttribute="top" constant="6" id="ucV-OS-u4G"/>
+                                                        <constraint firstItem="PQ3-RE-06S" firstAttribute="leading" secondItem="dvk-2t-zOB" secondAttribute="trailing" constant="8" id="waQ-QV-9tt"/>
                                                         <constraint firstAttribute="trailing" secondItem="aG2-mn-jae" secondAttribute="trailing" id="y53-yj-tL0"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -1318,6 +1331,7 @@
                                             <outlet property="creatorNameLabel" destination="pRO-iD-tsa" id="1LX-X0-j0S"/>
                                             <outlet property="deleteButton" destination="PQ3-RE-06S" id="fI2-ut-9GT"/>
                                             <outlet property="descriptionLabel" destination="vBP-cL-DNY" id="Ato-e7-87R"/>
+                                            <outlet property="editButton" destination="dvk-2t-zOB" id="BCk-BQ-Zjh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1993,5 +2007,6 @@
     </scenes>
     <resources>
         <image name="delete" width="15" height="15"/>
+        <image name="edit" width="15" height="15"/>
     </resources>
 </document>

@@ -1538,6 +1538,17 @@
                                                                 <action selector="deleteComment:" destination="xRi-sW-wZE" eventType="touchUpInside" id="PbF-Yx-fF3"/>
                                                             </connections>
                                                         </button>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PI8-UY-jS7">
+                                                            <rect key="frame" x="299" y="0.0" width="26" height="26"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="26" id="8Bd-pC-dk7"/>
+                                                                <constraint firstAttribute="width" constant="26" id="TrL-x1-T39"/>
+                                                            </constraints>
+                                                            <state key="normal" image="edit"/>
+                                                            <connections>
+                                                                <action selector="editComment:" destination="xRi-sW-wZE" eventType="touchUpInside" id="ZlD-Oh-dsp"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1553,7 +1564,9 @@
                                                         <constraint firstItem="pgZ-mw-7LH" firstAttribute="top" secondItem="ad0-Rb-iRO" secondAttribute="top" constant="6" id="XaO-d7-TKV"/>
                                                         <constraint firstItem="r5x-2v-Y5J" firstAttribute="top" secondItem="pgZ-mw-7LH" secondAttribute="bottom" constant="2" id="ah4-eI-R43"/>
                                                         <constraint firstItem="aIQ-Bo-Ut2" firstAttribute="leading" secondItem="ad0-Rb-iRO" secondAttribute="leading" id="bak-Tj-JgA"/>
+                                                        <constraint firstItem="PI8-UY-jS7" firstAttribute="top" secondItem="ad0-Rb-iRO" secondAttribute="top" id="f7Z-Mi-k4K"/>
                                                         <constraint firstItem="cSM-gY-1PB" firstAttribute="top" secondItem="r5x-2v-Y5J" secondAttribute="bottom" constant="6" id="pTn-1Z-zVd"/>
+                                                        <constraint firstItem="3Oe-lI-2m9" firstAttribute="leading" secondItem="PI8-UY-jS7" secondAttribute="trailing" constant="8" id="pvO-F9-8VK"/>
                                                         <constraint firstAttribute="bottom" secondItem="cSM-gY-1PB" secondAttribute="bottom" constant="6" id="u7e-MF-jxR"/>
                                                         <constraint firstItem="r5x-2v-Y5J" firstAttribute="leading" secondItem="ad0-Rb-iRO" secondAttribute="leading" id="ucP-EY-CbB"/>
                                                         <constraint firstItem="3Oe-lI-2m9" firstAttribute="top" secondItem="ad0-Rb-iRO" secondAttribute="top" id="xOe-9Q-OOC"/>
@@ -1582,6 +1595,7 @@
                                             <outlet property="creatorNameLabel" destination="pgZ-mw-7LH" id="hAI-hv-QqB"/>
                                             <outlet property="deleteButton" destination="3Oe-lI-2m9" id="wKB-Uz-w53"/>
                                             <outlet property="descriptionLabel" destination="cSM-gY-1PB" id="Vz6-Gu-6nj"/>
+                                            <outlet property="editButton" destination="PI8-UY-jS7" id="Ihb-TM-vh5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1990,5 +2004,6 @@
     </scenes>
     <resources>
         <image name="delete" width="15" height="15"/>
+        <image name="edit" width="15" height="15"/>
     </resources>
 </document>
