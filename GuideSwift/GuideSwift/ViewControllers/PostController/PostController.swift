@@ -50,9 +50,11 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         comments?.getNextPage()
         
         Graph.userObject { (object, error) in
-            guard let user = object as? EGFUser, let userId = user.id else { return }
+            guard let user = object as? EGFUser, let _ = user.id else { return }
             self.currentUser = user
-            self.deleteButton.isHidden = (post.creator ?? "") != userId
+            // TODO uncomment when support is ready
+            self.deleteButton.isHidden = true
+//            self.deleteButton.isHidden = (post.creator ?? "") != userId
         }
     }
     

@@ -62,7 +62,9 @@
         [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFUser class]]) {
                 _currentUser = (EGFUser *)object;
-                _deleteButton.hidden = ![_post.creator isEqual:_currentUser.id];
+                // TODO uncomment when support is ready
+                _deleteButton.hidden = true;
+//                _deleteButton.hidden = ![_post.creator isEqual:_currentUser.id];
             }
         }];
     }

@@ -22,12 +22,14 @@ class PostCell: UITableViewCell {
     
     weak var post: EGFPost? {
         didSet {
-            if let userId = delegate?.authorizedUserId, let creatorId = post?.creator, userId == creatorId {
-                deleteButton.isHidden = false
-            }
-            else {
-                deleteButton.isHidden = true
-            }
+            // TODO uncomment when support is ready
+            deleteButton.isHidden = true
+//            if let userId = delegate?.authorizedUserId, let creatorId = post?.creator, userId == creatorId {
+//                deleteButton.isHidden = false
+//            }
+//            else {
+//                deleteButton.isHidden = true
+//            }
             creatorNameLabel.text = post?.creatorObject?.name?.fullName()
             descriptionLabel.text = post?.desc
             postImageView.file = post?.imageObject
