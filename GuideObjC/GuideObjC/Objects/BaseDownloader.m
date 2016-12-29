@@ -7,6 +7,7 @@
 //
 
 #import "BaseDownloader.h"
+#import "EGF2.h"
 
 @implementation BaseDownloader
 
@@ -16,8 +17,13 @@
     if (self) {
         _graphObjects = [NSMutableArray array];
         _totalCount = -1;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(objectUpdated:) name:EGF2NotificationObjectUpdated object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setTableView:(UITableView *)tableView {
@@ -43,6 +49,63 @@
 
 - (BOOL)isDownloaded {
     return _graphObjects.count == _totalCount;
+}
+
+- (NSInteger)indexOfObjectWithId:(NSString *)id {
+    for (NSInteger i = 0; i< _graphObjects.count; i++) {
+        if ([[[_graphObjects objectAtIndex:i] valueForKey:@"id"] isEqual:id]) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+
+- (NSInteger)indexOfObject:(NSObject *)object {
+    NSString *id = [object valueForKey:@"id"];
+    
+    if (id) {
+        return [self indexOfObjectWithId:id];
+    }
+    return NSNotFound;
+}
+
+- (void)objectUpdated:(NSNotification *)notification {
+    NSString * objectId = notification.userInfo[EGF2ObjectIdInfoKey];
+    
+    if ([self indexOfObjectWithId:objectId] != NSNotFound) {
+        [[Graph shared] objectWithId:objectId expand:[self expandValues] completion:^(NSObject * object, NSError * error) {
+            if (object) {
+                [self replaceObject:object];
+            }
+        }];
+    }
+}
+
+- (void)replaceObject:(NSObject *)object {
+    NSInteger index = [self indexOfObject:object];
+    
+    if (index == NSNotFound) {
+        return;
+    }
+    [_graphObjects replaceObjectAtIndex:index withObject:object];
+    
+    if (_tableView) {
+        if ([_delegate respondsToSelector:@selector(willUpdateGraphObject:)]) {
+            [_delegate willUpdateGraphObject:object];
+        }
+        [_tableView beginUpdates];
+        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        [_tableView endUpdates];
+        
+        if ([_delegate respondsToSelector:@selector(didUpdateGraphObject:)]) {
+            [_delegate didUpdateGraphObject:object];
+        }
+    }
+}
+
+// MARK:- Override
+- (NSArray *)expandValues {
+    return @[];
 }
 
 - (void)refreshList {

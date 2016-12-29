@@ -11,6 +11,7 @@
 #import "EGFHumanName+Additions.h"
 #import "ReversedEdgeDownloader.h"
 #import "ProgressController.h"
+#import "PostEditController.h"
 #import "UIColor+Additions.h"
 #import "EdgeDownloader.h"
 #import "FileImageView.h"
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet FileImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentPlaceholder;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
@@ -48,13 +50,10 @@
     _tableView.refreshControl = _refreshControl;
     
     if (_post) {
-        _creatorNameLabel.text = [_post.creatorObject.name fullName];
-        _descriptionLabel.text = _post.desc;
-        _postImageView.file = _post.imageObject;
-        CGFloat headerHeight = [PostCell heightForPost:_post];
-        _tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, headerHeight);
+        [self updateHeader];
         
         _comments = [[ReversedEdgeDownloader alloc] initWithSource:_post.id edge:_edge expand:@[@"creator"]];
+        _comments.delegate = self;
         _comments.pageCount = 5;
         _comments.tableView = self.tableView;
         [_comments getNextPage];
@@ -62,12 +61,34 @@
         [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFUser class]]) {
                 _currentUser = (EGFUser *)object;
+                _editButton.hidden = ![_post.creator isEqual:_currentUser.id];
                 // TODO uncomment when support is ready
                 _deleteButton.hidden = true;
 //                _deleteButton.hidden = ![_post.creator isEqual:_currentUser.id];
             }
         }];
+        [self observeForSource:_post.id eventName:EGF2NotificationObjectUpdated withSelector:@selector(postUpdated:)];
     }
+}
+
+- (void)postUpdated:(NSNotification *)notification {
+    NSString * postId = notification.userInfo[EGF2ObjectIdInfoKey];
+    
+    [self.graph objectWithId:postId expand:@[@"creator",@"image"] completion:^(NSObject * object, NSError * error) {
+        if (object) {
+            _post = (EGFPost *)object;
+            [self updateHeader];
+        }
+    }];
+}
+
+- (void)updateHeader {
+    _creatorNameLabel.text = [_post.creatorObject.name fullName];
+    _descriptionLabel.text = _post.desc;
+    _postImageView.file = _post.imageObject;
+    [_tableView beginUpdates];
+    _tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, [PostCell heightForPost:_post]);
+    [_tableView endUpdates];
 }
 
 - (void)updateSendButton {
@@ -97,16 +118,6 @@
             [ProgressController hide];
             
             if (!error) {
-                _editedComment.text = _commentTextView.text;
-                [_cellHeights removeObjectForKey:_editedComment.id];
-                
-                NSInteger index = [_comments.graphObjects indexOfObject:_editedComment];
-                
-                if (index != NSNotFound) {
-                    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:1];
-                    [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:true];
-                }
                 [self endEditing];
                 [self updateSendButton];
                 [self textViewDidChange:_commentTextView];
@@ -140,6 +151,13 @@
     [_commentTextView resignFirstResponder];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isMemberOfClass:[PostEditController class]]) {
+        ((PostEditController *)segue.destinationViewController).post = _post;
+        [_commentTextView resignFirstResponder];
+    }
+}
+
 - (void)startEditingWithComment:(EGFComment *)comment {
     _editedComment = comment;
     [_sendButton setTitle:@"Update" forState:UIControlStateNormal];
@@ -165,6 +183,24 @@
     _commentTextView.text = @"";
     [self textViewDidChange:_commentTextView];
     [self updateSendButton];
+}
+
+// MARK:- BaseDownloaderDelegate
+- (void)willUpdateGraphObject:(NSObject *)graphObject {
+    NSString * id = [graphObject valueForKey:@"id"];
+    
+    if (id) {
+        [_cellHeights removeObjectForKey:id];
+    }
+}
+
+- (void)didUpdateGraphObject:(NSObject *)graphObject {
+    NSInteger index = [_comments indexOfObject:graphObject];
+
+    if (index != NSNotFound) {
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:1];
+        [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:true];
+    }
 }
 
 // MARK:- CommentCellDelegate

@@ -37,11 +37,23 @@ class ReversedEdgeDownloader<T: NSObject>: EdgeDownloader<T> {
         tv.endUpdates()
     }
     
+    override func replace(object: T) {
+        guard let index = indexOf(object: object) else { return }
+        graphObjects.replaceSubrange(index..<index + 1, with: [object])
+        
+        guard let tv = tableView else { return }
+        delegate?.willUpdate?(graphObject: object)
+        tv.beginUpdates()
+        tv.reloadRows(at: [IndexPath(row: index, section: 1)], with: .none)
+        tv.endUpdates()
+        delegate?.didUpdate?(graphObject: object)
+    }
+    
     override func insert(object: T?, at index: Int) {
         guard let theObject = object, let objectId = theObject.value(forKey: "id") as? String else { return }
         
         // Check if object is already in the list
-        if objectExists(withId: objectId) {
+        if let _ = indexOfObject(withId: objectId) {
             return
         }
         let insertIndex = graphObjects.count - index

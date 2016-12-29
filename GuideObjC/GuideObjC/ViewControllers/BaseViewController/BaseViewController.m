@@ -30,6 +30,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)observeEventName:(NSString *)name withSelector:(SEL)selector {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:selector name:name object:nil];
+}
+
+- (void)observeForSource:(NSString *)source eventName:(NSString *)name withSelector:(SEL)selector  {
+    NSObject * object = [[Graph shared] notificationObjectForSource:source];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:selector name:name object:object];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     UIBarButtonItem * barButton = [[UIBarButtonItem alloc] init];

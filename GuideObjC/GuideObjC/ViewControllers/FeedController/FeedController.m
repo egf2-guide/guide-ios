@@ -53,13 +53,16 @@
     parameters.fields = @[@"desc"];
     parameters.expand = _expand;
     _searching = [[SearchDownloader alloc] initWithParameters:parameters];
+    _searching.delegate = self;
     
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             _currentUserId = [object valueForKey:@"id"];
             _timeline = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:@"timeline" expand:_expand];
+            _timeline.delegate = self;
             _feed = [[EdgeDownloader alloc] initWithSource:_currentUserId edge:_edge expand:_expand];
             _feed.tableView = self.tableView;
+            _feed.delegate = self;
             [_feed getNextPage];
             _activeDownloader = _feed;
         }
@@ -100,6 +103,15 @@
     }
     else if (sender.selectedSegmentIndex == 1) {
         self.activeDownloader = _timeline;
+    }
+}
+
+// MARK:- BaseDownloaderDelegate
+- (void)willUpdateGraphObject:(NSObject *)graphObject {
+    NSString * id = [graphObject valueForKey:@"id"];
+    
+    if (id) {
+        [_cellHeights removeObjectForKey:id];
     }
 }
 

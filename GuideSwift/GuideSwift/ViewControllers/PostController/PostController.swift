@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import EGF2
 
-class PostController: BaseController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate, CommentCellDelegate {
+class PostController: BaseController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, NextCommentsCellDelegate, CommentCellDelegate, BaseDownloaderDelegate {
     
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -16,6 +17,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var postImageView: FileImageView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var commentPlaceholder: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
@@ -37,25 +39,43 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         refreshControl.tintColor = UIColor.hexColor(0x5E66B1)
         tableView.refreshControl = refreshControl
         
-        guard let post = currentPost, let postId = post.id, let headerView = tableView.tableHeaderView else { return }
-        creatorNameLabel.text = post.creatorObject?.name?.fullName()
-        descriptionLabel.text = post.desc
-        postImageView.file = post.imageObject
-        let headerHeight = PostCell.height(forPost: post)
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight)
-        
+        guard let post = currentPost, let postId = post.id else { return }
         comments = ReversedEdgeDownloader(withSource: postId, edge: edge, expand: ["creator"])
+        comments?.delegate = self
         comments?.pageCount = 5
         comments?.tableView = self.tableView
         comments?.getNextPage()
+        updateHeader()
         
         Graph.userObject { (object, error) in
-            guard let user = object as? EGFUser, let _ = user.id else { return }
+            guard let user = object as? EGFUser, let userId = user.id else { return }
             self.currentUser = user
+            self.editButton.isHidden = (post.creator ?? "") != userId
             // TODO uncomment when support is ready
             self.deleteButton.isHidden = true
 //            self.deleteButton.isHidden = (post.creator ?? "") != userId
         }
+        observe(forSource: postId, eventName: .EGF2ObjectUpdated, withSelector: #selector(postUpdated(notification:)))
+    }
+    
+    func postUpdated(notification: NSNotification) {
+        guard let postId = notification.userInfo?[EGF2ObjectIdInfoKey] as? String else { return }
+        
+        Graph.object(withId: postId, expand: ["creator","image"]) { (object, error) in
+            guard let post = object as? EGFPost else { return }
+            self.currentPost = post
+            self.updateHeader()
+        }
+    }
+    
+    fileprivate func updateHeader() {
+        guard let post = currentPost else { return }
+        creatorNameLabel.text = post.creatorObject?.name?.fullName()
+        descriptionLabel.text = post.desc
+        postImageView.file = post.imageObject
+        tableView.beginUpdates()
+        tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: PostCell.height(forPost: post))
+        tableView.endUpdates()
     }
     
     fileprivate func updateSendButton() {
@@ -87,16 +107,9 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
                 ProgressController.hide()
                 
                 if error == nil {
-                    comment.text = self.commentTextView.text
                     self.endEditing()
                     self.updateSendButton()
                     self.textViewDidChange(self.commentTextView)
-                    self.cellHeights.removeValue(forKey: commentId)
-                    
-                    if let index = self.comments?.graphObjects.index(of: comment) {
-                        self.tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .none)
-                        self.tableView.scrollToRow(at: IndexPath(row: index, section: 1), at: .bottom, animated: true)
-                    }
                 }
             }
             return
@@ -119,6 +132,13 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func tapOnTableView(_ sender: AnyObject) {
         commentTextView.resignFirstResponder()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let editController = segue.destination as? PostEditController {
+            editController.post = currentPost
+            commentTextView.resignFirstResponder()
+        }
     }
     
     fileprivate func startEditing(witComment comment: EGFComment) {
@@ -144,6 +164,17 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         updateSendButton()
     }
     
+    // MARK:- BaseDownloaderDelegate
+    func willUpdate(graphObject: NSObject) {
+        guard let objectId = graphObject.value(forKey: "id") as? String else { return }
+        self.cellHeights.removeValue(forKey: objectId)
+    }
+    
+    func didUpdate(graphObject: NSObject) {
+        if let comment = graphObject as? EGFComment, let index = comments?.indexOf(object: comment) {
+            tableView.scrollToRow(at: IndexPath(row: index, section: 1), at: .bottom, animated: true)
+        }
+    }
     // MARK:- CommentCellDelegate
     var authorizedUserId: String? {
         get {

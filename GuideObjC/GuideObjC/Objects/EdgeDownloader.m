@@ -28,25 +28,20 @@
 
 - (id)initWithSource:(NSString *)source edge:(NSString *)edge expand:(NSArray *)expand {
     self = [self init];
-    self.expand = expand;
-    self.source = source;
-    self.edge = edge;
-    self.pageCount = 25;
-    [self addObservers];
+    
+    if (self) {
+        self.expand = expand;
+        self.source = source;
+        self.edge = edge;
+        self.pageCount = 25;
+        NSObject * object = [[Graph shared] notificationObjectForSource:source andEdge:edge];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated object:object];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved object:object];
+    }
     return self;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 // MARK:- Private methods
-- (void)addObservers {
-    NSObject * object = [[Graph shared] notificationObjectForSource:_source andEdge:_edge];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated object:object];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved object:object];
-}
-
 - (void)edgeCreated:(NSNotification *)notification {
     NSString * objectId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
     
@@ -70,15 +65,6 @@
             }
         }
     }
-}
-
-- (BOOL)objectExistsWithId:(NSString *)objectId {
-    for (NSObject * object in self.graphObjects) {
-        if ([[object valueForKey:@"id"] isEqual:objectId]) {
-            return true;
-        }
-    }
-    return false;
 }
 
 - (void)setObjects:(NSArray *)objects totalCount:(NSInteger)count {
@@ -111,7 +97,7 @@
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index {
     if (object) {
         // Check if object is already in the list
-        if ([self objectExistsWithId:[object valueForKey:@"id"]]) {
+        if ([self indexOfObject:object] != NSNotFound) {
             return;
         }
         self.totalCount += 1;
@@ -138,6 +124,10 @@
 }
 
 // MARK:- Override
+- (NSArray *)expandValues {
+    return _expand;
+}
+
 - (void)refreshList {
     if (_downloading) {
         return;

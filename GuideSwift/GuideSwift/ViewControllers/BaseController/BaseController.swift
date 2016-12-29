@@ -22,6 +22,14 @@ class BaseController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func observe(eventName name: NSNotification.Name, withSelector selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
+    }
+    
+    func observe(forSource source: String, eventName name: NSNotification.Name, withSelector selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: name, object: Graph.notificationObject(forSource: source))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let barButton = UIBarButtonItem()

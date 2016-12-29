@@ -52,6 +52,7 @@
 		E5C592CB1E0AE172004C530D /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592C91E0AE172004C530D /* UserCell.m */; };
 		E5C592CC1E0AE172004C530D /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C592CA1E0AE172004C530D /* UserCell.xib */; };
 		E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592D21E0AEAC1004C530D /* UsersController.m */; };
+		E5F736121E13F3870039B3D7 /* PostEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F736111E13F3870039B3D7 /* PostEditController.m */; };
 		E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA28F1E1248AA00ED3B16 /* PostCell.m */; };
 		E5FDA2921E12492100ED3B16 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FDA2911E12492100ED3B16 /* PostCell.xib */; };
 		E5FDA29A1E1269C100ED3B16 /* FollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2991E1269C100ED3B16 /* FollowButton.m */; };
@@ -157,6 +158,8 @@
 		E5C592CA1E0AE172004C530D /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		E5C592D11E0AEAC1004C530D /* UsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersController.h; sourceTree = "<group>"; };
 		E5C592D21E0AEAC1004C530D /* UsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersController.m; sourceTree = "<group>"; };
+		E5F736101E13F3870039B3D7 /* PostEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEditController.h; sourceTree = "<group>"; };
+		E5F736111E13F3870039B3D7 /* PostEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEditController.m; sourceTree = "<group>"; };
 		E5FDA28E1E1248AA00ED3B16 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		E5FDA28F1E1248AA00ED3B16 /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		E5FDA2911E12492100ED3B16 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -410,6 +413,7 @@
 				E52865681DFE752F00D50A0D /* MoreController */,
 				E55EA4EB1DFE939C00C611BD /* NewPostController */,
 				E564DF771E07F8800073677E /* PostController */,
+				E5F7360C1E13E3E30039B3D7 /* PostEditController */,
 				E52865691DFE752F00D50A0D /* RegisterController */,
 				E528656C1DFE752F00D50A0D /* UserController */,
 				E526673B1E08FECE00A42337 /* ChangePasswordController */,
@@ -486,6 +490,15 @@
 				E5C592D21E0AEAC1004C530D /* UsersController.m */,
 			);
 			path = UsersController;
+			sourceTree = "<group>";
+		};
+		E5F7360C1E13E3E30039B3D7 /* PostEditController */ = {
+			isa = PBXGroup;
+			children = (
+				E5F736101E13F3870039B3D7 /* PostEditController.h */,
+				E5F736111E13F3870039B3D7 /* PostEditController.m */,
+			);
+			path = PostEditController;
 			sourceTree = "<group>";
 		};
 		E5FDA28D1E12489A00ED3B16 /* PostCell */ = {
@@ -608,6 +621,7 @@
 				E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */,
+				E5F736121E13F3870039B3D7 /* PostEditController.m in Sources */,
 				E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */,
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
 				E58FFE391E0D325C00E8EDB1 /* Follows.m in Sources */,

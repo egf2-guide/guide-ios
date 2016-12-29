@@ -35,20 +35,9 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         self.source = source
         self.edge = edge
         super.init()
-        self.addObservers()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK:- Private methods
-    fileprivate func addObservers() {
-        let object = Graph.notificationObject(forSource: source, andEdge: edge)
-        NotificationCenter.default.addObserver(self, selector: #selector(edgeCreated(notification:)), name: .EGF2EdgeCreated, object: object)
-        NotificationCenter.default.addObserver(self, selector: #selector(edgeRemoved(notification:)), name: .EGF2EdgeRemoved, object: object)
-    }
-    
     func edgeCreated(notification: NSNotification) {
         guard let objectId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
 
@@ -67,15 +56,6 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
                 break
             }
         }
-    }
-    
-    func objectExists(withId objectId: String) -> Bool {
-        for object in graphObjects {
-            if let id = object.value(forKey: "id") as? String, id == objectId {
-                return true
-            }
-        }
-        return false
     }
     
     fileprivate func set(objects: [T]?, totalCount count: Int) {
@@ -112,7 +92,7 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         guard let theObject = object, let objectId = theObject.value(forKey: "id") as? String else { return }
         
         // Check if object is already in the list
-        if objectExists(withId: objectId) {
+        if let _ = indexOfObject(withId: objectId) {
             return
         }
         totalCount += 1
@@ -136,6 +116,19 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     }
     
     // MARK:- Override
+    override var expandValues: [String] {
+        get {
+            return expand
+        }
+    }
+    
+    override func addObservers() {
+        super.addObservers()
+        let object = Graph.notificationObject(forSource: source, andEdge: edge)
+        NotificationCenter.default.addObserver(self, selector: #selector(edgeCreated(notification:)), name: .EGF2EdgeCreated, object: object)
+        NotificationCenter.default.addObserver(self, selector: #selector(edgeRemoved(notification:)), name: .EGF2EdgeRemoved, object: object)
+    }
+    
     override func refreshList() {
         if downloading { return }
         

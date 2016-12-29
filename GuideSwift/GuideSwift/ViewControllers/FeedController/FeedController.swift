@@ -9,7 +9,7 @@
 import UIKit
 import EGF2
 
-class FeedController: BaseTableController, PostCellDelegate, UISearchBarDelegate {
+class FeedController: BaseTableController, PostCellDelegate, UISearchBarDelegate, BaseDownloaderDelegate {
 
     @IBOutlet var searchButton: UIBarButtonItem!
     @IBOutlet var newPostButton: UIBarButtonItem!
@@ -34,6 +34,7 @@ class FeedController: BaseTableController, PostCellDelegate, UISearchBarDelegate
         parameters.fields = ["desc"]
         parameters.expand = expand
         searching = SearchDownloader(withParameters: parameters)
+        searching?.delegate = self
         
         searchBar.delegate = self
         searchBar.showsCancelButton = true
@@ -43,7 +44,9 @@ class FeedController: BaseTableController, PostCellDelegate, UISearchBarDelegate
             guard let user = object as? EGFUser, let userId = user.id else { return }
             self.currentUserId = userId
             self.timeline = EdgeDownloader(withSource: userId, edge: "timeline", expand: self.expand)
+            self.timeline?.delegate = self
             self.feed = EdgeDownloader(withSource: userId, edge: self.edge, expand: self.expand)
+            self.feed?.delegate = self
             self.feed?.tableView = self.tableView
             self.feed?.getNextPage()
             self.activeDownloader = self.feed
@@ -83,6 +86,12 @@ class FeedController: BaseTableController, PostCellDelegate, UISearchBarDelegate
         else if sender.selectedSegmentIndex == 1 {
             activeDownloader = timeline
         }
+    }
+    
+    // MARK:- BaseDownloaderDelegate
+    func willUpdate(graphObject: NSObject) {
+        guard let objectId = graphObject.value(forKey: "id") as? String else { return }
+        self.cellHeights.removeValue(forKey: objectId)
     }
     
     // MARK:- Searching

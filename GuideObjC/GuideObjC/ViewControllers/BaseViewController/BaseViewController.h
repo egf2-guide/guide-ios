@@ -13,4 +13,7 @@
 @property (nonatomic, weak) EGF2Graph * graph;
 
 - (UIToolbar *)toolbarWithButton:(NSString *)title selector:(SEL)selector;
+
+- (void)observeEventName:(NSString *)name withSelector:(SEL)selector;
+- (void)observeForSource:(NSString *)source eventName:(NSString *)name withSelector:(SEL)selector;
 @end

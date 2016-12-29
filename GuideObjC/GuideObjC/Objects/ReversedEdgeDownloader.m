@@ -33,10 +33,34 @@
     }
 }
 
+- (void)replaceObject:(NSObject *)object {
+    if (object) {
+        NSInteger index = [self indexOfObject:object];
+        
+        if (index == NSNotFound) {
+            return;
+        }
+        [self.graphObjects replaceObjectAtIndex:index withObject:object];
+        
+        if (self.tableView) {
+            if ([self.delegate respondsToSelector:@selector(willUpdateGraphObject:)]) {
+                [self.delegate willUpdateGraphObject:object];
+            }
+            [self.tableView beginUpdates];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView endUpdates];
+            
+            if ([self.delegate respondsToSelector:@selector(didUpdateGraphObject:)]) {
+                [self.delegate didUpdateGraphObject:object];
+            }
+        }
+    }
+}
+
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index {
     if (object) {
         // Check if object is already in the list
-        if ([self objectExistsWithId:[object valueForKey:@"id"]]) {
+        if ([self indexOfObject:object] != NSNotFound) {
             return;
         }
         NSInteger insertIndex = self.graphObjects.count - index;

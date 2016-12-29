@@ -7,8 +7,9 @@
 //
 
 #import "BaseTableViewController.h"
+#import "BaseDownloader.h"
 #import "PostCell.h"
 
-@interface FeedController : BaseTableViewController <PostCellDelegate, UISearchBarDelegate>
+@interface FeedController : BaseTableViewController <PostCellDelegate, UISearchBarDelegate, BaseDownloaderDelegate>
 
 @end

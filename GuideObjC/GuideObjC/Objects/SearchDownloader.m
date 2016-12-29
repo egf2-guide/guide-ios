@@ -32,6 +32,10 @@
     return self;
 }
 
+- (NSArray *)expandValues {
+    return _parameters.expand;
+}
+
 - (void)refreshList {
     if (_lastQuery.length > 0) {
         [self resetSearchWithTotalCount:-1];

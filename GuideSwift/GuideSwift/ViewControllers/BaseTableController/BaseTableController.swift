@@ -16,4 +16,16 @@ class BaseTableController: UITableViewController {
         refreshControl?.backgroundColor = UIColor.white
         refreshControl?.tintColor = UIColor.hexColor(0x5E66B1)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func observe(eventName name: NSNotification.Name, withSelector selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
+    }
+    
+    func observe(forSource source: String, eventName name: NSNotification.Name, withSelector selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: name, object: Graph.notificationObject(forSource: source))
+    }
 }

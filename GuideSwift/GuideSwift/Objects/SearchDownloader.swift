@@ -31,6 +31,12 @@ class SearchDownloader<T: NSObject>: BaseDownloader<T> {
         self.totalCount = 0
     }
     
+    override var expandValues: [String] {
+        get {
+            return parameters?.expand ?? []
+        }
+    }
+    
     override func refreshList() {
         if let query = lastQuery, !query.isEmpty {
             resetSearch(withTotalCount: -1)
