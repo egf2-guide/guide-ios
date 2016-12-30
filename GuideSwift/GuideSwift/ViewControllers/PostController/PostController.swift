@@ -19,6 +19,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var offensiveButton: OffensivePostButton!
     @IBOutlet weak var commentPlaceholder: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     
@@ -45,6 +46,7 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         comments?.pageCount = 5
         comments?.tableView = self.tableView
         comments?.getNextPage()
+        offensiveButton.post = post
         updateHeader()
         
         Graph.userObject { (object, error) in
@@ -81,6 +83,21 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     fileprivate func updateSendButton() {
         commentPlaceholder.isHidden = !commentTextView.text.isEmpty
         sendButton.isEnabled = commentTextView.text.characters.count > 1
+    }
+    
+    @IBAction func markPostAsOffensive(_ sender: AnyObject) {
+        guard let post = currentPost else { return }
+        
+        if OffensivePosts.shared.offensiveState(forPost: post) == .isOffensive {
+            showAlert(withTitle: "Offensive Post", message: "You've marked the post as offensive")
+            return
+        }
+        showConfirm(withTitle: "Warning", message: "Mark Post as offensive?") {
+            OffensivePosts.shared.markAsOffensive(post: post) {
+                self.offensiveButton.checkOffensiveState()
+            }
+            self.offensiveButton.checkOffensiveState()
+        }
     }
     
     @IBAction func deletePost(_ sender: AnyObject) {

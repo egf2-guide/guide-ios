@@ -7,6 +7,7 @@
 //
 
 #import "InitController.h"
+#import "OffensivePosts.h"
 #import "Follows.h"
 
 @interface InitController ()
@@ -20,6 +21,7 @@
     
     if (self.graph.isAuthorized) {
         [[Follows shared] startObserving];
+        [[OffensivePosts shared] startSession];
         [self performSegueWithIdentifier:@"ShowTabBar" sender:nil];
     }
     else {

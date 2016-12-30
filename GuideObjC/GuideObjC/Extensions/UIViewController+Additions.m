@@ -18,4 +18,10 @@
     [controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:controller animated:true completion:nil];
 }
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    UIAlertController * controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [controller addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:controller animated:true completion:nil];
+}
 @end

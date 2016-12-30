@@ -1292,7 +1292,7 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="xSQ-0V-brH">
-                            <rect key="frame" x="108" y="7" width="160" height="30"/>
+                            <rect key="frame" x="107.5" y="7" width="160" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Feed"/>
@@ -1397,6 +1397,18 @@
                                                         <segue destination="yPT-ee-yum" kind="show" id="jI3-tm-FI5"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T82-yD-uUb" customClass="OffensivePostButton" customModule="GuideSwift" customModuleProvider="target">
+                                                    <rect key="frame" x="299" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="JeP-BR-hFZ"/>
+                                                        <constraint firstAttribute="width" constant="30" id="XOa-ce-xfA"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" image="offended"/>
+                                                    <connections>
+                                                        <action selector="markPostAsOffensive:" destination="Lko-cO-1sR" eventType="touchUpInside" id="sS5-ye-Mkp"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1407,9 +1419,11 @@
                                                 <constraint firstItem="JQz-uL-fb1" firstAttribute="top" secondItem="YDn-iF-ojD" secondAttribute="top" constant="6" id="9ET-d7-DhS"/>
                                                 <constraint firstAttribute="bottom" secondItem="C5f-hY-f5B" secondAttribute="bottom" constant="8" id="MoF-D2-uhs"/>
                                                 <constraint firstItem="mRE-73-f6b" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" constant="8" id="PRY-r3-kat"/>
+                                                <constraint firstItem="LVq-gM-p8o" firstAttribute="leading" secondItem="T82-yD-uUb" secondAttribute="trailing" id="aX6-Xx-0H8"/>
                                                 <constraint firstAttribute="trailing" secondItem="M1T-4a-a3J" secondAttribute="trailing" id="bsj-39-GDV"/>
                                                 <constraint firstAttribute="trailing" secondItem="INA-zC-fnb" secondAttribute="trailing" id="dzz-Uz-0n1"/>
                                                 <constraint firstItem="C5f-hY-f5B" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" constant="8" id="fgj-6m-lBW"/>
+                                                <constraint firstItem="T82-yD-uUb" firstAttribute="top" secondItem="YDn-iF-ojD" secondAttribute="top" id="g2o-xa-v5d"/>
                                                 <constraint firstAttribute="trailing" secondItem="JQz-uL-fb1" secondAttribute="trailing" constant="8" id="gFI-cG-mqE"/>
                                                 <constraint firstItem="mRE-73-f6b" firstAttribute="top" secondItem="M1T-4a-a3J" secondAttribute="bottom" constant="8" id="ndD-PB-8RD"/>
                                                 <constraint firstItem="M1T-4a-a3J" firstAttribute="top" secondItem="YDn-iF-ojD" secondAttribute="top" id="pmf-B8-Xou"/>
@@ -1728,6 +1742,7 @@
                         <outlet property="deleteButton" destination="INA-zC-fnb" id="56N-L1-4JI"/>
                         <outlet property="descriptionLabel" destination="mRE-73-f6b" id="ier-Q6-d3Z"/>
                         <outlet property="editButton" destination="LVq-gM-p8o" id="bwV-1w-wIo"/>
+                        <outlet property="offensiveButton" destination="T82-yD-uUb" id="51u-c2-UGb"/>
                         <outlet property="postImageView" destination="C5f-hY-f5B" id="b1W-TU-YlE"/>
                         <outlet property="sendButton" destination="MD1-1O-PKm" id="SCI-H2-auF"/>
                         <outlet property="tableView" destination="PYn-G9-XyO" id="dCE-5Z-LLF"/>
@@ -2120,5 +2135,6 @@
     <resources>
         <image name="delete" width="15" height="15"/>
         <image name="edit" width="15" height="15"/>
+        <image name="offended" width="15" height="15"/>
     </resources>
 </document>

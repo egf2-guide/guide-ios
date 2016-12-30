@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */; };
 		E51AEEF61E111CBB00312952 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */; };
+		E52480561E1510800050448B /* OffensivePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52480551E1510800050448B /* OffensivePosts.swift */; };
+		E52480581E1516660050448B /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52480571E1516660050448B /* Array+Additions.swift */; };
+		E524805A1E151C5B0050448B /* OffensivePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52480591E151C5B0050448B /* OffensivePostButton.swift */; };
 		E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52667391E08F73400A42337 /* ChangePasswordController.swift */; };
 		E52827C01E00687300A39792 /* BaseTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52827BF1E00687300A39792 /* BaseTableController.swift */; };
 		E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528654D1DFE6FE800D50A0D /* MoreController.swift */; };
@@ -74,6 +77,9 @@
 /* Begin PBXFileReference section */
 		E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDownloader.swift; sourceTree = "<group>"; };
 		E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		E52480551E1510800050448B /* OffensivePosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffensivePosts.swift; sourceTree = "<group>"; };
+		E52480571E1516660050448B /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
+		E52480591E151C5B0050448B /* OffensivePostButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffensivePostButton.swift; sourceTree = "<group>"; };
 		E52667391E08F73400A42337 /* ChangePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
 		E52827BF1E00687300A39792 /* BaseTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableController.swift; sourceTree = "<group>"; };
 		E528654D1DFE6FE800D50A0D /* MoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 		E57D57931DFA96C600C8C237 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E52480571E1516660050448B /* Array+Additions.swift */,
 				E57D57991DFA96FD00C8C237 /* UIColor+Additions.swift */,
 				E57D579B1DFA970C00C8C237 /* UIImage+Additions.swift */,
 				E59688151DFFD85F007F1DEA /* EGFHumanName+Additions.swift */,
@@ -349,6 +356,7 @@
 				E57D57951DFA96D400C8C237 /* DesignableView.swift */,
 				E57D57971DFA96E600C8C237 /* DesignableButton.swift */,
 				E5FDA2961E125DCC00ED3B16 /* FollowButton.swift */,
+				E52480591E151C5B0050448B /* OffensivePostButton.swift */,
 				E55415E71E03D9A10024B3A2 /* FileImageView.swift */,
 				E5D48D981E04496100E07571 /* SeparatorView.swift */,
 				E57438891E0A59C300CA6C45 /* ProgressCell */,
@@ -394,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				E596881E1DFFF1FA007F1DEA /* SimpleFileManager.swift */,
+				E52480551E1510800050448B /* OffensivePosts.swift */,
 				E58FFE351E0CE83900E8EDB1 /* Follows.swift */,
 			);
 			path = Managers;
@@ -525,7 +534,9 @@
 			files = (
 				E564DF6C1E07B41E0073677E /* CommentCell.swift in Sources */,
 				E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */,
+				E524805A1E151C5B0050448B /* OffensivePostButton.swift in Sources */,
 				E5734D811E1244CF007EF828 /* PostCell.swift in Sources */,
+				E52480581E1516660050448B /* Array+Additions.swift in Sources */,
 				E56180F61E03FD8C005A8224 /* PostController.swift in Sources */,
 				E52865501DFE6FF600D50A0D /* MoreCell.swift in Sources */,
 				E574388B1E0A59CD00CA6C45 /* ProgressCell.swift in Sources */,
@@ -561,6 +572,7 @@
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
 				E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */,
 				E52827C01E00687300A39792 /* BaseTableController.swift in Sources */,
+				E52480561E1510800050448B /* OffensivePosts.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,
 				E58FFE361E0CE83900E8EDB1 /* Follows.swift in Sources */,
 			);

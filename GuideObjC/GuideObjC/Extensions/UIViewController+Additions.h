@@ -10,4 +10,5 @@
 
 @interface UIViewController (Additions)
 - (void)showConfirmWithTitle:(NSString *)title message:(NSString *)message action:(void (^)())confirmAction;
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
 @end

@@ -10,10 +10,12 @@
 #import "UIViewController+Additions.h"
 #import "EGFHumanName+Additions.h"
 #import "ReversedEdgeDownloader.h"
+#import "OffensivePostButton.h"
 #import "ProgressController.h"
 #import "PostEditController.h"
 #import "UIColor+Additions.h"
 #import "EdgeDownloader.h"
+#import "OffensivePosts.h"
 #import "FileImageView.h"
 #import "CommentCell.h"
 #import "PostCell.h"
@@ -27,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet OffensivePostButton *offensiveButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentPlaceholder;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (retain, nonatomic) ReversedEdgeDownloader *comments;
@@ -57,6 +60,7 @@
         _comments.pageCount = 5;
         _comments.tableView = self.tableView;
         [_comments getNextPage];
+        _offensiveButton.post = _post;
         
         [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFUser class]]) {
@@ -94,6 +98,21 @@
 - (void)updateSendButton {
     _commentPlaceholder.hidden = _commentTextView.text.length > 0;
     _sendButton.enabled = _commentTextView.text.length > 1;
+}
+
+- (IBAction)markPostAsOffensive:(id)sender {
+    if (_post.id) {
+        if ([[OffensivePosts shared] offensiveStateForPost:_post] == osOffensive) {
+            [self showAlertWithTitle:@"Offensive Post" message:@"You've marked the post as offensive"];
+            return;
+        }
+        [self showConfirmWithTitle:@"Warning" message:@"Mark Post as offensive?" action:^{
+            [[OffensivePosts shared] markAsOffensive:_post completion:^{
+                [_offensiveButton checkOffensiveState];
+            }];
+            [_offensiveButton checkOffensiveState];
+        }];
+    }
 }
 
 - (IBAction)deletePost:(id)sender {

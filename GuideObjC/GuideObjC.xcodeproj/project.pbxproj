@@ -30,6 +30,8 @@
 		E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7C1E07F8B60073677E /* CommentCell.m */; };
 		E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E564DF7F1E07F8C90073677E /* NextCommentsCell.m */; };
 		E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5651EB11DFFC49E004D09F7 /* ProgressController.m */; };
+		E56690581E162DB9009D4F2F /* OffensivePosts.m in Sources */ = {isa = PBXBuildFile; fileRef = E56690571E162DB9009D4F2F /* OffensivePosts.m */; };
+		E566905B1E163300009D4F2F /* OffensivePostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E566905A1E163300009D4F2F /* OffensivePostButton.m */; };
 		E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5681F561E0BAA340081B362 /* BaseDownloader.m */; };
 		E5681F5A1E0BAB070081B362 /* EdgeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5681F591E0BAB070081B362 /* EdgeDownloader.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
@@ -120,6 +122,10 @@
 		E564DF7F1E07F8C90073677E /* NextCommentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextCommentsCell.m; sourceTree = "<group>"; };
 		E5651EB01DFFC49E004D09F7 /* ProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressController.h; sourceTree = "<group>"; };
 		E5651EB11DFFC49E004D09F7 /* ProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressController.m; sourceTree = "<group>"; };
+		E56690561E162DB9009D4F2F /* OffensivePosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffensivePosts.h; sourceTree = "<group>"; };
+		E56690571E162DB9009D4F2F /* OffensivePosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffensivePosts.m; sourceTree = "<group>"; };
+		E56690591E163300009D4F2F /* OffensivePostButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffensivePostButton.h; sourceTree = "<group>"; };
+		E566905A1E163300009D4F2F /* OffensivePostButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffensivePostButton.m; sourceTree = "<group>"; };
 		E5681F551E0BAA340081B362 /* BaseDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDownloader.h; sourceTree = "<group>"; };
 		E5681F561E0BAA340081B362 /* BaseDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDownloader.m; sourceTree = "<group>"; };
 		E5681F581E0BAB070081B362 /* EdgeDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeDownloader.h; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 			children = (
 				E52577311E0121BF0068D28D /* SimpleFileManager.h */,
 				E52577321E0121BF0068D28D /* SimpleFileManager.m */,
+				E56690561E162DB9009D4F2F /* OffensivePosts.h */,
+				E56690571E162DB9009D4F2F /* OffensivePosts.m */,
 				E58FFE371E0D325C00E8EDB1 /* Follows.h */,
 				E58FFE381E0D325C00E8EDB1 /* Follows.m */,
 			);
@@ -434,6 +442,8 @@
 				E57D57C11DFAA09100C8C237 /* OCDesignableButton.m */,
 				E5FDA2981E1269C100ED3B16 /* FollowButton.h */,
 				E5FDA2991E1269C100ED3B16 /* FollowButton.m */,
+				E56690591E163300009D4F2F /* OffensivePostButton.h */,
+				E566905A1E163300009D4F2F /* OffensivePostButton.m */,
 				E55415E91E03F6870024B3A2 /* FileImageView.h */,
 				E55415EA1E03F6870024B3A2 /* FileImageView.m */,
 				E564DF711E07EE0D0073677E /* OCSeparatorView.h */,
@@ -621,6 +631,7 @@
 				E57D57C21DFAA09100C8C237 /* OCDesignableButton.m in Sources */,
 				E52865721DFE752F00D50A0D /* LoginController.m in Sources */,
 				E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */,
+				E566905B1E163300009D4F2F /* OffensivePostButton.m in Sources */,
 				E5F736121E13F3870039B3D7 /* PostEditController.m in Sources */,
 				E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */,
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
@@ -646,6 +657,7 @@
 				E528657F1DFE766F00D50A0D /* BaseTableViewController.m in Sources */,
 				E50A89C31E0BCF4C00230613 /* ReversedEdgeDownloader.m in Sources */,
 				E52865751DFE752F00D50A0D /* UserController.m in Sources */,
+				E56690581E162DB9009D4F2F /* OffensivePosts.m in Sources */,
 				E59123691E09264900AD98A3 /* RestorePasswordController.m in Sources */,
 				E528656F1DFE752F00D50A0D /* BaseNavigationController.m in Sources */,
 				E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */,

@@ -23,6 +23,7 @@ class MoreController: UITableViewController {
             ProgressController.hide()
             
             Follows.shared.stopObserving()
+            OffensivePosts.shared.stopSession()
             SimpleFileManager.shared.deleteAllFiles()
             self.tabBarController?.dismiss(animated: true, completion: nil)
         }

@@ -15,6 +15,7 @@ class InitController: UIViewController {
         
         if Graph.isAuthorized {
             Follows.shared.startObserving()
+            OffensivePosts.shared.startSession()
             performSegue(withIdentifier: "ShowTabBar", sender: nil)
         }
         else {
