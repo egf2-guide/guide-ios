@@ -1386,7 +1386,7 @@
                                                     </connections>
                                                 </button>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVq-gM-p8o">
-                                                    <rect key="frame" x="329" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="299" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="1kS-f1-VIu"/>
                                                         <constraint firstAttribute="height" constant="30" id="e4u-j6-fyF"/>
@@ -1398,7 +1398,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T82-yD-uUb" customClass="OffensivePostButton" customModule="GuideSwift" customModuleProvider="target">
-                                                    <rect key="frame" x="299" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="269" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="JeP-BR-hFZ"/>
                                                         <constraint firstAttribute="width" constant="30" id="XOa-ce-xfA"/>
@@ -1413,11 +1413,11 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="C5f-hY-f5B" secondAttribute="trailing" constant="8" id="0n3-mK-y0m"/>
-                                                <constraint firstAttribute="trailing" secondItem="LVq-gM-p8o" secondAttribute="trailing" id="1rA-we-ahx"/>
                                                 <constraint firstAttribute="trailing" secondItem="mRE-73-f6b" secondAttribute="trailing" constant="8" id="2iL-Qt-bzc"/>
                                                 <constraint firstItem="C5f-hY-f5B" firstAttribute="top" secondItem="mRE-73-f6b" secondAttribute="bottom" priority="750" constant="8" id="7Fm-63-tad"/>
                                                 <constraint firstItem="JQz-uL-fb1" firstAttribute="top" secondItem="YDn-iF-ojD" secondAttribute="top" constant="6" id="9ET-d7-DhS"/>
                                                 <constraint firstAttribute="bottom" secondItem="C5f-hY-f5B" secondAttribute="bottom" constant="8" id="MoF-D2-uhs"/>
+                                                <constraint firstItem="INA-zC-fnb" firstAttribute="leading" secondItem="LVq-gM-p8o" secondAttribute="trailing" id="OVO-JL-nfv"/>
                                                 <constraint firstItem="mRE-73-f6b" firstAttribute="leading" secondItem="YDn-iF-ojD" secondAttribute="leading" constant="8" id="PRY-r3-kat"/>
                                                 <constraint firstItem="LVq-gM-p8o" firstAttribute="leading" secondItem="T82-yD-uUb" secondAttribute="trailing" id="aX6-Xx-0H8"/>
                                                 <constraint firstAttribute="trailing" secondItem="M1T-4a-a3J" secondAttribute="trailing" id="bsj-39-GDV"/>
@@ -1740,8 +1740,10 @@
                         <outlet property="commentTextView" destination="eXy-Yc-DtN" id="otn-U7-3cb"/>
                         <outlet property="creatorNameLabel" destination="JQz-uL-fb1" id="q7V-di-VXr"/>
                         <outlet property="deleteButton" destination="INA-zC-fnb" id="56N-L1-4JI"/>
+                        <outlet property="deleteButtonWidth" destination="vpf-8A-8o8" id="c67-9p-NFA"/>
                         <outlet property="descriptionLabel" destination="mRE-73-f6b" id="ier-Q6-d3Z"/>
                         <outlet property="editButton" destination="LVq-gM-p8o" id="bwV-1w-wIo"/>
+                        <outlet property="editButtonWidth" destination="1kS-f1-VIu" id="wmp-E0-cMR"/>
                         <outlet property="offensiveButton" destination="T82-yD-uUb" id="51u-c2-UGb"/>
                         <outlet property="postImageView" destination="C5f-hY-f5B" id="b1W-TU-YlE"/>
                         <outlet property="sendButton" destination="MD1-1O-PKm" id="SCI-H2-auF"/>

@@ -664,7 +664,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccE-lp-0rF" id="q09-z1-bz5">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWH-Oe-FSF">
@@ -691,7 +691,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AK5-tP-Q8I" id="VrY-Pc-gyV">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gps-xQ-Zct">
@@ -716,7 +716,7 @@
                                         <rect key="frame" x="0.0" y="123" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ft6-KG-YkH" id="WzD-kB-l0r">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMB-zi-vkd">
@@ -1122,7 +1122,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKr-Hm-wTF">
-                                                    <rect key="frame" x="329" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="299" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="AtW-p3-Itv"/>
                                                         <constraint firstAttribute="height" constant="30" id="gfy-VM-LzQ"/>
@@ -1134,7 +1134,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfO-VD-jTy" customClass="OffensivePostButton">
-                                                    <rect key="frame" x="299" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="269" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="RbM-ql-3gN"/>
                                                         <constraint firstAttribute="width" constant="30" id="u7h-hg-Y7T"/>
@@ -1148,7 +1148,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="iKr-Hm-wTF" secondAttribute="trailing" id="1js-14-2n1"/>
                                                 <constraint firstAttribute="trailing" secondItem="lAO-WU-0gi" secondAttribute="trailing" id="2oz-YP-gqn"/>
                                                 <constraint firstItem="uef-l3-Wd3" firstAttribute="top" secondItem="97S-3I-EXx" secondAttribute="bottom" priority="750" constant="8" id="2xa-dx-qXA"/>
                                                 <constraint firstItem="iKr-Hm-wTF" firstAttribute="top" secondItem="3Tg-nd-GCA" secondAttribute="top" id="7MQ-MC-JjU"/>
@@ -1161,6 +1160,7 @@
                                                 <constraint firstItem="lAO-WU-0gi" firstAttribute="top" secondItem="3Tg-nd-GCA" secondAttribute="top" id="QXK-Ym-frj"/>
                                                 <constraint firstAttribute="trailing" secondItem="eWp-n3-k4L" secondAttribute="trailing" id="QcD-f4-Ojf"/>
                                                 <constraint firstAttribute="trailing" secondItem="97S-3I-EXx" secondAttribute="trailing" constant="8" id="fjB-aZ-phA"/>
+                                                <constraint firstItem="eWp-n3-k4L" firstAttribute="leading" secondItem="iKr-Hm-wTF" secondAttribute="trailing" id="gpZ-wd-EV6"/>
                                                 <constraint firstItem="iKr-Hm-wTF" firstAttribute="leading" secondItem="IfO-VD-jTy" secondAttribute="trailing" id="rcE-i2-Yrq"/>
                                                 <constraint firstAttribute="bottom" secondItem="uef-l3-Wd3" secondAttribute="bottom" constant="8" id="rlA-au-urQ"/>
                                                 <constraint firstItem="97S-3I-EXx" firstAttribute="leading" secondItem="3Tg-nd-GCA" secondAttribute="leading" constant="8" id="sIS-R0-eWV"/>
@@ -1476,8 +1476,10 @@
                         <outlet property="commentTextView" destination="tty-fx-fsl" id="hEQ-2c-jIK"/>
                         <outlet property="creatorNameLabel" destination="n1Q-lF-xnB" id="dc7-CK-lM8"/>
                         <outlet property="deleteButton" destination="eWp-n3-k4L" id="UrW-Ph-mYA"/>
+                        <outlet property="deleteButtonWidth" destination="2fQ-Jx-1gO" id="sAA-BM-kbt"/>
                         <outlet property="descriptionLabel" destination="97S-3I-EXx" id="Cwq-UV-Xrd"/>
                         <outlet property="editButton" destination="iKr-Hm-wTF" id="wIp-Q6-FMB"/>
+                        <outlet property="editButtonWidth" destination="AtW-p3-Itv" id="E9k-bh-3Vd"/>
                         <outlet property="offensiveButton" destination="IfO-VD-jTy" id="mrO-N7-0SK"/>
                         <outlet property="postImageView" destination="uef-l3-Wd3" id="eno-K4-3Ep"/>
                         <outlet property="sendButton" destination="Td1-PF-dOr" id="GwZ-Zw-ivf"/>

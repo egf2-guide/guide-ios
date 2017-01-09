@@ -28,7 +28,9 @@
 @property (weak, nonatomic) IBOutlet FileImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *editButtonWidth;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deleteButtonWidth;
 @property (weak, nonatomic) IBOutlet OffensivePostButton *offensiveButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentPlaceholder;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
@@ -65,10 +67,13 @@
         [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
             if ([object isKindOfClass:[EGFUser class]]) {
                 _currentUser = (EGFUser *)object;
-                _editButton.hidden = ![_post.creator isEqual:_currentUser.id];
-                // TODO uncomment when support is ready
+                BOOL isUserPost = [_post.creator isEqual:_currentUser.id];
+                _editButton.hidden = !isUserPost;
+                _editButtonWidth.constant = isUserPost ? 30 : 0;
+                _offensiveButton.hidden = isUserPost;
+                // TODO use isUserPost when support is ready
                 _deleteButton.hidden = true;
-//                _deleteButton.hidden = ![_post.creator isEqual:_currentUser.id];
+                _deleteButtonWidth.constant = 0;
             }
         }];
         [self observeForSource:_post.id eventName:EGF2NotificationObjectUpdated withSelector:@selector(postUpdated:)];

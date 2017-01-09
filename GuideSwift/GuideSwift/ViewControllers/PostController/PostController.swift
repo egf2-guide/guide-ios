@@ -18,7 +18,9 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var postImageView: FileImageView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var deleteButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var offensiveButton: OffensivePostButton!
     @IBOutlet weak var commentPlaceholder: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
@@ -52,10 +54,14 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
             self.currentUser = user
-            self.editButton.isHidden = (post.creator ?? "") != userId
-            // TODO uncomment when support is ready
+    
+            let isUserPost = (post.creator ?? "") == userId
+            self.editButton.isHidden = !isUserPost
+            self.editButtonWidth.constant = isUserPost ? 30 : 0
+            self.offensiveButton.isHidden = isUserPost
+            // TODO use isUserPost when support is ready
             self.deleteButton.isHidden = true
-//            self.deleteButton.isHidden = (post.creator ?? "") != userId
+            self.deleteButtonWidth.constant = 0
         }
         observe(forSource: postId, eventName: .EGF2ObjectUpdated, withSelector: #selector(postUpdated(notification:)))
     }
