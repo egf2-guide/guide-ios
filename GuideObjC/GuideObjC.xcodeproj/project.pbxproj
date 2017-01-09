@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		E50A89C31E0BCF4C00230613 /* ReversedEdgeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */; };
 		E50A89C81E0BF9E400230613 /* SearchDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C71E0BF9E400230613 /* SearchDownloader.m */; };
+		E519FADE1E23A6EF0081E8E1 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E519FADD1E23A6EF0081E8E1 /* MainTabBarController.m */; };
+		E519FAE21E23AE020081E8E1 /* OffendedUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = E519FAE11E23AE020081E8E1 /* OffendedUsersController.m */; };
+		E519FAE51E23AE250081E8E1 /* OffendedUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E519FAE41E23AE250081E8E1 /* OffendedUserCell.m */; };
+		E519FAE91E23B1210081E8E1 /* OffensivePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E519FAE81E23B1210081E8E1 /* OffensivePostCell.m */; };
+		E519FAEC1E23BA620081E8E1 /* OffensivePostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E519FAEB1E23BA620081E8E1 /* OffensivePostsController.m */; };
 		E51AEEF91E111F7900312952 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF81E111F7900312952 /* UIViewController+Additions.m */; };
 		E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E52577321E0121BF0068D28D /* SimpleFileManager.m */; };
 		E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = E525773B1E012F990068D28D /* EGFHumanName+Additions.m */; };
@@ -80,6 +85,16 @@
 		E50A89C21E0BCF4C00230613 /* ReversedEdgeDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReversedEdgeDownloader.m; sourceTree = "<group>"; };
 		E50A89C61E0BF9E400230613 /* SearchDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDownloader.h; sourceTree = "<group>"; };
 		E50A89C71E0BF9E400230613 /* SearchDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDownloader.m; sourceTree = "<group>"; };
+		E519FADC1E23A6EF0081E8E1 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		E519FADD1E23A6EF0081E8E1 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		E519FAE01E23AE020081E8E1 /* OffendedUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffendedUsersController.h; sourceTree = "<group>"; };
+		E519FAE11E23AE020081E8E1 /* OffendedUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffendedUsersController.m; sourceTree = "<group>"; };
+		E519FAE31E23AE250081E8E1 /* OffendedUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffendedUserCell.h; sourceTree = "<group>"; };
+		E519FAE41E23AE250081E8E1 /* OffendedUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffendedUserCell.m; sourceTree = "<group>"; };
+		E519FAE71E23B1210081E8E1 /* OffensivePostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffensivePostCell.h; sourceTree = "<group>"; };
+		E519FAE81E23B1210081E8E1 /* OffensivePostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffensivePostCell.m; sourceTree = "<group>"; };
+		E519FAEA1E23BA620081E8E1 /* OffensivePostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffensivePostsController.h; sourceTree = "<group>"; };
+		E519FAEB1E23BA620081E8E1 /* OffensivePostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OffensivePostsController.m; sourceTree = "<group>"; };
 		E51AEEF71E111F7900312952 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		E51AEEF81E111F7900312952 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		E52577311E0121BF0068D28D /* SimpleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleFileManager.h; sourceTree = "<group>"; };
@@ -187,6 +202,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E519FADB1E23A6DB0081E8E1 /* MainTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E519FADC1E23A6EF0081E8E1 /* MainTabBarController.h */,
+				E519FADD1E23A6EF0081E8E1 /* MainTabBarController.m */,
+			);
+			path = MainTabBarController;
+			sourceTree = "<group>";
+		};
+		E519FADF1E23ADE90081E8E1 /* OffendedUsersController */ = {
+			isa = PBXGroup;
+			children = (
+				E519FAE01E23AE020081E8E1 /* OffendedUsersController.h */,
+				E519FAE11E23AE020081E8E1 /* OffendedUsersController.m */,
+				E519FAE31E23AE250081E8E1 /* OffendedUserCell.h */,
+				E519FAE41E23AE250081E8E1 /* OffendedUserCell.m */,
+			);
+			path = OffendedUsersController;
+			sourceTree = "<group>";
+		};
+		E519FAE61E23B1090081E8E1 /* OffensivePostsController */ = {
+			isa = PBXGroup;
+			children = (
+				E519FAEA1E23BA620081E8E1 /* OffensivePostsController.h */,
+				E519FAEB1E23BA620081E8E1 /* OffensivePostsController.m */,
+				E519FAE71E23B1210081E8E1 /* OffensivePostCell.h */,
+				E519FAE81E23B1210081E8E1 /* OffensivePostCell.m */,
+			);
+			path = OffensivePostsController;
+			sourceTree = "<group>";
+		};
 		E52577301E0121AC0068D28D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,12 +464,15 @@
 				E528655D1DFE752F00D50A0D /* FeedController */,
 				E528655F1DFE752F00D50A0D /* InitController */,
 				E52865621DFE752F00D50A0D /* LoginController */,
+				E519FADB1E23A6DB0081E8E1 /* MainTabBarController */,
 				E52865681DFE752F00D50A0D /* MoreController */,
 				E55EA4EB1DFE939C00C611BD /* NewPostController */,
 				E564DF771E07F8800073677E /* PostController */,
 				E5F7360C1E13E3E30039B3D7 /* PostEditController */,
 				E52865691DFE752F00D50A0D /* RegisterController */,
 				E528656C1DFE752F00D50A0D /* UserController */,
+				E519FAE61E23B1090081E8E1 /* OffensivePostsController */,
+				E519FADF1E23ADE90081E8E1 /* OffendedUsersController */,
 				E526673B1E08FECE00A42337 /* ChangePasswordController */,
 				E59123661E09262D00AD98A3 /* RestorePasswordController */,
 				E59123651E09262D00AD98A3 /* ResetPasswordController */,
@@ -637,8 +686,10 @@
 				E564DF801E07F8C90073677E /* NextCommentsCell.m in Sources */,
 				E58FFE391E0D325C00E8EDB1 /* Follows.m in Sources */,
 				E52865711DFE752F00D50A0D /* InitController.m in Sources */,
+				E519FAE21E23AE020081E8E1 /* OffendedUsersController.m in Sources */,
 				E5C592CB1E0AE172004C530D /* UserCell.m in Sources */,
 				E52865701DFE752F00D50A0D /* BaseViewController.m in Sources */,
+				E519FADE1E23A6EF0081E8E1 /* MainTabBarController.m in Sources */,
 				E5651EB21DFFC49E004D09F7 /* ProgressController.m in Sources */,
 				E5C592C61E0AE141004C530D /* ProgressCell.m in Sources */,
 				E52865821DFE76C100D50A0D /* MoreController.m in Sources */,
@@ -649,8 +700,10 @@
 				E57D57BF1DFA9C9C00C8C237 /* OCDesignableView.m in Sources */,
 				E591236C1E09277000AD98A3 /* ResetPasswordController.m in Sources */,
 				E525773C1E012F990068D28D /* EGFHumanName+Additions.m in Sources */,
+				E519FAEC1E23BA620081E8E1 /* OffensivePostsController.m in Sources */,
 				E564DF7A1E07F8920073677E /* PostController.m in Sources */,
 				E564DF7D1E07F8B60073677E /* CommentCell.m in Sources */,
+				E519FAE91E23B1210081E8E1 /* OffensivePostCell.m in Sources */,
 				E55415EB1E03F6870024B3A2 /* FileImageView.m in Sources */,
 				E57D57D71DFAB18500C8C237 /* EGF2.m in Sources */,
 				E526673E1E08FEDD00A42337 /* ChangePasswordController.m in Sources */,
@@ -668,6 +721,7 @@
 				E55EA4EE1DFE93B100C611BD /* NewPostController.m in Sources */,
 				E57D57621DFA945900C8C237 /* main.m in Sources */,
 				E50A89C81E0BF9E400230613 /* SearchDownloader.m in Sources */,
+				E519FAE51E23AE250081E8E1 /* OffendedUserCell.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
 				E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */,
 				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,

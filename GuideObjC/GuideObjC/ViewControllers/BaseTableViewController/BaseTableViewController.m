@@ -27,6 +27,13 @@
     self.refreshControl.tintColor = [UIColor hexColor:0x5E66B1];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"";
+    self.navigationController.navigationBar.topItem.backBarButtonItem = barButton;
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

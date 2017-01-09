@@ -17,6 +17,13 @@ class BaseTableController: UITableViewController {
         refreshControl?.tintColor = UIColor.hexColor(0x5E66B1)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let barButton = UIBarButtonItem()
+        barButton.title = ""
+        navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E50A89C51E0BE4BA00230613 /* SearchDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */; };
+		E519FAD01E23594F0081E8E1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E519FACF1E23594F0081E8E1 /* MainTabBarController.swift */; };
+		E519FAD31E235B900081E8E1 /* OffensivePostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E519FAD21E235B900081E8E1 /* OffensivePostsController.swift */; };
+		E519FAD51E2388170081E8E1 /* OffensivePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E519FAD41E2388170081E8E1 /* OffensivePostCell.swift */; };
+		E519FAD81E238CFC0081E8E1 /* OffendedUsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E519FAD71E238CFC0081E8E1 /* OffendedUsersController.swift */; };
+		E519FADA1E238FC60081E8E1 /* OffendedUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E519FAD91E238FC60081E8E1 /* OffendedUserCell.swift */; };
 		E51AEEF61E111CBB00312952 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */; };
 		E52480561E1510800050448B /* OffensivePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52480551E1510800050448B /* OffensivePosts.swift */; };
 		E52480581E1516660050448B /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52480571E1516660050448B /* Array+Additions.swift */; };
@@ -76,6 +81,11 @@
 
 /* Begin PBXFileReference section */
 		E50A89C41E0BE4BA00230613 /* SearchDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDownloader.swift; sourceTree = "<group>"; };
+		E519FACF1E23594F0081E8E1 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		E519FAD21E235B900081E8E1 /* OffensivePostsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffensivePostsController.swift; sourceTree = "<group>"; };
+		E519FAD41E2388170081E8E1 /* OffensivePostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffensivePostCell.swift; sourceTree = "<group>"; };
+		E519FAD71E238CFC0081E8E1 /* OffendedUsersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffendedUsersController.swift; sourceTree = "<group>"; };
+		E519FAD91E238FC60081E8E1 /* OffendedUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffendedUserCell.swift; sourceTree = "<group>"; };
 		E51AEEF51E111CBB00312952 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		E52480551E1510800050448B /* OffensivePosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffensivePosts.swift; sourceTree = "<group>"; };
 		E52480571E1516660050448B /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
@@ -142,6 +152,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E519FACE1E2359460081E8E1 /* MainTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E519FACF1E23594F0081E8E1 /* MainTabBarController.swift */,
+			);
+			path = MainTabBarController;
+			sourceTree = "<group>";
+		};
+		E519FAD11E235B8A0081E8E1 /* OffensivePostsController */ = {
+			isa = PBXGroup;
+			children = (
+				E519FAD21E235B900081E8E1 /* OffensivePostsController.swift */,
+				E519FAD41E2388170081E8E1 /* OffensivePostCell.swift */,
+			);
+			path = OffensivePostsController;
+			sourceTree = "<group>";
+		};
+		E519FAD61E238CF60081E8E1 /* OffendedUsersController */ = {
+			isa = PBXGroup;
+			children = (
+				E519FAD71E238CFC0081E8E1 /* OffendedUsersController.swift */,
+				E519FAD91E238FC60081E8E1 /* OffendedUserCell.swift */,
+			);
+			path = OffendedUsersController;
+			sourceTree = "<group>";
+		};
 		E52667381E08F72C00A42337 /* ChangePasswordController */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,7 +415,10 @@
 				E52667381E08F72C00A42337 /* ChangePasswordController */,
 				E547C1031E090F1B008CB362 /* RestorePasswordController */,
 				E547C1041E090F2E008CB362 /* ResetPasswordController */,
+				E519FACE1E2359460081E8E1 /* MainTabBarController */,
 				E52865511DFE72F500D50A0D /* FeedController */,
+				E519FAD11E235B8A0081E8E1 /* OffensivePostsController */,
+				E519FAD61E238CF60081E8E1 /* OffendedUsersController */,
 				E528654C1DFE6FE800D50A0D /* MoreController */,
 				E55EA4E81DFE90E500C611BD /* NewPostController */,
 				E56180F41E03FD8C005A8224 /* PostController */,
@@ -532,8 +571,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E519FAD81E238CFC0081E8E1 /* OffendedUsersController.swift in Sources */,
 				E564DF6C1E07B41E0073677E /* CommentCell.swift in Sources */,
 				E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */,
+				E519FAD01E23594F0081E8E1 /* MainTabBarController.swift in Sources */,
 				E524805A1E151C5B0050448B /* OffensivePostButton.swift in Sources */,
 				E5734D811E1244CF007EF828 /* PostCell.swift in Sources */,
 				E52480581E1516660050448B /* Array+Additions.swift in Sources */,
@@ -562,6 +603,7 @@
 				E547C1061E090F38008CB362 /* RestorePasswordController.swift in Sources */,
 				E526673A1E08F73400A42337 /* ChangePasswordController.swift in Sources */,
 				E57D57861DFA960500C8C237 /* EGF2.swift in Sources */,
+				E519FAD51E2388170081E8E1 /* OffensivePostCell.swift in Sources */,
 				E528659B1DFE7CBD00D50A0D /* InitController.swift in Sources */,
 				E57D57961DFA96D400C8C237 /* DesignableView.swift in Sources */,
 				E51AEEF61E111CBB00312952 /* UIViewController+Additions.swift in Sources */,
@@ -571,6 +613,8 @@
 				E5681F541E0B982C0081B362 /* BaseDownloader.swift in Sources */,
 				E528659A1DFE7CBD00D50A0D /* BaseController.swift in Sources */,
 				E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */,
+				E519FAD31E235B900081E8E1 /* OffensivePostsController.swift in Sources */,
+				E519FADA1E238FC60081E8E1 /* OffendedUserCell.swift in Sources */,
 				E52827C01E00687300A39792 /* BaseTableController.swift in Sources */,
 				E52480561E1510800050448B /* OffensivePosts.swift in Sources */,
 				E57D57431DFA943300C8C237 /* AppDelegate.swift in Sources */,
