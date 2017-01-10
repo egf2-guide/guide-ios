@@ -54,7 +54,7 @@ class OffensivePostsController: BaseTableController, OffensivePostCellDelegate {
         guard let roleId = currentRoleId, let postId = post.id else { return }
         
         ProgressController.show()
-        Graph.deleteObject(withId: postId, forSource: roleId, fromEdge: self.edge) { (_, error) in
+        Graph.deleteObject(withId: postId, forSource: roleId, fromEdge: edge) { (_, error) in
             ProgressController.hide()
         }
     }

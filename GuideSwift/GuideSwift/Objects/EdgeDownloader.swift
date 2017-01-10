@@ -71,6 +71,7 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
     func add(objects: [T]?, totalCount count: Int) {
         guard let theObjects = objects else { return }
         
+        let addAnimated = graphObjects.count > 0
         let start = graphObjects.count
         let end = start + theObjects.count
         var indexPaths = [IndexPath]()
@@ -82,10 +83,16 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         graphObjects.append(contentsOf: theObjects)
         
         guard let tv = tableView else { return }
-        tv.beginUpdates()
-        tv.insertRows(at: indexPaths, with: .none)
-        tv.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
-        tv.endUpdates()
+        
+        if addAnimated {
+            tv.beginUpdates()
+            tv.insertRows(at: indexPaths, with: .none)
+            tv.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
+            tv.endUpdates()
+        }
+        else {
+            tv.reloadData()
+        }
     }
     
     func insert(object: T?, at index:Int) {

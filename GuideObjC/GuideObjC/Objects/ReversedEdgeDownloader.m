@@ -16,6 +16,7 @@
 
 - (void)addObjects:(NSArray *)objects totalCount:(NSInteger)count {
     if (objects) {
+        BOOL addAnimated = self.graphObjects.count > 0;
         NSMutableArray *indexPaths = [NSMutableArray array];
         
         for (NSInteger i = 0; i < objects.count; i++) {
@@ -26,10 +27,15 @@
         for (NSObject * object in objects) {
             [self.graphObjects insertObject:object atIndex:0];
         }
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-        [self.tableView endUpdates];
+        if (addAnimated) {
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView endUpdates];
+        }
+        else {
+            [self.tableView reloadData];
+        }
     }
 }
 
