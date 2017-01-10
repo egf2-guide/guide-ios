@@ -19,7 +19,7 @@ class OffendedUsersController: BaseTableController {
         tableView.register(UINib(nibName: "ProgressCell", bundle: nil), forCellReuseIdentifier: "ProgressCell")
         
         guard let postId = offensivePost?.id else { return }
-        offendedUsers = EdgeDownloader(withSource: postId, edge: "offended", expand: [])
+        offendedUsers = EdgeDownloader(withSource: postId, edge: "offended")
         offendedUsers?.tableView = tableView
         offendedUsers?.getNextPage()
     }

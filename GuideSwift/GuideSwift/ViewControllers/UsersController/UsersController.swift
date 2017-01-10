@@ -34,7 +34,7 @@ class UsersController: BaseTableController, UserCellDelegate, UISearchBarDelegat
         
         Graph.userObject { (object, error) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
-            self.follows = EdgeDownloader(withSource: userId, edge: "follows", expand: [])
+            self.follows = EdgeDownloader(withSource: userId, edge: "follows")
             self.follows?.tableView = self.tableView
             self.follows?.getNextPage()
             self.activeDownloader = self.follows

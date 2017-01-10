@@ -12,6 +12,7 @@
 @interface EdgeDownloader : BaseDownloader
 @property (nonatomic, assign) NSInteger pageCount;
 
+- (id)initWithSource:(NSString *)source edge:(NSString *)edge;
 - (id)initWithSource:(NSString *)source edge:(NSString *)edge expand:(NSArray *)expand;
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index;
 - (BOOL)noAnyData;

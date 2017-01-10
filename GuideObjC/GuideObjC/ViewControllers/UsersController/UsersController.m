@@ -45,7 +45,7 @@
     [self.graph userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isKindOfClass:[EGFUser class]]) {
             EGFUser * user = (EGFUser *)object;
-            _follows = [[EdgeDownloader alloc] initWithSource:user.id edge:@"follows" expand:@[]];
+            _follows = [[EdgeDownloader alloc] initWithSource:user.id edge:@"follows"];
             _follows.tableView = self.tableView;
             [_follows getNextPage];
             _activeDownloader = _follows;

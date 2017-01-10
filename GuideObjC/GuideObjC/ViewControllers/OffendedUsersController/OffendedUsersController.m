@@ -23,7 +23,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ProgressCell" bundle:nil] forCellReuseIdentifier:@"ProgressCell"];
     
     if (_offensivePost) {
-        _offendedUsers = [[EdgeDownloader alloc] initWithSource:_offensivePost.id edge:@"offended" expand:@[]];
+        _offendedUsers = [[EdgeDownloader alloc] initWithSource:_offensivePost.id edge:@"offended"];
         _offendedUsers.tableView = self.tableView;
         [_offendedUsers getNextPage];
     }

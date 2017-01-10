@@ -30,8 +30,8 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         }
     }
     
-    init(withSource source: String, edge: String, expand: [String]) {
-        self.expand = expand
+    init(withSource source: String, edge: String, expand: [String]? = nil) {
+        self.expand = expand ?? []
         self.source = source
         self.edge = edge
         super.init()

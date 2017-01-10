@@ -26,6 +26,10 @@
     return _downloading;
 }
 
+- (id)initWithSource:(NSString *)source edge:(NSString *)edge {
+    return [self initWithSource:source edge:edge expand:@[]];
+}
+
 - (id)initWithSource:(NSString *)source edge:(NSString *)edge expand:(NSArray *)expand {
     self = [self init];
     
