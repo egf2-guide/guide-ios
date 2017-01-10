@@ -817,7 +817,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="login:" destination="ZoZ-4m-sge" eventType="touchUpInside" id="h8f-Wc-Qkd"/>
                                     <action selector="save:" destination="ykH-Xn-Rdc" eventType="touchUpInside" id="GOC-tK-w6x"/>
                                 </connections>
                             </button>
@@ -913,6 +912,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LiZ-04-zSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2180" y="1636"/>
+        </scene>
+        <!--Resend Email Verification-->
+        <scene sceneID="ILf-cI-487">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="rAF-B0-EIv" customClass="EmailVerificationController" customModule="GuideSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LaN-kg-jPa"/>
+                        <viewControllerLayoutGuide type="bottom" id="qDc-dZ-7AZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XRB-DO-6iH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y75-eq-Bwn">
+                                <rect key="frame" x="20" y="305" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.95157302190000004" green="0.082788506319999997" blue="0.1100480128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jE-Qf-4z5" customClass="DesignableButton" customModule="GuideSwift" customModuleProvider="target">
+                                <rect key="frame" x="20" y="313" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="sIw-Q3-nuM"/>
+                                </constraints>
+                                <state key="normal" title="Resend"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundNormalColor">
+                                        <color key="value" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundHighlightColor">
+                                        <color key="value" red="0.28627450980000002" green="0.30980392159999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resendEmailVerification:" destination="rAF-B0-EIv" eventType="touchUpInside" id="3KH-iK-Aub"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9jE-Qf-4z5" firstAttribute="top" secondItem="y75-eq-Bwn" secondAttribute="bottom" constant="8" id="68E-xB-H7n"/>
+                            <constraint firstItem="9jE-Qf-4z5" firstAttribute="leading" secondItem="XRB-DO-6iH" secondAttribute="leading" constant="20" id="NS9-c8-x4e"/>
+                            <constraint firstItem="9jE-Qf-4z5" firstAttribute="centerY" secondItem="XRB-DO-6iH" secondAttribute="centerY" id="OQd-vh-npo"/>
+                            <constraint firstAttribute="trailing" secondItem="y75-eq-Bwn" secondAttribute="trailing" constant="20" id="Tmr-KI-6Ah"/>
+                            <constraint firstAttribute="trailing" secondItem="9jE-Qf-4z5" secondAttribute="trailing" constant="20" id="tXa-mH-xJB"/>
+                            <constraint firstItem="y75-eq-Bwn" firstAttribute="leading" secondItem="XRB-DO-6iH" secondAttribute="leading" constant="20" id="yTO-UV-nAh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Resend Email Verification" id="rI0-Ln-qNx"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="y75-eq-Bwn" id="GNk-9o-1Fv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uyN-Co-UeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2180" y="2466"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="aXs-OG-836">
@@ -1135,8 +1193,33 @@
                                             <segue destination="K25-jG-Ghi" kind="show" id="2LO-mD-CbY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoutCell" id="baw-eJ-ULu" customClass="MoreCell" customModule="GuideSwift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="RUG-pg-RhD" customClass="MoreCell" customModule="GuideSwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="123" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RUG-pg-RhD" id="F3P-dg-wHz">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resend Email Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDs-RF-37s">
+                                                    <rect key="frame" x="20" y="0.0" width="314" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.36862745099999999" green="0.40000000000000002" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="FDs-RF-37s" secondAttribute="bottom" id="J7t-lC-9Ph"/>
+                                                <constraint firstItem="FDs-RF-37s" firstAttribute="top" secondItem="F3P-dg-wHz" secondAttribute="top" id="Jh0-p5-Ln6"/>
+                                                <constraint firstAttribute="trailing" secondItem="FDs-RF-37s" secondAttribute="trailing" constant="8" id="L0E-BW-VZy"/>
+                                                <constraint firstItem="FDs-RF-37s" firstAttribute="leading" secondItem="F3P-dg-wHz" secondAttribute="leading" constant="20" id="mEf-Xl-kxN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="rAF-B0-EIv" kind="show" id="ijx-qq-NTb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoutCell" id="baw-eJ-ULu" customClass="MoreCell" customModule="GuideSwift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="167" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="baw-eJ-ULu" id="3oO-ld-VxI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

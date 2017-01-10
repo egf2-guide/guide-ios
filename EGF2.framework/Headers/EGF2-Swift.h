@@ -143,8 +143,8 @@ SWIFT_CLASS("_TtC4EGF29EGF2Graph")
 - (void)updateObjectWithId:(NSString * _Nonnull)id object:(NSObject * _Nonnull)object completion:(void (^ _Nullable)(NSObject * _Nullable, NSError * _Nullable))completion;
 - (void)deleteObjectWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)createObjectWithParameters:(NSDictionary<NSString *, id> * _Nonnull)parameters forSource:(NSString * _Nonnull)source onEdge:(NSString * _Nonnull)edge completion:(void (^ _Nullable)(NSObject * _Nullable, NSError * _Nullable))completion;
-- (void)addObjectWithId:(NSString * _Nonnull)id forSource:(NSString * _Nonnull)source toEdge:(NSString * _Nonnull)edge completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
-- (void)deleteObjectWithId:(NSString * _Nonnull)id forSource:(NSString * _Nonnull)source fromEdge:(NSString * _Nonnull)edge completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
+- (void)addObjectWithId:(NSString * _Nonnull)id forSource:(NSString * _Nonnull)source toEdge:(NSString * _Nonnull)edge completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
+- (void)deleteObjectWithId:(NSString * _Nonnull)id forSource:(NSString * _Nonnull)source fromEdge:(NSString * _Nonnull)edge completion:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completion;
 - (void)doesObjectWithId:(NSString * _Nonnull)id existForSource:(NSString * _Nonnull)source onEdge:(NSString * _Nonnull)edge completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
 - (void)objectsForSource:(NSString * _Nonnull)source edge:(NSString * _Nonnull)edge completion:(void (^ _Nullable)(NSArray<NSObject *> * _Nullable, NSInteger, NSError * _Nullable))completion;
 - (void)objectsForSource:(NSString * _Nonnull)source edge:(NSString * _Nonnull)edge after:(NSString * _Nullable)after completion:(void (^ _Nullable)(NSArray<NSObject *> * _Nullable, NSInteger, NSError * _Nullable))completion;
@@ -175,6 +175,7 @@ SWIFT_CLASS("_TtC4EGF29EGF2Graph")
 - (void)restorePasswordWithEmail:(NSString * _Nonnull)email completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
 - (void)resetPasswordWithToken:(NSString * _Nonnull)token newPassword:(NSString * _Nonnull)newPassword completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
 - (void)verifyEmailWithToken:(NSString * _Nonnull)token completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
+- (void)resendEmailVerificationWithCompletion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
 - (void)searchForObject:(NSString * _Nonnull)object after:(NSInteger)after count:(NSInteger)count expand:(NSArray<NSString *> * _Nullable)expand fields:(NSArray<NSString *> * _Nullable)fields filters:(NSDictionary<NSString *, id> * _Nullable)filters range:(NSDictionary<NSString *, id> * _Nullable)range sort:(NSArray<NSString *> * _Nullable)sort query:(NSString * _Nullable)query completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSError * _Nullable))completion;
 - (void)searchWithParameters:(EGF2SearchParameters * _Nonnull)parameters after:(NSInteger)after count:(NSInteger)count completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSError * _Nullable))completion;
 @end
