@@ -31,7 +31,7 @@ class MainTabBarController: UITabBarController {
     
     func showOffensivePostTab() {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "OffensivePosts"), var controllers = viewControllers else { return }
-        controller.tabBarItem = UITabBarItem(title: "Offensive Posts", image: nil, tag: 0)
+        controller.tabBarItem = UITabBarItem(title: "Offensive Posts", image: #imageLiteral(resourceName: "tab_offensive_posts"), tag: 0)
         controllers.insert(controller, at: 1)
         viewControllers = controllers
     }

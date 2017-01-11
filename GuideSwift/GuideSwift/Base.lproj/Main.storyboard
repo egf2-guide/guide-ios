@@ -1147,7 +1147,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dcx-iA-n49" id="XdT-te-wRr">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hP6-pH-Ivb">
@@ -1172,7 +1172,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="no2-no-mtp" id="IuB-Nm-5j4">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISj-JJ-Q3J">
@@ -1222,7 +1222,7 @@
                                         <rect key="frame" x="0.0" y="167" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="baw-eJ-ULu" id="3oO-ld-VxI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeR-ue-EtI">
@@ -2302,7 +2302,7 @@
         <scene sceneID="FRU-lH-6pJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gdB-ZU-rMv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="mvO-PE-HIF"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="tab_feed" id="mvO-PE-HIF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BBX-ra-RSS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2321,7 +2321,7 @@
         <scene sceneID="v42-WC-XTH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CSB-6I-R7d" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Follows" id="414-xN-2aN"/>
+                    <tabBarItem key="tabBarItem" title="Follows" image="tab_follows" id="414-xN-2aN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Le-Co-kiw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2340,7 +2340,7 @@
         <scene sceneID="ThE-3j-6Ze">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4r3-CY-4pc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="More" id="H0v-BQ-ptX"/>
+                    <tabBarItem key="tabBarItem" title="More" image="tab_more" id="H0v-BQ-ptX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yhb-sz-b2O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2430,6 +2430,9 @@
         <image name="delete" width="15" height="15"/>
         <image name="edit" width="15" height="15"/>
         <image name="offended" width="15" height="15"/>
+        <image name="tab_feed" width="28" height="28"/>
+        <image name="tab_follows" width="28" height="28"/>
+        <image name="tab_more" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vic-LM-0yU"/>

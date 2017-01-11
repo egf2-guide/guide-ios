@@ -797,7 +797,7 @@
         <scene sceneID="Ebf-we-Kyz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Awc-3O-6LF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="SeK-hb-mzO"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="tab_feed" id="SeK-hb-mzO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sxe-Ce-RtG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -816,7 +816,7 @@
         <scene sceneID="Ap6-zB-MYm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wes-NL-VC7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Follows" id="Kuh-T5-rkk"/>
+                    <tabBarItem key="tabBarItem" title="Follows" image="tab_follows" id="Kuh-T5-rkk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CyG-4V-Mo2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -835,7 +835,7 @@
         <scene sceneID="q1n-ib-yMG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F8r-pP-zr9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="More" id="kOm-ff-ai2"/>
+                    <tabBarItem key="tabBarItem" title="More" image="tab_more" id="kOm-ff-ai2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GKW-C1-ghu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2436,6 +2436,9 @@
         <image name="delete" width="15" height="15"/>
         <image name="edit" width="15" height="15"/>
         <image name="offended" width="15" height="15"/>
+        <image name="tab_feed" width="28" height="28"/>
+        <image name="tab_follows" width="28" height="28"/>
+        <image name="tab_more" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="m6H-Mm-nM4"/>

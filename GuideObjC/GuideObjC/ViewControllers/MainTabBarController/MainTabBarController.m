@@ -35,7 +35,7 @@
 - (void)showOffensivePostTab {
     UIViewController * controller = [self.storyboard instantiateViewControllerWithIdentifier:@"OffensivePosts"];
     NSMutableArray * controllers = [NSMutableArray arrayWithArray:self.viewControllers];
-    controller.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Offensive Posts" image:nil tag:0];
+    controller.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Offensive Posts" image:[UIImage imageNamed:@"tab_offensive_posts"] tag:0];
     [controllers insertObject:controller atIndex:1];
     self.viewControllers = controllers;
 }
