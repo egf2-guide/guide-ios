@@ -1,5 +1,5 @@
 //
-//  EmailVerificationController.swift
+//  ResendEmailVerificationController.swift
 //  GuideSwift
 //
 //  Created by LuzanovRoman on 10.01.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmailVerificationController: BaseController {
+class ResendEmailVerificationController: BaseController {
     
     @IBOutlet weak var errorLabel: UILabel!
     

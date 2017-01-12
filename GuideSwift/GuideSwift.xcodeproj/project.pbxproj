@@ -38,7 +38,6 @@
 		E5681F521E0B97110081B362 /* EdgeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F511E0B97110081B362 /* EdgeDownloader.swift */; };
 		E5681F541E0B982C0081B362 /* BaseDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F531E0B982C0081B362 /* BaseDownloader.swift */; };
 		E5681F5C1E0BB5740081B362 /* ReversedEdgeDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5681F5B1E0BB5740081B362 /* ReversedEdgeDownloader.swift */; };
-		E56F92CC1E24EBC5005B5199 /* EmailVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56F92CB1E24EBC5005B5199 /* EmailVerificationController.swift */; };
 		E5734D811E1244CF007EF828 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5734D801E1244CF007EF828 /* PostCell.swift */; };
 		E5734D831E12450B007EF828 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5734D821E12450B007EF828 /* PostCell.xib */; };
 		E574388B1E0A59CD00CA6C45 /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574388A1E0A59CD00CA6C45 /* ProgressCell.swift */; };
@@ -61,6 +60,7 @@
 		E5D48D991E04496100E07571 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D48D981E04496100E07571 /* SeparatorView.swift */; };
 		E5EB0B8E1E0A6586000AB70A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB0B8D1E0A6586000AB70A /* UserCell.swift */; };
 		E5EB0B901E0A65B6000AB70A /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */; };
+		E5F2814A1E274773009F072C /* ResendEmailVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F281491E274773009F072C /* ResendEmailVerificationController.swift */; };
 		E5F7360F1E13E4070039B3D7 /* PostEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F7360E1E13E4070039B3D7 /* PostEditController.swift */; };
 		E5FDA2951E124D3200ED3B16 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2941E124D3200ED3B16 /* UserProfileController.swift */; };
 		E5FDA2971E125DCC00ED3B16 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA2961E125DCC00ED3B16 /* FollowButton.swift */; };
@@ -112,7 +112,6 @@
 		E5681F511E0B97110081B362 /* EdgeDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeDownloader.swift; sourceTree = "<group>"; };
 		E5681F531E0B982C0081B362 /* BaseDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDownloader.swift; sourceTree = "<group>"; };
 		E5681F5B1E0BB5740081B362 /* ReversedEdgeDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversedEdgeDownloader.swift; sourceTree = "<group>"; };
-		E56F92CB1E24EBC5005B5199 /* EmailVerificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailVerificationController.swift; sourceTree = "<group>"; };
 		E5734D801E1244CF007EF828 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		E5734D821E12450B007EF828 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		E574388A1E0A59CD00CA6C45 /* ProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		E5D48D981E04496100E07571 /* SeparatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		E5EB0B8D1E0A6586000AB70A /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		E5F281491E274773009F072C /* ResendEmailVerificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResendEmailVerificationController.swift; sourceTree = "<group>"; };
 		E5F7360E1E13E4070039B3D7 /* PostEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditController.swift; sourceTree = "<group>"; };
 		E5FDA2941E124D3200ED3B16 /* UserProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		E5FDA2961E125DCC00ED3B16 /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
@@ -306,14 +306,6 @@
 			path = ProgressController;
 			sourceTree = "<group>";
 		};
-		E56F92CA1E24EBBD005B5199 /* EmailVerificationController */ = {
-			isa = PBXGroup;
-			children = (
-				E56F92CB1E24EBC5005B5199 /* EmailVerificationController.swift */,
-			);
-			path = EmailVerificationController;
-			sourceTree = "<group>";
-		};
 		E5734D7F1E1244C7007EF828 /* PostCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,7 +417,7 @@
 				E52667381E08F72C00A42337 /* ChangePasswordController */,
 				E547C1031E090F1B008CB362 /* RestorePasswordController */,
 				E547C1041E090F2E008CB362 /* ResetPasswordController */,
-				E56F92CA1E24EBBD005B5199 /* EmailVerificationController */,
+				E5F281481E274773009F072C /* ResendEmailVerificationController */,
 				E519FACE1E2359460081E8E1 /* MainTabBarController */,
 				E52865511DFE72F500D50A0D /* FeedController */,
 				E519FAD11E235B8A0081E8E1 /* OffensivePostsController */,
@@ -465,6 +457,14 @@
 				E5EB0B8F1E0A65B6000AB70A /* UserCell.xib */,
 			);
 			path = UserCell;
+			sourceTree = "<group>";
+		};
+		E5F281481E274773009F072C /* ResendEmailVerificationController */ = {
+			isa = PBXGroup;
+			children = (
+				E5F281491E274773009F072C /* ResendEmailVerificationController.swift */,
+			);
+			path = ResendEmailVerificationController;
 			sourceTree = "<group>";
 		};
 		E5F7360D1E13E4010039B3D7 /* PostEditController */ = {
@@ -599,7 +599,7 @@
 				E5FDA2951E124D3200ED3B16 /* UserProfileController.swift in Sources */,
 				E5F7360F1E13E4070039B3D7 /* PostEditController.swift in Sources */,
 				E5FDA2971E125DCC00ED3B16 /* FollowButton.swift in Sources */,
-				E56F92CC1E24EBC5005B5199 /* EmailVerificationController.swift in Sources */,
+				E5F2814A1E274773009F072C /* ResendEmailVerificationController.swift in Sources */,
 				E55415E81E03D9A10024B3A2 /* FileImageView.swift in Sources */,
 				E591236F1E09358900AD98A3 /* UsersController.swift in Sources */,
 				E528654E1DFE6FE800D50A0D /* MoreController.swift in Sources */,

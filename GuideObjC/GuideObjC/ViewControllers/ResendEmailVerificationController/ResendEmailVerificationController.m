@@ -1,19 +1,19 @@
 //
-//  EmailVerificationController.m
+//  ResendEmailVerificationController.m
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 10.01.17.
 //  Copyright © 2017 eigengraph. All rights reserved.
 //
 
-#import "EmailVerificationController.h"
+#import "ResendEmailVerificationController.h"
 #import "ProgressController.h"
 
-@interface EmailVerificationController ()
+@interface ResendEmailVerificationController ()
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @end
 
-@implementation EmailVerificationController
+@implementation ResendEmailVerificationController
 
 - (IBAction)resendEmailVerification:(id)sender {
     _errorLabel.text = nil;

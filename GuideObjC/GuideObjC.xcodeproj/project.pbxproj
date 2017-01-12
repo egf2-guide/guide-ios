@@ -39,7 +39,6 @@
 		E566905B1E163300009D4F2F /* OffensivePostButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E566905A1E163300009D4F2F /* OffensivePostButton.m */; };
 		E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5681F561E0BAA340081B362 /* BaseDownloader.m */; };
 		E5681F5A1E0BAB070081B362 /* EdgeDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5681F591E0BAB070081B362 /* EdgeDownloader.m */; };
-		E56F92D01E24F0B5005B5199 /* EmailVerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56F92CF1E24F0B5005B5199 /* EmailVerificationController.m */; };
 		E57D57621DFA945900C8C237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57611DFA945900C8C237 /* main.m */; };
 		E57D57651DFA945900C8C237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E57D57641DFA945900C8C237 /* AppDelegate.m */; };
 		E57D576B1DFA945900C8C237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57D57691DFA945900C8C237 /* Main.storyboard */; };
@@ -60,6 +59,7 @@
 		E5C592CB1E0AE172004C530D /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592C91E0AE172004C530D /* UserCell.m */; };
 		E5C592CC1E0AE172004C530D /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5C592CA1E0AE172004C530D /* UserCell.xib */; };
 		E5C592D31E0AEAC1004C530D /* UsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C592D21E0AEAC1004C530D /* UsersController.m */; };
+		E5F2814E1E274892009F072C /* ResendEmailVerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F2814D1E274892009F072C /* ResendEmailVerificationController.m */; };
 		E5F736121E13F3870039B3D7 /* PostEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F736111E13F3870039B3D7 /* PostEditController.m */; };
 		E5FDA2901E1248AA00ED3B16 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FDA28F1E1248AA00ED3B16 /* PostCell.m */; };
 		E5FDA2921E12492100ED3B16 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FDA2911E12492100ED3B16 /* PostCell.xib */; };
@@ -146,8 +146,6 @@
 		E5681F561E0BAA340081B362 /* BaseDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDownloader.m; sourceTree = "<group>"; };
 		E5681F581E0BAB070081B362 /* EdgeDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeDownloader.h; sourceTree = "<group>"; };
 		E5681F591E0BAB070081B362 /* EdgeDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EdgeDownloader.m; sourceTree = "<group>"; };
-		E56F92CE1E24F0B5005B5199 /* EmailVerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailVerificationController.h; sourceTree = "<group>"; };
-		E56F92CF1E24F0B5005B5199 /* EmailVerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailVerificationController.m; sourceTree = "<group>"; };
 		E57D575D1DFA945900C8C237 /* GuideObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D57611DFA945900C8C237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E57D57631DFA945900C8C237 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -182,6 +180,8 @@
 		E5C592CA1E0AE172004C530D /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		E5C592D11E0AEAC1004C530D /* UsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersController.h; sourceTree = "<group>"; };
 		E5C592D21E0AEAC1004C530D /* UsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersController.m; sourceTree = "<group>"; };
+		E5F2814C1E274892009F072C /* ResendEmailVerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResendEmailVerificationController.h; sourceTree = "<group>"; };
+		E5F2814D1E274892009F072C /* ResendEmailVerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResendEmailVerificationController.m; sourceTree = "<group>"; };
 		E5F736101E13F3870039B3D7 /* PostEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEditController.h; sourceTree = "<group>"; };
 		E5F736111E13F3870039B3D7 /* PostEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEditController.m; sourceTree = "<group>"; };
 		E5FDA28E1E1248AA00ED3B16 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
@@ -387,15 +387,6 @@
 			path = ProgressController;
 			sourceTree = "<group>";
 		};
-		E56F92CD1E24F0A2005B5199 /* EmailVerificationController */ = {
-			isa = PBXGroup;
-			children = (
-				E56F92CE1E24F0B5005B5199 /* EmailVerificationController.h */,
-				E56F92CF1E24F0B5005B5199 /* EmailVerificationController.m */,
-			);
-			path = EmailVerificationController;
-			sourceTree = "<group>";
-		};
 		E57D57541DFA945900C8C237 = {
 			isa = PBXGroup;
 			children = (
@@ -488,7 +479,7 @@
 				E526673B1E08FECE00A42337 /* ChangePasswordController */,
 				E59123661E09262D00AD98A3 /* RestorePasswordController */,
 				E59123651E09262D00AD98A3 /* ResetPasswordController */,
-				E56F92CD1E24F0A2005B5199 /* EmailVerificationController */,
+				E5F2814B1E274892009F072C /* ResendEmailVerificationController */,
 				E5C592D01E0AEAA2004C530D /* UsersController */,
 				E5FDA29B1E126E0500ED3B16 /* UserProfileController */,
 			);
@@ -562,6 +553,15 @@
 				E5C592D21E0AEAC1004C530D /* UsersController.m */,
 			);
 			path = UsersController;
+			sourceTree = "<group>";
+		};
+		E5F2814B1E274892009F072C /* ResendEmailVerificationController */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2814C1E274892009F072C /* ResendEmailVerificationController.h */,
+				E5F2814D1E274892009F072C /* ResendEmailVerificationController.m */,
+			);
+			path = ResendEmailVerificationController;
 			sourceTree = "<group>";
 		};
 		E5F7360C1E13E3E30039B3D7 /* PostEditController */ = {
@@ -737,7 +737,7 @@
 				E519FAE51E23AE250081E8E1 /* OffendedUserCell.m in Sources */,
 				E52865851DFE76DF00D50A0D /* MoreCell.m in Sources */,
 				E5681F571E0BAA340081B362 /* BaseDownloader.m in Sources */,
-				E56F92D01E24F0B5005B5199 /* EmailVerificationController.m in Sources */,
+				E5F2814E1E274892009F072C /* ResendEmailVerificationController.m in Sources */,
 				E52577331E0121BF0068D28D /* SimpleFileManager.m in Sources */,
 				E5681F5A1E0BAB070081B362 /* EdgeDownloader.m in Sources */,
 			);

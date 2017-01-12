@@ -1,5 +1,5 @@
 //
-//  EmailVerificationController.h
+//  ResendEmailVerificationController.h
 //  GuideObjC
 //
 //  Created by LuzanovRoman on 10.01.17.
@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface EmailVerificationController : BaseViewController
+@interface ResendEmailVerificationController : BaseViewController
 
 @end

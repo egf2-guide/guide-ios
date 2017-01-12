@@ -2374,7 +2374,7 @@
         <!--Resend Email Verification-->
         <scene sceneID="HNW-1u-c4M">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="I2h-4E-0tG" customClass="EmailVerificationController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="I2h-4E-0tG" customClass="ResendEmailVerificationController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TbW-cW-Azc"/>
                         <viewControllerLayoutGuide type="bottom" id="z66-z2-MQl"/>
