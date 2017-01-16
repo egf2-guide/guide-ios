@@ -9,16 +9,15 @@
 import UIKit
 
 class InitController: UIViewController {
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if Graph.isAuthorized {
             Follows.shared.startObserving()
             OffensivePosts.shared.startSession()
             performSegue(withIdentifier: "ShowTabBar", sender: nil)
-        }
-        else {
+        } else {
             performSegue(withIdentifier: "ShowLoginScreen", sender: nil)
         }
     }

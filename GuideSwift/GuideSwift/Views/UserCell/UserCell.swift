@@ -16,18 +16,17 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var followButton: FollowButton!
     weak var delegate: UserCellDelegate?
-    
-    weak var user: EGFUser? = nil {
+
+    weak var user: EGFUser? {
         didSet {
             userNameLabel.text = user?.name?.fullName()
             followButton.user = user
         }
     }
-    
+
     @IBAction func didTapFollowButton(_ sender: AnyObject) {
         if let theUser = user {
             delegate?.didTapFollowButton(withUser: theUser, andCell: self)
         }
     }
 }
-

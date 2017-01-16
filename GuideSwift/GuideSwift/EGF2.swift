@@ -15,7 +15,7 @@ var Graph: EGF2Graph = {
     graph.maxPageSize = 50
     graph.defaultPageSize = 25
     graph.showCacheLogs = true
-    graph.isObjectPaginationMode = false;
+    graph.isObjectPaginationMode = false
     graph.idsWithModelTypes = [
 		"03": EGFUser.self,
 		"06": EGFFile.self,
@@ -27,7 +27,7 @@ var Graph: EGF2Graph = {
     return graph
 }()
 
-// MARK:- Simple objects
+// MARK: - Simple objects
 class EGFDimension: NSObject {
 	var width: Int = 0
 	var height: Int = 0
@@ -128,7 +128,7 @@ class EGFDate: NSObject {
 	}
 }
 
-// MARK:- Base graph object
+// MARK: - Base graph object
 class EGFGraphObject: NSObject {
 	var modifiedAt: Date?
 	var id: String?
@@ -148,7 +148,7 @@ class EGFGraphObject: NSObject {
 	}
 }
 
-// MARK:- Common objects
+// MARK: - Common objects
 class EGFPost: EGFGraphObject {
 	var creator: String?
 	var creatorObject: EGFUser?
@@ -205,7 +205,6 @@ class EGFCustomerRole: EGFGraphObject {
 	var user: String?
 	var userObject: EGFUser?
 
-
 	override func requiredFields() -> [String] {
 		return super.requiredFields() + [
 			"user"
@@ -239,7 +238,6 @@ class EGFAdminRole: EGFGraphObject {
 	var user: String?
 	var userObject: EGFUser?
 
-
 	override func requiredFields() -> [String] {
 		return super.requiredFields() + [
 			"user"
@@ -268,4 +266,3 @@ class EGFUser: EGFGraphObject {
 		]
 	}
 }
-

@@ -9,24 +9,23 @@
 import UIKit
 
 class ResendEmailVerificationController: BaseController {
-    
+
     @IBOutlet weak var errorLabel: UILabel!
-    
+
     @IBAction func resendEmailVerification(_ sender: AnyObject) {
         errorLabel.text = nil
-        
+
         ProgressController.show()
         Graph.resendEmailVerification { (_, error) in
             ProgressController.hide()
-            
+
             if let err = error {
                 self.errorLabel.text = err.localizedFailureReason
-            }
-            else {
+            } else {
                 let title = "Email has been successfully sent"
                 let message = "Please check your email"
                 let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok", style: .default, handler: { (action) -> Void in
+                let ok = UIAlertAction(title: "Ok", style: .default, handler: { (_) -> Void in
                     _ = self.navigationController?.popToRootViewController(animated: true)
                 })
                 controller.addAction(ok)

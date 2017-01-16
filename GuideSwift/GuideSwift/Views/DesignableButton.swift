@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable
 class DesignableButton: UIButton {
-    
+
     @IBInspectable var backgroundNormalColor: UIColor? {
         didSet {
             if let color = backgroundNormalColor {
@@ -18,7 +18,7 @@ class DesignableButton: UIButton {
             }
         }
     }
-    
+
     @IBInspectable var backgroundDisableColor: UIColor? {
         didSet {
             if let color = backgroundDisableColor {
@@ -26,7 +26,7 @@ class DesignableButton: UIButton {
             }
         }
     }
-    
+
     @IBInspectable var backgroundHighlightColor: UIColor? {
         didSet {
             if let color = backgroundHighlightColor {
@@ -34,20 +34,20 @@ class DesignableButton: UIButton {
             }
         }
     }
-    
+
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
             layer.masksToBounds = cornerRadius > 0
         }
     }
-    
+
     @IBInspectable var borderWidth: CGFloat = 0 {
         didSet {
             layer.borderWidth = borderWidth
         }
     }
-    
+
     @IBInspectable var borderColor: UIColor? {
         didSet {
             layer.borderColor = borderColor?.cgColor

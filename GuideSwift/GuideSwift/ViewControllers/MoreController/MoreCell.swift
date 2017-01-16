@@ -9,7 +9,7 @@
 import UIKit
 
 class MoreCell: UITableViewCell {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         let background = UIView()

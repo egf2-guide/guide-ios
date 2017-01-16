@@ -11,7 +11,7 @@ import UIKit
 class OffendedUserCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
 
-    weak var offendedUser: EGFUser? = nil {
+    weak var offendedUser: EGFUser? {
         didSet {
             userNameLabel.text = offendedUser?.name?.fullName()
         }

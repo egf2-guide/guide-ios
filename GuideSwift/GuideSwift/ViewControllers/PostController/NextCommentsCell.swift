@@ -20,13 +20,12 @@ class NextCommentsCell: UITableViewCell {
         didSet {
             if indicatorIsAnimated {
                 activityIndicatorView.startAnimating()
-            }
-            else {
+            } else {
                 activityIndicatorView.stopAnimating()
             }
         }
     }
-    
+
     @IBAction func showNext(_ sender: AnyObject) {
         delegate?.showNext()
         indicatorIsAnimated = true

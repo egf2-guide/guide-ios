@@ -9,10 +9,10 @@
 import Foundation
 
 extension EGFHumanName {
-    
+
     func fullName() -> String? {
         var fullName = ""
-        
+
         if let value = family {
             fullName = value
         }
