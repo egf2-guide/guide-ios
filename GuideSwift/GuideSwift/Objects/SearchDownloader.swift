@@ -14,6 +14,7 @@ class SearchDownloader<T: NSObject>: BaseDownloader<T> {
     var parameters: EGF2SearchParameters?
 
     fileprivate var searchToken = 0
+    fileprivate var lastToken: String?
     fileprivate var lastQuery: String?
 
     override var tableView: UITableView? {
@@ -52,6 +53,7 @@ class SearchDownloader<T: NSObject>: BaseDownloader<T> {
 
     fileprivate func resetSearch(withTotalCount count: Int) {
         searchToken += 1
+        lastToken = nil
         totalCount = count
         graphObjects.removeAll()
         tableView?.reloadData()
@@ -62,14 +64,14 @@ class SearchDownloader<T: NSObject>: BaseDownloader<T> {
         params.query = query
 
         let localSearchToken = searchToken
-        let after = graphObjects.isEmpty ? -1 : graphObjects.count - 1
-
-        Graph.search(withParameters: params, after: after, count: 50) { (objects, count, _) in
+        
+        Graph.search(withParameters: params, count: 50, after: lastToken) { (objects, count, last, _) in
             // Ignore results of old requests
             if localSearchToken != self.searchToken { return }
 
             guard let theObjects = objects, let nextObjects = theObjects as? [T] else { return }
 
+            self.lastToken = last
             self.totalCount = count
             self.graphObjects.append(contentsOf: nextObjects)
             self.tableView?.reloadData()

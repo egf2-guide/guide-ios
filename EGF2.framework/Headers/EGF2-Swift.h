@@ -176,8 +176,8 @@ SWIFT_CLASS("_TtC4EGF29EGF2Graph")
 - (void)resetPasswordWithToken:(NSString * _Nonnull)token newPassword:(NSString * _Nonnull)newPassword completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
 - (void)verifyEmailWithToken:(NSString * _Nonnull)token completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
 - (void)resendEmailVerificationWithCompletion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
-- (void)searchForObject:(NSString * _Nonnull)object after:(NSInteger)after count:(NSInteger)count expand:(NSArray<NSString *> * _Nullable)expand fields:(NSArray<NSString *> * _Nullable)fields filters:(NSDictionary<NSString *, id> * _Nullable)filters range:(NSDictionary<NSString *, id> * _Nullable)range sort:(NSArray<NSString *> * _Nullable)sort query:(NSString * _Nullable)query completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSError * _Nullable))completion;
-- (void)searchWithParameters:(EGF2SearchParameters * _Nonnull)parameters after:(NSInteger)after count:(NSInteger)count completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSError * _Nullable))completion;
+- (void)searchForObject:(NSString * _Nonnull)object count:(NSInteger)count after:(NSString * _Nullable)after expand:(NSArray<NSString *> * _Nullable)expand fields:(NSArray<NSString *> * _Nullable)fields filters:(NSDictionary<NSString *, id> * _Nullable)filters range:(NSDictionary<NSString *, id> * _Nullable)range sort:(NSArray<NSString *> * _Nullable)sort query:(NSString * _Nullable)query completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSString * _Nullable, NSError * _Nullable))completion;
+- (void)searchWithParameters:(EGF2SearchParameters * _Nonnull)parameters count:(NSInteger)count after:(NSString * _Nullable)after completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSString * _Nullable, NSError * _Nullable))completion;
 @end
 
 

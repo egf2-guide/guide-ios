@@ -12,6 +12,7 @@
 @property (nonatomic, retain) EGF2SearchParameters *parameters;
 @property (nonatomic, assign) NSInteger searchToken;
 @property (nonatomic, retain) NSString *lastQuery;
+@property (nonatomic, retain) NSString *lastToken;
 @end
 
 @implementation SearchDownloader
@@ -51,6 +52,7 @@
 
 - (void)resetSearchWithTotalCount:(NSInteger)count {
     _searchToken += 1;
+    _lastToken = nil;
     self.totalCount = count;
     [self.graphObjects removeAllObjects];
     [self.tableView reloadData];
@@ -63,14 +65,14 @@
     _parameters.query = query;
     
     NSInteger localSearchToken = _searchToken;
-    NSInteger after = self.graphObjects.count == 0 ? -1 : self.graphObjects.count - 1;
     
-    [[Graph shared] searchWithParameters:_parameters after:after count:50 completion:^(NSArray *objects, NSInteger count, NSError * error) {
+    [[Graph shared] searchWithParameters:_parameters count:50 after:_lastToken completion:^(NSArray *objects, NSInteger count, NSString *last, NSError * error) {
         // Ignore results of old requests
         if (localSearchToken != _searchToken) {
             return;
         }
         if (objects) {
+            _lastToken = last;
             self.totalCount = count;
             [self.graphObjects addObjectsFromArray:objects];
             [self.tableView reloadData];
