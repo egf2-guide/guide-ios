@@ -12,9 +12,10 @@ import EGF2
 var Graph: EGF2Graph = {
     let graph = EGF2Graph(name: "EGF2")!
     graph.serverURL = URL(string: "http://guide.eigengraph.com/v1/")
+    graph.webSocketURL = URL(string: "ws://guide.eigengraph.com:980/v1/listen")
     graph.maxPageSize = 50
     graph.defaultPageSize = 25
-    graph.showCacheLogs = true
+    graph.showLogs = true
     graph.isObjectPaginationMode = false
     graph.idsWithModelTypes = [
 		"03": EGFUser.self,

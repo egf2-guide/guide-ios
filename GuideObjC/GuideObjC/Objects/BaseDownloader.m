@@ -17,7 +17,6 @@
     if (self) {
         _graphObjects = [NSMutableArray array];
         _totalCount = -1;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(objectUpdated:) name:EGF2NotificationObjectUpdated object:nil];
     }
     return self;
 }
@@ -67,18 +66,6 @@
         return [self indexOfObjectWithId:id];
     }
     return NSNotFound;
-}
-
-- (void)objectUpdated:(NSNotification *)notification {
-    NSString * objectId = notification.userInfo[EGF2ObjectIdInfoKey];
-    
-    if ([self indexOfObjectWithId:objectId] != NSNotFound) {
-        [[Graph shared] objectWithId:objectId expand:[self expandValues] completion:^(NSObject * object, NSError * error) {
-            if (object) {
-                [self replaceObject:object];
-            }
-        }];
-    }
 }
 
 - (void)replaceObject:(NSObject *)object {

@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSString *edge;
 @property (nonatomic, retain) NSString *source;
 @property (nonatomic, retain) NSArray *expand;
+@property (nonatomic, retain) NSMutableArray *subscribedObjectIds;
 @property (nonatomic, assign) BOOL downloading;
 @end
 
@@ -38,11 +39,15 @@
         self.source = source;
         self.edge = edge;
         self.pageCount = 25;
-        NSObject * object = [[Graph shared] notificationObjectForSource:source andEdge:edge];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated object:object];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved object:object];
+        self.subscribedObjectIds = [NSMutableArray array];
+        [[Graph shared] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated forSource:source andEdge:edge];
+        [[Graph shared] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved forSource:source andEdge:edge];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[Graph shared] removeObserver:self];
 }
 
 // MARK:- Private methods
@@ -50,11 +55,18 @@
     NSString * objectId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
     
     if (objectId) {
-        [[Graph shared] refreshObjectWithId:objectId expand:_expand completion:^(NSObject * object, NSError * error) {
-            if (object) {
-                [self insertObject:object atIndex:0];
+        __weak EdgeDownloader *weakSelf = self;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            if (weakSelf) {
+                [[Graph shared] addObserver:weakSelf selector:@selector(objectUpdated:) name:EGF2NotificationObjectUpdated forSource:objectId];
+                [[Graph shared] objectWithId:objectId expand:weakSelf.expandValues completion:^(NSObject * object, NSError * error) {
+                    if (object) {
+                        [weakSelf insertObject:object atIndex:0];
+                    }
+                }];
             }
-        }];
+        });
     }
 }
 
@@ -62,12 +74,37 @@
     NSString * objectId = notification.userInfo[EGF2EdgeObjectIdInfoKey];
     
     if (objectId) {
-        for (NSObject *object in self.graphObjects) {
-            if ([[object valueForKey:@"id"] isEqual:objectId]) {
-                [self deleteObject:object];
-                break;
+        NSInteger index = [self indexOfObjectWithId:objectId];
+        [self deleteObjectAtIndex:index];
+        [[Graph shared] removeObserver:self name:EGF2NotificationObjectUpdated fromSource:objectId];
+        [_subscribedObjectIds removeObject:objectId];
+    }
+}
+
+- (void)objectUpdated:(NSNotification *)notification {
+    NSString * objectId = notification.userInfo[EGF2ObjectIdInfoKey];
+    
+    if (objectId) {
+        [[Graph shared] objectWithId:objectId expand:[self expandValues] completion:^(NSObject * object, NSError * error) {
+            if (object) {
+                [self replaceObject:object];
             }
+        }];
+    }
+}
+
+- (void)updateSubscriptionsForObjects:(NSArray *)objects  {
+    NSMutableArray *newSubscribedObjectIds = [NSMutableArray array];
+    
+    for (NSObject *object in objects) {
+        NSString *objectId =  [object valueForKey:@"id"];
+        
+        if (![_subscribedObjectIds containsObject:objectId]) {
+            [newSubscribedObjectIds addObject:objectId];
         }
+    }
+    if (newSubscribedObjectIds.count > 0) {
+        [[Graph shared] addObserver:self selector:@selector(objectUpdated:) name:EGF2NotificationObjectUpdated forSources:newSubscribedObjectIds];
     }
 }
 
@@ -101,6 +138,7 @@
         else {
             [self.tableView reloadData];
         }
+        [self updateSubscriptionsForObjects:objects];
     }
 }
 
@@ -119,10 +157,8 @@
     }
 }
 
-- (void)deleteObject:(NSObject *)object {
-    NSInteger index = [self.graphObjects indexOfObject:object];
-    
-    if (index == NSNotFound) {
+- (void)deleteObjectAtIndex:(NSInteger)index {
+    if (self.graphObjects.count == 0 || self.graphObjects.count <= index) {
         return;
     }
     self.totalCount -= 1;
@@ -131,6 +167,14 @@
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+}
+
+- (void)deleteObject:(NSObject *)object {
+    NSInteger index = [self.graphObjects indexOfObject:object];
+    
+    if (index != NSNotFound) {
+        [self deleteObjectAtIndex:index];
+    }
 }
 
 // MARK:- Override

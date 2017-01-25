@@ -117,6 +117,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import ObjectiveC;
 @import Foundation;
+@import Security.CipherSuite;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -129,8 +130,9 @@ SWIFT_CLASS("_TtC4EGF29EGF2Graph")
 @property (nonatomic) NSInteger defaultPageSize;
 @property (nonatomic) BOOL isObjectPaginationMode;
 @property (nonatomic, copy) NSDictionary<NSString *, SWIFT_METATYPE(NSObject)> * _Nonnull idsWithModelTypes;
-@property (nonatomic) BOOL showCacheLogs;
+@property (nonatomic) BOOL showLogs;
 @property (nonatomic, copy) NSURL * _Nullable serverURL;
+@property (nonatomic, copy) NSURL * _Nullable webSocketURL;
 @property (nonatomic, readonly) BOOL isAuthorized;
 - (nullable instancetype)initWithName:(NSString * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
 - (void)objectWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSObject * _Nullable, NSError * _Nullable))completion;
@@ -163,6 +165,16 @@ SWIFT_CLASS("_TtC4EGF29EGF2Graph")
 @interface EGF2Graph (SWIFT_EXTENSION(EGF2))
 - (id _Nonnull)notificationObjectForSource:(NSString * _Nonnull)source;
 - (id _Nonnull)notificationObjectForSource:(NSString * _Nonnull)source andEdge:(NSString * _Nonnull)edge;
+- (void)addObserver:(NSObject * _Nonnull)observer selector:(SEL _Nonnull)aSelector name:(NSNotificationName _Nonnull)aName forSources:(NSArray<NSString *> * _Nonnull)sources;
+- (void)addObserver:(NSObject * _Nonnull)observer selector:(SEL _Nonnull)aSelector name:(NSNotificationName _Nonnull)aName forSource:(NSString * _Nonnull)source;
+- (void)removeObserver:(NSObject * _Nonnull)observer name:(NSNotificationName _Nonnull)aName fromSource:(NSString * _Nonnull)source;
+- (void)addObserver:(NSObject * _Nonnull)observer selector:(SEL _Nonnull)aSelector name:(NSNotificationName _Nonnull)aName forSource:(NSString * _Nonnull)source andEdge:(NSString * _Nonnull)edge;
+- (void)removeObserver:(NSObject * _Nonnull)observer name:(NSNotificationName _Nonnull)aName fromSource:(NSString * _Nonnull)source andEdge:(NSString * _Nonnull)edge;
+- (void)removeObserver:(NSObject * _Nonnull)observer;
+@end
+
+
+@interface EGF2Graph (SWIFT_EXTENSION(EGF2))
 @end
 
 @class EGF2SearchParameters;
@@ -180,8 +192,13 @@ SWIFT_CLASS("_TtC4EGF29EGF2Graph")
 - (void)searchWithParameters:(EGF2SearchParameters * _Nonnull)parameters count:(NSInteger)count after:(NSString * _Nullable)after completion:(void (^ _Nonnull)(NSArray<NSObject *> * _Nullable, NSInteger, NSString * _Nullable, NSError * _Nullable))completion;
 @end
 
+@class WebSocket;
 
 @interface EGF2Graph (SWIFT_EXTENSION(EGF2))
+- (void)websocketDidConnectWithSocket:(WebSocket * _Nonnull)socket;
+- (void)websocketDidDisconnectWithSocket:(WebSocket * _Nonnull)socket error:(NSError * _Nullable)error;
+- (void)websocketDidReceiveMessageWithSocket:(WebSocket * _Nonnull)socket text:(NSString * _Nonnull)text;
+- (void)websocketDidReceiveDataWithSocket:(WebSocket * _Nonnull)socket data:(NSData * _Nonnull)data;
 @end
 
 
@@ -204,6 +221,66 @@ SWIFT_CLASS("_TtC4EGF220EGF2SearchParameters")
 - (nonnull instancetype)copyGraphObject;
 - (BOOL)isEqualWithGraphObject:(NSObject * _Nonnull)graphObject;
 - (NSDictionary<NSString *, id> * _Nullable)changesFromGraphObject:(NSObject * _Nonnull)graphObject;
+@end
+
+@class OS_dispatch_queue;
+@class NSStream;
+
+SWIFT_CLASS("_TtC4EGF29WebSocket")
+@interface WebSocket : NSObject <NSStreamDelegate>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ErrorDomain;)
++ (NSString * _Nonnull)ErrorDomain;
+@property (nonatomic, strong) OS_dispatch_queue * _Nonnull callbackQueue;
+@property (nonatomic, copy) void (^ _Nullable onConnect)(void);
+@property (nonatomic, copy) void (^ _Nullable onDisconnect)(NSError * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable onText)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable onData)(NSData * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable onPong)(NSData * _Nullable);
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
+@property (nonatomic) BOOL voipEnabled;
+@property (nonatomic) BOOL disableSSLCertValidation;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable enabledSSLCipherSuites;
+@property (nonatomic, copy) NSString * _Nullable origin;
+@property (nonatomic) NSInteger timeout;
+@property (nonatomic, readonly) BOOL isConnected;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull currentURL;
+/**
+  Used for setting protocols.
+*/
+- (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url protocols:(NSArray<NSString *> * _Nullable)protocols OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url writeQueueQOS:(NSQualityOfService)writeQueueQOS protocols:(NSArray<NSString *> * _Nullable)protocols;
+/**
+  Connect to the WebSocket server on a background thread.
+*/
+- (void)connect;
+/**
+  Write a string to the websocket. This sends it as a text frame.
+  If you supply a non-nil completion block, I will perform it when the write completes.
+  \param string The string to write.
+
+  \param completion The (optional) completion handler.
+
+*/
+- (void)writeWithString:(NSString * _Nonnull)string completion:(void (^ _Nullable)(void))completion;
+/**
+  Write binary data to the websocket. This sends it as a binary frame.
+  If you supply a non-nil completion block, I will perform it when the write completes.
+  \param data The data to write.
+
+  \param completion The (optional) completion handler.
+
+*/
+- (void)writeWithData:(NSData * _Nonnull)data completion:(void (^ _Nullable)(void))completion;
+/**
+  Write a ping to the websocket. This sends it as a control frame.
+  Yodel a   sound  to the planet.    This sends it as an astroid. http://youtu.be/Eu5ZJELRiJ8?t=42s
+*/
+- (void)writeWithPing:(NSData * _Nonnull)ping completion:(void (^ _Nullable)(void))completion;
+/**
+  Delegate for the stream methods. Processes incoming bytes
+*/
+- (void)stream:(NSStream * _Nonnull)aStream handleEvent:(NSStreamEvent)eventCode;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 #pragma clang diagnostic pop

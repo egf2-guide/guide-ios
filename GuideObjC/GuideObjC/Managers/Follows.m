@@ -48,10 +48,12 @@
     [[Graph shared] userObjectWithCompletion:^(NSObject * object, NSError * error) {
         if ([object isMemberOfClass:[EGFUser class]]) {
             EGFUser * user = (EGFUser *)object;
+            
+            [[Graph shared] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated forSource:user.id andEdge:_edge];
+            [[Graph shared] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved forSource:user.id andEdge:_edge];
+            
             NSObject * object = [[Graph shared] notificationObjectForSource:user.id andEdge:_edge];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeCreated:) name:EGF2NotificationEdgeCreated object:object];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRemoved:) name:EGF2NotificationEdgeRemoved object:object];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRefreshed) name:EGF2NotificationEdgeRefreshed object:object];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(edgeRefreshed) name:EGF2NotificationEdgeLocallyRefreshed object:object];
             _isObserving = true;
             _currentUserId = user.id;
             _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkDownloading) userInfo:nil repeats:true];

@@ -36,6 +36,7 @@
         else {
             [self.tableView reloadData];
         }
+        [self updateSubscriptionsForObjects:objects];
     }
 }
 
@@ -78,10 +79,8 @@
     }
 }
 
-- (void)deleteObject:(NSObject *)object {
-    NSInteger index = [self.graphObjects indexOfObject:object];
-    
-    if (index == NSNotFound) {
+- (void)deleteObjectAtIndex:(NSInteger)index {
+    if (self.graphObjects.count == 0 || self.graphObjects.count <= index) {
         return;
     }
     self.totalCount -= 1;

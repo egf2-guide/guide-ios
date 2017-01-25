@@ -16,4 +16,5 @@
 - (id)initWithSource:(NSString *)source edge:(NSString *)edge expand:(NSArray *)expand;
 - (void)insertObject:(NSObject *)object atIndex:(NSInteger)index;
 - (BOOL)noAnyData;
+- (void)updateSubscriptionsForObjects:(NSArray *)objects;
 @end

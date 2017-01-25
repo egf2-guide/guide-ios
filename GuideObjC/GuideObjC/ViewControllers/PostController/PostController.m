@@ -76,8 +76,12 @@
                 _deleteButtonWidth.constant = 0;
             }
         }];
-        [self observeForSource:_post.id eventName:EGF2NotificationObjectUpdated withSelector:@selector(postUpdated:)];
+        [[Graph shared] addObserver:self selector:@selector(postUpdated:) name:EGF2NotificationObjectUpdated forSource:_post.id];
     }
+}
+
+- (void)dealloc {
+    [[Graph shared] removeObserver:self];
 }
 
 - (void)postUpdated:(NSNotification *)notification {

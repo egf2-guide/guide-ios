@@ -16,10 +16,11 @@
     dispatch_once(&onceToken, ^{
         sharedGraph = [[EGF2Graph alloc] initWithName:@"EGF2"];
         sharedGraph.serverURL = [[NSURL alloc] initWithString:@"http://guide.eigengraph.com/v1/"];
+        sharedGraph.webSocketURL = [[NSURL alloc] initWithString:@"ws://guide.eigengraph.com:980/v1/listen"];
         sharedGraph.maxPageSize = 50;
         sharedGraph.defaultPageSize = 25;
         sharedGraph.isObjectPaginationMode = false;
-        sharedGraph.showCacheLogs = true;
+        sharedGraph.showLogs = true;
         sharedGraph.idsWithModelTypes = @{
 			@"03": EGFUser.self,
 			@"06": EGFFile.self,

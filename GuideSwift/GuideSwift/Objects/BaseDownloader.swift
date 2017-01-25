@@ -29,11 +29,6 @@ class BaseDownloader <T: NSObject>: NSObject {
         }
     }
 
-    override init() {
-        super.init()
-        addObservers()
-    }
-
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -54,15 +49,6 @@ class BaseDownloader <T: NSObject>: NSObject {
 
     var isDownloaded: Bool {
         return graphObjects.count == totalCount
-    }
-
-    func objectUpdated(notification: NSNotification) {
-        guard let objectId = notification.userInfo?[EGF2ObjectIdInfoKey] as? String, let _ = indexOfObject(withId: objectId) else { return }
-
-        Graph.object(withId: objectId, expand: expandValues) { (object, _) in
-            guard let graphObject = object as? T else { return }
-            self.replace(object: graphObject)
-        }
     }
 
     func indexOfObject(withId id: String) -> Int? {
@@ -94,10 +80,6 @@ class BaseDownloader <T: NSObject>: NSObject {
     // MARK: - Override
     var expandValues: [String] {
         return []
-    }
-
-    func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(objectUpdated(notification:)), name: .EGF2ObjectUpdated, object: nil)
     }
 
     func refreshList() {

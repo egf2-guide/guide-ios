@@ -16,7 +16,7 @@ enum FollowState {
     case isNotFollow
 }
 
-class Follows {
+class Follows: NSObject {
     static let shared = Follows()
 
     fileprivate var users = [EGFUser]()
@@ -33,10 +33,13 @@ class Follows {
     func startObserving() {
         Graph.userObject { (object, _) in
             guard let user = object as? EGFUser, let userId = user.id else { return }
+            
+            Graph.addObserver(self, selector: #selector(self.edgeCreated(notification:)), name: .EGF2EdgeCreated, forSource: userId, andEdge: self.edge)
+            Graph.addObserver(self, selector: #selector(self.edgeRemoved(notification:)), name: .EGF2EdgeRemoved, forSource: userId, andEdge: self.edge)
+            
             let object = Graph.notificationObject(forSource: userId, andEdge: self.edge)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.edgeCreated(notification:)), name: .EGF2EdgeCreated, object: object)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.edgeRemoved(notification:)), name: .EGF2EdgeRemoved, object: object)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.edgeRefreshed), name: .EGF2EdgeRefreshed, object: object)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.edgeRefreshed), name: .EGF2EdgeLocallyRefreshed, object: object)
+            
             self.isObserving = true
             self.currentUserId = userId
             self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.checkDownloading), userInfo: nil, repeats: true)

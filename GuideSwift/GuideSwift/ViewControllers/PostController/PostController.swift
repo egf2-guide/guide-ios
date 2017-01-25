@@ -63,9 +63,13 @@ class PostController: BaseController, UITableViewDelegate, UITableViewDataSource
             self.deleteButton.isHidden = true
             self.deleteButtonWidth.constant = 0
         }
-        observe(forSource: postId, eventName: .EGF2ObjectUpdated, withSelector: #selector(postUpdated(notification:)))
+        Graph.addObserver(self, selector: #selector(postUpdated(notification:)), name: .EGF2ObjectUpdated, forSource: postId)
     }
 
+    deinit {
+        Graph.removeObserver(self)
+    }
+    
     func postUpdated(notification: NSNotification) {
         guard let postId = notification.userInfo?[EGF2ObjectIdInfoKey] as? String else { return }
 

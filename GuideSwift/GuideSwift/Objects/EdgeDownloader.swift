@@ -11,6 +11,7 @@ import EGF2
 
 class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
 
+    fileprivate var subscribedObjectIds = [String]()
     fileprivate var downloading = false
     fileprivate var expand: [String]
     fileprivate var source: String
@@ -31,26 +32,42 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         self.source = source
         self.edge = edge
         super.init()
+        Graph.addObserver(self, selector: #selector(edgeCreated(notification:)), name: .EGF2EdgeCreated, forSource: source, andEdge: edge)
+        Graph.addObserver(self, selector: #selector(edgeRemoved(notification:)), name: .EGF2EdgeRemoved, forSource: source, andEdge: edge)
+    }
+    
+    deinit {
+        Graph.removeObserver(self)
     }
 
     // MARK: - Private methods
     func edgeCreated(notification: NSNotification) {
         guard let objectId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
 
-        Graph.refreshObject(withId: objectId, expand: expand) { (object, _) in
-            guard let graphObject = object else { return }
-            self.insert(object: graphObject as? T, at: 0)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(100)) { [weak self] in
+            guard let strongSelf = self else { return }
+            Graph.addObserver(strongSelf, selector: #selector(strongSelf.objectUpdated(notification:)), name: .EGF2ObjectUpdated, forSource: objectId)
+            Graph.object(withId: objectId, expand: strongSelf.expand) { (object, _) in
+                guard let graphObject = object else { return }
+                strongSelf.insert(object: graphObject as? T, at: 0)
+            }
         }
     }
 
     func edgeRemoved(notification: NSNotification) {
         guard let objectId = notification.userInfo?[EGF2EdgeObjectIdInfoKey] as? String else { return }
+        guard let index = indexOfObject(withId: objectId) else { return }
+        delete(at: index)
+        Graph.removeObserver(self, name: .EGF2ObjectUpdated, fromSource: objectId)
+        subscribedObjectIds.remove(objectId)
+    }
+    
+    func objectUpdated(notification: NSNotification) {
+        guard let objectId = notification.userInfo?[EGF2ObjectIdInfoKey] as? String else { return }
 
-        for object in graphObjects {
-            if let id = object.value(forKey: "id") as? String, id == objectId {
-                delete(object: object)
-                break
-            }
+        Graph.object(withId: objectId, expand: expandValues) { (object, _) in
+            guard let updatedObject = object as? T else { return }
+            self.replace(object: updatedObject)
         }
     }
 
@@ -88,6 +105,20 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         } else {
             tv.reloadData()
         }
+        updateSubscriptions(forObjects: theObjects)
+    }
+    
+    func updateSubscriptions(forObjects objects: [T]) {
+        var newSubscribedObjectIds = [String]()
+        
+        for object in objects {
+            guard let objectId = object.value(forKey: "id") as? String else { return }
+            if subscribedObjectIds.contains(objectId) { return }
+            newSubscribedObjectIds.append(objectId)
+        }
+        if newSubscribedObjectIds.count > 0 {
+            Graph.addObserver(self, selector: #selector(objectUpdated(notification:)), name: .EGF2ObjectUpdated, forSources: newSubscribedObjectIds)
+        }
     }
 
     func insert(object: T?, at index: Int) {
@@ -106,27 +137,25 @@ class EdgeDownloader<T: NSObject>: BaseDownloader<T> {
         tv.endUpdates()
     }
 
-    func delete(object: T?) {
-        guard let theObject = object, let index = graphObjects.index(of: theObject) else { return }
+    func delete(at index: Int) {
+        if graphObjects.count == 0 || graphObjects.count <= index { return }
         totalCount -= 1
         graphObjects.remove(at: index)
-
+        
         guard let tv = tableView else { return }
         tv.beginUpdates()
         tv.deleteRows(at: [IndexPath(row: index, section: 0)], with: .none)
         tv.endUpdates()
     }
+    
+    func delete(object: T?) {
+        guard let theObject = object, let index = graphObjects.index(of: theObject) else { return }
+        delete(at: index)
+    }
 
     // MARK: - Override
     override var expandValues: [String] {
         return expand
-    }
-
-    override func addObservers() {
-        super.addObservers()
-        let object = Graph.notificationObject(forSource: source, andEdge: edge)
-        NotificationCenter.default.addObserver(self, selector: #selector(edgeCreated(notification:)), name: .EGF2EdgeCreated, object: object)
-        NotificationCenter.default.addObserver(self, selector: #selector(edgeRemoved(notification:)), name: .EGF2EdgeRemoved, object: object)
     }
 
     override func refreshList() {
